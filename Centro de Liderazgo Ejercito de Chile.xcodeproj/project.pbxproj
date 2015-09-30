@@ -1,0 +1,504 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		40ABB6211BBC74970060063F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABB6201BBC74970060063F /* AppDelegate.swift */; };
+		40ABB6231BBC74970060063F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABB6221BBC74970060063F /* ViewController.swift */; };
+		40ABB6261BBC74970060063F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40ABB6241BBC74970060063F /* Main.storyboard */; };
+		40ABB6281BBC74970060063F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40ABB6271BBC74970060063F /* Assets.xcassets */; };
+		40ABB62B1BBC74970060063F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40ABB6291BBC74970060063F /* LaunchScreen.storyboard */; };
+		40ABB6361BBC74970060063F /* Centro_de_Liderazgo_Ejercito_de_ChileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABB6351BBC74970060063F /* Centro_de_Liderazgo_Ejercito_de_ChileTests.swift */; };
+		40ABB6411BBC74970060063F /* Centro_de_Liderazgo_Ejercito_de_ChileUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABB6401BBC74970060063F /* Centro_de_Liderazgo_Ejercito_de_ChileUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		40ABB6321BBC74970060063F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 40ABB6151BBC74970060063F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 40ABB61C1BBC74970060063F;
+			remoteInfo = "Centro de Liderazgo Ejercito de Chile";
+		};
+		40ABB63D1BBC74970060063F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 40ABB6151BBC74970060063F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 40ABB61C1BBC74970060063F;
+			remoteInfo = "Centro de Liderazgo Ejercito de Chile";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		40ABB61D1BBC74970060063F /* Centro de Liderazgo Ejercito de Chile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Centro de Liderazgo Ejercito de Chile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		40ABB6201BBC74970060063F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		40ABB6221BBC74970060063F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		40ABB6251BBC74970060063F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		40ABB6271BBC74970060063F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		40ABB62A1BBC74970060063F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		40ABB62C1BBC74970060063F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40ABB6311BBC74970060063F /* Centro de Liderazgo Ejercito de ChileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Centro de Liderazgo Ejercito de ChileTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		40ABB6351BBC74970060063F /* Centro_de_Liderazgo_Ejercito_de_ChileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Centro_de_Liderazgo_Ejercito_de_ChileTests.swift; sourceTree = "<group>"; };
+		40ABB6371BBC74970060063F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40ABB63C1BBC74970060063F /* Centro de Liderazgo Ejercito de ChileUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Centro de Liderazgo Ejercito de ChileUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		40ABB6401BBC74970060063F /* Centro_de_Liderazgo_Ejercito_de_ChileUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Centro_de_Liderazgo_Ejercito_de_ChileUITests.swift; sourceTree = "<group>"; };
+		40ABB6421BBC74970060063F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		40ABB61A1BBC74970060063F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40ABB62E1BBC74970060063F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40ABB6391BBC74970060063F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		40ABB6141BBC74970060063F = {
+			isa = PBXGroup;
+			children = (
+				40ABB61F1BBC74970060063F /* Centro de Liderazgo Ejercito de Chile */,
+				40ABB6341BBC74970060063F /* Centro de Liderazgo Ejercito de ChileTests */,
+				40ABB63F1BBC74970060063F /* Centro de Liderazgo Ejercito de ChileUITests */,
+				40ABB61E1BBC74970060063F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		40ABB61E1BBC74970060063F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				40ABB61D1BBC74970060063F /* Centro de Liderazgo Ejercito de Chile.app */,
+				40ABB6311BBC74970060063F /* Centro de Liderazgo Ejercito de ChileTests.xctest */,
+				40ABB63C1BBC74970060063F /* Centro de Liderazgo Ejercito de ChileUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		40ABB61F1BBC74970060063F /* Centro de Liderazgo Ejercito de Chile */ = {
+			isa = PBXGroup;
+			children = (
+				40ABB6201BBC74970060063F /* AppDelegate.swift */,
+				40ABB6221BBC74970060063F /* ViewController.swift */,
+				40ABB6241BBC74970060063F /* Main.storyboard */,
+				40ABB6271BBC74970060063F /* Assets.xcassets */,
+				40ABB6291BBC74970060063F /* LaunchScreen.storyboard */,
+				40ABB62C1BBC74970060063F /* Info.plist */,
+			);
+			path = "Centro de Liderazgo Ejercito de Chile";
+			sourceTree = "<group>";
+		};
+		40ABB6341BBC74970060063F /* Centro de Liderazgo Ejercito de ChileTests */ = {
+			isa = PBXGroup;
+			children = (
+				40ABB6351BBC74970060063F /* Centro_de_Liderazgo_Ejercito_de_ChileTests.swift */,
+				40ABB6371BBC74970060063F /* Info.plist */,
+			);
+			path = "Centro de Liderazgo Ejercito de ChileTests";
+			sourceTree = "<group>";
+		};
+		40ABB63F1BBC74970060063F /* Centro de Liderazgo Ejercito de ChileUITests */ = {
+			isa = PBXGroup;
+			children = (
+				40ABB6401BBC74970060063F /* Centro_de_Liderazgo_Ejercito_de_ChileUITests.swift */,
+				40ABB6421BBC74970060063F /* Info.plist */,
+			);
+			path = "Centro de Liderazgo Ejercito de ChileUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		40ABB61C1BBC74970060063F /* Centro de Liderazgo Ejercito de Chile */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 40ABB6451BBC74970060063F /* Build configuration list for PBXNativeTarget "Centro de Liderazgo Ejercito de Chile" */;
+			buildPhases = (
+				40ABB6191BBC74970060063F /* Sources */,
+				40ABB61A1BBC74970060063F /* Frameworks */,
+				40ABB61B1BBC74970060063F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Centro de Liderazgo Ejercito de Chile";
+			productName = "Centro de Liderazgo Ejercito de Chile";
+			productReference = 40ABB61D1BBC74970060063F /* Centro de Liderazgo Ejercito de Chile.app */;
+			productType = "com.apple.product-type.application";
+		};
+		40ABB6301BBC74970060063F /* Centro de Liderazgo Ejercito de ChileTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 40ABB6481BBC74970060063F /* Build configuration list for PBXNativeTarget "Centro de Liderazgo Ejercito de ChileTests" */;
+			buildPhases = (
+				40ABB62D1BBC74970060063F /* Sources */,
+				40ABB62E1BBC74970060063F /* Frameworks */,
+				40ABB62F1BBC74970060063F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				40ABB6331BBC74970060063F /* PBXTargetDependency */,
+			);
+			name = "Centro de Liderazgo Ejercito de ChileTests";
+			productName = "Centro de Liderazgo Ejercito de ChileTests";
+			productReference = 40ABB6311BBC74970060063F /* Centro de Liderazgo Ejercito de ChileTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		40ABB63B1BBC74970060063F /* Centro de Liderazgo Ejercito de ChileUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 40ABB64B1BBC74970060063F /* Build configuration list for PBXNativeTarget "Centro de Liderazgo Ejercito de ChileUITests" */;
+			buildPhases = (
+				40ABB6381BBC74970060063F /* Sources */,
+				40ABB6391BBC74970060063F /* Frameworks */,
+				40ABB63A1BBC74970060063F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				40ABB63E1BBC74970060063F /* PBXTargetDependency */,
+			);
+			name = "Centro de Liderazgo Ejercito de ChileUITests";
+			productName = "Centro de Liderazgo Ejercito de ChileUITests";
+			productReference = 40ABB63C1BBC74970060063F /* Centro de Liderazgo Ejercito de ChileUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		40ABB6151BBC74970060063F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Cristian Martinez Toledo";
+				TargetAttributes = {
+					40ABB61C1BBC74970060063F = {
+						CreatedOnToolsVersion = 7.0;
+					};
+					40ABB6301BBC74970060063F = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = 40ABB61C1BBC74970060063F;
+					};
+					40ABB63B1BBC74970060063F = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = 40ABB61C1BBC74970060063F;
+					};
+				};
+			};
+			buildConfigurationList = 40ABB6181BBC74970060063F /* Build configuration list for PBXProject "Centro de Liderazgo Ejercito de Chile" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 40ABB6141BBC74970060063F;
+			productRefGroup = 40ABB61E1BBC74970060063F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				40ABB61C1BBC74970060063F /* Centro de Liderazgo Ejercito de Chile */,
+				40ABB6301BBC74970060063F /* Centro de Liderazgo Ejercito de ChileTests */,
+				40ABB63B1BBC74970060063F /* Centro de Liderazgo Ejercito de ChileUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		40ABB61B1BBC74970060063F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40ABB62B1BBC74970060063F /* LaunchScreen.storyboard in Resources */,
+				40ABB6281BBC74970060063F /* Assets.xcassets in Resources */,
+				40ABB6261BBC74970060063F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40ABB62F1BBC74970060063F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40ABB63A1BBC74970060063F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		40ABB6191BBC74970060063F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40ABB6231BBC74970060063F /* ViewController.swift in Sources */,
+				40ABB6211BBC74970060063F /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40ABB62D1BBC74970060063F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40ABB6361BBC74970060063F /* Centro_de_Liderazgo_Ejercito_de_ChileTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40ABB6381BBC74970060063F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40ABB6411BBC74970060063F /* Centro_de_Liderazgo_Ejercito_de_ChileUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		40ABB6331BBC74970060063F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 40ABB61C1BBC74970060063F /* Centro de Liderazgo Ejercito de Chile */;
+			targetProxy = 40ABB6321BBC74970060063F /* PBXContainerItemProxy */;
+		};
+		40ABB63E1BBC74970060063F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 40ABB61C1BBC74970060063F /* Centro de Liderazgo Ejercito de Chile */;
+			targetProxy = 40ABB63D1BBC74970060063F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		40ABB6241BBC74970060063F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				40ABB6251BBC74970060063F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		40ABB6291BBC74970060063F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				40ABB62A1BBC74970060063F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		40ABB6431BBC74970060063F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		40ABB6441BBC74970060063F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		40ABB6461BBC74970060063F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Centro de Liderazgo Ejercito de Chile/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "cl.cmt.Centro-de-Liderazgo-Ejercito-de-Chile";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		40ABB6471BBC74970060063F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Centro de Liderazgo Ejercito de Chile/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "cl.cmt.Centro-de-Liderazgo-Ejercito-de-Chile";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		40ABB6491BBC74970060063F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Centro de Liderazgo Ejercito de ChileTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "cl.cmt.Centro-de-Liderazgo-Ejercito-de-ChileTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Centro de Liderazgo Ejercito de Chile.app/Centro de Liderazgo Ejercito de Chile";
+			};
+			name = Debug;
+		};
+		40ABB64A1BBC74970060063F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Centro de Liderazgo Ejercito de ChileTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "cl.cmt.Centro-de-Liderazgo-Ejercito-de-ChileTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Centro de Liderazgo Ejercito de Chile.app/Centro de Liderazgo Ejercito de Chile";
+			};
+			name = Release;
+		};
+		40ABB64C1BBC74970060063F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Centro de Liderazgo Ejercito de ChileUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "cl.cmt.Centro-de-Liderazgo-Ejercito-de-ChileUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Centro de Liderazgo Ejercito de Chile";
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		40ABB64D1BBC74970060063F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Centro de Liderazgo Ejercito de ChileUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "cl.cmt.Centro-de-Liderazgo-Ejercito-de-ChileUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Centro de Liderazgo Ejercito de Chile";
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		40ABB6181BBC74970060063F /* Build configuration list for PBXProject "Centro de Liderazgo Ejercito de Chile" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40ABB6431BBC74970060063F /* Debug */,
+				40ABB6441BBC74970060063F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		40ABB6451BBC74970060063F /* Build configuration list for PBXNativeTarget "Centro de Liderazgo Ejercito de Chile" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40ABB6461BBC74970060063F /* Debug */,
+				40ABB6471BBC74970060063F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		40ABB6481BBC74970060063F /* Build configuration list for PBXNativeTarget "Centro de Liderazgo Ejercito de ChileTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40ABB6491BBC74970060063F /* Debug */,
+				40ABB64A1BBC74970060063F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		40ABB64B1BBC74970060063F /* Build configuration list for PBXNativeTarget "Centro de Liderazgo Ejercito de ChileUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40ABB64C1BBC74970060063F /* Debug */,
+				40ABB64D1BBC74970060063F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 40ABB6151BBC74970060063F /* Project object */;
+}
