@@ -7,7 +7,7 @@
         <!--Inicio View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="InicioViewController" customModule="Centro_de_Liderazgo_Ejercito_de_Chile" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="InicioViewController" customModule="CLE_Chile" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -54,7 +54,7 @@
         <!--Login View Controller-->
         <scene sceneID="dsa-AS-tFI">
             <objects>
-                <viewController id="eLQ-e4-uCR" customClass="LoginViewController" customModule="Centro_de_Liderazgo_Ejercito_de_Chile" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="eLQ-e4-uCR" customClass="LoginViewController" customModule="CLE_Chile" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1Zd-Si-nPE"/>
                         <viewControllerLayoutGuide type="bottom" id="Vci-MI-UcJ"/>

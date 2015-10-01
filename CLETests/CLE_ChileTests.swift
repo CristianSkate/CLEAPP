@@ -7,9 +7,10 @@
 //
 
 import XCTest
-@testable import Centro_de_Liderazgo_Ejercito_de_Chile
 
-class Centro_de_Liderazgo_Ejercito_de_ChileTests: XCTestCase {
+@testable import CLE_Chile
+
+class CLE_ChileTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

@@ -8,7 +8,7 @@
 
 import XCTest
 
-class Centro_de_Liderazgo_Ejercito_de_ChileUITests: XCTestCase {
+class CLE_ChileUITests: XCTestCase {
         
     override func setUp() {
         super.setUp()
