@@ -79,9 +79,9 @@
 		40ABB6141BBC74970060063F = {
 			isa = PBXGroup;
 			children = (
-				40ABB61F1BBC74970060063F /* Centro de Liderazgo Ejercito de Chile */,
-				40ABB6341BBC74970060063F /* Centro de Liderazgo Ejercito de ChileTests */,
-				40ABB63F1BBC74970060063F /* Centro de Liderazgo Ejercito de ChileUITests */,
+				40ABB61F1BBC74970060063F /* CLE */,
+				40ABB6341BBC74970060063F /* CLE Tests */,
+				40ABB63F1BBC74970060063F /* CLE UITests */,
 				40ABB61E1BBC74970060063F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -96,7 +96,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		40ABB61F1BBC74970060063F /* Centro de Liderazgo Ejercito de Chile */ = {
+		40ABB61F1BBC74970060063F /* CLE */ = {
 			isa = PBXGroup;
 			children = (
 				40ABB6201BBC74970060063F /* AppDelegate.swift */,
@@ -107,24 +107,27 @@
 				40ABB6291BBC74970060063F /* LaunchScreen.storyboard */,
 				40ABB62C1BBC74970060063F /* Info.plist */,
 			);
+			name = CLE;
 			path = "Centro de Liderazgo Ejercito de Chile";
 			sourceTree = "<group>";
 		};
-		40ABB6341BBC74970060063F /* Centro de Liderazgo Ejercito de ChileTests */ = {
+		40ABB6341BBC74970060063F /* CLE Tests */ = {
 			isa = PBXGroup;
 			children = (
 				40ABB6351BBC74970060063F /* Centro_de_Liderazgo_Ejercito_de_ChileTests.swift */,
 				40ABB6371BBC74970060063F /* Info.plist */,
 			);
+			name = "CLE Tests";
 			path = "Centro de Liderazgo Ejercito de ChileTests";
 			sourceTree = "<group>";
 		};
-		40ABB63F1BBC74970060063F /* Centro de Liderazgo Ejercito de ChileUITests */ = {
+		40ABB63F1BBC74970060063F /* CLE UITests */ = {
 			isa = PBXGroup;
 			children = (
 				40ABB6401BBC74970060063F /* Centro_de_Liderazgo_Ejercito_de_ChileUITests.swift */,
 				40ABB6421BBC74970060063F /* Info.plist */,
 			);
+			name = "CLE UITests";
 			path = "Centro de Liderazgo Ejercito de ChileUITests";
 			sourceTree = "<group>";
 		};
