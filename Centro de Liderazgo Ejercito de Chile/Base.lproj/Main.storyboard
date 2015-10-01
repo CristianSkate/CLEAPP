@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eGT-9X-Hhm">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Inicio View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="InicioViewController" customModule="Centro_de_Liderazgo_Ejercito_de_Chile" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +15,136 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKR-rj-wKy">
+                                <rect key="frame" x="278" y="275" width="44" height="30"/>
+                                <state key="normal" title="Cerrar"/>
+                                <connections>
+                                    <action selector="cerrar:" destination="BYZ-38-t0r" eventType="touchUpInside" id="v28-Wx-J91"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="udL-Xa-Qhl">
+                                <rect key="frame" x="169" y="109" width="262" height="104"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="104" id="3e4-DP-mDL"/>
+                                    <constraint firstAttribute="width" constant="262" id="Qre-pg-qhh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bKR-rj-wKy" firstAttribute="top" secondItem="udL-Xa-Qhl" secondAttribute="bottom" constant="62" id="OdN-OM-h2p"/>
+                            <constraint firstItem="bKR-rj-wKy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="V4c-Jv-SZ0"/>
+                            <constraint firstItem="udL-Xa-Qhl" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="45" id="nGt-TT-LDp"/>
+                            <constraint firstItem="udL-Xa-Qhl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tba-VA-ieG"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="75L-MU-CGU"/>
+                    <connections>
+                        <outlet property="txtMensaje" destination="udL-Xa-Qhl" id="ztP-U0-SMk"/>
+                        <segue destination="eLQ-e4-uCR" kind="presentation" identifier="irALogin" id="FOm-XQ-75V"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1377" y="475"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="dsa-AS-tFI">
+            <objects>
+                <viewController id="eLQ-e4-uCR" customClass="LoginViewController" customModule="Centro_de_Liderazgo_Ejercito_de_Chile" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1Zd-Si-nPE"/>
+                        <viewControllerLayoutGuide type="bottom" id="Vci-MI-UcJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="u8h-uo-UAa">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Bienvenido al Centro de Liderazgo del Ejercito de Chile" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="252-G9-GMg">
+                                <rect key="frame" x="180" y="81" width="240" height="58"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="Xjq-0J-Zh9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Run" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ai9-wD-1kK">
+                                <rect key="frame" x="180" y="174" width="240" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9lM-oM-yKI">
+                                <rect key="frame" x="180" y="263" width="56" height="30"/>
+                                <state key="normal" title="Ingresar"/>
+                                <connections>
+                                    <action selector="btnIniciarSesion:" destination="eLQ-e4-uCR" eventType="touchUpInside" id="W5U-oQ-w2u"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CII-ja-PYk">
+                                <rect key="frame" x="369" y="263" width="51" height="30"/>
+                                <state key="normal" title="Limpiar"/>
+                                <connections>
+                                    <action selector="limpiar:" destination="eLQ-e4-uCR" eventType="touchUpInside" id="qWU-Cl-rm0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b0l-aL-DK6">
+                                <rect key="frame" x="221" y="312" width="158" height="30"/>
+                                <state key="normal" title="Realizar primer ingreso"/>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QCR-lu-1D6">
+                                <rect key="frame" x="180" y="225" width="240" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CII-ja-PYk" firstAttribute="top" secondItem="QCR-lu-1D6" secondAttribute="bottom" constant="8" symbolic="YES" id="0F9-qX-kmN"/>
+                            <constraint firstItem="Ai9-wD-1kK" firstAttribute="top" secondItem="u8h-uo-UAa" secondAttribute="top" constant="174" id="13q-ac-BDQ"/>
+                            <constraint firstItem="b0l-aL-DK6" firstAttribute="centerX" secondItem="u8h-uo-UAa" secondAttribute="centerX" id="C4n-ZY-abA"/>
+                            <constraint firstItem="QCR-lu-1D6" firstAttribute="centerX" secondItem="u8h-uo-UAa" secondAttribute="centerX" id="GXc-PY-v09"/>
+                            <constraint firstItem="Ai9-wD-1kK" firstAttribute="top" secondItem="252-G9-GMg" secondAttribute="bottom" constant="35" id="HHr-S0-6Kw"/>
+                            <constraint firstItem="252-G9-GMg" firstAttribute="centerX" secondItem="u8h-uo-UAa" secondAttribute="centerX" id="Qdb-1O-IdN"/>
+                            <constraint firstItem="Ai9-wD-1kK" firstAttribute="leading" secondItem="9lM-oM-yKI" secondAttribute="leading" id="e35-Xv-MSG"/>
+                            <constraint firstItem="CII-ja-PYk" firstAttribute="baseline" secondItem="9lM-oM-yKI" secondAttribute="baseline" id="eCh-dw-sy6"/>
+                            <constraint firstItem="b0l-aL-DK6" firstAttribute="top" secondItem="CII-ja-PYk" secondAttribute="bottom" constant="19" id="hiC-30-wTJ"/>
+                            <constraint firstItem="Ai9-wD-1kK" firstAttribute="centerX" secondItem="u8h-uo-UAa" secondAttribute="centerX" id="jdS-u2-1GO"/>
+                            <constraint firstItem="252-G9-GMg" firstAttribute="top" secondItem="1Zd-Si-nPE" secondAttribute="bottom" constant="61" id="q4A-AQ-LI3"/>
+                            <constraint firstItem="Ai9-wD-1kK" firstAttribute="leading" secondItem="252-G9-GMg" secondAttribute="leading" id="r41-VX-vJg"/>
+                            <constraint firstItem="Ai9-wD-1kK" firstAttribute="trailing" secondItem="CII-ja-PYk" secondAttribute="trailing" id="sH3-FK-FeV"/>
+                            <constraint firstItem="QCR-lu-1D6" firstAttribute="top" secondItem="Ai9-wD-1kK" secondAttribute="bottom" constant="21" id="upu-JT-d4S"/>
+                            <constraint firstItem="Ai9-wD-1kK" firstAttribute="leading" secondItem="QCR-lu-1D6" secondAttribute="leading" id="zjk-r4-EhB"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="txtPassword" destination="QCR-lu-1D6" id="9qc-ux-Z4V"/>
+                        <outlet property="txtUsuario" destination="Ai9-wD-1kK" id="bb1-2Z-BaZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZUH-Bl-vUg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2215" y="235"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="8Wf-bZ-9LE">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eGT-9X-Hhm" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LJf-oH-m74">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Nl2-HN-VHq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ldN-iD-Mae" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="565" y="475"/>
         </scene>
     </scenes>
 </document>

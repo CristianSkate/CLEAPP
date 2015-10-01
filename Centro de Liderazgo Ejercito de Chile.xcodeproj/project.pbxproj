@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		40ABB6211BBC74970060063F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABB6201BBC74970060063F /* AppDelegate.swift */; };
-		40ABB6231BBC74970060063F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABB6221BBC74970060063F /* ViewController.swift */; };
+		40ABB6231BBC74970060063F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABB6221BBC74970060063F /* LoginViewController.swift */; };
 		40ABB6261BBC74970060063F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40ABB6241BBC74970060063F /* Main.storyboard */; };
 		40ABB6281BBC74970060063F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40ABB6271BBC74970060063F /* Assets.xcassets */; };
 		40ABB62B1BBC74970060063F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40ABB6291BBC74970060063F /* LaunchScreen.storyboard */; };
 		40ABB6361BBC74970060063F /* Centro_de_Liderazgo_Ejercito_de_ChileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABB6351BBC74970060063F /* Centro_de_Liderazgo_Ejercito_de_ChileTests.swift */; };
 		40ABB6411BBC74970060063F /* Centro_de_Liderazgo_Ejercito_de_ChileUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABB6401BBC74970060063F /* Centro_de_Liderazgo_Ejercito_de_ChileUITests.swift */; };
+		40ABB64F1BBC81380060063F /* InicioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABB64E1BBC81380060063F /* InicioViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +37,7 @@
 /* Begin PBXFileReference section */
 		40ABB61D1BBC74970060063F /* Centro de Liderazgo Ejercito de Chile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Centro de Liderazgo Ejercito de Chile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40ABB6201BBC74970060063F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		40ABB6221BBC74970060063F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		40ABB6221BBC74970060063F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		40ABB6251BBC74970060063F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		40ABB6271BBC74970060063F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		40ABB62A1BBC74970060063F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +48,7 @@
 		40ABB63C1BBC74970060063F /* Centro de Liderazgo Ejercito de ChileUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Centro de Liderazgo Ejercito de ChileUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40ABB6401BBC74970060063F /* Centro_de_Liderazgo_Ejercito_de_ChileUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Centro_de_Liderazgo_Ejercito_de_ChileUITests.swift; sourceTree = "<group>"; };
 		40ABB6421BBC74970060063F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40ABB64E1BBC81380060063F /* InicioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InicioViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				40ABB6201BBC74970060063F /* AppDelegate.swift */,
-				40ABB6221BBC74970060063F /* ViewController.swift */,
+				40ABB6221BBC74970060063F /* LoginViewController.swift */,
+				40ABB64E1BBC81380060063F /* InicioViewController.swift */,
 				40ABB6241BBC74970060063F /* Main.storyboard */,
 				40ABB6271BBC74970060063F /* Assets.xcassets */,
 				40ABB6291BBC74970060063F /* LaunchScreen.storyboard */,
@@ -255,7 +258,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40ABB6231BBC74970060063F /* ViewController.swift in Sources */,
+				40ABB6231BBC74970060063F /* LoginViewController.swift in Sources */,
+				40ABB64F1BBC81380060063F /* InicioViewController.swift in Sources */,
 				40ABB6211BBC74970060063F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -400,6 +404,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "cl.cmt.Centro-de-Liderazgo-Ejercito-de-Chile";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -411,6 +416,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "cl.cmt.Centro-de-Liderazgo-Ejercito-de-Chile";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
