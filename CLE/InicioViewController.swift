@@ -17,7 +17,9 @@ class InicioViewController: UIViewController {
 
         self.title = "Inicio"
         self.navigationController?.navigationBar.barTintColor =  UIColor(red: 215.0/255.0, green: 23.0/255.0, blue: 41.0/255.0, alpha: 1.0)
+        self.navigationController?.navigationBar.translucent =  false
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+        self.navigationController?.navigationBar.barStyle = .Black
         // Do any additional setup after loading the view.
     }
 

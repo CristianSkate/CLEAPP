@@ -30,12 +30,20 @@ class LoginViewController: UIViewController, NSXMLParserDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let statusBarView = UIView(frame: CGRectMake(0, 0, 500, 22))
+        statusBarView.backgroundColor = UIColor(red: 215.0/255.0, green: 23.0/255.0, blue: 41.0/255.0, alpha: 1.0)
+        self.view.addSubview(statusBarView)
+        self.preferredStatusBarStyle()
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
     }
 
 
