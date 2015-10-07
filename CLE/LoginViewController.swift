@@ -13,6 +13,7 @@ class LoginViewController: UIViewController, NSXMLParserDelegate {
     
     @IBOutlet weak var txtUsuario: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
+    @IBOutlet weak var imgLogo: UIImageView!
     
     var urlData:NSData!
     var parser = NSXMLParser()
@@ -35,6 +36,7 @@ class LoginViewController: UIViewController, NSXMLParserDelegate {
         statusBarView.backgroundColor = UIColor(red: 215.0/255.0, green: 23.0/255.0, blue: 41.0/255.0, alpha: 1.0)
         self.view.addSubview(statusBarView)
         self.preferredStatusBarStyle()
+        imgLogo.image =  UIImage(named: "Logo")
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -210,6 +212,10 @@ class LoginViewController: UIViewController, NSXMLParserDelegate {
                 NSLog("Error ==> %@", string)
             }
         }
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
     }
 }
 

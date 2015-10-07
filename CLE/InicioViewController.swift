@@ -11,16 +11,25 @@ import UIKit
 class InicioViewController: UIViewController {
 
     @IBOutlet weak var txtMensaje: UITextView!
+    @IBOutlet weak var btnMenu: UIBarButtonItem!
+    var image:UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.title = "Inicio"
         self.navigationController?.navigationBar.barTintColor =  UIColor(red: 215.0/255.0, green: 23.0/255.0, blue: 41.0/255.0, alpha: 1.0)
         self.navigationController?.navigationBar.translucent =  false
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         self.navigationController?.navigationBar.barStyle = .Black
-        // Do any additional setup after loading the view.
+
+        var image = UIImage(named: "Menu")
+        
+        image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.Plain, target: self, action: "btnMenu:")
+        
+        //    Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,5 +66,11 @@ class InicioViewController: UIViewController {
         self.performSegueWithIdentifier("irALogin", sender: self)
         
     }
+    
+    @IBAction func btnMenu(sender: AnyObject) {
+        let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.centerContainer!.toggleDrawerSide(.Left, animated: true, completion: nil)
+    }
+    
 
 }
