@@ -56,16 +56,16 @@ class InicioViewController: UIViewController {
     }
     // La función cerrar borrar todos los datos de la caché y devuelve al login
     
-    @IBAction func cerrar(sender: UIButton) {
-        
-        
-        let appDomain = NSBundle.mainBundle().bundleIdentifier
-        
-        NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain!)
-        
-        self.performSegueWithIdentifier("irALogin", sender: self)
-        
-    }
+//    @IBAction func cerrar(sender: UIButton) {
+//        
+//        
+//        let appDomain = NSBundle.mainBundle().bundleIdentifier
+//        
+//        NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain!)
+//        
+//        self.performSegueWithIdentifier("irALogin", sender: self)
+//        
+//    }
     
     @IBAction func btnMenu(sender: AnyObject) {
         let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate

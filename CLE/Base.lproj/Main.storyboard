@@ -17,13 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKR-rj-wKy">
-                                <rect key="frame" x="278" y="275" width="44" height="30"/>
-                                <state key="normal" title="Cerrar"/>
-                                <connections>
-                                    <action selector="cerrar:" destination="BYZ-38-t0r" eventType="touchUpInside" id="v28-Wx-J91"/>
-                                </connections>
-                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="udL-Xa-Qhl">
                                 <rect key="frame" x="169" y="109" width="262" height="104"/>
                                 <constraints>
@@ -36,8 +29,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="bKR-rj-wKy" firstAttribute="top" secondItem="udL-Xa-Qhl" secondAttribute="bottom" constant="62" id="OdN-OM-h2p"/>
-                            <constraint firstItem="bKR-rj-wKy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="V4c-Jv-SZ0"/>
                             <constraint firstItem="udL-Xa-Qhl" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="45" id="nGt-TT-LDp"/>
                             <constraint firstItem="udL-Xa-Qhl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tba-VA-ieG"/>
                         </constraints>
