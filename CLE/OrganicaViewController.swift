@@ -1,18 +1,19 @@
 //
-//  MisEncuestasViewController.swift
+//  OrganicaViewController.swift
 //  CLE Chile
 //
-//  Created by Cristian Martinez Toledo on 06-10-15.
+//  Created by Cristian Martinez Toledo on 23-10-15.
 //  Copyright © 2015 Cristian Martinez Toledo. All rights reserved.
 //
 
 import UIKit
 
-class MisEncuestasViewController: UIViewController {
+class OrganicaViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Mis Encuestas"
+
+        self.title = "Orgánica"
         self.navigationController?.navigationBar.barTintColor =  UIColor(red: 215.0/255.0, green: 23.0/255.0, blue: 41.0/255.0, alpha: 1.0)
         self.navigationController?.navigationBar.translucent =  false
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
@@ -31,12 +32,10 @@ class MisEncuestasViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+
     @IBAction func btnMenu(sender: AnyObject) {
         let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.centerContainer!.toggleDrawerSide(.Left, animated: true, completion: nil)
     }
-
-
-    
 
 }
