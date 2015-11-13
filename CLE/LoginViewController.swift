@@ -67,7 +67,7 @@ class LoginViewController: UIViewController, NSXMLParserDelegate {
             
         }else{
             
-            let url:NSURL = NSURL(string: "http://cle.ejercito.cl/ServiciosCle.asmx/Login")! // llamamos a la URl donde está el ws que se conectará con la BD
+            let url:NSURL = NSURL(string: "http://cle.ejercito.cl/ServiciosCle.asmx/Login?AspxAutoDetectCookieSupport=1")! // llamamos a la URl donde está el ws que se conectará con la BD
             let request:NSMutableURLRequest = NSMutableURLRequest(URL: url) // componemos la URL con una var request y un NSMutableURLRequest y le pasamos como parámetros las vars
             request.HTTPMethod = "POST"
             let post:NSString = "run=\(user)&pass=\(pass)" // se mete el user y pass dentro de un string
