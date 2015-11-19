@@ -32,7 +32,7 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
         
         self.pageViewController.setViewControllers(viewControllers as [AnyObject] as? [UIViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
         
-        self.pageViewController.view.frame = CGRectMake(0, 100, self.view.frame.size.width, self.view.frame.size.height-100)
+        self.pageViewController.view.frame = CGRectMake(0, 10, self.view.frame.size.width, self.view.frame.size.height-10)
         
         self.addChildViewController(self.pageViewController)
         self.view.addSubview(self.pageViewController.view)
@@ -96,22 +96,22 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController?
     {
-        //        self.viewController = viewController as! HolderViewController
-        //        var index = self.viewController.pageIndex as Int
-        //
-        //        if((index == NSNotFound))
-        //        {
-        //            return nil
-        //        }
-        //
-        //        index++
-        //
-        //        if(index == preguntas.count)
-        //        {
-        //            return nil
-        //        }
-        //
-        return nil //self.pageTutorialAtIndex(index)
+//                let viewController = viewController as! FormatoEncuestaViewController
+//                var index = viewController.pageIndex as Int
+//        
+//                if((index == NSNotFound))
+//                {
+//                    return nil
+//                }
+//        
+//                index++
+//        
+//                if(index == preguntas.count)
+//                {
+//                    return nil
+//                }
+        
+        return nil //self.preguntaAtIndex(index)
     }
     
     
@@ -139,8 +139,11 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
             //self.pageTutorialAtIndex(index)
         }else
         {
-            let alertController =  UIAlertController(title: "Mensaje", message: "Hola", preferredStyle: .Alert)
-            alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler: nil))
+            let alertController =  UIAlertController(title: "Fin de la encuesta", message: "Ha finalizado la encuesta", preferredStyle: .Alert)
+            alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler:{(alert: UIAlertAction) in
+                self.navigationController?.popViewControllerAnimated(true)
+            }))
+            
             self.presentViewController(alertController, animated: true, completion: nil)
         }
         

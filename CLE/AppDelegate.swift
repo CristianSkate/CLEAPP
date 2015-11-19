@@ -17,6 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+//        UIPageControl.appearance().pageIndicatorTintColor = UIColor.lightGrayColor()
+//        UIPageControl.appearance().currentPageIndicatorTintColor = UIColor.redColor()
+        
+        
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let centerViewController = mainStoryboard.instantiateViewControllerWithIdentifier("InicioViewController")
         let leftViewController = mainStoryboard.instantiateViewControllerWithIdentifier("MenuViewController")
