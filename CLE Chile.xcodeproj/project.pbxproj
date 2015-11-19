@@ -19,7 +19,7 @@
 		404DB3371BF3CCEA000574CB /* RespuestasTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404DB3361BF3CCEA000574CB /* RespuestasTableViewCell.swift */; };
 		408BA7881BC46BCC009B0E96 /* MisEncuestasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408BA7871BC46BCC009B0E96 /* MisEncuestasViewController.swift */; };
 		409590291BE5F3F600695A38 /* CeldaMisEncuestasTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409590281BE5F3F600695A38 /* CeldaMisEncuestasTableViewCell.swift */; };
-		4095902B1BE6102600695A38 /* EncuestaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4095902A1BE6102600695A38 /* EncuestaViewController.swift */; };
+		4095902B1BE6102600695A38 /* FormatoEncuestaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4095902A1BE6102600695A38 /* FormatoEncuestaViewController.swift */; };
 		40ABB6661BBDF0CC0060063F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABB65F1BBDF0CC0060063F /* AppDelegate.swift */; };
 		40ABB6671BBDF0CC0060063F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40ABB6601BBDF0CC0060063F /* Assets.xcassets */; };
 		40ABB66A1BBDF0CC0060063F /* InicioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABB6631BBDF0CC0060063F /* InicioViewController.swift */; };
@@ -28,6 +28,9 @@
 		40ABB6711BBDF12C0060063F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40ABB66E1BBDF12C0060063F /* Main.storyboard */; };
 		40ABB6751BBDF1420060063F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 40ABB6731BBDF1420060063F /* Info.plist */; };
 		40ABB6791BBDF14A0060063F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 40ABB6771BBDF14A0060063F /* Info.plist */; };
+		40BECDB01BFD49760056724D /* Encuesta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BECDAE1BFD49760056724D /* Encuesta.swift */; };
+		40BECDB11BFD49760056724D /* Seccion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BECDAF1BFD49760056724D /* Seccion.swift */; };
+		40DFAA511BFD480A0072593E /* MantenedorEncuestaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DFAA501BFD480A0072593E /* MantenedorEncuestaViewController.swift */; };
 		6113E87F1BDA6BDF0028E247 /* MisionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6113E87E1BDA6BDF0028E247 /* MisionViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,7 +70,7 @@
 		404DB3361BF3CCEA000574CB /* RespuestasTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RespuestasTableViewCell.swift; path = CLE/RespuestasTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		408BA7871BC46BCC009B0E96 /* MisEncuestasViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MisEncuestasViewController.swift; path = CLE/MisEncuestasViewController.swift; sourceTree = SOURCE_ROOT; };
 		409590281BE5F3F600695A38 /* CeldaMisEncuestasTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CeldaMisEncuestasTableViewCell.swift; path = CLE/CeldaMisEncuestasTableViewCell.swift; sourceTree = SOURCE_ROOT; };
-		4095902A1BE6102600695A38 /* EncuestaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EncuestaViewController.swift; path = CLE/EncuestaViewController.swift; sourceTree = SOURCE_ROOT; };
+		4095902A1BE6102600695A38 /* FormatoEncuestaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FormatoEncuestaViewController.swift; path = CLE/FormatoEncuestaViewController.swift; sourceTree = SOURCE_ROOT; };
 		40ABB61D1BBC74970060063F /* CLE Chile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CLE Chile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40ABB6311BBC74970060063F /* CLE Chile.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CLE Chile.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40ABB63C1BBC74970060063F /* CLE Chile.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CLE Chile.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,6 +83,9 @@
 		40ABB66F1BBDF12C0060063F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = CLE/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		40ABB6731BBDF1420060063F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = CLETests/Info.plist; sourceTree = SOURCE_ROOT; };
 		40ABB6771BBDF14A0060063F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = CLEUITests/Info.plist; sourceTree = SOURCE_ROOT; };
+		40BECDAE1BFD49760056724D /* Encuesta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encuesta.swift; sourceTree = SOURCE_ROOT; };
+		40BECDAF1BFD49760056724D /* Seccion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Seccion.swift; sourceTree = SOURCE_ROOT; };
+		40DFAA501BFD480A0072593E /* MantenedorEncuestaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MantenedorEncuestaViewController.swift; path = CLE/MantenedorEncuestaViewController.swift; sourceTree = SOURCE_ROOT; };
 		6113E87E1BDA6BDF0028E247 /* MisionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MisionViewController.swift; path = CLE/MisionViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -136,7 +142,8 @@
 				40074D951BDA6D1200C92588 /* OrganicaViewController.swift */,
 				403ACEC91BDA717900E12A60 /* DoctrinaViewController.swift */,
 				403ACECB1BDA72E600E12A60 /* MisDatosViewController.swift */,
-				4095902A1BE6102600695A38 /* EncuestaViewController.swift */,
+				40DFAA501BFD480A0072593E /* MantenedorEncuestaViewController.swift */,
+				4095902A1BE6102600695A38 /* FormatoEncuestaViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -144,6 +151,8 @@
 		40074D971BDA6D4000C92588 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				40BECDAE1BFD49760056724D /* Encuesta.swift */,
+				40BECDAF1BFD49760056724D /* Seccion.swift */,
 				400173431BC4268100E08A6D /* CeldaMenuTableViewCell.swift */,
 				409590281BE5F3F600695A38 /* CeldaMisEncuestasTableViewCell.swift */,
 				404DB3361BF3CCEA000574CB /* RespuestasTableViewCell.swift */,
@@ -342,6 +351,7 @@
 				409590291BE5F3F600695A38 /* CeldaMisEncuestasTableViewCell.swift in Sources */,
 				6113E87F1BDA6BDF0028E247 /* MisionViewController.swift in Sources */,
 				4001733C1BC4167500E08A6D /* MMDrawerVisualState.m in Sources */,
+				40DFAA511BFD480A0072593E /* MantenedorEncuestaViewController.swift in Sources */,
 				40074D961BDA6D1200C92588 /* OrganicaViewController.swift in Sources */,
 				400173441BC4268100E08A6D /* CeldaMenuTableViewCell.swift in Sources */,
 				40ABB66B1BBDF0CC0060063F /* LoginViewController.swift in Sources */,
@@ -350,11 +360,13 @@
 				404DB3371BF3CCEA000574CB /* RespuestasTableViewCell.swift in Sources */,
 				408BA7881BC46BCC009B0E96 /* MisEncuestasViewController.swift in Sources */,
 				4001733B1BC4167500E08A6D /* MMDrawerController.m in Sources */,
+				40BECDB11BFD49760056724D /* Seccion.swift in Sources */,
 				4001733A1BC4167500E08A6D /* MMDrawerBarButtonItem.m in Sources */,
 				40ABB6661BBDF0CC0060063F /* AppDelegate.swift in Sources */,
 				40ABB66A1BBDF0CC0060063F /* InicioViewController.swift in Sources */,
 				403ACECA1BDA717900E12A60 /* DoctrinaViewController.swift in Sources */,
-				4095902B1BE6102600695A38 /* EncuestaViewController.swift in Sources */,
+				4095902B1BE6102600695A38 /* FormatoEncuestaViewController.swift in Sources */,
+				40BECDB01BFD49760056724D /* Encuesta.swift in Sources */,
 				400173411BC41CBA00E08A6D /* MenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

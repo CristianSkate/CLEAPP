@@ -8,17 +8,20 @@
 
 import UIKit
 
-class EncuestaViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FormatoEncuestaViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var txtTituloSeccion: UILabel!
     @IBOutlet weak var txtPregunta: UITextView!
     @IBOutlet weak var tblRespuestas: UITableView!
-    let respuestas:[String] =  ["Bueno","Medio","Malo"]
+    var respuestas:[String]!
+    var pregunta:String!
+    var tituloSeccion:String!
+    var pageIndex:Int!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.title = "Encuesta"
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Salir", style: .Plain, target: self, action: "volverAtras")
+        txtTituloSeccion.text = tituloSeccion
+        txtPregunta.text = pregunta
         tblRespuestas.dataSource =  self
         tblRespuestas.delegate = self
     }
@@ -27,17 +30,14 @@ class EncuestaViewController: UIViewController, UITableViewDelegate, UITableView
         super.didReceiveMemoryWarning()
     }
     
-    func volverAtras() {
-        let alertController = UIAlertController(title: "Confirmación", message: "Al presionar Si guardará los cambios para continuar más tarde, ¿Desea continuar?", preferredStyle: .Alert)
-        alertController.addAction(UIAlertAction(title: "Si", style: .Default, handler: {(alert: UIAlertAction) in
-            self.navigationController?.popViewControllerAnimated(true)
-        }))
-        alertController.addAction(UIAlertAction(title: "No", style: .Default, handler: nil))
-        self.presentViewController((alertController), animated: true, completion: nil)
-        
-    }
+    
     
     @IBAction func irSiguiente(sender: AnyObject) {
+        // funcion para cargar y mostrar la siguiente pregunta
+        let master : MantenedorEncuestaViewController = self.parentViewController?.parentViewController as! MantenedorEncuestaViewController
+        
+        master.btnSiguiente(self.pageIndex)
+        
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

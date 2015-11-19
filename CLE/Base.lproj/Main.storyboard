@@ -261,7 +261,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="tblEncuestasPendientes" destination="4HH-RN-YgT" id="cf1-Uo-hqU"/>
-                        <segue destination="dii-0Y-oiz" kind="show" identifier="empezarEncuesta" id="45B-Bl-93e"/>
+                        <segue destination="4bJ-0K-38Z" kind="show" identifier="empezarEncuesta" id="KfJ-Vb-GZq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7WA-P1-sf7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -325,10 +325,10 @@ Gestionar el proceso de desarrollo del liderazgo a nivel institucional.
             </objects>
             <point key="canvasLocation" x="2851" y="894"/>
         </scene>
-        <!--Encuesta View Controller-->
+        <!--Formato Encuesta View Controller-->
         <scene sceneID="Kej-Lc-lCM">
             <objects>
-                <viewController storyboardIdentifier="EncuestaViewController" id="dii-0Y-oiz" customClass="EncuestaViewController" customModule="CLE_Chile" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FormatoEncuestaViewController" autoresizesArchivedViewToFullSize="NO" id="dii-0Y-oiz" customClass="FormatoEncuestaViewController" customModule="CLE_Chile" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ref-NV-WwJ"/>
                         <viewControllerLayoutGuide type="bottom" id="Ub7-88-FFq"/>
@@ -337,17 +337,8 @@ Gestionar el proceso de desarrollo del liderazgo a nivel institucional.
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="¿Que opina del comportamiento de sus superiores?" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ir8-1a-zf2">
-                                <rect key="frame" x="0.0" y="92" width="600" height="82"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="82" id="QOZ-t6-AaV"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Wnz-QY-diC">
-                                <rect key="frame" x="20" y="176" width="560" height="339"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Wnz-QY-diC">
+                                <rect key="frame" x="20" y="147" width="560" height="339"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
@@ -361,24 +352,23 @@ Gestionar el proceso de desarrollo del liderazgo a nivel institucional.
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="atY-sq-T6f">
                                                     <rect key="frame" x="8" y="4" width="35" height="35"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="35" id="xT2-Av-eH3"/>
+                                                        <constraint firstAttribute="width" constant="35" id="yup-zP-PxR"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PjU-I7-MRZ">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PjU-I7-MRZ">
                                                     <rect key="frame" x="51" y="14" width="501" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="PjU-I7-MRZ" firstAttribute="trailing" secondItem="KQP-kQ-HsW" secondAttribute="trailingMargin" id="059-RO-gAp"/>
-                                                <constraint firstItem="atY-sq-T6f" firstAttribute="centerY" secondItem="KQP-kQ-HsW" secondAttribute="centerY" id="NEM-hL-qDt"/>
-                                                <constraint firstItem="PjU-I7-MRZ" firstAttribute="top" secondItem="KQP-kQ-HsW" secondAttribute="topMargin" constant="6" id="T8A-YI-O2y"/>
-                                                <constraint firstItem="atY-sq-T6f" firstAttribute="leading" secondItem="KQP-kQ-HsW" secondAttribute="leadingMargin" id="TuI-FJ-wov"/>
-                                                <constraint firstItem="atY-sq-T6f" firstAttribute="top" secondItem="KQP-kQ-HsW" secondAttribute="topMargin" constant="-4" id="YT9-p0-GoG"/>
-                                                <constraint firstItem="PjU-I7-MRZ" firstAttribute="leading" secondItem="atY-sq-T6f" secondAttribute="trailing" constant="8" symbolic="YES" id="eja-9q-END"/>
-                                                <constraint firstItem="PjU-I7-MRZ" firstAttribute="bottom" secondItem="KQP-kQ-HsW" secondAttribute="bottomMargin" id="iaV-mF-4CT"/>
+                                                <constraint firstItem="atY-sq-T6f" firstAttribute="top" secondItem="KQP-kQ-HsW" secondAttribute="topMargin" constant="-4" id="3mW-Bz-62h"/>
+                                                <constraint firstItem="atY-sq-T6f" firstAttribute="leading" secondItem="KQP-kQ-HsW" secondAttribute="leadingMargin" id="Irg-4A-yrg"/>
+                                                <constraint firstItem="PjU-I7-MRZ" firstAttribute="top" secondItem="KQP-kQ-HsW" secondAttribute="topMargin" constant="6" id="Kjz-rr-YZ0"/>
+                                                <constraint firstItem="PjU-I7-MRZ" firstAttribute="trailing" secondItem="KQP-kQ-HsW" secondAttribute="trailingMargin" id="SwD-QR-kO7"/>
+                                                <constraint firstItem="atY-sq-T6f" firstAttribute="centerY" secondItem="KQP-kQ-HsW" secondAttribute="centerY" id="aNo-5L-QNC"/>
+                                                <constraint firstItem="PjU-I7-MRZ" firstAttribute="leading" secondItem="atY-sq-T6f" secondAttribute="trailing" constant="8" symbolic="YES" id="gKt-Qd-EUy"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -389,38 +379,76 @@ Gestionar el proceso de desarrollo del liderazgo a nivel institucional.
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V9A-ma-Qes">
+                                <rect key="frame" x="20" y="28" width="314" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="314" id="drB-2Z-KHJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1oE-xN-060">
-                                <rect key="frame" x="268" y="523" width="64" height="30"/>
+                                <rect key="frame" x="268" y="494" width="64" height="30"/>
                                 <state key="normal" title="Siguiente"/>
                                 <connections>
                                     <action selector="irSiguiente:" destination="dii-0Y-oiz" eventType="touchUpInside" id="VEt-hZ-RGJ"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="y9C-aP-nKi">
+                                <rect key="frame" x="20" y="57" width="560" height="82"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="82" id="kPw-mz-LYA"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut </string>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="1oE-xN-060" firstAttribute="centerX" secondItem="Wnz-QY-diC" secondAttribute="centerX" id="12N-Ki-RzU"/>
-                            <constraint firstItem="Ir8-1a-zf2" firstAttribute="leading" secondItem="PXR-gi-Ptk" secondAttribute="leading" id="62E-RT-a29"/>
-                            <constraint firstItem="Ir8-1a-zf2" firstAttribute="centerX" secondItem="Wnz-QY-diC" secondAttribute="centerX" id="B4D-fM-e71"/>
-                            <constraint firstItem="1oE-xN-060" firstAttribute="top" secondItem="Wnz-QY-diC" secondAttribute="bottom" constant="8" symbolic="YES" id="BdX-M0-klQ"/>
-                            <constraint firstItem="Ub7-88-FFq" firstAttribute="top" secondItem="1oE-xN-060" secondAttribute="bottom" constant="47" id="Qxb-Ma-Gh1"/>
-                            <constraint firstAttribute="trailing" secondItem="Ir8-1a-zf2" secondAttribute="trailing" id="Rcs-WH-H1a"/>
-                            <constraint firstItem="Wnz-QY-diC" firstAttribute="leading" secondItem="PXR-gi-Ptk" secondAttribute="leadingMargin" id="WHd-aS-V2z"/>
-                            <constraint firstItem="Ir8-1a-zf2" firstAttribute="top" secondItem="Ref-NV-WwJ" secondAttribute="bottom" constant="28" id="apq-Ui-1aT"/>
-                            <constraint firstItem="Wnz-QY-diC" firstAttribute="top" secondItem="Ir8-1a-zf2" secondAttribute="bottom" constant="8" symbolic="YES" id="eaT-LF-LX9"/>
+                            <constraint firstItem="y9C-aP-nKi" firstAttribute="trailing" secondItem="PXR-gi-Ptk" secondAttribute="trailingMargin" id="5Jb-9J-3j6"/>
+                            <constraint firstItem="Wnz-QY-diC" firstAttribute="top" secondItem="y9C-aP-nKi" secondAttribute="bottom" constant="8" symbolic="YES" id="GrX-kR-YZL"/>
+                            <constraint firstItem="V9A-ma-Qes" firstAttribute="top" secondItem="Ref-NV-WwJ" secondAttribute="bottom" constant="8" symbolic="YES" id="K5s-EJ-fSc"/>
+                            <constraint firstItem="Ub7-88-FFq" firstAttribute="top" secondItem="1oE-xN-060" secondAttribute="bottom" constant="76" id="TiK-oY-y5w"/>
+                            <constraint firstItem="y9C-aP-nKi" firstAttribute="trailing" secondItem="Wnz-QY-diC" secondAttribute="trailing" id="eBW-Xs-Ua2"/>
+                            <constraint firstItem="Wnz-QY-diC" firstAttribute="leading" secondItem="PXR-gi-Ptk" secondAttribute="leadingMargin" id="g6g-YJ-EhB"/>
+                            <constraint firstItem="Wnz-QY-diC" firstAttribute="leading" secondItem="y9C-aP-nKi" secondAttribute="leading" id="kzE-cg-h1j"/>
+                            <constraint firstItem="Wnz-QY-diC" firstAttribute="centerX" secondItem="1oE-xN-060" secondAttribute="centerX" id="qVf-SB-vjj"/>
+                            <constraint firstItem="y9C-aP-nKi" firstAttribute="top" secondItem="V9A-ma-Qes" secondAttribute="bottom" constant="8" symbolic="YES" id="t4Y-Qq-NFR"/>
+                            <constraint firstItem="1oE-xN-060" firstAttribute="top" secondItem="Wnz-QY-diC" secondAttribute="bottom" constant="8" symbolic="YES" id="tYe-Zj-kKd"/>
+                            <constraint firstItem="y9C-aP-nKi" firstAttribute="leading" secondItem="V9A-ma-Qes" secondAttribute="leading" id="ypb-sN-Mxr"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tblRespuestas" destination="Wnz-QY-diC" id="DoF-lm-KDk"/>
-                        <outlet property="txtPregunta" destination="Ir8-1a-zf2" id="3GC-gH-Ib3"/>
+                        <outlet property="txtPregunta" destination="y9C-aP-nKi" id="zqN-TB-WJB"/>
+                        <outlet property="txtTituloSeccion" destination="V9A-ma-Qes" id="LMc-6O-jJX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7QG-fS-LLA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2215" y="1546"/>
+            <point key="canvasLocation" x="2215" y="2924"/>
+        </scene>
+        <!--Mantenedor Encuesta View Controller-->
+        <scene sceneID="MZH-46-FtE">
+            <objects>
+                <viewController storyboardIdentifier="MantenedorEncuestaViewController" id="4bJ-0K-38Z" customClass="MantenedorEncuestaViewController" customModule="CLE_Chile" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cte-px-Jca"/>
+                        <viewControllerLayoutGuide type="bottom" id="fZb-A7-ENh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RkL-gb-cDf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8ZJ-Ve-fgr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2215" y="1612"/>
         </scene>
         <!--Organica View Controller-->
         <scene sceneID="6Sd-Eo-lTo">
@@ -439,6 +467,14 @@ Gestionar el proceso de desarrollo del liderazgo a nivel institucional.
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yvr-2h-Muw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2849" y="1546"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="wp2-LA-VjW">
+            <objects>
+                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="AZl-Vt-zyq" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MYk-8D-3zD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2215" y="2264"/>
         </scene>
         <!--Doctrina View Controller-->
         <scene sceneID="98W-j8-8eb">
