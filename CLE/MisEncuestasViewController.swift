@@ -113,6 +113,7 @@ class MisEncuestasViewController: UIViewController, UITableViewDataSource, UITab
                     
                     encuestasPendientes = (try! NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers )) as! NSArray
                     prefs.setObject(encuestasPendientes, forKey: "ENCUESTASPENDIENTES")
+                    prefs.synchronize()
                     self.tblEncuestasPendientes.reloadData()
                     
                     NSLog("Trae Datos");

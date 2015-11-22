@@ -13,14 +13,19 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
     var pageViewController:UIPageViewController!
     var encuesta:Encuesta!
     var secciones:[Seccion]!
-    var respuestas:[String]!
-    var preguntas:[String]!
+    var respuestas:NSArray!
+    var preguntas:NSArray!
+    // Variables para el json
+    var reponseError: NSError?
+    var response: NSURLResponse?
+    let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+    var preguntasJson:NSDictionary! = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Salir", style: .Plain, target: self, action: "volverAtras")
         self.title = "Encuesta"
-        cargarDatos()
+        preCargarDatos()
         self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
         
         self.pageViewController.dataSource = self
@@ -53,14 +58,111 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
         self.presentViewController((alertController), animated: true, completion: nil)
         
     }
+    func preCargarDatos(){
+        
+        //preguntasJson? = (prefs.objectForKey("PREGUNTAS") as? NSDictionary)!
+        
+        if (prefs.objectForKey("PREGUNTAS") == nil) {
+            cargarDatos()
+        }else{
+            preguntasJson = prefs.objectForKey("PREGUNTAS") as? NSDictionary
+            preguntas =  preguntasJson.valueForKey("preguntas") as!  NSArray
+            respuestas = preguntas.valueForKey("respuestas") as! NSArray
+        }
+    }
     
     func cargarDatos(){
         
-        self.preguntas =  ["Actúo en concordancia con las normas institucionales.","Cumplo con mis tareas de acuerdo a lo establecido.","Privilegio el interés del Ejército sobre el propio."]
-        self.respuestas =  ["Insuficiente","Básico","Adecueado","Influyente"]
-        self.secciones = [Seccion(titulo: "Compromiso", instructivo: "En esta sección, usted encontrará una serie de frases o afirmaciones referentes a diversos aspectos relacionados con las conductas y habilidades que forman parte del MILE, las cuales le solicitamos leer cuidadosamente. Frente a cada frase, usted debe marcar la alternativa que mejor represente su opinión de acuerdo a 4 opciones de respuesta que expresan los siguientes niveles para la evaluación:\nINSUFICIENTE: la conducta o habilidad se manifiesta casi nunca o nunca.\nBÁSICO: la conducta o habilidad se manifiesta ocasionalmente o en forma irregular.\nADECUADO: la conducta o habilidad se manifiesta en forma regular o consistente.\nINFLUYENTE: la conducta o habilidad se manifiesta en forma regular o consistente y además la persona es un ejemplo o modelo para otros.\nPor ejemplo, si usted considera que el evaluado(a) manifiesta la habilidad de manera consistente y además es un modelo a seguir, usted debería marcar en el casillero que indica el nivel 'Influyente'.", preguntas: self.preguntas, respuestas: self.respuestas)]
+        //Variable prefs para obtener preferencias guardadas
+        let id:String = "1"
         
-        self.encuesta =  Encuesta(secciones: self.secciones, version: 1)
+        
+        // se mete el user y pass dentro de un string
+        let post:NSString = "id=\(id)"
+        
+        // mandamos al log para ir registrando lo que va pasando
+        NSLog("PostData: %@",post);
+        
+        // llamamos a la URl donde está el json que se conectará con la BD
+        let url:NSURL = NSURL(string: "http://cle.ejercito.cl/ServiciosCle.asmx/encuestaJson?AspxAutoDetectCookieSupport=1")!
+        
+        // codificamos lo que se envía
+        let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+        
+        // se determina el largo del string
+        let postLength:NSString = String( postData.length )
+        
+        // componemos la URL con una var request y un NSMutableURLRequest y le pasamos como parámetros las vars
+        let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "POST"
+        request.HTTPBody = postData
+        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        
+        
+        // hacemos la conexion
+        var urlData: NSData?
+        do {
+            urlData = try NSURLConnection.sendSynchronousRequest(request, returningResponse:&response)
+        } catch let error as NSError {
+            reponseError = error
+            urlData = nil
+        }
+        
+        // se valida
+        if ( urlData != nil ) {
+            let res = response as! NSHTTPURLResponse!;
+            
+            NSLog("Response code: %ld", res.statusCode);
+            
+            if (res.statusCode >= 200 && res.statusCode < 300)
+            {
+                let responseData:NSString  = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
+                
+                NSLog("Response ==> %@", responseData);
+                
+                //var error: NSError?
+                
+                preguntasJson = (try! NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers )) as! NSDictionary
+
+                prefs.setObject(preguntasJson, forKey: "PREGUNTAS")
+                prefs.synchronize()
+                preguntas =  preguntasJson.valueForKey("preguntas") as!  NSArray
+                respuestas = preguntas.valueForKey("respuestas") as! NSArray
+                
+                
+                
+                
+                NSLog("Trae Datos");
+                // guardamos en la caché
+                //let registros:NSArray = jsonData.valueForKey("") as! NSArray
+                print(preguntas)
+                
+                
+                self.dismissViewControllerAnimated(true, completion: nil)
+            } else {
+                let alertController = UIAlertController(title: "¡Ups!", message: "Hubo un problema conectando al servidor", preferredStyle: .Alert)
+                alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler: nil))
+                self.presentViewController(alertController, animated: true, completion: nil)
+            }
+            
+        } else {
+            let alertView:UIAlertView = UIAlertView()
+            alertView.title = "Acceso incorrecto"
+            alertView.message = "Conneción Fallida"
+            alertView.delegate = self
+            alertView.addButtonWithTitle("OK")
+            alertView.show()
+        }
+        
+        
+        
+//        self.preguntas =  ["Actúo en concordancia con las normas institucionales.","Cumplo con mis tareas de acuerdo a lo establecido.","Privilegio el interés del Ejército sobre el propio."]
+//        self.respuestas =  ["Insuficiente","Básico","Adecueado","Influyente"]
+//        self.secciones = [Seccion(titulo: "Compromiso", instructivo: "En esta sección, usted encontrará una serie de frases o afirmaciones referentes a diversos aspectos relacionados con las conductas y habilidades que forman parte del MILE, las cuales le solicitamos leer cuidadosamente. Frente a cada frase, usted debe marcar la alternativa que mejor represente su opinión de acuerdo a 4 opciones de respuesta que expresan los siguientes niveles para la evaluación:\nINSUFICIENTE: la conducta o habilidad se manifiesta casi nunca o nunca.\nBÁSICO: la conducta o habilidad se manifiesta ocasionalmente o en forma irregular.\nADECUADO: la conducta o habilidad se manifiesta en forma regular o consistente.\nINFLUYENTE: la conducta o habilidad se manifiesta en forma regular o consistente y además la persona es un ejemplo o modelo para otros.\nPor ejemplo, si usted considera que el evaluado(a) manifiesta la habilidad de manera consistente y además es un modelo a seguir, usted debería marcar en el casillero que indica el nivel 'Influyente'.", preguntas: self.preguntas, respuestas: self.respuestas)]
+//        
+//        self.encuesta =  Encuesta(secciones: self.secciones, version: 1)
         
     }
     
@@ -69,9 +171,9 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
         
         let pageContentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("FormatoEncuestaViewController") as! FormatoEncuestaViewController
         
-        pageContentViewController.respuestas =  respuestas
-        pageContentViewController.pregunta = preguntas[index]
-        pageContentViewController.tituloSeccion = secciones[0].titulo
+        pageContentViewController.respuestas =  respuestas[index].valueForKey("respuesta") as! [String]
+        pageContentViewController.pregunta = preguntas[index].valueForKey("pregunta") as! String
+        //pageContentViewController.tituloSeccion = secciones[0].titulo
         pageContentViewController.pageIndex = index
         
         
@@ -111,7 +213,7 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
 //                    return nil
 //                }
         
-        return nil //self.preguntaAtIndex(index)
+        return nil//self.preguntaAtIndex(index)
     }
     
     
