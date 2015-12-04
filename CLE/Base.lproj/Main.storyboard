@@ -384,10 +384,44 @@ Gestionar el proceso de desarrollo del liderazgo a nivel institucional.
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EEj-tv-Fac" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2863" y="2212"/>
+        </scene>
+        <!--Formato Pagina View Controller-->
+        <scene sceneID="f8Q-6Y-sJa">
+            <objects>
+                <viewController storyboardIdentifier="FormatoPaginaViewController" id="AgG-fH-2KL" customClass="FormatoPaginaViewController" customModule="CLE_Chile" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="x4z-9f-5cz"/>
+                        <viewControllerLayoutGuide type="bottom" id="Piq-nF-9nC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zLJ-Pb-Rfj">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pag2" translatesAutoresizingMaskIntoConstraints="NO" id="BsI-Qn-Fzb">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="BsI-Qn-Fzb" firstAttribute="top" secondItem="x4z-9f-5cz" secondAttribute="bottom" id="0Sn-Lq-zfX"/>
+                            <constraint firstAttribute="trailing" secondItem="BsI-Qn-Fzb" secondAttribute="trailing" id="41J-U2-dsO"/>
+                            <constraint firstItem="BsI-Qn-Fzb" firstAttribute="leading" secondItem="zLJ-Pb-Rfj" secondAttribute="leading" id="QTf-eg-frT"/>
+                            <constraint firstItem="BsI-Qn-Fzb" firstAttribute="bottom" secondItem="Piq-nF-9nC" secondAttribute="top" id="erm-Vs-1OI"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="imgPagina" destination="BsI-Qn-Fzb" id="E9r-wx-ifO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T1Z-Ch-gQS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3489" y="2211"/>
         </scene>
         <!--Formato Encuesta View Controller-->
         <scene sceneID="ejR-4a-anA">
@@ -534,4 +568,7 @@ Gestionar el proceso de desarrollo del liderazgo a nivel institucional.
             <point key="canvasLocation" x="565" y="475"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="pag2" width="539" height="682"/>
+    </resources>
 </document>
