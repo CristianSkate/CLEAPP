@@ -13,11 +13,12 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var tblMenu: UITableView!
     @IBOutlet weak var imgLogo: UIImageView!
     let menuOps:[String] = ["Home","Mis Encuestas","Misión","Organica","Doctrina","Mis Datos","Salir", "Acerca de"]
+    let imgMenu:[UIImage] = [UIImage(named: "ic_home")!,UIImage(named: "ic_file_document")!,UIImage(named: "ic_file_document")!,UIImage(named: "ic_file_document")!,UIImage(named: "ic_file_document")!,UIImage(named: "ic_file_document")!,UIImage(named: "ic_lock_power_off")!,UIImage(named: "ic_action_about")!]
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationController?.navigationBar.barTintColor =  UIColor(red: 215.0/255.0, green: 23.0/255.0, blue: 41.0/255.0, alpha: 1.0)
+        self.navigationController?.navigationBar.barTintColor =  UIColor(red: 87.0/255.0, green: 90.0/255.0, blue: 63.0/255.0, alpha: 1.0)
         self.navigationController?.navigationBar.translucent =  false
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         self.navigationController?.navigationBar.barStyle = .Black
@@ -40,6 +41,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let mycell = tableView.dequeueReusableCellWithIdentifier("celdaMenu", forIndexPath: indexPath) as! CeldaMenuTableViewCell
         
         mycell.txtTituloOp.text = menuOps[indexPath.row]
+        mycell.imgMenu.image =  imgMenu[indexPath.row]
         
         return mycell
     }
@@ -60,12 +62,23 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
         case 1:
             //Mis Encuestas
-            let centerViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MisEncuestasViewController") as! MisEncuestasViewController
-            let centerNavController = UINavigationController(rootViewController: centerViewController)
-            let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+            // generamos una constante de tipo int leyendo de NSUserDefaults ISLOGGEDIN
+            let isLoggedIn:Int = prefs.integerForKey("ISLOGGEDIN") as Int
             
-            appDelegate.centerContainer!.centerViewController =  centerNavController
-            appDelegate.centerContainer!.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
+            // si no está logeado, envía a la vista de login, sino muestra el nombre de usuario, leido de la caché
+            if (isLoggedIn != 1) {
+                
+                self.performSegueWithIdentifier("irALogin", sender: self)
+            } else {
+                let centerViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MisEncuestasViewController") as! MisEncuestasViewController
+                let centerNavController = UINavigationController(rootViewController: centerViewController)
+                let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                
+                appDelegate.centerContainer!.centerViewController =  centerNavController
+                appDelegate.centerContainer!.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
+            }
+            
             break
         case 2:
             //Misión
@@ -96,24 +109,51 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             break
         case 5:
             //Mis Datos
-            let centerViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MisDatosViewController") as! MisDatosViewController
-            let centerNavController = UINavigationController(rootViewController: centerViewController)
-            let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+            // generamos una constante de tipo int leyendo de NSUserDefaults ISLOGGEDIN
+            let isLoggedIn:Int = prefs.integerForKey("ISLOGGEDIN") as Int
             
-            appDelegate.centerContainer!.centerViewController =  centerNavController
-            appDelegate.centerContainer!.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
+            // si no está logeado, envía a la vista de login, sino muestra el nombre de usuario, leido de la caché
+            if (isLoggedIn != 1) {
+                
+                self.performSegueWithIdentifier("irALogin", sender: self)
+            } else {
+                let centerViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MisDatosViewController") as! MisDatosViewController
+                let centerNavController = UINavigationController(rootViewController: centerViewController)
+                let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                
+                appDelegate.centerContainer!.centerViewController =  centerNavController
+                appDelegate.centerContainer!.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
+            }
+            
             break
         case 6:
             //Cerrar Sesion
-            let centerViewController = self.storyboard?.instantiateViewControllerWithIdentifier("InicioViewController") as! InicioViewController
-            let centerNavController = UINavigationController(rootViewController: centerViewController)
-            let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+           // let centerViewController = self.storyboard?.instantiateViewControllerWithIdentifier("InicioViewController") as! InicioViewController
+            //let centerNavController = UINavigationController(rootViewController: centerViewController)
+          //  let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             //Elimina Variable de sesion
             let appDomain = NSBundle.mainBundle().bundleIdentifier
             NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain!)
             //Hacer el cambio de pantalla
-            appDelegate.centerContainer!.centerViewController =  centerNavController
-            appDelegate.centerContainer!.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
+            
+           //creamos un objeto de tipo NSUserDefaults prefs (caché) que guardará si el usuario está logueado o no
+                    let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+                    // generamos una constante de tipo int leyendo de NSUserDefaults ISLOGGEDIN
+                    let isLoggedIn:Int = prefs.integerForKey("ISLOGGEDIN") as Int
+            
+                    // si no está logeado, envía a la vista de login, sino muestra el nombre de usuario, leido de la caché
+                    if (isLoggedIn != 1) {
+                        
+                        self.performSegueWithIdentifier("irALogin", sender: self)
+                   } else {
+                    //let mensaje = "Bienvenido " + (prefs.valueForKey("NOMBRE") as? String)! + " " + (prefs.valueForKey("APELLIDOPATERNO") as? String)! + " " + (prefs.valueForKey("APELLIDOMATERNO") as? String)! + " estamos trabajando para usted"
+                        //self.txtMensaje.text =  mensaje
+                    }
+            
+//            appDelegate.centerContainer!.centerViewController =  centerNavController
+//            appDelegate.centerContainer!.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
+            
             
             break
         case 7:

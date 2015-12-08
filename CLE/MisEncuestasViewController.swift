@@ -20,11 +20,12 @@ class MisEncuestasViewController: UIViewController, UITableViewDataSource, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Mis Encuestas"
-        self.navigationController?.navigationBar.barTintColor =  UIColor(red: 215.0/255.0, green: 23.0/255.0, blue: 41.0/255.0, alpha: 1.0)
+        self.navigationController?.navigationBar.barTintColor =  UIColor(red: 87.0/255.0, green: 90.0/255.0, blue: 63.0/255.0, alpha: 1.0)
         self.navigationController?.navigationBar.translucent =  false
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         self.navigationController?.navigationBar.barStyle = .Black
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Acualizar", style: .Plain, target: self, action: "cargarMisEncuestas")
+        
         
         tblEncuestasPendientes.dataSource = self
         tblEncuestasPendientes.delegate = self
@@ -50,6 +51,7 @@ class MisEncuestasViewController: UIViewController, UITableViewDataSource, UITab
         appDelegate.centerContainer!.toggleDrawerSide(.Left, animated: true, completion: nil)
     }
     func preCargarEncuestas(){
+        
         encuestasPendientes = prefs.arrayForKey("ENCUESTASPENDIENTES")
         
         if (encuestasPendientes == nil) {
@@ -57,6 +59,7 @@ class MisEncuestasViewController: UIViewController, UITableViewDataSource, UITab
         }
     }
 
+    
     func cargarMisEncuestas(){
         
         //Variable prefs para obtener preferencias guardadas

@@ -33,7 +33,7 @@ class LoginViewController: UIViewController, NSXMLParserDelegate {
         super.viewDidLoad()
         
         let statusBarView = UIView(frame: CGRectMake(0, 0, 500, 22))
-        statusBarView.backgroundColor = UIColor(red: 215.0/255.0, green: 23.0/255.0, blue: 41.0/255.0, alpha: 1.0)
+        statusBarView.backgroundColor = UIColor(red: 87.0/255.0, green: 90.0/255.0, blue: 63.0/255.0, alpha: 1.0)
         self.view.addSubview(statusBarView)
         self.preferredStatusBarStyle()
         imgLogo.image =  UIImage(named: "Logo")
@@ -53,6 +53,11 @@ class LoginViewController: UIViewController, NSXMLParserDelegate {
         iniciarSesion()
     }
     
+    
+    @IBAction func cancelar(sender: AnyObject) {
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     
     func iniciarSesion() {
         

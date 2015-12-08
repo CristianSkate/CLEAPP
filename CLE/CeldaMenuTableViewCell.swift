@@ -11,6 +11,7 @@ import UIKit
 class CeldaMenuTableViewCell: UITableViewCell {
 
     @IBOutlet weak var txtTituloOp: UILabel!
+    @IBOutlet weak var imgMenu: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

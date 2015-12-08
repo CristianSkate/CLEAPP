@@ -17,7 +17,7 @@ class DoctrinaViewController: UIViewController, UIPageViewControllerDataSource {
         super.viewDidLoad()
 
         self.title = "Doctrina"
-        self.navigationController?.navigationBar.barTintColor =  UIColor(red: 215.0/255.0, green: 23.0/255.0, blue: 41.0/255.0, alpha: 1.0)
+        self.navigationController?.navigationBar.barTintColor =  UIColor(red: 87.0/255.0, green: 90.0/255.0, blue: 63.0/255.0, alpha: 1.0)
         self.navigationController?.navigationBar.translucent =  false
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         self.navigationController?.navigationBar.barStyle = .Black
@@ -31,7 +31,6 @@ class DoctrinaViewController: UIViewController, UIPageViewControllerDataSource {
         //comienzo uipageviewer
         
         for var i:Int = 0; i<45 ; i++ {
-            print("Diapositiva0\(i+1)")
             if (i < 9){
                paginas.append(UIImage(named: ("Diapositiva0\(i+1)"))!)
             }else{

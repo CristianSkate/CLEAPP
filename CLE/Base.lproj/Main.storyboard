@@ -75,15 +75,32 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kpc-EX-e3c">
-                                                    <rect key="frame" x="17" y="11" width="263" height="21"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nxj-Rk-w3K">
+                                                    <rect key="frame" x="8" y="0.0" width="36" height="36"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="36" id="jMT-CA-hjJ"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kpc-EX-e3c">
+                                                    <rect key="frame" x="52" y="11" width="263" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="263" id="bya-gS-gdQ"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="kpc-EX-e3c" firstAttribute="centerY" secondItem="fjX-jU-ea7" secondAttribute="centerY" id="0JU-3e-MyK"/>
+                                                <constraint firstItem="nxj-Rk-w3K" firstAttribute="top" secondItem="fjX-jU-ea7" secondAttribute="top" id="A6m-Pt-Wgn"/>
+                                                <constraint firstItem="nxj-Rk-w3K" firstAttribute="bottom" secondItem="fjX-jU-ea7" secondAttribute="bottomMargin" id="afi-hv-GZ5"/>
+                                                <constraint firstItem="kpc-EX-e3c" firstAttribute="leading" secondItem="nxj-Rk-w3K" secondAttribute="trailing" constant="8" symbolic="YES" id="jHw-HF-cbl"/>
+                                                <constraint firstItem="nxj-Rk-w3K" firstAttribute="leading" secondItem="fjX-jU-ea7" secondAttribute="leadingMargin" id="tfZ-EA-7kY"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="imgMenu" destination="nxj-Rk-w3K" id="XDh-Oz-H19"/>
                                             <outlet property="txtTituloOp" destination="kpc-EX-e3c" id="9No-tH-iWs"/>
                                         </connections>
                                     </tableViewCell>
@@ -104,11 +121,12 @@
                     <connections>
                         <outlet property="imgLogo" destination="M5Q-ht-iJH" id="4hW-iX-S3A"/>
                         <outlet property="tblMenu" destination="2kE-Ir-FTS" id="JnD-xa-wFh"/>
+                        <segue destination="eLQ-e4-uCR" kind="presentation" identifier="irALogin" id="qaB-zs-mAo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jO1-Ov-IKA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1381" y="1138"/>
+            <point key="canvasLocation" x="1377" y="1150"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="dsa-AS-tFI">
@@ -142,8 +160,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b0l-aL-DK6">
-                                <rect key="frame" x="221" y="312" width="158" height="30"/>
-                                <state key="normal" title="Realizar primer ingreso"/>
+                                <rect key="frame" x="216" y="312" width="168" height="30"/>
+                                <state key="normal" title="Continuar como Invitado"/>
+                                <connections>
+                                    <action selector="cancelar:" destination="eLQ-e4-uCR" eventType="touchUpInside" id="7n8-0O-suT"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QCR-lu-1D6">
                                 <rect key="frame" x="180" y="225" width="240" height="30"/>
@@ -262,6 +283,7 @@
                     <connections>
                         <outlet property="tblEncuestasPendientes" destination="4HH-RN-YgT" id="cf1-Uo-hqU"/>
                         <segue destination="4bJ-0K-38Z" kind="show" identifier="empezarEncuesta" id="KfJ-Vb-GZq"/>
+                        <segue destination="eLQ-e4-uCR" kind="presentation" identifier="irALogin" id="dlX-1s-ILL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7WA-P1-sf7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -280,12 +302,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="MLg-gf-gke">
-                                <rect key="frame" x="182" y="72" width="236" height="83"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <imageView userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fondo-articulos" translatesAutoresizingMaskIntoConstraints="NO" id="XmI-Pa-qCm">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="MLg-gf-gke">
+                                <rect key="frame" x="182" y="82" width="236" height="83"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="236" id="4A5-oC-0uE"/>
-                                    <constraint firstAttribute="height" constant="83" id="Lyt-t3-LXk"/>
+                                    <constraint firstAttribute="height" constant="83" id="Cub-eK-FLq"/>
+                                    <constraint firstAttribute="width" constant="236" id="OFZ-He-ZRk"/>
                                 </constraints>
                                 <string key="text">Misión
 Gestionar el proceso de desarrollo del liderazgo a nivel institucional.
@@ -293,33 +317,37 @@ Gestionar el proceso de desarrollo del liderazgo a nivel institucional.
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="UdS-hD-zLl">
-                                <rect key="frame" x="180" y="163" width="240" height="367"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="Qgs-Uu-3sn"/>
-                                </constraints>
-                                <string key="text">Tareas Fundamentales:
-- Planificar y realizar mejora continua a los procesos que desarrolla el CLE.
-- Asesorar en el ámbito directivo para el levantamiento de las políticas de liderazgo institucionales.
-- Realizar medición, fortalecimiento y seguimiento de los niveles de atributos y competencias de liderazgo a los integrantes de la Institución.
-- Promover y apoyar el desarrollo y crecimiento progresivo de los atributos y competencias de liderazgo en los integrantes del Ejército en los procesos de instrucción y entrenamiento y capacitación y docencia.
-- Investigar y desarrollar conocimiento en el área de liderazgo.
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="UdS-hD-zLl">
+                                <rect key="frame" x="31" y="173" width="549" height="407"/>
+                                <string key="text">Tareas Fundamentales: 
+- Planificar y realizar mejora continua a los procesos que desarrolla el CLE. 
+- Asesorar en el ámbito directivo para el levantamiento de las políticas de liderazgo institucionales. 
+- Realizar medición, fortalecimiento y seguimiento de los niveles de atributos y competencias de liderazgo a los integrantes de la Institución. 
+- Promover y apoyar el desarrollo y crecimiento progresivo de los atributos y competencias de liderazgo en los integrantes del Ejército en los procesos de instrucción y entrenamiento y capacitación y docencia. 
+- Investigar y desarrollar conocimiento en el área de liderazgo. 
 - Disponer de una plataforma tecnológica eficiente y escalable que sirva a las necesidades del CLE.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="UdS-hD-zLl" firstAttribute="top" secondItem="MLg-gf-gke" secondAttribute="bottom" constant="8" symbolic="YES" id="4K7-jZ-YS5"/>
-                            <constraint firstItem="zs1-ud-tsb" firstAttribute="top" secondItem="UdS-hD-zLl" secondAttribute="bottom" constant="70" id="5N6-ka-GXt"/>
-                            <constraint firstItem="MLg-gf-gke" firstAttribute="centerX" secondItem="YrV-58-f6A" secondAttribute="centerX" id="WP9-Av-EcJ"/>
-                            <constraint firstItem="UdS-hD-zLl" firstAttribute="centerX" secondItem="MLg-gf-gke" secondAttribute="centerX" id="ffO-ek-mPJ"/>
-                            <constraint firstItem="MLg-gf-gke" firstAttribute="top" secondItem="u6j-6B-YSn" secondAttribute="bottom" constant="8" symbolic="YES" id="lHB-aZ-HaG"/>
+                            <constraint firstAttribute="trailing" secondItem="XmI-Pa-qCm" secondAttribute="trailing" id="BZf-9P-Zr2"/>
+                            <constraint firstItem="UdS-hD-zLl" firstAttribute="top" secondItem="MLg-gf-gke" secondAttribute="bottom" constant="8" symbolic="YES" id="C0z-aS-6gf"/>
+                            <constraint firstItem="UdS-hD-zLl" firstAttribute="leading" secondItem="YrV-58-f6A" secondAttribute="leadingMargin" constant="11" id="FTV-xo-AUL"/>
+                            <constraint firstAttribute="bottom" secondItem="UdS-hD-zLl" secondAttribute="bottom" constant="20" symbolic="YES" id="HjE-27-sOP"/>
+                            <constraint firstItem="XmI-Pa-qCm" firstAttribute="bottom" secondItem="zs1-ud-tsb" secondAttribute="top" id="PVA-Pf-aSq"/>
+                            <constraint firstItem="UdS-hD-zLl" firstAttribute="trailing" secondItem="YrV-58-f6A" secondAttribute="trailingMargin" id="aiX-9p-p6m"/>
+                            <constraint firstItem="MLg-gf-gke" firstAttribute="top" secondItem="u6j-6B-YSn" secondAttribute="bottom" constant="18" id="kXE-oQ-qkH"/>
+                            <constraint firstItem="XmI-Pa-qCm" firstAttribute="leading" secondItem="YrV-58-f6A" secondAttribute="leading" id="nLY-K8-jY9"/>
+                            <constraint firstItem="XmI-Pa-qCm" firstAttribute="top" secondItem="u6j-6B-YSn" secondAttribute="bottom" id="nwm-D2-ZkA"/>
+                            <constraint firstItem="MLg-gf-gke" firstAttribute="centerX" secondItem="XmI-Pa-qCm" secondAttribute="centerX" id="z7m-18-k9h"/>
                         </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="txtTextoMision" destination="UdS-hD-zLl" id="urP-PB-ggL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yug-V5-Io3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -402,7 +430,7 @@ Gestionar el proceso de desarrollo del liderazgo a nivel institucional.
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pag2" translatesAutoresizingMaskIntoConstraints="NO" id="BsI-Qn-Fzb">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BsI-Qn-Fzb">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                             </imageView>
                         </subviews>
@@ -544,6 +572,9 @@ Gestionar el proceso de desarrollo del liderazgo a nivel institucional.
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="eLQ-e4-uCR" kind="presentation" identifier="irALogin" id="hgL-bi-Yxd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oiM-0v-QwZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -569,6 +600,9 @@ Gestionar el proceso de desarrollo del liderazgo a nivel institucional.
         </scene>
     </scenes>
     <resources>
-        <image name="pag2" width="539" height="682"/>
+        <image name="fondo-articulos" width="1137" height="621"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="FOm-XQ-75V"/>
+    </inferredMetricsTieBreakers>
 </document>
