@@ -8,11 +8,12 @@
 
 import UIKit
 
-class InicioViewController: UIViewController {
+class InicioViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    @IBOutlet weak var txtMensaje: UITextView!
+    @IBOutlet weak var tblNoticias: UITableView!
     @IBOutlet weak var btnMenu: UIBarButtonItem!
     var image:UIImage!
+    var noticias:[Noticia] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +30,12 @@ class InicioViewController: UIViewController {
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.Plain, target: self, action: "btnMenu:")
         
-        //    Do any additional setup after loading the view.
+        noticias.append(Noticia(imagen: UIImage(named: "Logo")!, txtTitulo: "MILE EJECUTA TALLERES EN UNIDADES DE LA FUERZA TERRESTRE", txtResumen: "Los integrantes del proyecto “Modelo Integral de Liderazgo del Ejército” (MILE), efectuaron talleres de desarrollo de liderazgo con las unidades de la Fuerza Terrestre, ubicadas en las ciudades de Temuco, Osorno y Valdivia.", txtNoticia: "asd"))
+        // asignar datasource y delegate a la tabla
+        tblNoticias.dataSource = self
+        tblNoticias.delegate = self
+        //tblNoticias.rowHeight = UITableViewAutomaticDimension
+        //tblNoticias.estimatedRowHeight =  50
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,39 +45,32 @@ class InicioViewController: UIViewController {
     
 
     override func viewDidAppear(animated: Bool) {
-        
-        // creamos un objeto de tipo NSUserDefaults prefs (caché) que guardará si el usuario está logueado o no
-//        let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-//        // generamos una constante de tipo int leyendo de NSUserDefaults ISLOGGEDIN
-//        let isLoggedIn:Int = prefs.integerForKey("ISLOGGEDIN") as Int
-//        
-//        // si no está logeado, envía a la vista de login, sino muestra el nombre de usuario, leido de la caché
-//        if (isLoggedIn != 1) {
-//            self.performSegueWithIdentifier("irALogin", sender: self)
-//       } else {
-//            let mensaje = "Bienvenido " + (prefs.valueForKey("NOMBRE") as? String)! + " " + (prefs.valueForKey("APELLIDOPATERNO") as? String)! + " " + (prefs.valueForKey("APELLIDOMATERNO") as? String)! + " estamos trabajando para usted"
-//            self.txtMensaje.text =  mensaje
-//        }
-        self.txtMensaje.text = "¡Buenos días buenas tardes!"
-        
-    }
-    // La función cerrar borrar todos los datos de la caché y devuelve al login
     
-//    @IBAction func cerrar(sender: UIButton) {
-//        
-//        
-//        let appDomain = NSBundle.mainBundle().bundleIdentifier
-//        
-//        NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain!)
-//        
-//        self.performSegueWithIdentifier("irALogin", sender: self)
-//        
-//    }
+    }
     
     @IBAction func btnMenu(sender: AnyObject) {
         let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.centerContainer!.toggleDrawerSide(.Left, animated: true, completion: nil)
     }
     
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return noticias.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let mycell:CeldaNoticiasTableViewCell = tableView.dequeueReusableCellWithIdentifier("CeldaNoticias", forIndexPath: indexPath) as! CeldaNoticiasTableViewCell
+        
+        mycell.txtTitulo.text = noticias[indexPath.row].txtTitulo
+        mycell.imgImagen.image = noticias[indexPath.row].imagen
+        mycell.txtResumen.text = noticias[indexPath.row].txtResumen
+        
+        return mycell
+        
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
 
 }

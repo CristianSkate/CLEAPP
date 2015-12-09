@@ -12,8 +12,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     @IBOutlet weak var tblMenu: UITableView!
     @IBOutlet weak var imgLogo: UIImageView!
-    let menuOps:[String] = ["Home","Mis Encuestas","Misión","Organica","Doctrina","Mis Datos","Salir", "Acerca de"]
-    let imgMenu:[UIImage] = [UIImage(named: "ic_home")!,UIImage(named: "ic_file_document")!,UIImage(named: "ic_file_document")!,UIImage(named: "ic_file_document")!,UIImage(named: "ic_file_document")!,UIImage(named: "ic_file_document")!,UIImage(named: "ic_lock_power_off")!,UIImage(named: "ic_action_about")!]
+    let menuOps:[String] = ["Home","Mis Encuestas","Misión","Organica","Doctrinas","Herramientas","Mis Datos","Salir", "Acerca de"]
+    let imgMenu:[UIImage] = [UIImage(named: "ic_home")!,UIImage(named: "ic_file_document")!,UIImage(named: "ic_file_document")!,UIImage(named: "ic_file_document")!,UIImage(named: "ic_file_document")!,UIImage(named: "ic_file_document")!,UIImage(named: "ic_file_document")!,UIImage(named: "ic_lock_power_off")!,UIImage(named: "ic_action_about")!]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,6 +108,15 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             appDelegate.centerContainer!.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
             break
         case 5:
+            //Herramientas
+            let centerViewController = self.storyboard?.instantiateViewControllerWithIdentifier("HerramientasViewController") as! HerramientasViewController
+            let centerNavController = UINavigationController(rootViewController: centerViewController)
+            let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            
+            appDelegate.centerContainer!.centerViewController =  centerNavController
+            appDelegate.centerContainer!.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
+            break
+        case 6:
             //Mis Datos
             let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
             // generamos una constante de tipo int leyendo de NSUserDefaults ISLOGGEDIN
@@ -127,7 +136,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
             
             break
-        case 6:
+        case 7:
             //Cerrar Sesion
            // let centerViewController = self.storyboard?.instantiateViewControllerWithIdentifier("InicioViewController") as! InicioViewController
             //let centerNavController = UINavigationController(rootViewController: centerViewController)
@@ -156,7 +165,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
             
             break
-        case 7:
+        case 8:
             //Acerca de
             
             let alertController = UIAlertController(title: "Acerca de ...", message: "Esta aplicacion fue programada por Cristian Martínez y Elias Millachine\nVersión 1.0", preferredStyle: .Alert)

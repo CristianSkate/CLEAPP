@@ -17,6 +17,12 @@
 		403ACECA1BDA717900E12A60 /* DoctrinaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403ACEC91BDA717900E12A60 /* DoctrinaViewController.swift */; };
 		403ACECC1BDA72E600E12A60 /* MisDatosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403ACECB1BDA72E600E12A60 /* MisDatosViewController.swift */; };
 		404870E41C1102A40053BE68 /* FormatoPaginaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404870E31C1102A40053BE68 /* FormatoPaginaViewController.swift */; };
+		404870E61C1794F30053BE68 /* HerramientasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404870E51C1794F30053BE68 /* HerramientasViewController.swift */; };
+		404870E81C1797BA0053BE68 /* Noticia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404870E71C1797BA0053BE68 /* Noticia.swift */; };
+		404870EA1C179ABF0053BE68 /* CeldaNoticiasTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404870E91C179ABF0053BE68 /* CeldaNoticiasTableViewCell.swift */; };
+		404870EC1C17D1D30053BE68 /* Documento.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404870EB1C17D1D30053BE68 /* Documento.swift */; };
+		404870EE1C17D2EE0053BE68 /* MantenedorDoctrinaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404870ED1C17D2EE0053BE68 /* MantenedorDoctrinaViewController.swift */; };
+		404870F01C17D6B00053BE68 /* CeldaDoctrinasTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404870EF1C17D6B00053BE68 /* CeldaDoctrinasTableViewCell.swift */; };
 		404DB3371BF3CCEA000574CB /* RespuestasTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404DB3361BF3CCEA000574CB /* RespuestasTableViewCell.swift */; };
 		408BA7881BC46BCC009B0E96 /* MisEncuestasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408BA7871BC46BCC009B0E96 /* MisEncuestasViewController.swift */; };
 		409590291BE5F3F600695A38 /* CeldaMisEncuestasTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409590281BE5F3F600695A38 /* CeldaMisEncuestasTableViewCell.swift */; };
@@ -70,6 +76,12 @@
 		403ACEC91BDA717900E12A60 /* DoctrinaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DoctrinaViewController.swift; path = CLE/DoctrinaViewController.swift; sourceTree = SOURCE_ROOT; };
 		403ACECB1BDA72E600E12A60 /* MisDatosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MisDatosViewController.swift; path = CLE/MisDatosViewController.swift; sourceTree = SOURCE_ROOT; };
 		404870E31C1102A40053BE68 /* FormatoPaginaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FormatoPaginaViewController.swift; path = CLE/FormatoPaginaViewController.swift; sourceTree = SOURCE_ROOT; };
+		404870E51C1794F30053BE68 /* HerramientasViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HerramientasViewController.swift; path = CLE/HerramientasViewController.swift; sourceTree = SOURCE_ROOT; };
+		404870E71C1797BA0053BE68 /* Noticia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Noticia.swift; sourceTree = SOURCE_ROOT; };
+		404870E91C179ABF0053BE68 /* CeldaNoticiasTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CeldaNoticiasTableViewCell.swift; path = CLE/CeldaNoticiasTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		404870EB1C17D1D30053BE68 /* Documento.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Documento.swift; sourceTree = SOURCE_ROOT; };
+		404870ED1C17D2EE0053BE68 /* MantenedorDoctrinaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MantenedorDoctrinaViewController.swift; path = CLE/MantenedorDoctrinaViewController.swift; sourceTree = SOURCE_ROOT; };
+		404870EF1C17D6B00053BE68 /* CeldaDoctrinasTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CeldaDoctrinasTableViewCell.swift; path = CLE/CeldaDoctrinasTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		404DB3361BF3CCEA000574CB /* RespuestasTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RespuestasTableViewCell.swift; path = CLE/RespuestasTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		408BA7871BC46BCC009B0E96 /* MisEncuestasViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MisEncuestasViewController.swift; path = CLE/MisEncuestasViewController.swift; sourceTree = SOURCE_ROOT; };
 		409590281BE5F3F600695A38 /* CeldaMisEncuestasTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CeldaMisEncuestasTableViewCell.swift; path = CLE/CeldaMisEncuestasTableViewCell.swift; sourceTree = SOURCE_ROOT; };
@@ -145,8 +157,10 @@
 				6113E87E1BDA6BDF0028E247 /* MisionViewController.swift */,
 				40074D951BDA6D1200C92588 /* OrganicaViewController.swift */,
 				403ACEC91BDA717900E12A60 /* DoctrinaViewController.swift */,
+				404870ED1C17D2EE0053BE68 /* MantenedorDoctrinaViewController.swift */,
 				403ACECB1BDA72E600E12A60 /* MisDatosViewController.swift */,
 				40DFAA501BFD480A0072593E /* MantenedorEncuestaViewController.swift */,
+				404870E51C1794F30053BE68 /* HerramientasViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -155,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				40BECDAE1BFD49760056724D /* Encuesta.swift */,
+				404870E71C1797BA0053BE68 /* Noticia.swift */,
 				40BECDAF1BFD49760056724D /* Seccion.swift */,
 				400173431BC4268100E08A6D /* CeldaMenuTableViewCell.swift */,
 				409590281BE5F3F600695A38 /* CeldaMisEncuestasTableViewCell.swift */,
@@ -162,6 +177,9 @@
 				40BECDB21BFE03490056724D /* Pregunta.swift */,
 				4095902A1BE6102600695A38 /* FormatoEncuestaViewController.swift */,
 				404870E31C1102A40053BE68 /* FormatoPaginaViewController.swift */,
+				404870E91C179ABF0053BE68 /* CeldaNoticiasTableViewCell.swift */,
+				404870EB1C17D1D30053BE68 /* Documento.swift */,
+				404870EF1C17D6B00053BE68 /* CeldaDoctrinasTableViewCell.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -361,19 +379,25 @@
 				40074D961BDA6D1200C92588 /* OrganicaViewController.swift in Sources */,
 				400173441BC4268100E08A6D /* CeldaMenuTableViewCell.swift in Sources */,
 				40ABB66B1BBDF0CC0060063F /* LoginViewController.swift in Sources */,
+				404870E81C1797BA0053BE68 /* Noticia.swift in Sources */,
 				40BECDB31BFE03490056724D /* Pregunta.swift in Sources */,
 				4001733D1BC4167500E08A6D /* UIViewController+MMDrawerController.m in Sources */,
 				404870E41C1102A40053BE68 /* FormatoPaginaViewController.swift in Sources */,
 				403ACECC1BDA72E600E12A60 /* MisDatosViewController.swift in Sources */,
+				404870EC1C17D1D30053BE68 /* Documento.swift in Sources */,
 				404DB3371BF3CCEA000574CB /* RespuestasTableViewCell.swift in Sources */,
 				408BA7881BC46BCC009B0E96 /* MisEncuestasViewController.swift in Sources */,
 				4001733B1BC4167500E08A6D /* MMDrawerController.m in Sources */,
+				404870E61C1794F30053BE68 /* HerramientasViewController.swift in Sources */,
 				40BECDB11BFD49760056724D /* Seccion.swift in Sources */,
 				4001733A1BC4167500E08A6D /* MMDrawerBarButtonItem.m in Sources */,
 				40ABB6661BBDF0CC0060063F /* AppDelegate.swift in Sources */,
 				40ABB66A1BBDF0CC0060063F /* InicioViewController.swift in Sources */,
+				404870EE1C17D2EE0053BE68 /* MantenedorDoctrinaViewController.swift in Sources */,
 				403ACECA1BDA717900E12A60 /* DoctrinaViewController.swift in Sources */,
+				404870EA1C179ABF0053BE68 /* CeldaNoticiasTableViewCell.swift in Sources */,
 				4095902B1BE6102600695A38 /* FormatoEncuestaViewController.swift in Sources */,
+				404870F01C17D6B00053BE68 /* CeldaDoctrinasTableViewCell.swift in Sources */,
 				40BECDB01BFD49760056724D /* Encuesta.swift in Sources */,
 				400173411BC41CBA00E08A6D /* MenuViewController.swift in Sources */,
 			);
