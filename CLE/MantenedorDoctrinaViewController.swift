@@ -11,12 +11,13 @@ import UIKit
 class MantenedorDoctrinaViewController: UIViewController, UIPageViewControllerDataSource {
 
     var pageViewController:UIPageViewController!
-    var paginas:[UIImage] = []
+    var paginas:[UIImage]!
+    var titulo:String!
         
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "Doctrina"
+        self.title = titulo//"Doctrina"
         self.navigationController?.navigationBar.barTintColor =  UIColor(red: 87.0/255.0, green: 90.0/255.0, blue: 63.0/255.0, alpha: 1.0)
         self.navigationController?.navigationBar.translucent =  false
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
@@ -30,14 +31,13 @@ class MantenedorDoctrinaViewController: UIViewController, UIPageViewControllerDa
         
         //comienzo uipageviewer
         
-        for var i:Int = 0; i<45 ; i++ {
-            if (i < 9){
-                paginas.append(UIImage(named: ("Diapositiva0\(i+1)"))!)
-            }else{
-                paginas.append(UIImage(named: ("Diapositiva\(i+1)"))!)
-            }
-            
-        }
+//        for var i:Int = 0; i<45 ; i++ {
+//            if (i < 9){
+//                paginas.append(UIImage(named: ("Diapositiva0\(i+1)"))!)
+//            }else{
+//                paginas.append(UIImage(named: ("Diapositiva\(i+1)"))!)
+//            }
+//        }
         //paginas = [UIImage(named: "pag1")!,UIImage(named: "pag2")!]
         
         self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
@@ -60,14 +60,14 @@ class MantenedorDoctrinaViewController: UIViewController, UIPageViewControllerDa
         // Do any additional setup after loading the view.
     }
     
-    func cargarFotos() -> [UIImage]{
-        var pag:[UIImage] = []
-        
-        for var i:Int = 0; i<45 ; i++ {
-            pag.append(UIImage(named: ("Diapositiva\(i+1)"))!)
-        }
-        return pag
-    }
+//    func cargarFotos() -> [UIImage]{
+//        var pag:[UIImage] = []
+//        
+//        for var i:Int = 0; i<45 ; i++ {
+//            pag.append(UIImage(named: ("Diapositiva\(i+1)"))!)
+//        }
+//        return pag
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

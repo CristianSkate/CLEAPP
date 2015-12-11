@@ -29,8 +29,10 @@ class InicioViewController: UIViewController, UITableViewDataSource, UITableView
         image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.Plain, target: self, action: "btnMenu:")
+        for var i = 0; i < 5 ; i = i + 1  {
+            noticias.append(Noticia(imagen: UIImage(named: "noticia1")!, txtTitulo: "MILE EJECUTA TALLERES EN UNIDADES DE LA FUERZA TERRESTRE", txtResumen: "Los integrantes del proyecto “Modelo Integral de Liderazgo del Ejército” (MILE), efectuaron talleres de desarrollo de liderazgo con las unidades de la Fuerza Terrestre, ubicadas en las ciudades de Temuco, Osorno y Valdivia.", txtNoticia: "asd"))
+        }
         
-        noticias.append(Noticia(imagen: UIImage(named: "Logo")!, txtTitulo: "MILE EJECUTA TALLERES EN UNIDADES DE LA FUERZA TERRESTRE", txtResumen: "Los integrantes del proyecto “Modelo Integral de Liderazgo del Ejército” (MILE), efectuaron talleres de desarrollo de liderazgo con las unidades de la Fuerza Terrestre, ubicadas en las ciudades de Temuco, Osorno y Valdivia.", txtNoticia: "asd"))
         // asignar datasource y delegate a la tabla
         tblNoticias.dataSource = self
         tblNoticias.delegate = self

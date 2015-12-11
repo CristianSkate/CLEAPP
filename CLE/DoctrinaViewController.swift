@@ -12,13 +12,14 @@ class DoctrinaViewController: UIViewController, UITableViewDataSource, UITableVi
     
     var documentos:[Documento] = []
     var paginas:[UIImage] = []
+    var index:Int!
     
     @IBOutlet weak var tblDoctrinas: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "Doctrina"
+        self.title = "Doctrinas"
         self.navigationController?.navigationBar.barTintColor =  UIColor(red: 87.0/255.0, green: 90.0/255.0, blue: 63.0/255.0, alpha: 1.0)
         self.navigationController?.navigationBar.translucent =  false
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
@@ -33,7 +34,7 @@ class DoctrinaViewController: UIViewController, UITableViewDataSource, UITableVi
         self.tblDoctrinas.delegate = self
         
         cargarDocumentos()
-        documentos.append(Documento(nombre: "Guía de herramientas para el fortalecimiento del liderazgo", paginas: paginas))
+        //documentos.append(Documento(nombre: "Guía de herramientas para el fortalecimiento del liderazgo", paginas: paginas))
         
         // Do any additional setup after loading the view.
     }
@@ -41,11 +42,21 @@ class DoctrinaViewController: UIViewController, UITableViewDataSource, UITableVi
     func cargarDocumentos(){
         for var i:Int = 0; i<45 ; i++ {
             if (i < 9){
-                paginas.append(UIImage(named: ("Diapositiva0\(i+1)"))!)
+                paginas.append(UIImage(named: ("herramientas_0\(i+1)"))!)
             }else{
-                paginas.append(UIImage(named: ("Diapositiva\(i+1)"))!)
+                paginas.append(UIImage(named: ("herramientas_\(i+1)"))!)
             }
         }
+        documentos.append(Documento(nombre: "Guía de herramientas para el fortalecimiento del liderazgo", paginas: paginas))
+        paginas = []
+        for var i:Int = 0; i<23 ; i++ {
+            if (i < 9){
+                paginas.append(UIImage(named: ("plegable_0\(i+1)"))!)
+            }else{
+                paginas.append(UIImage(named: ("plegable_\(i+1)"))!)
+            }
+        }
+        documentos.append(Documento(nombre: "Competencias", paginas: paginas))
     }
     
     override func didReceiveMemoryWarning() {
@@ -76,7 +87,20 @@ class DoctrinaViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        //index = indexPath.row
+        //self.performSegueWithIdentifier("mostrarDocumento", sender: nil)
+        //tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "mostrarDocumento" {
+            // Get reference to the destination view controller
+            let vc:MantenedorDoctrinaViewController = segue.destinationViewController as! MantenedorDoctrinaViewController;
+            
+            // Pass any objects to the view controller here, like...
+            vc.titulo = documentos[tblDoctrinas.indexPathForSelectedRow!.row].nombre
+            vc.paginas = documentos[tblDoctrinas.indexPathForSelectedRow!.row].paginas
+        }
     }
     
     
