@@ -12,7 +12,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     @IBOutlet weak var tblMenu: UITableView!
     @IBOutlet weak var imgLogo: UIImageView!
-    let menuOps:[String] = ["Home","Mis Encuestas","Misión","Organica","Doctrinas","Herramientas","Mis Datos","Salir", "Acerca de"]
+    let menuOps:[String] = ["Home","Mis Encuestas","Misión","Organica","Doctrina","Herramientas","Mis Datos","Salir", "Acerca de"]
     let imgMenu:[UIImage] = [UIImage(named: "ic_home")!,UIImage(named: "ic_file_document")!,UIImage(named: "ic_file_document")!,UIImage(named: "ic_file_document")!,UIImage(named: "ic_file_document")!,UIImage(named: "ic_file_document")!,UIImage(named: "ic_file_document")!,UIImage(named: "ic_lock_power_off")!,UIImage(named: "ic_action_about")!]
     
     override func viewDidLoad() {

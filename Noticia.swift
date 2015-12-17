@@ -9,13 +9,13 @@
 import Foundation
 
 class Noticia: NSObject{
-    var imagen:UIImage
+    var urlImagen:String
     var txtTitulo:String
     var txtResumen:String
     var txtNoticia:String
     
-    init(imagen:UIImage, txtTitulo:String, txtResumen:String, txtNoticia:String){
-        self.imagen = imagen
+    init(urlImagen:String, txtTitulo:String, txtResumen:String, txtNoticia:String){
+        self.urlImagen = urlImagen
         self.txtTitulo = txtTitulo
         self.txtResumen = txtResumen
         self.txtNoticia = txtNoticia

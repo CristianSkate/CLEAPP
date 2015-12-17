@@ -19,7 +19,7 @@ class DoctrinaViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "Doctrinas"
+        self.title = "Doctrina"
         self.navigationController?.navigationBar.barTintColor =  UIColor(red: 87.0/255.0, green: 90.0/255.0, blue: 63.0/255.0, alpha: 1.0)
         self.navigationController?.navigationBar.translucent =  false
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
@@ -57,6 +57,12 @@ class DoctrinaViewController: UIViewController, UITableViewDataSource, UITableVi
             }
         }
         documentos.append(Documento(nombre: "Competencias", paginas: paginas))
+        paginas = []
+        for var i:Int = 0; i<8 ; i++ {
+                paginas.append(UIImage(named: ("cuadriptico_\(i+1)"))!)
+        }
+        documentos.append(Documento(nombre: "Los atributos del Líder", paginas: paginas))
+        
     }
     
     override func didReceiveMemoryWarning() {
