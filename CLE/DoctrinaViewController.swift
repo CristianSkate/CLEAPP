@@ -40,7 +40,7 @@ class DoctrinaViewController: UIViewController, UITableViewDataSource, UITableVi
     }
 
     func cargarDocumentos(){
-        for var i:Int = 0; i<45 ; i++ {
+        for var i:Int = 0; i<53 ; i++ {
             if (i < 9){
                 paginas.append(UIImage(named: ("herramientas_0\(i+1)"))!)
             }else{
