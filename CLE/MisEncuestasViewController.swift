@@ -63,8 +63,8 @@ class MisEncuestasViewController: UIViewController, UITableViewDataSource, UITab
     func cargarMisEncuestas(){
         
         //Variable prefs para obtener preferencias guardadas
-        let rut:String = "15650686-9" //prefs.valueForKey("RUN") as! String
-        let periodo:String = "2015"
+        let rut:String = prefs.valueForKey("RUN") as! String
+        let periodo:String = "0"
         
         
             // se mete el user y pass dentro de un string

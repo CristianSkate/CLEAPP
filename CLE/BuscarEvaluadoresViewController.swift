@@ -1,42 +1,43 @@
 //
-//  InicioViewController.swift
-//  Centro de Liderazgo Ejercito de Chile
+//  BuscarEncuestadoresViewController.swift
+//  CLE Chile
 //
-//  Created by Cristian Martinez Toledo on 30-09-15.
-//  Copyright © 2015 Cristian Martinez Toledo. All rights reserved.
+//  Created by Cristian Martinez Toledo on 02-01-16.
+//  Copyright © 2016 Cristian Martinez Toledo. All rights reserved.
 //
 
 import UIKit
 
-class InicioViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class BuscarEvaluadoresViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
 
-    @IBOutlet weak var tblNoticias: UITableView!
-    @IBOutlet weak var btnMenu: UIBarButtonItem!
-    var image:UIImage!
-    var noticias:[Noticia] = []
+    @IBOutlet weak var tblBusqueda: UITableView!
+    @IBOutlet weak var searchEvaluadores: UISearchBar!
     
+    var evaluadores:[Evaluador] = []
+    var seleccionados:[Evaluador] = []
+    let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
     var reponseError: NSError?
     var response: NSURLResponse?
-    var respNoticias:NSArray! = []
+    var respEvaluadores:NSArray! = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.title = "Noticias"
+        self.title = "Buscar Evaluadores"
         self.navigationController?.navigationBar.barTintColor =  UIColor(red: 87.0/255.0, green: 90.0/255.0, blue: 63.0/255.0, alpha: 1.0)
         self.navigationController?.navigationBar.translucent =  false
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         self.navigationController?.navigationBar.barStyle = .Black
+        
+        //var image = UIImage(named: "Menu")
+        searchEvaluadores.delegate = self
+        //image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Volver", style: .Plain, target: self, action: "volverAtras")
+        
+        tblBusqueda.delegate = self
+        tblBusqueda.dataSource = self
 
-        var image = UIImage(named: "Menu")
         
-        image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.Plain, target: self, action: "btnMenu:")
-        tblNoticias.dataSource = self
-        tblNoticias.delegate = self
-        cargarNoticias()
-        
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,52 +45,85 @@ class InicioViewController: UIViewController, UITableViewDataSource, UITableView
         // Dispose of any resources that can be recreated.
     }
     
-
-    override func viewDidAppear(animated: Bool) {
-    
+    func volverAtras() {
+        
+            self.navigationController?.popViewControllerAnimated(true)
+        
     }
     
-    @IBAction func btnMenu(sender: AnyObject) {
-        let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.centerContainer!.toggleDrawerSide(.Left, animated: true, completion: nil)
-    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return noticias.count
+        return evaluadores.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let mycell:CeldaNoticiasTableViewCell = tableView.dequeueReusableCellWithIdentifier("CeldaNoticias", forIndexPath: indexPath) as! CeldaNoticiasTableViewCell
+        let mycell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("celdaBusqueda", forIndexPath: indexPath)
         
-        mycell.txtTitulo.text = noticias[indexPath.row].txtTitulo
+        mycell.textLabel?.text = ("\(evaluadores[indexPath.row].nombre)\n\(evaluadores[indexPath.row].rut)")
+        mycell.textLabel?.numberOfLines = 0
         //mycell.imgImagen.image = noticias[indexPath.row].imagen
-        mycell.txtResumen.text = noticias[indexPath.row].txtNoticia
-        let url = NSURL(string: "http://cle.ejercito.cl/upload/_\(noticias[indexPath.row].urlImagen)")
-        let data = NSData(contentsOfURL : url!)
-        let image = UIImage(data : data!)
-        mycell.imgImagen.image = image
+        //mycell.txtResumen.text = noticias[indexPath.row].txtNoticia
         
         return mycell
         
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+       
+        let alertController = UIAlertController(title: "Confirmación", message: "¿Desea elegir a \(evaluadores[indexPath.row].nombre)", preferredStyle: .Alert)
+        alertController.addAction(UIAlertAction(title: "Si", style: .Default, handler: {(alert: UIAlertAction) in
+            //Agregar al susodicho al listado de los seleccionados
+        
+            //Cargar lista anterior
+            let encuestadores = self.prefs.objectForKey("seleccionados") as? NSData
+            
+            if let encuestadores = encuestadores {
+                self.seleccionados = (NSKeyedUnarchiver.unarchiveObjectWithData(encuestadores) as? [Evaluador])!
+                
+            }
+            //Modificar nuevo Array
+            self.seleccionados.append(Evaluador(rut: self.evaluadores[indexPath.row].rut, nombre: self.evaluadores[indexPath.row].nombre))
+            //Guardar en preferencias
+            let guardar = NSKeyedArchiver.archivedDataWithRootObject(self.seleccionados)
+            self.prefs.setObject(guardar, forKey: "seleccionados")
+            
+            //postpopover
+            self.parentViewController?.viewDidAppear(true)
+            
+            self.navigationController?.popViewControllerAnimated(true)
+        }))
+        alertController.addAction(UIAlertAction(title: "No", style: .Default, handler: nil))
+        self.presentViewController((alertController), animated: true, completion: nil)
+        
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
-    func cargarNoticias(){
+   
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        btnBuscar()
+        searchEvaluadores.endEditing(true)
+    }
+    
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.searchEvaluadores.endEditing(true)
+    }
+    
+    func btnBuscar() {
         
-        //Variable prefs para obtener preferencias guardadas
+        let textoBuscar:String = searchEvaluadores.text! //prefs.valueForKey("RUN") as! String
+        
         
         // se mete el user y pass dentro de un string
-        let post:NSString = ""
+        let post:NSString = "q=\(textoBuscar)"
         
         // mandamos al log para ir registrando lo que va pasando
         NSLog("PostData: %@",post);
         
         // llamamos a la URl donde está el json que se conectará con la BD
-        let url:NSURL = NSURL(string: "http://cle.ejercito.cl/ServiciosCle.asmx/noticiasJson?AspxAutoDetectCookieSupport=1")!
+        let url:NSURL = NSURL(string: "http://cle.ejercito.cl/ServiciosCle.asmx/ObtenerNombres?AspxAutoDetectCookieSupport=1")!
         
         // codificamos lo que se envía
         let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
@@ -128,19 +162,20 @@ class InicioViewController: UIViewController, UITableViewDataSource, UITableView
                 NSLog("Response ==> %@", responseData);
                 
                 //var error: NSError?
+                evaluadores.removeAll()
+                respEvaluadores = (try! NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers )) as! NSArray
                 
-                respNoticias = (try! NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers )) as! NSArray
-                noticias.removeAll()
-                for noticia in respNoticias{
-                    noticias.append(Noticia(urlImagen: (noticia.valueForKey("Imagen") as? String)!, txtTitulo: (noticia.valueForKey("Titulo") as? String)!, txtResumen: (noticia.valueForKey("Resumen") as? String)!, txtNoticia: (noticia.valueForKey("Completa") as? String)!))
+                for evaluador in respEvaluadores{
+                    
+                    evaluadores.append(Evaluador(rut: (evaluador.valueForKey("id")) as! String, nombre: (evaluador.valueForKey("text")) as! String))
                 }
+                self.tblBusqueda.reloadData()
                 
-                self.tblNoticias.reloadData()
                 
                 NSLog("Trae Datos");
                 // guardamos en la caché
                 //let registros:NSArray = jsonData.valueForKey("") as! NSArray
-                print(respNoticias)
+                print(respEvaluadores)
                 
                 
                 self.dismissViewControllerAnimated(true, completion: nil)

@@ -74,7 +74,7 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
     func cargarDatos(){
         
         //Variable prefs para obtener preferencias guardadas
-        let id:String = "1"
+        let id:String = "1" //runEvaluador, runEvaluado
         
         
         // se mete el user y pass dentro de un string
@@ -128,8 +128,8 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
 
                 prefs.setObject(preguntasJson, forKey: "PREGUNTAS")
                 prefs.synchronize()
-                preguntas =  preguntasJson.valueForKey("preguntas") as!  NSArray
-                respuestas = preguntas.valueForKey("respuestas") as! NSArray
+                preguntas =  preguntasJson.valueForKey("preguntas") as!  NSArray //Agregar identificador
+                respuestas = preguntas.valueForKey("respuestas") as! NSArray // agregar identificador unico
                 
                 
                 
