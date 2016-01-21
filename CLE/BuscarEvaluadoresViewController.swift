@@ -35,6 +35,8 @@ class BuscarEvaluadoresViewController: UIViewController, UITableViewDataSource, 
         
         tblBusqueda.delegate = self
         tblBusqueda.dataSource = self
+        
+        evaluadores.append(Evaluador(rut: "11111111-1", nombre: "Felipe Valenzuela", relacion: "0"))
 
         
         // Do any additional setup after loading the view.
@@ -71,8 +73,8 @@ class BuscarEvaluadoresViewController: UIViewController, UITableViewDataSource, 
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
        
-        let alertController = UIAlertController(title: "Confirmación", message: "¿Desea elegir a \(evaluadores[indexPath.row].nombre)", preferredStyle: .Alert)
-        alertController.addAction(UIAlertAction(title: "Si", style: .Default, handler: {(alert: UIAlertAction) in
+        let alertController = UIAlertController(title: "Confirmación", message: "\(evaluadores[indexPath.row].nombre) es:", preferredStyle: .ActionSheet)
+        alertController.addAction(UIAlertAction(title: "Superior", style: .Default, handler: {(alert: UIAlertAction) in
             //Agregar al susodicho al listado de los seleccionados
         
             //Cargar lista anterior
@@ -83,17 +85,129 @@ class BuscarEvaluadoresViewController: UIViewController, UITableViewDataSource, 
                 
             }
             //Modificar nuevo Array
-            self.seleccionados.append(Evaluador(rut: self.evaluadores[indexPath.row].rut, nombre: self.evaluadores[indexPath.row].nombre))
-            //Guardar en preferencias
-            let guardar = NSKeyedArchiver.archivedDataWithRootObject(self.seleccionados)
-            self.prefs.setObject(guardar, forKey: "seleccionados")
-            
-            //postpopover
-            self.parentViewController?.viewDidAppear(true)
-            
-            self.navigationController?.popViewControllerAnimated(true)
+            var sup:Int = 0
+            for seleccionado in self.seleccionados{
+                if seleccionado.relacion == "1"{
+                    sup = sup + 1
+                }
+            }
+            if sup < 1 {
+                var repetido:Bool = true
+                for eval in self.seleccionados {
+                    if eval.rut == self.evaluadores[indexPath.row].rut {
+                        repetido = false
+                    }
+                }
+                if repetido{
+                    self.seleccionados.append(Evaluador(rut: self.evaluadores[indexPath.row].rut, nombre: self.evaluadores[indexPath.row].nombre, relacion: "1"))
+                    //Guardar en preferencias
+                    let guardar = NSKeyedArchiver.archivedDataWithRootObject(self.seleccionados)
+                    self.prefs.setObject(guardar, forKey: "seleccionados")
+                    //postpopover
+                    self.parentViewController?.viewDidAppear(true)
+                
+                    self.navigationController?.popViewControllerAnimated(true)
+                }else{
+                    let alertController = UIAlertController(title: "Mensaje", message: "Esta persona ya está seleccionada", preferredStyle: .Alert)
+                    alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler: nil))
+                    self.presentViewController(alertController, animated: true, completion: nil)
+                }
+            }else{
+                let alertController = UIAlertController(title: "Mensaje", message: "Ya has ingresado todos los Superiores", preferredStyle: .Alert)
+                alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler: nil))
+                self.presentViewController(alertController, animated: true, completion: nil)
+            }
         }))
-        alertController.addAction(UIAlertAction(title: "No", style: .Default, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Par", style: .Default, handler: {(alert: UIAlertAction) in
+            //Agregar al susodicho al listado de los seleccionados
+            
+            //Cargar lista anterior
+            let encuestadores = self.prefs.objectForKey("seleccionados") as? NSData
+            
+            if let encuestadores = encuestadores {
+                self.seleccionados = (NSKeyedUnarchiver.unarchiveObjectWithData(encuestadores) as? [Evaluador])!
+                
+            }
+            //Modificar nuevo Array
+            var par:Int = 0
+            for seleccionado in self.seleccionados{
+                if seleccionado.relacion == "2"{
+                    par = par + 1
+                }
+            }
+            if par < 5 {
+                var repetido:Bool = true
+                for eval in self.seleccionados {
+                    if eval.rut == self.evaluadores[indexPath.row].rut {
+                        repetido = false
+                    }
+                }
+                if repetido{
+                    self.seleccionados.append(Evaluador(rut: self.evaluadores[indexPath.row].rut, nombre: self.evaluadores[indexPath.row].nombre, relacion: "2"))
+                    //Guardar en preferencias
+                    let guardar = NSKeyedArchiver.archivedDataWithRootObject(self.seleccionados)
+                    self.prefs.setObject(guardar, forKey: "seleccionados")
+                    //postpopover
+                    self.parentViewController?.viewDidAppear(true)
+                
+                    self.navigationController?.popViewControllerAnimated(true)
+                }else{
+                    let alertController = UIAlertController(title: "Mensaje", message: "Esta persona ya está seleccionada", preferredStyle: .Alert)
+                    alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler: nil))
+                    self.presentViewController(alertController, animated: true, completion: nil)
+                }
+            }else{
+            let alertController = UIAlertController(title: "Mensaje", message: "Ya has ingresado todos los Pares", preferredStyle: .Alert)
+            alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler: nil))
+            self.presentViewController(alertController, animated: true, completion: nil)
+            }
+            
+        }))
+        alertController.addAction(UIAlertAction(title: "Subalterno", style: .Default, handler: {(alert: UIAlertAction) in
+            //Agregar al susodicho al listado de los seleccionados
+            
+            //Cargar lista anterior
+            let encuestadores = self.prefs.objectForKey("seleccionados") as? NSData
+            
+            if let encuestadores = encuestadores {
+                self.seleccionados = (NSKeyedUnarchiver.unarchiveObjectWithData(encuestadores) as? [Evaluador])!
+                
+            }
+            //Modificar nuevo Array
+            var sub:Int = 0
+            for seleccionado in self.seleccionados{
+                if seleccionado.relacion == "3"{
+                    sub = sub + 1
+                }
+            }
+            if sub < 5 {
+                var repetido:Bool = true
+                for eval in self.seleccionados {
+                    if eval.rut == self.evaluadores[indexPath.row].rut {
+                        repetido = false
+                    }
+                }
+                if repetido{
+                    self.seleccionados.append(Evaluador(rut: self.evaluadores[indexPath.row].rut, nombre: self.evaluadores[indexPath.row].nombre, relacion: "3"))
+                    //Guardar en preferencias
+                    let guardar = NSKeyedArchiver.archivedDataWithRootObject(self.seleccionados)
+                    self.prefs.setObject(guardar, forKey: "seleccionados")
+                    //postpopover
+                    self.parentViewController?.viewDidAppear(true)
+                
+                    self.navigationController?.popViewControllerAnimated(true)
+                }else{
+                    let alertController = UIAlertController(title: "Mensaje", message: "Esta persona ya está seleccionada", preferredStyle: .Alert)
+                    alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler: nil))
+                    self.presentViewController(alertController, animated: true, completion: nil)
+                }
+            }else{
+                let alertController = UIAlertController(title: "Mensaje", message: "Ya has ingresado todos los Subordinados", preferredStyle: .Alert)
+                alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler: nil))
+                self.presentViewController(alertController, animated: true, completion: nil)
+            }
+        }))
+        alertController.addAction(UIAlertAction(title: "Cancelar", style: .Cancel, handler: nil))
         self.presentViewController((alertController), animated: true, completion: nil)
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -164,11 +278,17 @@ class BuscarEvaluadoresViewController: UIViewController, UITableViewDataSource, 
                 //var error: NSError?
                 evaluadores.removeAll()
                 respEvaluadores = (try! NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers )) as! NSArray
-                
-                for evaluador in respEvaluadores{
+                    for evaluador in respEvaluadores{
                     
-                    evaluadores.append(Evaluador(rut: (evaluador.valueForKey("id")) as! String, nombre: (evaluador.valueForKey("text")) as! String))
+                        evaluadores.append(Evaluador(rut: (evaluador.valueForKey("id")) as! String, nombre:     (evaluador.valueForKey("text")) as! String, relacion: "1"))
+                    }
+                
+                if evaluadores.count < 1 {
+                    let alertController = UIAlertController(title: "¡Ups!", message: "No se encontraron personas con este nombre", preferredStyle: .Alert)
+                    alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler: nil))
+                    presentViewController(alertController, animated: true, completion: nil)
                 }
+                
                 self.tblBusqueda.reloadData()
                 
                 
@@ -178,7 +298,7 @@ class BuscarEvaluadoresViewController: UIViewController, UITableViewDataSource, 
                 print(respEvaluadores)
                 
                 
-                self.dismissViewControllerAnimated(true, completion: nil)
+                //self.dismissViewControllerAnimated(true, completion: nil)
             } else {
                 let alertController = UIAlertController(title: "¡Ups!", message: "Hubo un problema conectando al servidor", preferredStyle: .Alert)
                 alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler: nil))

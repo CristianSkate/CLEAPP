@@ -14,6 +14,7 @@ class MisEncuestasViewController: UIViewController, UITableViewDataSource, UITab
     var response: NSURLResponse?
     let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
     var encuestasPendientes:NSArray! = []
+    var rutSeleccionado:String!
     
     @IBOutlet weak var tblEncuestasPendientes: UITableView!
     
@@ -161,7 +162,8 @@ class MisEncuestasViewController: UIViewController, UITableViewDataSource, UITab
             mycell.btnResponder.enabled = false
         }else{
             mycell.btnResponder.setTitle("Evaluar", forState: .Normal)
-            mycell.btnResponder.addTarget(self, action: "irAEncuesta", forControlEvents: .TouchUpInside)
+            mycell.btnResponder.tag = indexPath.row
+            mycell.btnResponder.addTarget(self, action: "irAEncuesta:", forControlEvents: .TouchUpInside)
             mycell.btnResponder.enabled = true
         }
         
@@ -173,9 +175,17 @@ class MisEncuestasViewController: UIViewController, UITableViewDataSource, UITab
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
-    func irAEncuesta() {
-        
+    func irAEncuesta(sender: UIButton) {
+        rutSeleccionado = encuestasPendientes[sender.tag].valueForKey("runEvaluado") as? String
         // Funcion para mostrar el segue de la encuesta.
         self.performSegueWithIdentifier("empezarEncuesta", sender: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "empezarEncuesta" {
+            let vc = segue.destinationViewController as! MantenedorEncuestaViewController
+            vc.rutEvaluado = self.rutSeleccionado
+            print(rutSeleccionado)
+        }
     }
 }

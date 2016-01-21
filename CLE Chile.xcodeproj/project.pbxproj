@@ -42,6 +42,7 @@
 		50A0E48A1C3225E300B3051B /* MisEvaluadoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A0E4891C3225E300B3051B /* MisEvaluadoresViewController.swift */; };
 		50AF11331C38AEFC009638AD /* BuscarEvaluadoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AF11321C38AEFC009638AD /* BuscarEvaluadoresViewController.swift */; };
 		50AF11351C38BB35009638AD /* Evaluador.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AF11341C38BB35009638AD /* Evaluador.swift */; };
+		50FA628F1C42093600112421 /* DetalleNoticiaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FA628E1C42093600112421 /* DetalleNoticiaViewController.swift */; };
 		6113E87F1BDA6BDF0028E247 /* MisionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6113E87E1BDA6BDF0028E247 /* MisionViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -108,6 +109,7 @@
 		50A0E4891C3225E300B3051B /* MisEvaluadoresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MisEvaluadoresViewController.swift; path = CLE/MisEvaluadoresViewController.swift; sourceTree = SOURCE_ROOT; };
 		50AF11321C38AEFC009638AD /* BuscarEvaluadoresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BuscarEvaluadoresViewController.swift; path = CLE/BuscarEvaluadoresViewController.swift; sourceTree = SOURCE_ROOT; };
 		50AF11341C38BB35009638AD /* Evaluador.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Evaluador.swift; path = CLE/Evaluador.swift; sourceTree = SOURCE_ROOT; };
+		50FA628E1C42093600112421 /* DetalleNoticiaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetalleNoticiaViewController.swift; path = CLE/DetalleNoticiaViewController.swift; sourceTree = SOURCE_ROOT; };
 		6113E87E1BDA6BDF0028E247 /* MisionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MisionViewController.swift; path = CLE/MisionViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -169,6 +171,7 @@
 				404870E51C1794F30053BE68 /* HerramientasViewController.swift */,
 				50A0E4891C3225E300B3051B /* MisEvaluadoresViewController.swift */,
 				50AF11321C38AEFC009638AD /* BuscarEvaluadoresViewController.swift */,
+				50FA628E1C42093600112421 /* DetalleNoticiaViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 				404870E61C1794F30053BE68 /* HerramientasViewController.swift in Sources */,
 				40BECDB11BFD49760056724D /* Seccion.swift in Sources */,
 				4001733A1BC4167500E08A6D /* MMDrawerBarButtonItem.m in Sources */,
+				50FA628F1C42093600112421 /* DetalleNoticiaViewController.swift in Sources */,
 				40ABB6661BBDF0CC0060063F /* AppDelegate.swift in Sources */,
 				40ABB66A1BBDF0CC0060063F /* InicioViewController.swift in Sources */,
 				404870EE1C17D2EE0053BE68 /* MantenedorDoctrinaViewController.swift in Sources */,

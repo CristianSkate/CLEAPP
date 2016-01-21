@@ -20,6 +20,7 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
     var response: NSURLResponse?
     let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
     var preguntasJson:NSDictionary! = nil
+    var rutEvaluado:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +43,8 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
         self.addChildViewController(self.pageViewController)
         self.view.addSubview(self.pageViewController.view)
         self.pageViewController.didMoveToParentViewController(self)
+        
+        print(rutEvaluado)
         // Do any additional setup after loading the view.
     }
 
@@ -63,7 +66,7 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
         //preguntasJson? = (prefs.objectForKey("PREGUNTAS") as? NSDictionary)!
         
         if (prefs.objectForKey("PREGUNTAS") == nil) {
-            cargarDatos()
+            cargarDatos((prefs.valueForKey("RUN") as? String)!)
         }else{
             preguntasJson = prefs.objectForKey("PREGUNTAS") as? NSDictionary
             preguntas =  preguntasJson.valueForKey("preguntas") as!  NSArray
@@ -71,20 +74,20 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
         }
     }
     
-    func cargarDatos(){
+    func cargarDatos(rutEvaluador:String){
         
         //Variable prefs para obtener preferencias guardadas
-        let id:String = "1" //runEvaluador, runEvaluado
+        //let id:String = "1" //runEvaluador, runEvaluado
         
         
         // se mete el user y pass dentro de un string
-        let post:NSString = "id=\(id)"
+        let post:NSString = "run_evaluador=\(rutEvaluador)&run_evaluado=\(rutEvaluado)"//"id=\(id)"
         
         // mandamos al log para ir registrando lo que va pasando
         NSLog("PostData: %@",post);
         
         // llamamos a la URl donde está el json que se conectará con la BD
-        let url:NSURL = NSURL(string: "http://cle.ejercito.cl/ServiciosCle.asmx/encuestaJson?AspxAutoDetectCookieSupport=1")!
+        let url:NSURL = NSURL(string: "http://cle.ejercito.cl/ServiciosCle.asmx/encuestaJson2?AspxAutoDetectCookieSupport=1")!
         
         // codificamos lo que se envía
         let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!

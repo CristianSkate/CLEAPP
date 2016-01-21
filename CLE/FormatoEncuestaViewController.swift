@@ -10,7 +10,7 @@ import UIKit
 
 class FormatoEncuestaViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet weak var txtTituloSeccion: UILabel!
+    //@IBOutlet weak var txtTituloSeccion: UILabel!
     @IBOutlet weak var txtPregunta: UITextView!
     @IBOutlet weak var tblRespuestas: UITableView!
     var respuestas:[String]!
@@ -21,7 +21,7 @@ class FormatoEncuestaViewController: UIViewController, UITableViewDelegate, UITa
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        txtTituloSeccion.text = tituloSeccion
+        //txtTituloSeccion.text = tituloSeccion
         txtPregunta.text = pregunta
         tblRespuestas.dataSource =  self
         tblRespuestas.delegate = self

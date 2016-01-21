@@ -14,6 +14,7 @@ class InicioViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var btnMenu: UIBarButtonItem!
     var image:UIImage!
     var noticias:[Noticia] = []
+    var noticiaSeleccionada:Noticia!
     
     var reponseError: NSError?
     var response: NSURLResponse?
@@ -75,7 +76,18 @@ class InicioViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        noticiaSeleccionada = noticias[indexPath.row]
+        self.performSegueWithIdentifier("detalleNoticia", sender: nil)
+        
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "detalleNoticia"){
+            let vc = segue.destinationViewController as! DetalleNoticiaViewController
+            vc.noticia = noticiaSeleccionada
+        }
     }
     
     func cargarNoticias(){

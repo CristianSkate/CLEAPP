@@ -23,11 +23,11 @@ class MantenedorDoctrinaViewController: UIViewController, UIPageViewControllerDa
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         self.navigationController?.navigationBar.barStyle = .Black
         
-        var image = UIImage(named: "Menu")
+        //var image = UIImage(named: "Menu")
+        //image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        //self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.Plain, target: self, action: "btnMenu:")
         
-        image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.Plain, target: self, action: "btnMenu:")
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Volver", style: .Plain, target: self, action: "volverAtras")
         
         //comienzo uipageviewer
         
@@ -74,6 +74,9 @@ class MantenedorDoctrinaViewController: UIViewController, UIPageViewControllerDa
         // Dispose of any resources that can be recreated.
     }
     
+    func volverAtras(){
+        self.navigationController?.popViewControllerAnimated(true)
+    }
 
     @IBAction func btnMenu(sender: AnyObject) {
         let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate

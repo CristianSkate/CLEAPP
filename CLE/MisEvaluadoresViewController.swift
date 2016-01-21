@@ -11,10 +11,12 @@ import UIKit
 class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPopoverControllerDelegate {
 
     
+    @IBOutlet weak var btnFinal: UIButton!
     @IBOutlet weak var tblSeleccion: UITableView!
     
     var prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
     var seleccion:[Evaluador] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +31,7 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
         
         tblSeleccion.delegate = self
         tblSeleccion.dataSource = self
+        btnFinal.enabled = false
         
         image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         
@@ -37,8 +40,41 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
         
         //Mostrar evaluadores de las preferencias
         cargarDatosPrevios()
+        //Validar cantidades para subir al server
+        validarBotonFinalizar()
+        
+        
         
         // Do any additional setup after loading the view.
+    }
+    
+    func validarBotonFinalizar(){
+        var sup:Int = 0
+        var par:Int = 0
+        var sub:Int = 0
+        for evaluador in seleccion {
+            switch evaluador.relacion {
+            case "1":
+                sup = sup + 1
+                break
+            case "2":
+                par = par + 1
+                break
+            case "3":
+                sub = sub + 1
+                break
+            default:
+                return
+            }
+        }
+        print(sup)
+        print(par)
+        print(sub)
+        
+        if (sup >= 1) && (par >= 3 && par <= 5) && (sub >= 3 && sub <= 5){
+            btnFinal.enabled = true
+        }
+        
     }
     
     func cargarDatosPrevios() {
@@ -54,6 +90,8 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
     override func viewDidAppear(animated: Bool) {
         print("paso")
         cargarDatosPrevios()
+        validarBotonFinalizar()
+        self.btnFinal.reloadInputViews()
         self.tblSeleccion.reloadData()
     }
     
@@ -77,12 +115,36 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
         
         let alertController = UIAlertController(title: "Confirmación", message: "Luego de confirmar la selección no se podrán realizar cambios\n¿Desea confirmar la selección?", preferredStyle: .Alert)
         alertController.addAction(UIAlertAction(title: "Si", style: .Default, handler: {(alert: UIAlertAction) in
+            var sup:Evaluador!
+            var par:[Evaluador] = []
+            var sub:[Evaluador] = []
+            for seleccionado in self.seleccion {
+                switch seleccionado.relacion{
+                    case "1":
+                        sup = seleccionado
+                    break
+                    case "2":
+                        par.append(seleccionado)
+                    break
+                    case "3":
+                        sub.append(seleccionado)
+                    break
+                default:
+                    return
+                }
+                
+            }
             
-            print("Se envía la seleccion a la base de datos")
+            self.guardarSeleccionados(sup, par: par, sub: sub)
+            
             
             }))
         alertController.addAction(UIAlertAction(title: "No", style: .Default, handler: nil))
         self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func guardarSeleccionados(sup:Evaluador, par:[Evaluador], sub:[Evaluador]){
+        print("Se envía la seleccion a la base de datos")
     }
     
     
@@ -102,9 +164,37 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
         return mycell
         
     }
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+//        if editingStyle == UITableViewCellEditingStyle.Delete {
+//            
+//                seleccion.removeAtIndex(indexPath.row)
+//                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+//                
+//
+//            cargarDatosPrevios()
+//            self.tblSeleccion.reloadData()
+//        }
+    }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .Default, title: "Eliminar") {action in
+            //handle delete
+            self.tblSeleccion.beginUpdates()
+            self.seleccion.removeAtIndex(indexPath.row)
+            //actualizar array en preferencias
+            self.tblSeleccion.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            self.tblSeleccion.endUpdates()
+        }
+        
+        return [deleteAction]
     }
 
 }

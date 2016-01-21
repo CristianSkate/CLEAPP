@@ -12,19 +12,23 @@ class Evaluador: NSObject, NSCoding {
     
     var rut:String
     var nombre:String
+    var relacion:String
     
-    init(rut:String, nombre:String){
+    init(rut:String, nombre:String, relacion:String){
         self.rut = rut
         self.nombre = nombre
+        self.relacion = relacion
     }
     
     required init(coder aDecoder: NSCoder) {
         rut = aDecoder.decodeObjectForKey("rut") as! String
         nombre = aDecoder.decodeObjectForKey("nombre") as! String
+        relacion = aDecoder.decodeObjectForKey("relacion") as! String
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(rut, forKey: "rut")
         aCoder.encodeObject(nombre, forKey: "nombre")
+        aCoder.encodeObject(relacion, forKey:  "relacion")
     }
 }

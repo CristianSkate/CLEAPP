@@ -32,6 +32,9 @@ class HerramientasViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func btnComunicacion(sender: AnyObject) {
+        UIApplication.sharedApplication().openURL(NSURL(string: "http://cle.ejercito.cl/cursos/Comunicacion.aspx")!)
+    }
 
     @IBAction func btnMenu(sender: AnyObject) {
         let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
