@@ -25,15 +25,8 @@ class DetalleNoticiaViewController: UIViewController , UITextViewDelegate{
         self.navigationController?.navigationBar.translucent =  false
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         self.navigationController?.navigationBar.barStyle = .Black
-        
-        //var image = UIImage(named: "Menu")
-        //image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        //Boton volver
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Volver", style: .Plain, target: self, action: "volverAtras")
-        
-        //scrollView.contentSize.height = 1000
-
-        
-        
         
         let url = NSURL(string: "http://cle.ejercito.cl/upload/\(noticia.urlImagen)")
         let data = NSData(contentsOfURL : url!)
@@ -44,29 +37,26 @@ class DetalleNoticiaViewController: UIViewController , UITextViewDelegate{
         txtTitulo.textAlignment = .Center
         txtNoticia.textAlignment = .Justified
         
-        //self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width, 1000.0)
         configureScrollView()
         
     }
     
-    
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     func configureScrollView(){
+        
         let contentSize = scrollView.sizeThatFits(scrollView.bounds.size)
         var frame = scrollView.frame
         frame.size.height = contentSize.height
         scrollView.contentSize.height = frame.size.height
         
-//        let aspectRatioViewConstraint = NSLayoutConstraint(item: scrollView, attribute: .Height, relatedBy: .Equal, toItem: scrollView, attribute: .Width, multiplier: scrollView.bounds.height/scrollView.bounds.width, constant: 1)
-//        scrollView.addConstraint(aspectRatioViewConstraint)
-    
     }
     
     func textViewDidChange(textView: UITextView) {
+        
         let contentSize = textView.sizeThatFits(textView.bounds.size)
         var frame = textView.frame
         frame.size.height = contentSize.height

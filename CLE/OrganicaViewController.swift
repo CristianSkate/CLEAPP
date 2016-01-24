@@ -8,8 +8,10 @@
 
 import UIKit
 
-class OrganicaViewController: UIViewController {
+class OrganicaViewController: UIViewController, UIScrollViewDelegate {
 
+    @IBOutlet weak var imgOrganica: UIImageView!
+    @IBOutlet weak var scrollView: UIScrollView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,11 +27,18 @@ class OrganicaViewController: UIViewController {
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.Plain, target: self, action: "btnMenu:")
         // Do any additional setup after loading the view.
+        scrollView.delegate = self
+        scrollView.minimumZoomScale = 1.0
+        scrollView.maximumZoomScale = 10.0
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+        return self.imgOrganica
     }
     
 
