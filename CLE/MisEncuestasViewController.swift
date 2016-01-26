@@ -15,7 +15,7 @@ class MisEncuestasViewController: UIViewController, UITableViewDataSource, UITab
     let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
     var encuestasPendientes:NSArray! = []
     var rutSeleccionado:String!
-    
+    var codRelacionSel:String!
     @IBOutlet weak var tblEncuestasPendientes: UITableView!
     
     override func viewDidLoad() {
@@ -176,7 +176,8 @@ class MisEncuestasViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func irAEncuesta(sender: UIButton) {
-        rutSeleccionado = encuestasPendientes[sender.tag].valueForKey("runEvaluado") as? String
+        //rutSeleccionado = encuestasPendientes[sender.tag].valueForKey("runEvaluado") as? String
+        codRelacionSel = encuestasPendientes[sender.tag].valueForKey("cod_relacion") as? String
         // Funcion para mostrar el segue de la encuesta.
         self.performSegueWithIdentifier("empezarEncuesta", sender: nil)
     }
@@ -184,8 +185,15 @@ class MisEncuestasViewController: UIViewController, UITableViewDataSource, UITab
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "empezarEncuesta" {
             let vc = segue.destinationViewController as! MantenedorEncuestaViewController
-            vc.rutEvaluado = self.rutSeleccionado
-            print(rutSeleccionado)
+            //vc.rutEvaluado = self.rutSeleccionado
+            vc.codRelacionSel = self.codRelacionSel
+            print(codRelacionSel)
         }
+    }
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 44
+    }
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 44
     }
 }

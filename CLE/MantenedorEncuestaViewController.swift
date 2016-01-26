@@ -20,7 +20,8 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
     var response: NSURLResponse?
     let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
     var preguntasJson:NSDictionary! = nil
-    var rutEvaluado:String!
+    //var rutEvaluado:String!
+    var codRelacionSel:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +45,8 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
         self.view.addSubview(self.pageViewController.view)
         self.pageViewController.didMoveToParentViewController(self)
         
-        print(rutEvaluado)
+        //print(rutEvaluado)
+        print(codRelacionSel)
         // Do any additional setup after loading the view.
     }
 
@@ -65,29 +67,31 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
         
         //preguntasJson? = (prefs.objectForKey("PREGUNTAS") as? NSDictionary)!
         
-        if (prefs.objectForKey("PREGUNTAS") == nil) {
-            cargarDatos((prefs.valueForKey("RUN") as? String)!)
+        if (prefs.objectForKey("PREGUNTAS\(codRelacionSel)") == nil) {
+            cargarDatos()
         }else{
-            preguntasJson = prefs.objectForKey("PREGUNTAS") as? NSDictionary
+            preguntasJson = prefs.objectForKey("PREGUNTAS\(codRelacionSel)") as? NSDictionary
             preguntas =  preguntasJson.valueForKey("preguntas") as!  NSArray
             respuestas = preguntas.valueForKey("respuestas") as! NSArray
         }
     }
     
-    func cargarDatos(rutEvaluador:String){
+    func cargarDatos(){
         
         //Variable prefs para obtener preferencias guardadas
         //let id:String = "1" //runEvaluador, runEvaluado
         
         
         // se mete el user y pass dentro de un string
-        let post:NSString = "run_evaluador=\(rutEvaluador)&run_evaluado=\(rutEvaluado)"//"id=\(id)"
+        //let post:NSString = "run_evaluador=\(rutEvaluador)&run_evaluado=\(rutEvaluado)"//"id=\(id)"
+        
+        let post:NSString = "relacion=\(codRelacionSel)"
         
         // mandamos al log para ir registrando lo que va pasando
         NSLog("PostData: %@",post);
         
         // llamamos a la URl donde está el json que se conectará con la BD
-        let url:NSURL = NSURL(string: "http://cle.ejercito.cl/ServiciosCle.asmx/encuestaJson2?AspxAutoDetectCookieSupport=1")!
+        let url:NSURL = NSURL(string: "http://cle.ejercito.cl/ServiciosCle.asmx/ObtenerEncuestaRelacion?AspxAutoDetectCookieSupport=1")!
         
         // codificamos lo que se envía
         let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
@@ -129,7 +133,7 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
                 
                 preguntasJson = (try! NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers )) as! NSDictionary
 
-                prefs.setObject(preguntasJson, forKey: "PREGUNTAS")
+                prefs.setObject(preguntasJson, forKey: "PREGUNTAS\(codRelacionSel)")
                 prefs.synchronize()
                 preguntas =  preguntasJson.valueForKey("preguntas") as!  NSArray //Agregar identificador
                 respuestas = preguntas.valueForKey("respuestas") as! NSArray // agregar identificador unico

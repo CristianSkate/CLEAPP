@@ -12,8 +12,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     @IBOutlet weak var tblMenu: UITableView!
     @IBOutlet weak var imgLogo: UIImageView!
-    let menuOps:[String] = ["Home","Mis Encuestas","Mis Evaluadores","Misión","Organica","Doctrina","Herramientas","Mis Datos","Salir", "Acerca de"]
-    let imgMenu:[UIImage] = [UIImage(named: "ic_home")!,UIImage(named: "ic_file_document")!,UIImage(named: "ic_file_document")!,UIImage(named: "ic_file_document")!,UIImage(named: "ic_file_document")!,UIImage(named: "ic_file_document")!,UIImage(named: "ic_file_document")!,UIImage(named: "ic_file_document")!,UIImage(named: "ic_lock_power_off")!,UIImage(named: "ic_action_about")!]
+    let menuOps:[String] = ["Home","Mis Encuestas","Mis Evaluadores","Misión","Orgánica","Doctrina","Herramientas","Mis Datos","Acerca de", "Salir"]
+    let imgMenu:[UIImage] = [UIImage(named: "ic_home")!,UIImage(named: "ic_supervisor_account_black_48dp")!,UIImage(named: "ic_supervisor_account_black_48dp")!,UIImage(named: "ic_thumb_up_black_48dp")!,UIImage(named: "ic_domain_black_48dp")!,UIImage(named: "ic_school_black_48dp")!,UIImage(named: "ic_settings_black_48dp")!,UIImage(named: "ic_file_document")!,UIImage(named: "ic_action_about")!,UIImage(named: "ic_lock_power_off")!]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -149,40 +149,39 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
             break
         case 8:
-            //Cerrar Sesion
-           // let centerViewController = self.storyboard?.instantiateViewControllerWithIdentifier("InicioViewController") as! InicioViewController
-            //let centerNavController = UINavigationController(rootViewController: centerViewController)
-          //  let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-            //Elimina Variable de sesion
-            let appDomain = NSBundle.mainBundle().bundleIdentifier
-            NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain!)
-            //Hacer el cambio de pantalla
-            
-           //creamos un objeto de tipo NSUserDefaults prefs (caché) que guardará si el usuario está logueado o no
-                    let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-                    // generamos una constante de tipo int leyendo de NSUserDefaults ISLOGGEDIN
-                    let isLoggedIn:Int = prefs.integerForKey("ISLOGGEDIN") as Int
-            
-                    // si no está logeado, envía a la vista de login, sino muestra el nombre de usuario, leido de la caché
-                    if (isLoggedIn != 1) {
-                        
-                        self.performSegueWithIdentifier("irALogin", sender: self)
-                   } else {
-                    //let mensaje = "Bienvenido " + (prefs.valueForKey("NOMBRE") as? String)! + " " + (prefs.valueForKey("APELLIDOPATERNO") as? String)! + " " + (prefs.valueForKey("APELLIDOMATERNO") as? String)! + " estamos trabajando para usted"
-                        //self.txtMensaje.text =  mensaje
-                    }
-            
-//            appDelegate.centerContainer!.centerViewController =  centerNavController
-//            appDelegate.centerContainer!.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
-            
-            
-            break
-        case 9:
             //Acerca de
             
             let alertController = UIAlertController(title: "Acerca de ...", message: "Esta aplicacion fue programada por Cristian Martínez y Elias Millachine\nVersión 1.0", preferredStyle: .Alert)
             alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler: nil))
             self.presentViewController(alertController, animated: true, completion: nil)
+                        break
+        case 9:
+            //Cerrar Sesion
+            // let centerViewController = self.storyboard?.instantiateViewControllerWithIdentifier("InicioViewController") as! InicioViewController
+            //let centerNavController = UINavigationController(rootViewController: centerViewController)
+            //  let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            //Elimina Variable de sesion
+            let appDomain = NSBundle.mainBundle().bundleIdentifier
+            NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain!)
+            //Hacer el cambio de pantalla
+            
+            //creamos un objeto de tipo NSUserDefaults prefs (caché) que guardará si el usuario está logueado o no
+            let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+            // generamos una constante de tipo int leyendo de NSUserDefaults ISLOGGEDIN
+            let isLoggedIn:Int = prefs.integerForKey("ISLOGGEDIN") as Int
+            
+            // si no está logeado, envía a la vista de login, sino muestra el nombre de usuario, leido de la caché
+            if (isLoggedIn != 1) {
+                
+                self.performSegueWithIdentifier("irALogin", sender: self)
+            } else {
+                //let mensaje = "Bienvenido " + (prefs.valueForKey("NOMBRE") as? String)! + " " + (prefs.valueForKey("APELLIDOPATERNO") as? String)! + " " + (prefs.valueForKey("APELLIDOMATERNO") as? String)! + " estamos trabajando para usted"
+                //self.txtMensaje.text =  mensaje
+            }
+            
+            //            appDelegate.centerContainer!.centerViewController =  centerNavController
+            //            appDelegate.centerContainer!.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
+            
             
             break
         default:

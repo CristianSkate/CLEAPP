@@ -37,7 +37,7 @@
 		40ABB6791BBDF14A0060063F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 40ABB6771BBDF14A0060063F /* Info.plist */; };
 		40BECDB01BFD49760056724D /* Encuesta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BECDAE1BFD49760056724D /* Encuesta.swift */; };
 		40BECDB11BFD49760056724D /* Seccion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BECDAF1BFD49760056724D /* Seccion.swift */; };
-		40BECDB31BFE03490056724D /* Pregunta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BECDB21BFE03490056724D /* Pregunta.swift */; };
+		40BECDB31BFE03490056724D /* Respuestas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BECDB21BFE03490056724D /* Respuestas.swift */; };
 		40DFAA511BFD480A0072593E /* MantenedorEncuestaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DFAA501BFD480A0072593E /* MantenedorEncuestaViewController.swift */; };
 		50A0E48A1C3225E300B3051B /* MisEvaluadoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A0E4891C3225E300B3051B /* MisEvaluadoresViewController.swift */; };
 		50AF11331C38AEFC009638AD /* BuscarEvaluadoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AF11321C38AEFC009638AD /* BuscarEvaluadoresViewController.swift */; };
@@ -104,7 +104,7 @@
 		40ABB6771BBDF14A0060063F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = CLEUITests/Info.plist; sourceTree = SOURCE_ROOT; };
 		40BECDAE1BFD49760056724D /* Encuesta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encuesta.swift; sourceTree = SOURCE_ROOT; };
 		40BECDAF1BFD49760056724D /* Seccion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Seccion.swift; sourceTree = SOURCE_ROOT; };
-		40BECDB21BFE03490056724D /* Pregunta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pregunta.swift; sourceTree = SOURCE_ROOT; };
+		40BECDB21BFE03490056724D /* Respuestas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Respuestas.swift; sourceTree = SOURCE_ROOT; };
 		40DFAA501BFD480A0072593E /* MantenedorEncuestaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MantenedorEncuestaViewController.swift; path = CLE/MantenedorEncuestaViewController.swift; sourceTree = SOURCE_ROOT; };
 		50A0E4891C3225E300B3051B /* MisEvaluadoresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MisEvaluadoresViewController.swift; path = CLE/MisEvaluadoresViewController.swift; sourceTree = SOURCE_ROOT; };
 		50AF11321C38AEFC009638AD /* BuscarEvaluadoresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BuscarEvaluadoresViewController.swift; path = CLE/BuscarEvaluadoresViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -185,7 +185,7 @@
 				400173431BC4268100E08A6D /* CeldaMenuTableViewCell.swift */,
 				409590281BE5F3F600695A38 /* CeldaMisEncuestasTableViewCell.swift */,
 				404DB3361BF3CCEA000574CB /* RespuestasTableViewCell.swift */,
-				40BECDB21BFE03490056724D /* Pregunta.swift */,
+				40BECDB21BFE03490056724D /* Respuestas.swift */,
 				4095902A1BE6102600695A38 /* FormatoEncuestaViewController.swift */,
 				404870E31C1102A40053BE68 /* FormatoPaginaViewController.swift */,
 				404870E91C179ABF0053BE68 /* CeldaNoticiasTableViewCell.swift */,
@@ -394,7 +394,7 @@
 				40ABB66B1BBDF0CC0060063F /* LoginViewController.swift in Sources */,
 				404870E81C1797BA0053BE68 /* Noticia.swift in Sources */,
 				50AF11351C38BB35009638AD /* Evaluador.swift in Sources */,
-				40BECDB31BFE03490056724D /* Pregunta.swift in Sources */,
+				40BECDB31BFE03490056724D /* Respuestas.swift in Sources */,
 				4001733D1BC4167500E08A6D /* UIViewController+MMDrawerController.m in Sources */,
 				404870E41C1102A40053BE68 /* FormatoPaginaViewController.swift in Sources */,
 				403ACECC1BDA72E600E12A60 /* MisDatosViewController.swift in Sources */,
