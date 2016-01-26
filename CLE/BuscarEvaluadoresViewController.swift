@@ -36,7 +36,7 @@ class BuscarEvaluadoresViewController: UIViewController, UITableViewDataSource, 
         tblBusqueda.delegate = self
         tblBusqueda.dataSource = self
         
-        evaluadores.append(Evaluador(rut: "11111111-1", nombre: "Felipe Valenzuela", relacion: "0"))
+        //evaluadores.append(Evaluador(rut: "11111111-1", nombre: "Felipe Valenzuela", relacion: "0"))
 
         
         // Do any additional setup after loading the view.
