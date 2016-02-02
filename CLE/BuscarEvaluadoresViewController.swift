@@ -35,6 +35,8 @@ class BuscarEvaluadoresViewController: UIViewController, UITableViewDataSource, 
         
         tblBusqueda.delegate = self
         tblBusqueda.dataSource = self
+        self.tblBusqueda.rowHeight = UITableViewAutomaticDimension;
+        self.tblBusqueda.estimatedRowHeight = 44.0;
         
         //evaluadores.append(Evaluador(rut: "11111111-1", nombre: "Felipe Valenzuela", relacion: "0"))
 

@@ -27,7 +27,6 @@ class MisEncuestasViewController: UIViewController, UITableViewDataSource, UITab
         self.navigationController?.navigationBar.barStyle = .Black
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Acualizar", style: .Plain, target: self, action: "cargarMisEncuestas")
         
-        
         tblEncuestasPendientes.dataSource = self
         tblEncuestasPendientes.delegate = self
         tblEncuestasPendientes.rowHeight = UITableViewAutomaticDimension

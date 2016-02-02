@@ -41,11 +41,13 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.Plain, target: self, action: "btnMenu:")
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "btnBuscar:")
+        self.tblSeleccion.rowHeight = UITableViewAutomaticDimension;
+        self.tblSeleccion.estimatedRowHeight = 44.0;
         
         //Mostrar evaluadores de las preferencias
-        cargarDatosPrevios()
+        //cargarDatosPrevios()
         //Validar cantidades para subir al server
-        validarBotonFinalizar()
+        //validarBotonFinalizar()
         
         
         
@@ -84,11 +86,9 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
     func cargarDatosPrevios() {
         let encuestadores = self.prefs.objectForKey("seleccionados") as? NSData
         
-        if encuestadores != nil{
-            if let encuestadores = encuestadores {
-            self.seleccion = (NSKeyedUnarchiver.unarchiveObjectWithData(encuestadores) as? [Evaluador])!
-            
-            }
+        if let encuestadores = encuestadores {
+        self.seleccion = (NSKeyedUnarchiver.unarchiveObjectWithData(encuestadores) as? [Evaluador])!
+        
         }else{
             buscarEnBD()
         }
@@ -152,7 +152,7 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func guardarSeleccionados(sup:Evaluador, par:[Evaluador], sub:[Evaluador]){
-        print("Se envía la seleccion a la base de datos")
+        print("Se envía la seleccion a la base de datos\n\(sup.rut)\n\(par.count)\n\(sub.count)")
     }
     
     
@@ -198,6 +198,8 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
             self.tblSeleccion.beginUpdates()
             self.seleccion.removeAtIndex(indexPath.row)
             //actualizar array en preferencias
+            let guardar = NSKeyedArchiver.archivedDataWithRootObject(self.seleccion)
+            self.prefs.setObject(guardar, forKey: "seleccionados")
             self.tblSeleccion.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             self.tblSeleccion.endUpdates()
         }
