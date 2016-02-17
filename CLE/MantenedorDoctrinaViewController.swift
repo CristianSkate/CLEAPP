@@ -17,28 +17,13 @@ class MantenedorDoctrinaViewController: UIViewController, UIPageViewControllerDa
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = titulo//"Doctrina"
+        self.title = titulo //"Doctrina"
         self.navigationController?.navigationBar.barTintColor =  UIColor(red: 87.0/255.0, green: 90.0/255.0, blue: 63.0/255.0, alpha: 1.0)
         self.navigationController?.navigationBar.translucent =  false
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         self.navigationController?.navigationBar.barStyle = .Black
         
-        //var image = UIImage(named: "Menu")
-        //image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        //self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.Plain, target: self, action: "btnMenu:")
-        
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Volver", style: .Plain, target: self, action: "volverAtras")
-        
-        //comienzo uipageviewer
-        
-//        for var i:Int = 0; i<45 ; i++ {
-//            if (i < 9){
-//                paginas.append(UIImage(named: ("Diapositiva0\(i+1)"))!)
-//            }else{
-//                paginas.append(UIImage(named: ("Diapositiva\(i+1)"))!)
-//            }
-//        }
-        //paginas = [UIImage(named: "pag1")!,UIImage(named: "pag2")!]
         
         self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
         
@@ -57,17 +42,7 @@ class MantenedorDoctrinaViewController: UIViewController, UIPageViewControllerDa
         self.view.addSubview(self.pageViewController.view)
         self.pageViewController.didMoveToParentViewController(self)
         
-        // Do any additional setup after loading the view.
     }
-    
-//    func cargarFotos() -> [UIImage]{
-//        var pag:[UIImage] = []
-//        
-//        for var i:Int = 0; i<45 ; i++ {
-//            pag.append(UIImage(named: ("Diapositiva\(i+1)"))!)
-//        }
-//        return pag
-//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

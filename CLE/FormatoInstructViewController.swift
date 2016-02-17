@@ -1,19 +1,23 @@
 //
-//  MisDatosViewController.swift
+//  FormatoInstructViewController.swift
 //  CLE Chile
 //
-//  Created by Cristian Martinez Toledo on 23-10-15.
-//  Copyright © 2015 Cristian Martinez Toledo. All rights reserved.
+//  Created by Cristian Martinez Toledo on 15-02-16.
+//  Copyright © 2016 Cristian Martinez Toledo. All rights reserved.
 //
 
 import UIKit
 
-class MisDatosViewController: UIViewController {
+class FormatoInstructViewController: UIViewController {
+    
+    @IBOutlet weak var txtTitulo: UITextView!
+    @IBOutlet weak var txtCuerpo: UITextView!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "Mis Datos"
+        self.title = "Instructivo"
         //self.navigationController?.navigationBar.barTintColor =  UIColor(red: 215.0/255.0, green: 23.0/255.0, blue: 41.0/255.0, alpha: 1.0)
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 87.0/255.0, green: 90.0/255.0, blue: 63.0/255.0, alpha: 1.0)
         self.navigationController?.navigationBar.translucent =  false
@@ -26,8 +30,7 @@ class MisDatosViewController: UIViewController {
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.Plain, target: self, action: "btnMenu:")
         
-  
-        // Do any additional setup after loading the view.
+            
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,12 +38,15 @@ class MisDatosViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    
 
-    @IBAction func btnMenu(sender: AnyObject) {
-        let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.centerContainer!.toggleDrawerSide(.Left, animated: true, completion: nil)
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
     }
+    */
 
 }

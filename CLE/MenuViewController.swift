@@ -12,8 +12,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     @IBOutlet weak var tblMenu: UITableView!
     @IBOutlet weak var imgLogo: UIImageView!
-    let menuOps:[String] = ["Home","Mis Encuestas","Mis Evaluadores","Misión","Orgánica","Doctrina","Herramientas","Mis Datos","Acerca de", "Cerrar Sesión"]
-    let imgMenu:[UIImage] = [UIImage(named: "ic_home")!,UIImage(named: "ic_supervisor_account_black_48dp")!,UIImage(named: "ic_supervisor_account_black_48dp")!,UIImage(named: "ic_thumb_up_black_48dp")!,UIImage(named: "ic_domain_black_48dp")!,UIImage(named: "ic_school_black_48dp")!,UIImage(named: "ic_settings_black_48dp")!,UIImage(named: "ic_file_document")!,UIImage(named: "ic_action_about")!,UIImage(named: "ic_lock_power_off")!]
+    let menuOps:[String] = ["Home","Mis Encuestas","Mis Evaluadores","Misión","Orgánica","Doctrina","Herramientas","Acerca de", "Cerrar Sesión"]
+    let imgMenu:[UIImage] = [UIImage(named: "ic_home")!,UIImage(named: "ic_supervisor_account_black_48dp")!,UIImage(named: "ic_supervisor_account_black_48dp")!,UIImage(named: "ic_thumb_up_black_48dp")!,UIImage(named: "ic_domain_black_48dp")!,UIImage(named: "ic_school_black_48dp")!,UIImage(named: "ic_settings_black_48dp")!,UIImage(named: "ic_action_about")!,UIImage(named: "ic_lock_power_off")!]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -139,33 +139,13 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             appDelegate.centerContainer!.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
             break
         case 7:
-            //Mis Datos
-            let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-            // generamos una constante de tipo int leyendo de NSUserDefaults ISLOGGEDIN
-            let isLoggedIn:Int = prefs.integerForKey("ISLOGGEDIN") as Int
-            
-            // si no está logeado, envía a la vista de login, sino muestra el nombre de usuario, leido de la caché
-            if (isLoggedIn != 1) {
-                
-                self.performSegueWithIdentifier("irALogin", sender: self)
-            } else {
-                let centerViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MisDatosViewController") as! MisDatosViewController
-                let centerNavController = UINavigationController(rootViewController: centerViewController)
-                let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-                
-                appDelegate.centerContainer!.centerViewController =  centerNavController
-                appDelegate.centerContainer!.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
-            }
-            
-            break
-        case 8:
             //Acerca de
             
             let alertController = UIAlertController(title: "Acerca de ...", message: "Esta aplicacion fue programada por Cristian Martínez y Elias Millachine\nVersión 1.0", preferredStyle: .Alert)
             alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler: nil))
             self.presentViewController(alertController, animated: true, completion: nil)
-                        break
-        case 9:
+            break
+        case 8:
             //Cerrar Sesion
             // let centerViewController = self.storyboard?.instantiateViewControllerWithIdentifier("InicioViewController") as! InicioViewController
             //let centerNavController = UINavigationController(rootViewController: centerViewController)
@@ -194,6 +174,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
             
             break
+            
         default:
             let centerViewController = self.storyboard?.instantiateViewControllerWithIdentifier("InicioViewController") as! InicioViewController
             let centerNavController = UINavigationController(rootViewController: centerViewController)
