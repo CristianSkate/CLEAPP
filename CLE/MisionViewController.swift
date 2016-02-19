@@ -27,8 +27,6 @@ class MisionViewController: UIViewController {
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.Plain, target: self, action: "btnMenu:")
         
-        //self.txtTextoMision.scrollRangeToVisible(NSRange(location: 0, length: 1))
-        // Do any additional setup after loading the view.
         configureScrollView()
     }
 

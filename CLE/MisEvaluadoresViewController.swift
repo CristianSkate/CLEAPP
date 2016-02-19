@@ -185,14 +185,6 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
             }
         }
         
-
-        //let periodo:String = "0"
-        
-        //run_evaluado=string&sup=string&par1=string&par2=string&par3=string&par4=string&par5=string&sub1=string&sub2=string&sub3=string&sub4=string&sub5=string
-        
-        // se mete el user y pass dentro de un string
-        //let post:NSString = "run=\(rut)"
-        
         // mandamos al log para ir registrando lo que va pasando
         NSLog("PostData: %@",post);
         
