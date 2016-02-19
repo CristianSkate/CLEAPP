@@ -182,7 +182,7 @@
         <!--Formato Instruct View Controller-->
         <scene sceneID="wDP-oj-bk6">
             <objects>
-                <viewController id="XEz-h2-0Uw" customClass="FormatoInstructViewController" customModule="CLE_Chile" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FormatoInstructViewController" id="XEz-h2-0Uw" customClass="FormatoInstructViewController" customModule="CLE_Chile" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="J5C-Rx-fvL"/>
                         <viewControllerLayoutGuide type="bottom" id="H4N-21-iyo"/>
@@ -191,18 +191,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8lt-uL-MgL">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8lt-uL-MgL">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4Cr-aN-amK">
-                                        <rect key="frame" x="20" y="0.0" width="560" height="169"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut " textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Cr-aN-amK">
+                                        <rect key="frame" x="20" y="0.0" width="560" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tYE-4E-cB7">
-                                        <rect key="frame" x="20" y="177" width="560" height="415"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RIq-NH-XxZ">
+                                        <rect key="frame" x="516" y="534" width="64" height="30"/>
+                                        <state key="normal" title="Siguiente"/>
+                                        <connections>
+                                            <action selector="irSiguiente:" destination="XEz-h2-0Uw" eventType="touchUpInside" id="U7t-nX-hsj"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tYE-4E-cB7">
+                                        <rect key="frame" x="20" y="58" width="560" height="133"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -210,15 +216,17 @@
                                     </textView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="tYE-4E-cB7" firstAttribute="leading" secondItem="8lt-uL-MgL" secondAttribute="leading" constant="20" id="B0X-3S-IFh"/>
-                                    <constraint firstAttribute="trailing" secondItem="tYE-4E-cB7" secondAttribute="trailing" constant="20" id="SpP-6d-GVV"/>
-                                    <constraint firstItem="tYE-4E-cB7" firstAttribute="top" secondItem="4Cr-aN-amK" secondAttribute="bottom" constant="8" id="UGJ-CN-nAT"/>
-                                    <constraint firstAttribute="trailing" secondItem="4Cr-aN-amK" secondAttribute="trailing" constant="20" id="YTs-UK-mdV"/>
-                                    <constraint firstAttribute="bottom" secondItem="tYE-4E-cB7" secondAttribute="bottom" constant="8" id="bH5-ra-ZbX"/>
-                                    <constraint firstItem="4Cr-aN-amK" firstAttribute="leading" secondItem="8lt-uL-MgL" secondAttribute="leading" constant="20" id="cz6-38-U7O"/>
-                                    <constraint firstItem="4Cr-aN-amK" firstAttribute="centerX" secondItem="8lt-uL-MgL" secondAttribute="centerX" id="ekv-Iu-ef1"/>
-                                    <constraint firstItem="tYE-4E-cB7" firstAttribute="centerX" secondItem="8lt-uL-MgL" secondAttribute="centerX" id="n5E-Gg-1CI"/>
-                                    <constraint firstItem="4Cr-aN-amK" firstAttribute="top" secondItem="8lt-uL-MgL" secondAttribute="top" id="r0j-5C-IHR"/>
+                                    <constraint firstItem="tYE-4E-cB7" firstAttribute="leading" secondItem="8lt-uL-MgL" secondAttribute="leading" constant="20" id="25g-nF-SMg"/>
+                                    <constraint firstAttribute="trailing" secondItem="RIq-NH-XxZ" secondAttribute="trailing" constant="20" id="32m-d5-iur"/>
+                                    <constraint firstItem="4Cr-aN-amK" firstAttribute="leading" secondItem="8lt-uL-MgL" secondAttribute="leading" constant="20" id="5cr-hU-IMS"/>
+                                    <constraint firstItem="RIq-NH-XxZ" firstAttribute="top" secondItem="tYE-4E-cB7" secondAttribute="bottom" constant="20" id="7FM-FU-Ghv"/>
+                                    <constraint firstAttribute="trailing" secondItem="4Cr-aN-amK" secondAttribute="trailing" constant="20" id="F7Y-gw-UWA"/>
+                                    <constraint firstItem="4Cr-aN-amK" firstAttribute="top" secondItem="8lt-uL-MgL" secondAttribute="top" id="Ik6-Jc-9Ay"/>
+                                    <constraint firstItem="tYE-4E-cB7" firstAttribute="centerX" secondItem="8lt-uL-MgL" secondAttribute="centerX" id="S4l-f3-DD3"/>
+                                    <constraint firstAttribute="trailing" secondItem="tYE-4E-cB7" secondAttribute="trailing" constant="20" id="afJ-ra-Fyw"/>
+                                    <constraint firstItem="tYE-4E-cB7" firstAttribute="top" secondItem="4Cr-aN-amK" secondAttribute="bottom" constant="8" id="jNF-Li-BD9"/>
+                                    <constraint firstItem="4Cr-aN-amK" firstAttribute="centerX" secondItem="8lt-uL-MgL" secondAttribute="centerX" id="pa4-rv-1zM"/>
+                                    <constraint firstAttribute="bottom" secondItem="RIq-NH-XxZ" secondAttribute="bottom" constant="20" id="qj1-MR-72G"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -232,13 +240,14 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="scrollView" destination="8lt-uL-MgL" id="8jq-u4-1hK"/>
                         <outlet property="txtCuerpo" destination="tYE-4E-cB7" id="lIu-pa-hfp"/>
                         <outlet property="txtTitulo" destination="4Cr-aN-amK" id="lIp-LC-sNb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XGi-SS-FWU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1533" y="2703"/>
+            <point key="canvasLocation" x="1561" y="2518"/>
         </scene>
         <!--Detalle Noticia View Controller-->
         <scene sceneID="Dbk-Y1-Jk8">
@@ -472,7 +481,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="tblEncuestasPendientes" destination="4HH-RN-YgT" id="cf1-Uo-hqU"/>
-                        <segue destination="4bJ-0K-38Z" kind="show" identifier="empezarEncuesta" id="KfJ-Vb-GZq"/>
+                        <segue destination="QMT-Tl-xZA" kind="show" identifier="empezarInstructivo" id="fhj-gf-r7k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7WA-P1-sf7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -683,8 +692,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="2Zs-BZ-vZX" kind="unwind" identifier="unwindToMisEncuestas" unwindAction="unwindToMisEncuestas:" id="Jjw-DT-MXu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ZJ-Ve-fgr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="2Zs-BZ-vZX" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2215" y="1612"/>
         </scene>
@@ -795,10 +808,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="4bJ-0K-38Z" kind="show" identifier="empezarEncuesta" id="wTM-tj-HHu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="98s-EW-guq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1533" y="1989"/>
+            <point key="canvasLocation" x="1505" y="1833"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="wp2-LA-VjW">

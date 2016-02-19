@@ -178,12 +178,12 @@ class MisEncuestasViewController: UIViewController, UITableViewDataSource, UITab
         //rutSeleccionado = encuestasPendientes[sender.tag].valueForKey("runEvaluado") as? String
         codRelacionSel = encuestasPendientes[sender.tag].valueForKey("cod_relacion") as? String
         // Funcion para mostrar el segue de la encuesta.
-        self.performSegueWithIdentifier("empezarEncuesta", sender: nil)
+        self.performSegueWithIdentifier("empezarInstructivo", sender: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "empezarEncuesta" {
-            let vc = segue.destinationViewController as! MantenedorEncuestaViewController
+        if segue.identifier == "empezarInstructivo" {
+            let vc = segue.destinationViewController as! MantenedorInstructivoViewController
             //vc.rutEvaluado = self.rutSeleccionado
             vc.codRelacionSel = self.codRelacionSel
             print(codRelacionSel)
@@ -194,5 +194,9 @@ class MisEncuestasViewController: UIViewController, UITableViewDataSource, UITab
     }
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 44
+    }
+    
+    @IBAction func unwindToMisEncuestas(segue: UIStoryboardSegue) {
+        
     }
 }

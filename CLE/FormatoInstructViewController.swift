@@ -10,15 +10,19 @@ import UIKit
 
 class FormatoInstructViewController: UIViewController {
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var txtTitulo: UITextView!
     @IBOutlet weak var txtCuerpo: UITextView!
+    var titulo:String!
+    var cuerpo:String!
+    var pageIndex:Int!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "Instructivo"
-        //self.navigationController?.navigationBar.barTintColor =  UIColor(red: 215.0/255.0, green: 23.0/255.0, blue: 41.0/255.0, alpha: 1.0)
+        self.title = "Instructivos"
+        
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 87.0/255.0, green: 90.0/255.0, blue: 63.0/255.0, alpha: 1.0)
         self.navigationController?.navigationBar.translucent =  false
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
@@ -28,8 +32,12 @@ class FormatoInstructViewController: UIViewController {
         
         image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.Plain, target: self, action: "btnMenu:")
+        txtTitulo.text = titulo
+        txtCuerpo.text = cuerpo
+        txtTitulo.textAlignment = .Center
+        txtCuerpo.textAlignment = .Justified
         
+        configureScrollView()
             
     }
 
@@ -38,15 +46,34 @@ class FormatoInstructViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func irSiguiente(sender: AnyObject) {
+        // funcion para cargar y mostrar la siguiente parte del instructivo
+        
+            let master : MantenedorInstructivoViewController = self.parentViewController?.parentViewController as! MantenedorInstructivoViewController
+            master.btnSiguiente(self.pageIndex)
+        
     }
-    */
+    
+    func configureScrollView(){
+        
+        let contentSize = scrollView.sizeThatFits(scrollView.bounds.size)
+        var frame = scrollView.frame
+        frame.size.height = contentSize.height
+        scrollView.contentSize.height = frame.size.height
+        
+    }
+    
+    func textViewDidChange(textView: UITextView) {
+        
+        let contentSize = textView.sizeThatFits(textView.bounds.size)
+        var frame = textView.frame
+        frame.size.height = contentSize.height
+        textView.frame = frame
+        
+        let aspectRatioViewConstraint = NSLayoutConstraint(item: textView, attribute: .Height, relatedBy: .Equal, toItem: textView, attribute: .Width, multiplier: textView.bounds.height/textView.bounds.width, constant: 1)
+        textView.addConstraint(aspectRatioViewConstraint)
+    }
+
+    
 
 }
