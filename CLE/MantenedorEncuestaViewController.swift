@@ -181,6 +181,7 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
         
         pageContentViewController.respuestas =  respuestas[index].valueForKey("respuesta") as! [String]
         pageContentViewController.pregunta = preguntas[index].valueForKey("pregunta") as! String
+        pageContentViewController.codPregunta = preguntas[index].valueForKey("id") as! String
         //pageContentViewController.tituloSeccion = secciones[0].titulo
         pageContentViewController.pageIndex = index
         

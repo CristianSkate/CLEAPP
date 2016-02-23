@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ObjectMapper
 
 class InicioViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -37,6 +38,11 @@ class InicioViewController: UIViewController, UITableViewDataSource, UITableView
         tblNoticias.dataSource = self
         tblNoticias.delegate = self
         cargarNoticias()
+        
+        let respuestas:Respuestas = Respuestas(rutEvaluador: "11111111-1", rutEvaluado: "11111111-1", respuestas: [Respuestas.respuestasFin(codPregunta: "ABC_123", codRespuesta: "1"), Respuestas.respuestasFin(codPregunta: "ASD_321", codRespuesta: "2")])
+        let jsonString:String = Mapper().toJSONString(respuestas, prettyPrint: false)!
+            
+        print(jsonString)
         
     }
 
