@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ObjectMapper
 
 class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDataSource{
 
@@ -18,9 +19,11 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
     // Variables para el json
 //    var reponseError: NSError?
 //    var response: NSURLResponse?
-//    let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+    let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
     var preguntasJson:NSDictionary! = nil
-    //var rutEvaluado:String!
+    var respuestasJson:Respuestas = Respuestas(rutEvaluador: "", rutEvaluado: "", respuestas: [])
+    var rutEvaluado:String!
+    var rutEvaluador:String!
 //    var codRelacionSel:String!
     
     override func viewDidLoad() {
@@ -30,9 +33,20 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
         preCargarDatos()
         self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
         
+        rutEvaluador = prefs.valueForKey("RUN") as! String
+        
+        //INICIALIZACION DE RESPUESTAS
+//        respuestasJson = (prefs.valueForKey("resp\(rutEvaluador)\(rutEvaluador)") as? Respuestas)!
+        if  prefs.valueForKey("resp\(rutEvaluador)\(rutEvaluador)") == nil{
+            respuestasJson = Respuestas(rutEvaluador: rutEvaluador, rutEvaluado: rutEvaluado, respuestas: [])
+            prefs.setObject(Mapper().toJSONString(respuestasJson, prettyPrint: false)!, forKey: "resp\(rutEvaluador)\(rutEvaluador)")
+        }else{
+            respuestasJson = Mapper<Respuestas>().map(prefs.valueForKey("resp\(rutEvaluador)\(rutEvaluador)") as! String)!
+        }
+        
         self.pageViewController.dataSource = self
         
-        let initialContenViewController = self.preguntaAtIndex(0) as FormatoEncuestaViewController
+        let initialContenViewController = self.preguntaAtIndex(respuestasJson.respuestas!.count) as FormatoEncuestaViewController
         
         let viewControllers = NSArray(object: initialContenViewController)
         
@@ -238,7 +252,12 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
         return 0
     }
     
-    func btnSiguiente(index: Int){
+    func btnSiguiente(index: Int, codResp:String, respSel:String){
+        
+        //GUARDADO DE ERESPUESTAS
+        respuestasJson.respuestas?.append(Respuestas.respuestasFin(codPregunta: codResp, codRespuesta: respSel))
+        prefs.setObject(Mapper().toJSONString(respuestasJson, prettyPrint: false)!, forKey: "resp\(rutEvaluador)\(rutEvaluador)")
+        
         
         var index = index
         index++
@@ -252,6 +271,8 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
         {
             let alertController =  UIAlertController(title: "Fin de la encuesta", message: "Ha finalizado la encuesta", preferredStyle: .Alert)
             alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler:{(alert: UIAlertAction) in
+                
+                //IR AL FINAL DE LA ENCUESTA
                 self.performSegueWithIdentifier("unwindToMisEncuestas", sender: self)
                 //self.navigationController?.popViewControllerAnimated(true)
             }))

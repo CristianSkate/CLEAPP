@@ -19,6 +19,7 @@ class FormatoEncuestaViewController: UIViewController, UITableViewDelegate, UITa
     var pageIndex:Int!
     var seleccion:Bool = false
     var codPregunta:String!
+    var respSel:String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +42,7 @@ class FormatoEncuestaViewController: UIViewController, UITableViewDelegate, UITa
             
             //Se referencia el vc padre para utilizar la funcion del boton siguiente
             let master : MantenedorEncuestaViewController = self.parentViewController?.parentViewController as! MantenedorEncuestaViewController
-            master.btnSiguiente(self.pageIndex)
+            master.btnSiguiente(self.pageIndex, codResp: codPregunta, respSel: respSel)
         }else{
             let AlertController = UIAlertController(title: "Mensaje", message: "Debes seleccionar una respuesta para avanzar", preferredStyle: .Alert)
             AlertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler: nil))

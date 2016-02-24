@@ -23,6 +23,7 @@ class MantenedorInstructivoViewController: UIViewController, UIPageViewControlle
     var preguntasJson:NSDictionary! = nil
     //Codigo de relacion para buscar la encuesta con los instructivos
     var codRelacionSel:String!
+    var rutEvaluado:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -225,6 +226,7 @@ class MantenedorInstructivoViewController: UIViewController, UIPageViewControlle
         if segue.identifier == "empezarEncuesta" {
             let vc = segue.destinationViewController as! MantenedorEncuestaViewController
             vc.preguntasJson = preguntasJson
+            vc.rutEvaluado = self.rutEvaluado
             //vc.rutEvaluado = self.rutSeleccionado
 //            vc.codRelacionSel = self.codRelacionSel
 //            print(codRelacionSel)
