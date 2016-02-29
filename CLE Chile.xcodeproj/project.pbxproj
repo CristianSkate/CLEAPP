@@ -41,6 +41,7 @@
 		501F81C71C76A51500927892 /* Instructivo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501F81C61C76A51500927892 /* Instructivo.swift */; };
 		501F81CB1C77552B00927892 /* FinEncuestaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501F81CA1C77552B00927892 /* FinEncuestaViewController.swift */; };
 		502463291C84A00400E606EB /* MyImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502463281C84A00400E606EB /* MyImageCache.swift */; };
+		5024632B1C84E0E600E606EB /* MantenedorPregAbiertasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5024632A1C84E0E600E606EB /* MantenedorPregAbiertasViewController.swift */; };
 		505D35521C74128F00C9E0C9 /* MantenedorInstructivoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505D35511C74128F00C9E0C9 /* MantenedorInstructivoViewController.swift */; };
 		50A0E48A1C3225E300B3051B /* MisEvaluadoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A0E4891C3225E300B3051B /* MisEvaluadoresViewController.swift */; };
 		50AE2E761C7C005100886274 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50AE2E751C7C005100886274 /* ObjectMapper.framework */; settings = {ATTRIBUTES = (Required, ); }; };
@@ -115,6 +116,7 @@
 		501F81C61C76A51500927892 /* Instructivo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Instructivo.swift; path = CLE/Instructivo.swift; sourceTree = SOURCE_ROOT; };
 		501F81CA1C77552B00927892 /* FinEncuestaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FinEncuestaViewController.swift; path = CLE/FinEncuestaViewController.swift; sourceTree = SOURCE_ROOT; };
 		502463281C84A00400E606EB /* MyImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyImageCache.swift; path = CLE/MyImageCache.swift; sourceTree = SOURCE_ROOT; };
+		5024632A1C84E0E600E606EB /* MantenedorPregAbiertasViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MantenedorPregAbiertasViewController.swift; path = CLE/MantenedorPregAbiertasViewController.swift; sourceTree = SOURCE_ROOT; };
 		505D35511C74128F00C9E0C9 /* MantenedorInstructivoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MantenedorInstructivoViewController.swift; path = CLE/MantenedorInstructivoViewController.swift; sourceTree = SOURCE_ROOT; };
 		5083403C1C7BFF1500C66CB6 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = "Pods/../build/Debug-iphoneos/ObjectMapper.framework"; sourceTree = "<group>"; };
 		50A0E4891C3225E300B3051B /* MisEvaluadoresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MisEvaluadoresViewController.swift; path = CLE/MisEvaluadoresViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -201,6 +203,7 @@
 				40DFAA501BFD480A0072593E /* MantenedorEncuestaViewController.swift */,
 				505D35511C74128F00C9E0C9 /* MantenedorInstructivoViewController.swift */,
 				404870ED1C17D2EE0053BE68 /* MantenedorDoctrinaViewController.swift */,
+				5024632A1C84E0E600E606EB /* MantenedorPregAbiertasViewController.swift */,
 				501F81CA1C77552B00927892 /* FinEncuestaViewController.swift */,
 			);
 			name = ViewControllers;
@@ -501,6 +504,7 @@
 				50A0E48A1C3225E300B3051B /* MisEvaluadoresViewController.swift in Sources */,
 				408BA7881BC46BCC009B0E96 /* MisEncuestasViewController.swift in Sources */,
 				4001733B1BC4167500E08A6D /* MMDrawerController.m in Sources */,
+				5024632B1C84E0E600E606EB /* MantenedorPregAbiertasViewController.swift in Sources */,
 				404870E61C1794F30053BE68 /* HerramientasViewController.swift in Sources */,
 				40BECDB11BFD49760056724D /* Seccion.swift in Sources */,
 				4001733A1BC4167500E08A6D /* MMDrawerBarButtonItem.m in Sources */,

@@ -273,7 +273,8 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
             alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler:{(alert: UIAlertAction) in
                 
                 //IR AL FINAL DE LA ENCUESTA
-                self.performSegueWithIdentifier("unwindToMisEncuestas", sender: self)
+                self.performSegueWithIdentifier("empezarPreguntasAbiertas", sender: nil)
+                //self.performSegueWithIdentifier("unwindToMisEncuestas", sender: self)
                 //self.navigationController?.popViewControllerAnimated(true)
             }))
             

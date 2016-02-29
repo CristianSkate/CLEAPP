@@ -147,30 +147,27 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             break
         case 8:
             //Cerrar Sesion
-            // let centerViewController = self.storyboard?.instantiateViewControllerWithIdentifier("InicioViewController") as! InicioViewController
-            //let centerNavController = UINavigationController(rootViewController: centerViewController)
-            //  let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             //Elimina Variable de sesion
-            let appDomain = NSBundle.mainBundle().bundleIdentifier
-            NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain!)
-            //Hacer el cambio de pantalla
             
-            //creamos un objeto de tipo NSUserDefaults prefs (caché) que guardará si el usuario está logueado o no
-            let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-            // generamos una constante de tipo int leyendo de NSUserDefaults ISLOGGEDIN
-            let isLoggedIn:Int = prefs.integerForKey("ISLOGGEDIN") as Int
-            
-            // si no está logeado, envía a la vista de login, sino muestra el nombre de usuario, leido de la caché
-            if (isLoggedIn != 1) {
+                let alertController = UIAlertController(title: "Confirmación", message: "Al cerrar sesión eliminará todo el progreso en las encuestas que no haya enviado a nuestra base de datos", preferredStyle: .Alert)
+                alertController.addAction(UIAlertAction(title: "Si", style: .Default, handler: {(alert: UIAlertAction) in
+                    //Accion del boton si
+                    let appDomain = NSBundle.mainBundle().bundleIdentifier
+                    NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain!)
+                    //Hacer el cambio de pantalla
+                    //creamos un objeto de tipo NSUserDefaults prefs (caché) que guardará si el usuario está logueado o no
+                    let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+                    // generamos una constante de tipo int leyendo de NSUserDefaults ISLOGGEDIN
+                    let isLoggedIn:Int = prefs.integerForKey("ISLOGGEDIN") as Int
+                    // si no está logeado, envía a la vista de login, sino muestra el nombre de usuario, leido de la caché
+                    if (isLoggedIn != 1) {
+                        self.performSegueWithIdentifier("irALogin", sender: self)
+                    }
+                }))
+                alertController.addAction(UIAlertAction(title: "No", style: .Default, handler: nil))
+                self.presentViewController((alertController), animated: true, completion: nil)
                 
-                self.performSegueWithIdentifier("irALogin", sender: self)
-            } else {
-                //let mensaje = "Bienvenido " + (prefs.valueForKey("NOMBRE") as? String)! + " " + (prefs.valueForKey("APELLIDOPATERNO") as? String)! + " " + (prefs.valueForKey("APELLIDOMATERNO") as? String)! + " estamos trabajando para usted"
-                //self.txtMensaje.text =  mensaje
-            }
             
-            //            appDelegate.centerContainer!.centerViewController =  centerNavController
-            //            appDelegate.centerContainer!.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
             
             
             break
