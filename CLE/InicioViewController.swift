@@ -16,7 +16,7 @@ class InicioViewController: UIViewController, UITableViewDataSource, UITableView
     var image:UIImage!
     var noticias:[Noticia] = []
     var noticiaSeleccionada:Noticia!
-    
+    let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
     var reponseError: NSError?
     var response: NSURLResponse?
     var respNoticias:NSArray! = []
@@ -29,6 +29,7 @@ class InicioViewController: UIViewController, UITableViewDataSource, UITableView
         self.navigationController?.navigationBar.translucent =  false
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         self.navigationController?.navigationBar.barStyle = .Black
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Acualizar", style: .Plain, target: self, action: "cargarNoticias")
 
         var image = UIImage(named: "Menu")
         
@@ -37,7 +38,8 @@ class InicioViewController: UIViewController, UITableViewDataSource, UITableView
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.Plain, target: self, action: "btnMenu:")
         tblNoticias.dataSource = self
         tblNoticias.delegate = self
-        cargarNoticias()
+        //cargarNoticias()
+        preCargarNoticias()
         
         //PRUEBA DE PARSING DE JSON
 //        let respuestas:Respuestas = Respuestas(rutEvaluador: "11111111-1", rutEvaluado: "11111111-1", respuestas: [Respuestas.respuestasFin(codPregunta: "ABC_123", codRespuesta: "1"), Respuestas.respuestasFin(codPregunta: "ASD_321", codRespuesta: "2")])
@@ -74,9 +76,22 @@ class InicioViewController: UIViewController, UITableViewDataSource, UITableView
         //mycell.imgImagen.image = noticias[indexPath.row].imagen
         mycell.txtResumen.text = noticias[indexPath.row].txtNoticia
         let url = NSURL(string: "http://cle.ejercito.cl/upload/_\(noticias[indexPath.row].urlImagen)")
-        let data = NSData(contentsOfURL : url!)
-        let image = UIImage(data : data!)
-        mycell.imgImagen.image = image
+        //let data = NSData(contentsOfURL : url!)
+        
+        if let image = url?.cachedImage{
+        //UIImage(data : data!)
+            mycell.imgImagen.image = image
+            mycell.imgImagen.alpha = 1
+        }else {
+            mycell.imgImagen.alpha = 0
+            url!.fetchImage { image in
+                // Check the cell hasn't recycled while loading.
+            mycell.imgImagen.image = image
+            UIView.animateWithDuration(0.3) {
+            mycell.imgImagen.alpha = 1
+                }
+            }
+        }
         
         return mycell
         
@@ -94,6 +109,20 @@ class InicioViewController: UIViewController, UITableViewDataSource, UITableView
         if (segue.identifier == "detalleNoticia"){
             let vc = segue.destinationViewController as! DetalleNoticiaViewController
             vc.noticia = noticiaSeleccionada
+        }
+    }
+    
+    func preCargarNoticias(){
+            
+        respNoticias = prefs.arrayForKey("NOTICIAS")
+        
+        if (respNoticias == nil) {
+            cargarNoticias()
+        }else{
+            noticias.removeAll()
+            for noticia in respNoticias{
+                noticias.append(Noticia(urlImagen: (noticia.valueForKey("Imagen") as? String)!, txtTitulo: (noticia.valueForKey("Titulo") as? String)!, txtResumen: (noticia.valueForKey("Resumen") as? String)!, txtNoticia: (noticia.valueForKey("Completa") as? String)!))
+            }
         }
     }
     
@@ -150,6 +179,7 @@ class InicioViewController: UIViewController, UITableViewDataSource, UITableView
                 
                 respNoticias = (try! NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers )) as! NSArray
                 noticias.removeAll()
+                prefs.setValue(respNoticias, forKeyPath: "NOTICIAS")
                 for noticia in respNoticias{
                     noticias.append(Noticia(urlImagen: (noticia.valueForKey("Imagen") as? String)!, txtTitulo: (noticia.valueForKey("Titulo") as? String)!, txtResumen: (noticia.valueForKey("Resumen") as? String)!, txtNoticia: (noticia.valueForKey("Completa") as? String)!))
                 }

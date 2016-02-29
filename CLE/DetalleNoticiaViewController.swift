@@ -29,9 +29,25 @@ class DetalleNoticiaViewController: UIViewController , UITextViewDelegate{
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Volver", style: .Plain, target: self, action: "volverAtras")
         
         let url = NSURL(string: "http://cle.ejercito.cl/upload/\(noticia.urlImagen)")
-        let data = NSData(contentsOfURL : url!)
-        let image = UIImage(data : data!)
-        imgNoticia.image = image
+        //Carga de cache
+        if let image = url?.cachedImage{
+            //UIImage(data : data!)
+            imgNoticia.image = image
+            imgNoticia.alpha = 1
+        }else {
+            imgNoticia.alpha = 0
+            url!.fetchImage { image in
+                // Check the cell hasn't recycled while loading.
+                self.imgNoticia.image = image
+                UIView.animateWithDuration(0.3) {
+                    self.imgNoticia.alpha = 1
+                    
+                }
+            }
+        }
+//        let data = NSData(contentsOfURL : url!)
+//        let image = UIImage(data : data!)
+//        imgNoticia.image = image
         txtTitulo.text = noticia.txtTitulo
         txtNoticia.text = noticia.txtNoticia
         txtTitulo.textAlignment = .Center
