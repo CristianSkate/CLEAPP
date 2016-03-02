@@ -23,6 +23,10 @@ class FormatoEncuestaViewController: UIViewController, UITableViewDelegate, UITa
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 87.0/255.0, green: 90.0/255.0, blue: 63.0/255.0, alpha: 1.0)
+        self.navigationController?.navigationBar.translucent =  false
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+        self.navigationController?.navigationBar.barStyle = .Black
         //txtTituloSeccion.text = tituloSeccion
         txtPregunta.text = pregunta
         tblRespuestas.dataSource =  self

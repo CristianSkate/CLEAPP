@@ -12,8 +12,8 @@ import ObjectMapper
 class MantenedorPregAbiertasViewController: UIViewController, UIPageViewControllerDataSource {
 
     var pageViewController:UIPageViewController!
-    var respuestas:NSArray!
-    var preguntas:NSArray!
+    //var respuestas:NSArray!
+    //var preguntas:NSArray!
     let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
     var preguntasJson:NSDictionary! = nil
     var respuestasJson:Respuestas = Respuestas(rutEvaluador: "", rutEvaluado: "", respuestas: [])
@@ -26,14 +26,14 @@ class MantenedorPregAbiertasViewController: UIViewController, UIPageViewControll
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Salir", style: .Plain, target: self, action: "volverAtras")
         self.title = "Encuesta"
-        preCargarDatos()
+
         self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
         
         rutEvaluador = prefs.valueForKey("RUN") as! String
         
         //INICIALIZACION DE RESPUESTAS
         //        respuestasJson = (prefs.valueForKey("resp\(rutEvaluador)\(rutEvaluador)") as? Respuestas)!
-        if  prefs.valueForKey("resp\(rutEvaluador)\(rutEvaluador)") == nil{
+        if  prefs.valueForKey("resp\(rutEvaluador)\(rutEvaluado)") == nil{
             respuestasJson = Respuestas(rutEvaluador: rutEvaluador, rutEvaluado: rutEvaluado, respuestas: [])
             prefs.setObject(Mapper().toJSONString(respuestasJson, prettyPrint: false)!, forKey: "resp\(rutEvaluador)\(rutEvaluador)")
         }else{
@@ -42,7 +42,7 @@ class MantenedorPregAbiertasViewController: UIViewController, UIPageViewControll
         
         self.pageViewController.dataSource = self
         
-        let initialContenViewController = self.preguntaAtIndex(respuestasJson.respuestas!.count) as FormatoEncuestaViewController
+        let initialContenViewController = self.preguntaAtIndex(0) as FormatoPregAbiertaViewController
         
         let viewControllers = NSArray(object: initialContenViewController)
         
@@ -55,12 +55,6 @@ class MantenedorPregAbiertasViewController: UIViewController, UIPageViewControll
         self.view.addSubview(self.pageViewController.view)
         self.pageViewController.didMoveToParentViewController(self)
         
-        //print(rutEvaluado)
-        //print(codRelacionSel)
-        // Do any additional setup after loading the view.
-
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -79,28 +73,11 @@ class MantenedorPregAbiertasViewController: UIViewController, UIPageViewControll
         
     }
     
-    func preCargarDatos(){
-        
-        //        //preguntasJson? = (prefs.objectForKey("PREGUNTAS") as? NSDictionary)!
-        //
-        //        if (prefs.objectForKey("PREGUNTAS\(codRelacionSel)") == nil) {
-        //            cargarDatos()
-        //        }else{
-        //preguntasJson = prefs.objectForKey("PREGUNTAS\(codRelacionSel)") as? NSDictionary
-        preguntas =  preguntasJson.valueForKey("preguntas") as!  NSArray
-        respuestas = preguntas.valueForKey("respuestas") as! NSArray
-        //        }
-    }
-    
-    func preguntaAtIndex(index: Int) ->FormatoEncuestaViewController
+    func preguntaAtIndex(index: Int) ->FormatoPregAbiertaViewController
     {
         
-        let pageContentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("FormatoEncuestaViewController") as! FormatoEncuestaViewController
+        let pageContentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("FormatoPregAbiertaViewController") as! FormatoPregAbiertaViewController
         
-        pageContentViewController.respuestas =  respuestas[index].valueForKey("respuesta") as! [String]
-        pageContentViewController.pregunta = preguntas[index].valueForKey("pregunta") as! String
-        pageContentViewController.codPregunta = preguntas[index].valueForKey("id") as! String
-        //pageContentViewController.tituloSeccion = secciones[0].titulo
         pageContentViewController.pageIndex = index
         
         
@@ -110,74 +87,52 @@ class MantenedorPregAbiertasViewController: UIViewController, UIPageViewControll
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController?
     {
-        //        let viewController = viewController as! HolderViewController
-        //        var index = viewController.pageIndex as Int
-        //
-        //        if(index == 0 || index == NSNotFound)
-        //        {
-        //            return nil
-        //        }
-        //
-        //        index--
-        
-        return nil//self.pageTutorialAtIndex(index)
+        return nil
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController?
     {
-        //                let viewController = viewController as! FormatoEncuestaViewController
-        //                var index = viewController.pageIndex as Int
-        //
-        //                if((index == NSNotFound))
-        //                {
-        //                    return nil
-        //                }
-        //
-        //                index++
-        //
-        //                if(index == preguntas.count)
-        //                {
-        //                    return nil
-        //                }
-        
-        return nil//self.preguntaAtIndex(index)
+        return nil
     }
-    
-    
     
     func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int
     {
-        return preguntas.count
+        return 1
     }
-    
     
     func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int
     {
         return 0
     }
     
-    func btnSiguiente(index: Int, codResp:String, respSel:String){
+    func btnSiguiente(index: Int, resp1a:String, resp1b:String, resp1c:String, resp2a:String, resp2b:String, resp2c:String, resp3:String){
         
         //GUARDADO DE ERESPUESTAS
-        respuestasJson.respuestas?.append(Respuestas.respuestasFin(codPregunta: codResp, codRespuesta: respSel))
+        respuestasJson.respuestas?.append(Respuestas.respuestasFin(codPregunta: "fortaleza1", codRespuesta: resp1a))
+        respuestasJson.respuestas?.append(Respuestas.respuestasFin(codPregunta: "fortaleza2", codRespuesta: resp1b))
+        respuestasJson.respuestas?.append(Respuestas.respuestasFin(codPregunta: "fortaleza3", codRespuesta: resp1c))
+        respuestasJson.respuestas?.append(Respuestas.respuestasFin(codPregunta: "mejora1", codRespuesta: resp2a))
+        respuestasJson.respuestas?.append(Respuestas.respuestasFin(codPregunta: "mejora2", codRespuesta: resp2b))
+        respuestasJson.respuestas?.append(Respuestas.respuestasFin(codPregunta: "mejora3", codRespuesta: resp2c))
+        respuestasJson.respuestas?.append(Respuestas.respuestasFin(codPregunta: "comentario", codRespuesta: resp3))
+
         prefs.setObject(Mapper().toJSONString(respuestasJson, prettyPrint: false)!, forKey: "resp\(rutEvaluador)\(rutEvaluador)")
         
         
         var index = index
         index++
-        if(!(index == NSNotFound) && !(index == preguntas.count)){
+        if(!(index == NSNotFound) && !(index == 1)){
             
             let viewControllers = NSArray(object: preguntaAtIndex(index))
             self.pageViewController.setViewControllers(viewControllers as [AnyObject] as? [UIViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
             
-            //self.pageTutorialAtIndex(index)
         }else
         {
             let alertController =  UIAlertController(title: "Fin de la encuesta", message: "Ha finalizado la encuesta", preferredStyle: .Alert)
             alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler:{(alert: UIAlertAction) in
                 
                 //IR AL FINAL DE LA ENCUESTA
-                self.performSegueWithIdentifier("empezarPreguntasAbiertas", sender: nil)
+                self.performSegueWithIdentifier("irAFinDeEncuesta", sender: nil)
                 //self.performSegueWithIdentifier("unwindToMisEncuestas", sender: self)
                 //self.navigationController?.popViewControllerAnimated(true)
             }))
@@ -185,10 +140,6 @@ class MantenedorPregAbiertasViewController: UIViewController, UIPageViewControll
             self.presentViewController(alertController, animated: true, completion: nil)
         }
         
-        
-        //        let alertController =  UIAlertController(title: "Mensaje", message: "Hola", preferredStyle: .Alert)
-        //        alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler: nil))
-        //        self.presentViewController(alertController, animated: true, completion: nil)
     }
 
 

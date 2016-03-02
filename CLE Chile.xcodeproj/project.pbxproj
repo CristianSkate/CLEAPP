@@ -40,6 +40,7 @@
 		40DFAA511BFD480A0072593E /* MantenedorEncuestaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DFAA501BFD480A0072593E /* MantenedorEncuestaViewController.swift */; };
 		501F81C71C76A51500927892 /* Instructivo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501F81C61C76A51500927892 /* Instructivo.swift */; };
 		501F81CB1C77552B00927892 /* FinEncuestaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501F81CA1C77552B00927892 /* FinEncuestaViewController.swift */; };
+		502152FC1C8734490086EB9F /* FormatoPregAbiertaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502152FB1C8734490086EB9F /* FormatoPregAbiertaViewController.swift */; };
 		502463291C84A00400E606EB /* MyImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502463281C84A00400E606EB /* MyImageCache.swift */; };
 		5024632B1C84E0E600E606EB /* MantenedorPregAbiertasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5024632A1C84E0E600E606EB /* MantenedorPregAbiertasViewController.swift */; };
 		505D35521C74128F00C9E0C9 /* MantenedorInstructivoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505D35511C74128F00C9E0C9 /* MantenedorInstructivoViewController.swift */; };
@@ -115,6 +116,7 @@
 		40DFAA501BFD480A0072593E /* MantenedorEncuestaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MantenedorEncuestaViewController.swift; path = CLE/MantenedorEncuestaViewController.swift; sourceTree = SOURCE_ROOT; };
 		501F81C61C76A51500927892 /* Instructivo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Instructivo.swift; path = CLE/Instructivo.swift; sourceTree = SOURCE_ROOT; };
 		501F81CA1C77552B00927892 /* FinEncuestaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FinEncuestaViewController.swift; path = CLE/FinEncuestaViewController.swift; sourceTree = SOURCE_ROOT; };
+		502152FB1C8734490086EB9F /* FormatoPregAbiertaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FormatoPregAbiertaViewController.swift; path = CLE/FormatoPregAbiertaViewController.swift; sourceTree = SOURCE_ROOT; };
 		502463281C84A00400E606EB /* MyImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyImageCache.swift; path = CLE/MyImageCache.swift; sourceTree = SOURCE_ROOT; };
 		5024632A1C84E0E600E606EB /* MantenedorPregAbiertasViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MantenedorPregAbiertasViewController.swift; path = CLE/MantenedorPregAbiertasViewController.swift; sourceTree = SOURCE_ROOT; };
 		505D35511C74128F00C9E0C9 /* MantenedorInstructivoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MantenedorInstructivoViewController.swift; path = CLE/MantenedorInstructivoViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -224,6 +226,7 @@
 				404DB3361BF3CCEA000574CB /* RespuestasTableViewCell.swift */,
 				4095902A1BE6102600695A38 /* FormatoEncuestaViewController.swift */,
 				50D720651C722C1A004C83D1 /* FormatoInstructViewController.swift */,
+				502152FB1C8734490086EB9F /* FormatoPregAbiertaViewController.swift */,
 				404870E31C1102A40053BE68 /* FormatoPaginaViewController.swift */,
 				404870E91C179ABF0053BE68 /* CeldaNoticiasTableViewCell.swift */,
 				404870EF1C17D6B00053BE68 /* CeldaDoctrinasTableViewCell.swift */,
@@ -504,6 +507,7 @@
 				50A0E48A1C3225E300B3051B /* MisEvaluadoresViewController.swift in Sources */,
 				408BA7881BC46BCC009B0E96 /* MisEncuestasViewController.swift in Sources */,
 				4001733B1BC4167500E08A6D /* MMDrawerController.m in Sources */,
+				502152FC1C8734490086EB9F /* FormatoPregAbiertaViewController.swift in Sources */,
 				5024632B1C84E0E600E606EB /* MantenedorPregAbiertasViewController.swift in Sources */,
 				404870E61C1794F30053BE68 /* HerramientasViewController.swift in Sources */,
 				40BECDB11BFD49760056724D /* Seccion.swift in Sources */,

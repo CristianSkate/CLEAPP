@@ -28,10 +28,6 @@ class FormatoInstructViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         self.navigationController?.navigationBar.barStyle = .Black
         
-        var image = UIImage(named: "Menu")
-        
-        image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        
         txtTitulo.text = titulo
         txtCuerpo.text = cuerpo
         txtTitulo.textAlignment = .Center

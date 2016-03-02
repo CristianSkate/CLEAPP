@@ -37,7 +37,7 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
         
         //INICIALIZACION DE RESPUESTAS
 //        respuestasJson = (prefs.valueForKey("resp\(rutEvaluador)\(rutEvaluador)") as? Respuestas)!
-        if  prefs.valueForKey("resp\(rutEvaluador)\(rutEvaluador)") == nil{
+        if  prefs.valueForKey("resp\(rutEvaluador)\(rutEvaluado)") == nil{
             respuestasJson = Respuestas(rutEvaluador: rutEvaluador, rutEvaluado: rutEvaluado, respuestas: [])
             prefs.setObject(Mapper().toJSONString(respuestasJson, prettyPrint: false)!, forKey: "resp\(rutEvaluador)\(rutEvaluador)")
         }else{
@@ -272,7 +272,7 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
             let alertController =  UIAlertController(title: "Fin de la encuesta", message: "Ha finalizado la encuesta", preferredStyle: .Alert)
             alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler:{(alert: UIAlertAction) in
                 
-                //IR AL FINAL DE LA ENCUESTA
+                //IR A PREGUNTAS ABIERTAS
                 self.performSegueWithIdentifier("empezarPreguntasAbiertas", sender: nil)
                 //self.performSegueWithIdentifier("unwindToMisEncuestas", sender: self)
                 //self.navigationController?.popViewControllerAnimated(true)
@@ -285,6 +285,17 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
         //        let alertController =  UIAlertController(title: "Mensaje", message: "Hola", preferredStyle: .Alert)
         //        alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler: nil))
         //        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "empezarPreguntasAbiertas" {
+            let vc = segue.destinationViewController as! MantenedorPregAbiertasViewController
+            //vc.preguntasJson = preguntasJson
+            vc.rutEvaluado = self.rutEvaluado
+            //vc.rutEvaluado = self.rutSeleccionado
+            //            vc.codRelacionSel = self.codRelacionSel
+            //            print(codRelacionSel)
+        }
     }
 
 
