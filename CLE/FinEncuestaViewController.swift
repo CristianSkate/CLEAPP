@@ -10,6 +10,8 @@ import UIKit
 
 class FinEncuestaViewController: UIViewController {
 
+    var reponseError: NSError?
+    var response: NSURLResponse?
     @IBOutlet weak var txtFinEncuesta: UITextView!
     var rutEvaluado:String!
     var rutEvaluador:String!
@@ -61,10 +63,95 @@ class FinEncuestaViewController: UIViewController {
     }
     
     func enviarResultados(jsonFinal:String) -> Bool {
+        
+        
         print(jsonFinal)
         
-        return true
+        return guardarSeleccionados(jsonFinal)
     }
     
 
+    func guardarSeleccionados(jsonFinal:String) -> Bool{
+        //Variable prefs para obtener preferencias guardadas
+        var guardo:Bool = false
+        
+        let post:NSString = "sJson=\(jsonFinal)"
+        
+        
+        // mandamos al log para ir registrando lo que va pasando
+        NSLog("PostData: %@",post);
+        
+        // llamamos a la URl donde está el json que se conectará con la BD
+        let url:NSURL = NSURL(string: "http://cle.ejercito.cl/ServiciosCle.asmx/GuardarPreguntas?AspxAutoDetectCookieSupport=1")!
+        
+        // codificamos lo que se envía
+        let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+        
+        // se determina el largo del string
+        let postLength:NSString = String( postData.length )
+        
+        // componemos la URL con una var request y un NSMutableURLRequest y le pasamos como parámetros las vars
+        let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "POST"
+        request.HTTPBody = postData
+        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        
+        
+        // hacemos la conexion
+        var urlData: NSData?
+        do {
+            urlData = try NSURLConnection.sendSynchronousRequest(request, returningResponse:&response)
+        } catch let error as NSError {
+            reponseError = error
+            urlData = nil
+        }
+        
+        // se valida
+        if ( urlData != nil ) {
+            let res = response as! NSHTTPURLResponse!;
+            
+            NSLog("Response code: %ld", res.statusCode);
+            
+            if (res.statusCode >= 200 && res.statusCode < 300)
+            {
+                let responseData:NSString  = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
+                
+                NSLog("Response ==> %@", responseData);
+                
+                
+                if responseData == "true"{
+                    
+                    let alertController = UIAlertController(title: "Mensaje", message: "Se guardaron los datos con éxito", preferredStyle: .Alert)
+                    alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler:{(alert: UIAlertAction) in
+                        
+                        guardo = true
+                    }))
+                    self.presentViewController(alertController, animated: true, completion: nil)
+                    
+                }
+                
+                
+                NSLog("Trae Datos");
+                // guardamos en la caché
+                //let registros:NSArray = jsonData.valueForKey("") as! NSArray
+                
+                self.dismissViewControllerAnimated(true, completion: nil)
+            } else {
+                let alertController = UIAlertController(title: "¡Ups!", message: "Hubo un problema conectando al servidor", preferredStyle: .Alert)
+                alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler: nil))
+                self.presentViewController(alertController, animated: true, completion: nil)
+            }
+            
+        } else {
+            let alertView:UIAlertView = UIAlertView()
+            alertView.title = "Acceso incorrecto"
+            alertView.message = "Conneción Fallida"
+            alertView.delegate = self
+            alertView.addButtonWithTitle("OK")
+            alertView.show()
+        }
+        return guardo
+    }
 }

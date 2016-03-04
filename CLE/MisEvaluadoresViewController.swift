@@ -228,16 +228,18 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
                 
                 NSLog("Response ==> %@", responseData);
                 
-                //var error: NSError?
+
+                if responseData == "true"{
                 
-                misEvaluadores = (try! NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers )) as! NSArray
-                prefs.setObject(nil, forKey: "seleccionados")
-                prefs.synchronize()
-//                
-//                for seleccionado in misEvaluadores{
-//                    seleccion.append(Evaluador(rut: (seleccionado.valueForKey("run_evaluador") as! String), nombre: (seleccionado.valueForKey("nombre_evaluador") as! String), relacion: seleccionado.valueForKey("relacion") as! String))
-//                }
-//                self.tblSeleccion.reloadData()
+                   let alertController = UIAlertController(title: "Mensaje", message: "Se guardaron los datos con éxito", preferredStyle: .Alert)
+                    alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler:{(alert: UIAlertAction) in
+                        self.buscarEnBD()
+                        
+                    }))
+                    self.presentViewController(alertController, animated: true, completion: nil)
+                    
+                }
+                
                 
                 NSLog("Trae Datos");
                 // guardamos en la caché
@@ -379,7 +381,7 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
                 if misEvaluadores.count > 0 {
                     prefs.setObject(misEvaluadores, forKey: "seleccionados")
                     prefs.synchronize()
-                
+                    seleccion.removeAll()
                     for seleccionado in misEvaluadores{
                         seleccion.append(Evaluador(rut: (seleccionado.valueForKey("run_evaluador") as! String), nombre: (seleccionado.valueForKey("nombre_evaluador") as! String), relacion: seleccionado.valueForKey("relacion") as! String))
                     }
