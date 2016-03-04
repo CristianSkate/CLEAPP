@@ -45,13 +45,16 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
         }
         
         self.pageViewController.dataSource = self
+        if respuestasJson.respuestas!.count < 100 {
+            let initialContenViewController = self.preguntaAtIndex(respuestasJson.respuestas!.count) as FormatoEncuestaViewController
         
-        let initialContenViewController = self.preguntaAtIndex(respuestasJson.respuestas!.count) as FormatoEncuestaViewController
+            let viewControllers = NSArray(object: initialContenViewController)
+            self.pageViewController.setViewControllers(viewControllers as [AnyObject] as? [UIViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
+        }else{
+            self.performSegueWithIdentifier("empezarPreguntasAbiertas", sender: nil)
+        }
         
-        let viewControllers = NSArray(object: initialContenViewController)
         
-        
-        self.pageViewController.setViewControllers(viewControllers as [AnyObject] as? [UIViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
         
         self.pageViewController.view.frame = CGRectMake(0, 10, self.view.frame.size.width, self.view.frame.size.height-10)
         

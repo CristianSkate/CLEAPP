@@ -41,14 +41,15 @@ class MantenedorPregAbiertasViewController: UIViewController, UIPageViewControll
         }
         
         self.pageViewController.dataSource = self
+        if respuestasJson.respuestas!.count < 107 {
         
-        let initialContenViewController = self.preguntaAtIndex(0) as FormatoPregAbiertaViewController
-        
-        let viewControllers = NSArray(object: initialContenViewController)
-        
-        
-        self.pageViewController.setViewControllers(viewControllers as [AnyObject] as? [UIViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
-        
+            let initialContenViewController = self.preguntaAtIndex(0) as FormatoPregAbiertaViewController
+            let viewControllers = NSArray(object: initialContenViewController)
+            self.pageViewController.setViewControllers(viewControllers as [AnyObject] as? [UIViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
+
+        }else{
+            self.performSegueWithIdentifier("irAFinDeEncuesta", sender: nil)
+        }
         self.pageViewController.view.frame = CGRectMake(0, 10, self.view.frame.size.width, self.view.frame.size.height-10)
         
         self.addChildViewController(self.pageViewController)

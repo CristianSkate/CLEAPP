@@ -182,7 +182,7 @@ class BuscarEvaluadoresViewController: UIViewController, UITableViewDataSource, 
                     sub = sub + 1
                 }
             }
-            if sub < 5 {
+            if sub < 7 {
                 var repetido:Bool = true
                 for eval in self.seleccionados {
                     if eval.rut == self.evaluadores[indexPath.row].rut {

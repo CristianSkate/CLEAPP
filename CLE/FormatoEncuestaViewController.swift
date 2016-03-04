@@ -66,6 +66,7 @@ class FormatoEncuestaViewController: UIViewController, UITableViewDelegate, UITa
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         seleccion = true
+        respSel = String(indexPath.row + 1)
     }
 
 }

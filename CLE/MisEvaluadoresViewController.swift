@@ -14,6 +14,7 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
     var response: NSURLResponse?
     let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
     var misEvaluadores:NSArray! = []
+    var cargados:Bool = false
     
     
     @IBOutlet weak var btnFinal: UIButton!
@@ -91,6 +92,7 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
         
         }else{
             buscarEnBD()
+            cargados = true
         }
     }
 
@@ -162,24 +164,26 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
         let sub1 = sub[0].rut
         let sub2 = sub[1].rut
         let sub3 = sub[2].rut
+        let sub4 = sub[3].rut
+        let sub5 = sub[4].rut
         var par4 = ""
         var par5 = ""
-        var sub4 = ""
-        var sub5 = ""
+        var sub6 = ""
+        var sub7 = ""
         if par.count > 3 {
             par4 = par[3].rut
             if par.count > 4 {
                 par5 = par[4].rut
             }
         }
-        if sub.count > 3 {
-            sub4 = sub[3].rut
-            if sub.count > 4{
-                sub5 = sub[4].rut
+        if sub.count > 5 {
+            sub6 = sub[5].rut
+            if sub.count > 6{
+                sub7 = sub[6].rut
             }
         }
         
-        let post:NSString = "run_evaluado=\(rut)&sup=\(superior)&par1=\(par1)&par2=\(par2)&par3=\(par3)&par4=\(par4)&par5=\(par5)&sub1=\(sub1)&sub2=\(sub2)&sub3=\(sub3)&sub4=\(sub4)&sub5=\(sub5)"
+        let post:NSString = "run_evaluado=\(rut)&sup=\(superior)&par1=\(par1)&par2=\(par2)&par3=\(par3)&par4=\(par4)&par5=\(par5)&sub1=\(sub1)&sub2=\(sub2)&sub3=\(sub3)&sub4=\(sub4)&sub5=\(sub5)&sub6=\(sub6)&sub7=\(sub7)"
         
         
         // mandamos al log para ir registrando lo que va pasando
@@ -282,7 +286,7 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
         return true
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+   // func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
 //        if editingStyle == UITableViewCellEditingStyle.Delete {
 //            
 //                seleccion.removeAtIndex(indexPath.row)
@@ -292,25 +296,29 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
 //            cargarDatosPrevios()
 //            self.tblSeleccion.reloadData()
 //        }
-    }
+    //}
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-        let deleteAction = UITableViewRowAction(style: .Default, title: "Eliminar") {action in
-            //handle delete
-            self.tblSeleccion.beginUpdates()
-            self.seleccion.removeAtIndex(indexPath.row)
-            //actualizar array en preferencias
-            let guardar = NSKeyedArchiver.archivedDataWithRootObject(self.seleccion)
-            self.prefs.setObject(guardar, forKey: "seleccionados")
-            self.tblSeleccion.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            self.tblSeleccion.endUpdates()
-        }
+        if cargados {
+            return nil
+        }else{
+            let deleteAction = UITableViewRowAction(style: .Default, title: "Eliminar") {action in
+                //handle delete
+                self.tblSeleccion.beginUpdates()
+                self.seleccion.removeAtIndex(indexPath.row)
+                //actualizar array en preferencias
+                let guardar = NSKeyedArchiver.archivedDataWithRootObject(self.seleccion)
+                self.prefs.setObject(guardar, forKey: "seleccionados")
+                self.tblSeleccion.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                self.tblSeleccion.endUpdates()
+            }
         
-        return [deleteAction]
+            return [deleteAction]
+        }
     }
     
     func buscarEnBD() {
