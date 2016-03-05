@@ -141,4 +141,8 @@ class FormatoPregAbiertaViewController: UIViewController {
         txtResp3.layer.borderColor = UIColor.grayColor().CGColor
 
     }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 }

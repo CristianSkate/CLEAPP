@@ -12,6 +12,7 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
 
     var reponseError: NSError?
     var response: NSURLResponse?
+    var resp:NSDictionary!
     let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
     var misEvaluadores:NSArray! = []
     var cargados:Bool = false
@@ -78,7 +79,7 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
         print(par)
         print(sub)
         
-        if (sup >= 1) && (par >= 3 && par <= 5) && (sub >= 3 && sub <= 5){
+        if (sup >= 1) && (par >= 3 && par <= 5) && (sub >= 5 && sub <= 7){
             btnFinal.enabled = true
         }
         
@@ -146,7 +147,16 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
                 
             }
             
-            self.guardarSeleccionados(sup, par: par, sub: sub)
+            if self.guardarSeleccionados(sup, par: par, sub: sub){
+                let alertController = UIAlertController(title: "Mensaje", message: "Se guardaron los datos con éxito", preferredStyle: .Alert)
+                alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler:{(alert: UIAlertAction) in
+                    self.buscarEnBD()
+//                    self.btnFinal.enabled = false
+//                    self.navigationItem.rightBarButtonItem?.enabled = false
+                    
+                }))
+                self.presentViewController(alertController, animated: true, completion: nil)
+            }
             
             
             }))
@@ -154,7 +164,7 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
-    func guardarSeleccionados(sup:Evaluador, par:[Evaluador], sub:[Evaluador]){
+    func guardarSeleccionados(sup:Evaluador, par:[Evaluador], sub:[Evaluador]) -> Bool{
         //Variable prefs para obtener preferencias guardadas
         let rut:String = prefs.valueForKey("RUN") as! String
         let superior = sup.rut
@@ -229,14 +239,13 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
                 NSLog("Response ==> %@", responseData);
                 
 
+//                resp = (try! NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers )) as! NSDictionary
+                
                 if responseData == "true"{
                 
-                   let alertController = UIAlertController(title: "Mensaje", message: "Se guardaron los datos con éxito", preferredStyle: .Alert)
-                    alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler:{(alert: UIAlertAction) in
-                        self.buscarEnBD()
-                        
-                    }))
-                    self.presentViewController(alertController, animated: true, completion: nil)
+                    prefs.setObject(nil, forKey: "seleccionados")
+                    prefs.synchronize()
+                   return true
                     
                 }
                 
@@ -265,6 +274,7 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
             alertView.show()
         }
         print("Se envía la seleccion a la base de datos\n\(sup.rut)\n\(par.count)\n\(sub.count)")
+        return false
     }
     
     
@@ -393,6 +403,7 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
                 //let registros:NSArray = jsonData.valueForKey("") as! NSArray
                 print(misEvaluadores)
                 if misEvaluadores.count > 1 {
+                    self.btnFinal.enabled = false
                     self.navigationItem.rightBarButtonItem?.enabled = false
                 }
                     

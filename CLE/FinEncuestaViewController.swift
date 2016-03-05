@@ -12,6 +12,7 @@ class FinEncuestaViewController: UIViewController {
 
     var reponseError: NSError?
     var response: NSURLResponse?
+    var resp: NSDictionary!
     @IBOutlet weak var txtFinEncuesta: UITextView!
     var rutEvaluado:String!
     var rutEvaluador:String!
@@ -56,7 +57,14 @@ class FinEncuestaViewController: UIViewController {
         
         let jsonFinal:String = prefs.valueForKey("resp\(rutEvaluador)\(rutEvaluador)") as! String
         if enviarResultados(jsonFinal){
-            self.performSegueWithIdentifier("unwindToMisEncuestas", sender: self)
+            let alertController = UIAlertController(title: "Mensaje", message: "Se guardaron los datos con éxito", preferredStyle: .Alert)
+            alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler:{(alert: UIAlertAction) in
+                
+                self.performSegueWithIdentifier("unwindToMisEncuestas", sender: self)
+                
+            }))
+            self.presentViewController(alertController, animated: true, completion: nil)
+            
         }
         
         
@@ -85,7 +93,7 @@ class FinEncuestaViewController: UIViewController {
         let url:NSURL = NSURL(string: "http://cle.ejercito.cl/ServiciosCle.asmx/GuardarPreguntas?AspxAutoDetectCookieSupport=1")!
         
         // codificamos lo que se envía
-        let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+        let postData:NSData = post.dataUsingEncoding(NSUTF8StringEncoding)!
         
         // se determina el largo del string
         let postLength:NSString = String( postData.length )
@@ -120,16 +128,16 @@ class FinEncuestaViewController: UIViewController {
                 
                 NSLog("Response ==> %@", responseData);
                 
+                resp = (try! NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers )) as! NSDictionary
                 
-                if responseData == "true"{
+                if resp.valueForKey("respuesta") as! String == "OK"{
                     
-                    let alertController = UIAlertController(title: "Mensaje", message: "Se guardaron los datos con éxito", preferredStyle: .Alert)
-                    alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler:{(alert: UIAlertAction) in
-                        
-                        guardo = true
-                    }))
+                    guardo = true
+                    return guardo
+                }else{
+                    let alertController = UIAlertController(title: "Mensaje", message: "Ocurrió un error guardando los datos en el servidor", preferredStyle: .Alert)
+                    alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler:nil))
                     self.presentViewController(alertController, animated: true, completion: nil)
-                    
                 }
                 
                 

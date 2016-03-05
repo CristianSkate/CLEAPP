@@ -25,8 +25,8 @@ class Respuestas: NSObject, Mappable {
     }
     
     func mapping(map: Map){
-        rutEvaluado <- map["rut_evaluado"]
-        rutEvaluador <- map["rut_evaluador"]
+        rutEvaluado <- map["run_evaluado"]
+        rutEvaluador <- map["run_evaluador"]
         respuestas <- map["respuestas"]
     }
     
