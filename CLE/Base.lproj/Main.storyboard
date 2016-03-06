@@ -223,8 +223,8 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RIq-NH-XxZ">
-                                        <rect key="frame" x="516" y="534" width="64" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RIq-NH-XxZ">
+                                        <rect key="frame" x="516" y="211" width="64" height="30"/>
                                         <state key="normal" title="Siguiente"/>
                                         <connections>
                                             <action selector="irSiguiente:" destination="XEz-h2-0Uw" eventType="touchUpInside" id="U7t-nX-hsj"/>
