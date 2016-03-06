@@ -848,31 +848,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuHerramientas" translatesAutoresizingMaskIntoConstraints="NO" id="vel-G8-I0y">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5So-mU-7Qn">
-                                <rect key="frame" x="0.0" y="125" width="600" height="30"/>
-                                <state key="normal" title="comunicacion">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnComunicacion:" destination="dbI-SF-hbM" eventType="touchUpInside" id="JD0-Ds-ngb"/>
-                                </connections>
-                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ivT-yr-dKW">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5So-mU-7Qn">
+                                        <rect key="frame" x="0.0" y="111" width="600" height="30"/>
+                                        <state key="normal" title="Comunicacion">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="btnComunicacion:" destination="dbI-SF-hbM" eventType="touchUpInside" id="JD0-Ds-ngb"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuHerramientas" translatesAutoresizingMaskIntoConstraints="NO" id="vel-G8-I0y">
+                                        <rect key="frame" x="0.0" y="8" width="600" height="608"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuAtributos" translatesAutoresizingMaskIntoConstraints="NO" id="PcU-yB-4Jo">
+                                        <rect key="frame" x="8" y="624" width="584" height="267"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="PcU-yB-4Jo" firstAttribute="centerX" secondItem="ivT-yr-dKW" secondAttribute="centerX" id="4c1-8D-YIq"/>
+                                    <constraint firstItem="vel-G8-I0y" firstAttribute="width" secondItem="ivT-yr-dKW" secondAttribute="width" id="7m6-D2-e4H"/>
+                                    <constraint firstItem="PcU-yB-4Jo" firstAttribute="top" secondItem="vel-G8-I0y" secondAttribute="bottom" constant="8" id="8B3-Bu-Yg9"/>
+                                    <constraint firstItem="vel-G8-I0y" firstAttribute="centerX" secondItem="ivT-yr-dKW" secondAttribute="centerX" id="AyH-MV-Ue5"/>
+                                    <constraint firstItem="5So-mU-7Qn" firstAttribute="width" secondItem="ivT-yr-dKW" secondAttribute="width" id="I2X-4S-kH9"/>
+                                    <constraint firstItem="vel-G8-I0y" firstAttribute="top" secondItem="5So-mU-7Qn" secondAttribute="bottom" constant="-133" id="O8e-gZ-krM"/>
+                                    <constraint firstAttribute="bottom" secondItem="PcU-yB-4Jo" secondAttribute="bottom" constant="8" id="T7W-vn-J8j"/>
+                                    <constraint firstItem="vel-G8-I0y" firstAttribute="top" secondItem="ivT-yr-dKW" secondAttribute="top" constant="8" id="VER-Tg-mGr"/>
+                                    <constraint firstAttribute="trailing" secondItem="PcU-yB-4Jo" secondAttribute="trailing" constant="8" id="W6e-ad-QYb"/>
+                                    <constraint firstItem="PcU-yB-4Jo" firstAttribute="leading" secondItem="ivT-yr-dKW" secondAttribute="leading" constant="8" id="X0F-HZ-Lym"/>
+                                    <constraint firstItem="5So-mU-7Qn" firstAttribute="leading" secondItem="vel-G8-I0y" secondAttribute="trailing" constant="-600" id="wDh-8I-dg3"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="vel-G8-I0y" firstAttribute="bottom" secondItem="5D8-Sq-biK" secondAttribute="top" id="6CT-zn-xcx"/>
-                            <constraint firstAttribute="trailing" secondItem="5So-mU-7Qn" secondAttribute="trailing" id="McG-so-J9q"/>
-                            <constraint firstItem="vel-G8-I0y" firstAttribute="trailing" secondItem="5So-mU-7Qn" secondAttribute="trailing" id="NSM-YW-hcF"/>
-                            <constraint firstItem="vel-G8-I0y" firstAttribute="top" secondItem="eGV-ng-V9N" secondAttribute="bottom" id="b1d-6P-slh"/>
-                            <constraint firstItem="vel-G8-I0y" firstAttribute="leading" secondItem="csf-xw-7Lw" secondAttribute="leading" id="bFr-OC-91B"/>
-                            <constraint firstItem="5So-mU-7Qn" firstAttribute="leading" secondItem="vel-G8-I0y" secondAttribute="leading" id="t51-Pk-EQo"/>
-                            <constraint firstItem="5So-mU-7Qn" firstAttribute="top" secondItem="eGV-ng-V9N" secondAttribute="bottom" constant="61" id="zRy-Ez-s9V"/>
+                            <constraint firstItem="ivT-yr-dKW" firstAttribute="centerX" secondItem="csf-xw-7Lw" secondAttribute="centerX" id="GWS-sh-f2v"/>
+                            <constraint firstItem="ivT-yr-dKW" firstAttribute="width" secondItem="csf-xw-7Lw" secondAttribute="width" id="Ocx-hn-4Gq"/>
+                            <constraint firstItem="ivT-yr-dKW" firstAttribute="centerY" secondItem="csf-xw-7Lw" secondAttribute="centerY" id="SjB-JC-Lf4"/>
+                            <constraint firstItem="ivT-yr-dKW" firstAttribute="height" secondItem="csf-xw-7Lw" secondAttribute="height" id="UxV-5N-znM"/>
                         </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="scrollView" destination="ivT-yr-dKW" id="PJv-Wx-Vxe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pot-Uw-HG4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1393,6 +1414,7 @@
     <resources>
         <image name="Logo" width="1024" height="1024"/>
         <image name="fondo-articulos" width="600" height="1024"/>
+        <image name="menuAtributos" width="389" height="267"/>
         <image name="menuHerramientas" width="401" height="608"/>
         <image name="mision" width="800" height="351"/>
         <image name="organigrama-3" width="780" height="633"/>

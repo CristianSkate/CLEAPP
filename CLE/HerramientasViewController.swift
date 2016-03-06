@@ -10,6 +10,8 @@ import UIKit
 
 class HerramientasViewController: UIViewController {
 
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,7 +26,7 @@ class HerramientasViewController: UIViewController {
         image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.Plain, target: self, action: "btnMenu:")
-        // Do any additional setup after loading the view.
+        configureScrollView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,5 +41,14 @@ class HerramientasViewController: UIViewController {
     @IBAction func btnMenu(sender: AnyObject) {
         let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.centerContainer!.toggleDrawerSide(.Left, animated: true, completion: nil)
+    }
+    
+    func configureScrollView(){
+        
+        let contentSize = scrollView.sizeThatFits(scrollView.bounds.size)
+        var frame = scrollView.frame
+        frame.size.height = contentSize.height
+        scrollView.contentSize.height = frame.size.height
+        
     }
 }
