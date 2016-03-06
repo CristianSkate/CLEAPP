@@ -162,4 +162,15 @@ class FinEncuestaViewController: UIViewController {
         }
         return guardo
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "unwindToMisEncuestas" {
+            let vc = segue.destinationViewController as! MisEncuestasViewController
+            //vc.preguntasJson = preguntasJson
+            vc.cargarMisEncuestas()
+            //vc.rutEvaluado = self.rutSeleccionado
+            //            vc.codRelacionSel = self.codRelacionSel
+            //            print(codRelacionSel)
+        }
+    }
 }

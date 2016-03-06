@@ -46,9 +46,9 @@ class MisEncuestasViewController: UIViewController, UITableViewDataSource, UITab
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewDidAppear(animated: Bool) {
-        cargarMisEncuestas()
-    }
+//    override func viewDidAppear(animated: Bool) {
+//        cargarMisEncuestas()
+//    }
     
     @IBAction func btnMenu(sender: AnyObject) {
         let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate

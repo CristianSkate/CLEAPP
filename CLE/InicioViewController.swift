@@ -75,6 +75,7 @@ class InicioViewController: UIViewController, UITableViewDataSource, UITableView
         mycell.txtTitulo.text = noticias[indexPath.row].txtTitulo
         //mycell.imgImagen.image = noticias[indexPath.row].imagen
         mycell.txtResumen.text = noticias[indexPath.row].txtNoticia
+        mycell.txtResumen.textAlignment = .Justified
         let url = NSURL(string: "http://cle.ejercito.cl/upload/_\(noticias[indexPath.row].urlImagen)")
         //let data = NSData(contentsOfURL : url!)
         

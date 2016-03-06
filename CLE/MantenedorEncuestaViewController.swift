@@ -39,9 +39,9 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
 //        respuestasJson = (prefs.valueForKey("resp\(rutEvaluador)\(rutEvaluador)") as? Respuestas)!
         if  prefs.valueForKey("resp\(rutEvaluador)\(rutEvaluado)") == nil{
             respuestasJson = Respuestas(rutEvaluador: rutEvaluador, rutEvaluado: rutEvaluado, respuestas: [])
-            prefs.setObject(Mapper().toJSONString(respuestasJson, prettyPrint: false)!, forKey: "resp\(rutEvaluador)\(rutEvaluador)")
+            prefs.setObject(Mapper().toJSONString(respuestasJson, prettyPrint: false)!, forKey: "resp\(rutEvaluador)\(rutEvaluado)")
         }else{
-            respuestasJson = Mapper<Respuestas>().map(prefs.valueForKey("resp\(rutEvaluador)\(rutEvaluador)") as! String)!
+            respuestasJson = Mapper<Respuestas>().map(prefs.valueForKey("resp\(rutEvaluador)\(rutEvaluado)") as! String)!
         }
         
         self.pageViewController.dataSource = self
@@ -259,7 +259,7 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
         
         //GUARDADO DE ERESPUESTAS
         respuestasJson.respuestas?.append(Respuestas.respuestasFin(codPregunta: codResp, codRespuesta: respSel))
-        prefs.setObject(Mapper().toJSONString(respuestasJson, prettyPrint: false)!, forKey: "resp\(rutEvaluador)\(rutEvaluador)")
+        prefs.setObject(Mapper().toJSONString(respuestasJson, prettyPrint: false)!, forKey: "resp\(rutEvaluador)\(rutEvaluado)")
         
         
         var index = index
@@ -272,16 +272,16 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
             //self.pageTutorialAtIndex(index)
         }else
         {
-            let alertController =  UIAlertController(title: "Fin de la encuesta", message: "Ha finalizado la encuesta", preferredStyle: .Alert)
-            alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler:{(alert: UIAlertAction) in
-                
+//            let alertController =  UIAlertController(title: "Fin de la encuesta", message: "Ha finalizado la encuesta", preferredStyle: .Alert)
+//            alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler:{(alert: UIAlertAction) in
+            
                 //IR A PREGUNTAS ABIERTAS
                 self.performSegueWithIdentifier("empezarPreguntasAbiertas", sender: nil)
                 //self.performSegueWithIdentifier("unwindToMisEncuestas", sender: self)
                 //self.navigationController?.popViewControllerAnimated(true)
-            }))
+//            }))
             
-            self.presentViewController(alertController, animated: true, completion: nil)
+//            self.presentViewController(alertController, animated: true, completion: nil)
         }
         
         
