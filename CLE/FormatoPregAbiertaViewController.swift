@@ -47,7 +47,7 @@ class FormatoPregAbiertaViewController: UIViewController, UITextViewDelegate {
         
         configureResponses()
         configureScrollView()
-        
+           registerForKeyboardNotifications()
         
 
     }
@@ -167,17 +167,91 @@ class FormatoPregAbiertaViewController: UIViewController, UITextViewDelegate {
         return true
     }
     
-    func textViewDidBeginEditing(textView: UITextView) {
-        if (textView == self.txtResp3) {
-            scrollView.setContentOffset(CGPointMake(0, 390), animated: true)
-        }
+    //Solucion al teclado
+    var activeField: UITextView?
+    
+    func registerForKeyboardNotifications()
+    {
+        //Adding notifies on keyboard appearing
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardDidShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillBeHidden:", name: UIKeyboardWillHideNotification, object: nil)
     }
-  
-    func textViewDidEndEditing(textView: UITextView) {
-        if (textView == self.txtResp3) {
-            scrollView.setContentOffset(CGPointMake(0, 190), animated: true)
-        }
+    
+    
+    func deregisterFromKeyboardNotifications()
+    {
+        //Removing notifies on keyboard appearing
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
     }
+    
+    func textViewDidBeginEditing(textView: UITextView)
+    {
+     
+        self.activeField = textView
+    }
+    
+    func textViewDidEndEditing(textView: UITextView)
+    {
+        
+        self.activeField = nil
+    }
+    override func viewDidDisappear(animated: Bool) {
+       deregisterFromKeyboardNotifications()
+    }
+    
+    func keyboardWasShown(notification: NSNotification)
+    {
+        //Need to calculate keyboard exact size due to Apple suggestions
+        self.scrollView.scrollEnabled = true
+        let info : NSDictionary = notification.userInfo!
+        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue().size
+        let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize!.height, 0.0)
+        
+        self.scrollView.contentInset = contentInsets
+        self.scrollView.scrollIndicatorInsets = contentInsets
+        
+        var aRect : CGRect = self.view.frame
+        aRect.size.height -= keyboardSize!.height
+        if let _ = self.activeField
+        {
+            if (!CGRectContainsPoint(aRect, activeField!.frame.origin))
+            {
+                self.scrollView.scrollRectToVisible(activeField!.frame, animated: true)
+            
+            }
+        }
+        
+        
+    }
+    
+    
+    func keyboardWillBeHidden(notification: NSNotification)
+    {
+        //Once keyboard disappears, restore original positions
+//        let info : NSDictionary = notification.userInfo!
+//        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue().size
+//        let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, -keyboardSize!.height, 0.0)
+//        self.scrollView.contentInset = contentInsets
+//        self.scrollView.scrollIndicatorInsets = contentInsets
+//        self.view.endEditing(true)
+//        self.scrollView.scrollEnabled = true
+        
+        self.scrollView.contentInset = UIEdgeInsetsZero
+    }
+    
+    
+//    func textViewDidBeginEditing(textView: UITextView) {
+//        if (textView == self.txtResp3) {
+//            scrollView.setContentOffset(CGPointMake(0, 390), animated: true)
+//        }
+//    }
+//  
+//    func textViewDidEndEditing(textView: UITextView) {
+//        if (textView == self.txtResp3) {
+//            scrollView.setContentOffset(CGPointMake(0, 190), animated: true)
+//        }
+//    }
    
   
 
