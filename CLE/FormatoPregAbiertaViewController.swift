@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FormatoPregAbiertaViewController: UIViewController {
+class FormatoPregAbiertaViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var txtPreg1: UITextView!
     @IBOutlet weak var txtPreg2: UITextView!
@@ -23,6 +23,7 @@ class FormatoPregAbiertaViewController: UIViewController {
     var pageIndex:Int!
     var seleccion:Bool = false
     var codPregunta:String!
+
     
     
     override func viewDidLoad() {
@@ -46,6 +47,8 @@ class FormatoPregAbiertaViewController: UIViewController {
         
         configureResponses()
         configureScrollView()
+        
+        
 
     }
 
@@ -91,13 +94,16 @@ class FormatoPregAbiertaViewController: UIViewController {
     
     func textViewDidChange(textView: UITextView) {
         
-        let contentSize = textView.sizeThatFits(textView.bounds.size)
-        var frame = textView.frame
-        frame.size.height = contentSize.height
-        textView.frame = frame
+        if textView == txtPreg1 || textView == txtPreg2 || textView == txtPreg3{
+            let contentSize = textView.sizeThatFits(textView.bounds.size)
+            var frame = textView.frame
+            frame.size.height = contentSize.height
+            textView.frame = frame
         
-        let aspectRatioViewConstraint = NSLayoutConstraint(item: textView, attribute: .Height, relatedBy: .Equal, toItem: textView, attribute: .Width, multiplier: textView.bounds.height/textView.bounds.width, constant: 1)
-        textView.addConstraint(aspectRatioViewConstraint)
+            let aspectRatioViewConstraint = NSLayoutConstraint(item: textView, attribute: .Height, relatedBy: .Equal, toItem: textView, attribute: .Width, multiplier: textView.bounds.height/textView.bounds.width, constant: 1)
+            textView.addConstraint(aspectRatioViewConstraint)
+            
+        }
     }
     
     func configureResponses(){
@@ -109,40 +115,70 @@ class FormatoPregAbiertaViewController: UIViewController {
         txtResp1a.layer.cornerRadius = 8.0
         txtResp1a.layer.masksToBounds = true
         txtResp1a.layer.borderColor = UIColor.grayColor().CGColor
+        txtResp1a.delegate = self
         
         txtResp1b.layer.borderWidth = 1
         txtResp1b.layer.cornerRadius = 8.0
         txtResp1b.layer.masksToBounds = true
         txtResp1b.layer.borderColor = UIColor.grayColor().CGColor
+        txtResp1b.delegate = self
 
         txtResp1c.layer.borderWidth = 1
         txtResp1c.layer.cornerRadius = 8.0
         txtResp1c.layer.masksToBounds = true
         txtResp1c.layer.borderColor = UIColor.grayColor().CGColor
+        txtResp1c.delegate = self
         
         txtResp2a.layer.borderWidth = 1
         txtResp2a.layer.cornerRadius = 8.0
         txtResp2a.layer.masksToBounds = true
         txtResp2a.layer.borderColor = UIColor.grayColor().CGColor
+        txtResp2a.delegate = self
 
         txtResp2b.layer.borderWidth = 1
         txtResp2b.layer.cornerRadius = 8.0
         txtResp2b.layer.masksToBounds = true
         txtResp2b.layer.borderColor = UIColor.grayColor().CGColor
+        txtResp2b.delegate = self
 
         txtResp2c.layer.borderWidth = 1
         txtResp2c.layer.cornerRadius = 8.0
         txtResp2c.layer.masksToBounds = true
         txtResp2c.layer.borderColor = UIColor.grayColor().CGColor
+        txtResp2c.delegate = self
 
         txtResp3.layer.borderWidth = 1
         txtResp3.layer.cornerRadius = 8.0
         txtResp3.layer.masksToBounds = true
         txtResp3.layer.borderColor = UIColor.grayColor().CGColor
+        txtResp3.delegate = self
 
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
     }
+    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+    
+    func textViewDidBeginEditing(textView: UITextView) {
+        if (textView == self.txtResp3) {
+            scrollView.setContentOffset(CGPointMake(0, 390), animated: true)
+        }
+    }
+  
+    func textViewDidEndEditing(textView: UITextView) {
+        if (textView == self.txtResp3) {
+            scrollView.setContentOffset(CGPointMake(0, 190), animated: true)
+        }
+    }
+   
+  
+
 }
