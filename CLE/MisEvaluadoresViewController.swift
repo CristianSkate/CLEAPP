@@ -46,14 +46,6 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
         self.tblSeleccion.rowHeight = UITableViewAutomaticDimension;
         self.tblSeleccion.estimatedRowHeight = 44.0;
         
-        //Mostrar evaluadores de las preferencias
-        //cargarDatosPrevios()
-        //Validar cantidades para subir al server
-        //validarBotonFinalizar()
-        
-        
-        
-        // Do any additional setup after loading the view.
     }
     
     func validarBotonFinalizar(){
@@ -100,7 +92,7 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
     
     override func viewDidAppear(animated: Bool) {
         print("paso")
-        //buscarEnBD()
+
         cargarDatosPrevios()
         validarBotonFinalizar()
         self.btnFinal.reloadInputViews()
@@ -151,8 +143,6 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
                 let alertController = UIAlertController(title: "Mensaje", message: "Se guardaron los datos con éxito", preferredStyle: .Alert)
                 alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler:{(alert: UIAlertAction) in
                     self.buscarEnBD()
-//                    self.btnFinal.enabled = false
-//                    self.navigationItem.rightBarButtonItem?.enabled = false
                     
                 }))
                 self.presentViewController(alertController, animated: true, completion: nil)
@@ -238,9 +228,6 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
                 
                 NSLog("Response ==> %@", responseData);
                 
-
-//                resp = (try! NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers )) as! NSDictionary
-                
                 if responseData == "true"{
                 
                     prefs.setObject(nil, forKey: "seleccionados")
@@ -251,8 +238,7 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
                 
                 
                 NSLog("Trae Datos");
-                // guardamos en la caché
-                //let registros:NSArray = jsonData.valueForKey("") as! NSArray
+
                 print(misEvaluadores)
                 if misEvaluadores.count > 1 {
                     self.navigationItem.rightBarButtonItem?.enabled = false
@@ -288,8 +274,6 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
         
         mycell.textLabel?.text = ("\(seleccion[indexPath.row].nombre)\n\(seleccion[indexPath.row].rut)")
         mycell.textLabel?.numberOfLines = 0
-        //mycell.imgImagen.image = noticias[indexPath.row].imagen
-        //mycell.txtResumen.text = noticias[indexPath.row].txtNoticia
         
         return mycell
         
@@ -298,17 +282,6 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
         return true
     }
     
-   // func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-//        if editingStyle == UITableViewCellEditingStyle.Delete {
-//            
-//                seleccion.removeAtIndex(indexPath.row)
-//                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-//                
-//
-//            cargarDatosPrevios()
-//            self.tblSeleccion.reloadData()
-//        }
-    //}
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -319,7 +292,7 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
             return nil
         }else{
             let deleteAction = UITableViewRowAction(style: .Default, title: "Eliminar") {action in
-                //handle delete
+                //maneja el delete
                 self.tblSeleccion.beginUpdates()
                 self.seleccion.removeAtIndex(indexPath.row)
                 //actualizar array en preferencias
@@ -337,10 +310,7 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
             
         //Variable prefs para obtener preferencias guardadas
         let rut:String = prefs.valueForKey("RUN") as! String
-        //let periodo:String = "0"
         
-            
-        // se mete el user y pass dentro de un string
         let post:NSString = "run=\(rut)"
         
         // mandamos al log para ir registrando lo que va pasando
@@ -385,8 +355,6 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
                     
                 NSLog("Response ==> %@", responseData);
                     
-                //var error: NSError?
-                    
                 misEvaluadores = (try! NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers )) as! NSArray
                 if misEvaluadores.count > 0 {
                     prefs.setObject(misEvaluadores, forKey: "seleccionados")
@@ -399,8 +367,7 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
                 self.tblSeleccion.reloadData()
                     
                 NSLog("Trae Datos");
-                // guardamos en la caché
-                //let registros:NSArray = jsonData.valueForKey("") as! NSArray
+
                 print(misEvaluadores)
                 if misEvaluadores.count > 1 {
                     self.btnFinal.enabled = false

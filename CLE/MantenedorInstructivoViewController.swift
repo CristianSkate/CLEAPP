@@ -11,8 +11,6 @@ import UIKit
 class MantenedorInstructivoViewController: UIViewController, UIPageViewControllerDataSource {
 
     var pageViewController:UIPageViewController!
-    //var encuesta:Encuesta!
-    //var secciones:[Seccion]!
     var respuestas:NSArray!
     var preguntas:NSArray!
     var instructivos:[Instructivo] = []
@@ -49,16 +47,10 @@ class MantenedorInstructivoViewController: UIViewController, UIPageViewControlle
         self.view.addSubview(self.pageViewController.view)
         self.pageViewController.didMoveToParentViewController(self)
         
-        //print(rutEvaluado)
-        //print(codRelacionSel)
-
-        
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     func volverAtras() {
@@ -72,8 +64,6 @@ class MantenedorInstructivoViewController: UIViewController, UIPageViewControlle
     }
     
     func preCargarDatos(){
-        
-        //preguntasJson? = (prefs.objectForKey("PREGUNTAS") as? NSDictionary)!
         
         if (prefs.objectForKey("PREGUNTAS\(codRelacionSel)") == nil) {
             cargarDatos()
@@ -148,8 +138,6 @@ class MantenedorInstructivoViewController: UIViewController, UIPageViewControlle
                 
                 
                 NSLog("Trae Datos");
-                // guardamos en la caché
-                //let registros:NSArray = jsonData.valueForKey("") as! NSArray
                 print(preguntas)
                 
                 
@@ -179,7 +167,6 @@ class MantenedorInstructivoViewController: UIViewController, UIPageViewControlle
         pageContentViewController.titulo =  instructivos[index].titulo
         pageContentViewController.cuerpo = instructivos[index].cuerpo
         pageContentViewController.pageIndex = index
-        
         
         return pageContentViewController
         
@@ -227,9 +214,7 @@ class MantenedorInstructivoViewController: UIViewController, UIPageViewControlle
             let vc = segue.destinationViewController as! MantenedorEncuestaViewController
             vc.preguntasJson = preguntasJson
             vc.rutEvaluado = self.rutEvaluado
-            //vc.rutEvaluado = self.rutSeleccionado
-//            vc.codRelacionSel = self.codRelacionSel
-//            print(codRelacionSel)
+
         }
     }
 

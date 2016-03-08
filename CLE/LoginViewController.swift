@@ -154,7 +154,7 @@ class LoginViewController: UIViewController, NSXMLParserDelegate {
                 let alertController = UIAlertController(title: "¡Ups!", message: "Conexión fallida", preferredStyle: .Alert)
                 alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler: nil))
                 
-                if let error = responseError {
+                if let _ = responseError {
                     alertController.message = "No se pudo conectar con el servidor, asegurese de que tiene conexión a internet"//(error.localizedDescription)
                 }
                 self.presentViewController(alertController, animated: true, completion: nil)

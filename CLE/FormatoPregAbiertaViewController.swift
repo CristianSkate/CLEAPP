@@ -9,6 +9,7 @@
 import UIKit
 
 class FormatoPregAbiertaViewController: UIViewController, UITextViewDelegate {
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var txtPreg1: UITextView!
     @IBOutlet weak var txtPreg2: UITextView!
@@ -23,8 +24,6 @@ class FormatoPregAbiertaViewController: UIViewController, UITextViewDelegate {
     var pageIndex:Int!
     var seleccion:Bool = false
     var codPregunta:String!
-
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,22 +46,19 @@ class FormatoPregAbiertaViewController: UIViewController, UITextViewDelegate {
         
         configureResponses()
         configureScrollView()
-           registerForKeyboardNotifications()
+        registerForKeyboardNotifications()
         
 
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 
     @IBAction func irSiguiente(sender: AnyObject) {
         // funcion para cargar y mostrar la siguiente pregunta
         if validar(){
-            //Se guarda la respuesta de la pregunta
-            
             
             //Se referencia el vc padre para utilizar la funcion del boton siguiente
             let master : MantenedorPregAbiertasViewController = self.parentViewController?.parentViewController as! MantenedorPregAbiertasViewController
@@ -172,7 +168,7 @@ class FormatoPregAbiertaViewController: UIViewController, UITextViewDelegate {
     
     func registerForKeyboardNotifications()
     {
-        //Adding notifies on keyboard appearing
+        //agregando escuchas de notificaciones del teclado
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardDidShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillBeHidden:", name: UIKeyboardWillHideNotification, object: nil)
     }
@@ -180,8 +176,8 @@ class FormatoPregAbiertaViewController: UIViewController, UITextViewDelegate {
     
     func deregisterFromKeyboardNotifications()
     {
-        //Removing notifies on keyboard appearing
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+        //eliminar escuchas del teclado
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardDidShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
     }
     
@@ -202,7 +198,7 @@ class FormatoPregAbiertaViewController: UIViewController, UITextViewDelegate {
     
     func keyboardWasShown(notification: NSNotification)
     {
-        //Need to calculate keyboard exact size due to Apple suggestions
+        //calcular tamaño del teclado
         self.scrollView.scrollEnabled = true
         let info : NSDictionary = notification.userInfo!
         let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue().size
@@ -221,38 +217,13 @@ class FormatoPregAbiertaViewController: UIViewController, UITextViewDelegate {
             
             }
         }
-        
-        
     }
     
     
     func keyboardWillBeHidden(notification: NSNotification)
     {
-        //Once keyboard disappears, restore original positions
-//        let info : NSDictionary = notification.userInfo!
-//        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue().size
-//        let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, -keyboardSize!.height, 0.0)
-//        self.scrollView.contentInset = contentInsets
-//        self.scrollView.scrollIndicatorInsets = contentInsets
-//        self.view.endEditing(true)
-//        self.scrollView.scrollEnabled = true
-        
         self.scrollView.contentInset = UIEdgeInsetsZero
     }
     
-    
-//    func textViewDidBeginEditing(textView: UITextView) {
-//        if (textView == self.txtResp3) {
-//            scrollView.setContentOffset(CGPointMake(0, 390), animated: true)
-//        }
-//    }
-//  
-//    func textViewDidEndEditing(textView: UITextView) {
-//        if (textView == self.txtResp3) {
-//            scrollView.setContentOffset(CGPointMake(0, 190), animated: true)
-//        }
-//    }
-   
-  
 
 }

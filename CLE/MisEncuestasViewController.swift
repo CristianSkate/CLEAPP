@@ -43,12 +43,9 @@ class MisEncuestasViewController: UIViewController, UITableViewDataSource, UITab
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-//    override func viewDidAppear(animated: Bool) {
-//        cargarMisEncuestas()
-//    }
+
     
     @IBAction func btnMenu(sender: AnyObject) {
         let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -116,16 +113,13 @@ class MisEncuestasViewController: UIViewController, UITableViewDataSource, UITab
                     
                     NSLog("Response ==> %@", responseData);
                     
-                    //var error: NSError?
-                    
                     encuestasPendientes = (try! NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers )) as! NSArray
                     prefs.setObject(encuestasPendientes, forKey: "ENCUESTASPENDIENTES")
                     prefs.synchronize()
                     self.tblEncuestasPendientes.reloadData()
                     
                     NSLog("Trae Datos");
-                    // guardamos en la caché
-                    //let registros:NSArray = jsonData.valueForKey("") as! NSArray
+                    
                     print(encuestasPendientes)
                     
                         

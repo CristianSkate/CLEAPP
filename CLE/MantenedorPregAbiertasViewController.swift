@@ -12,14 +12,11 @@ import ObjectMapper
 class MantenedorPregAbiertasViewController: UIViewController, UIPageViewControllerDataSource {
 
     var pageViewController:UIPageViewController!
-    //var respuestas:NSArray!
-    //var preguntas:NSArray!
     let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
     var preguntasJson:NSDictionary! = nil
     var respuestasJson:Respuestas = Respuestas(rutEvaluador: "", rutEvaluado: "", respuestas: [])
     var rutEvaluado:String!
     var rutEvaluador:String!
-    //    var codRelacionSel:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +29,6 @@ class MantenedorPregAbiertasViewController: UIViewController, UIPageViewControll
         rutEvaluador = prefs.valueForKey("RUN") as! String
         
         //INICIALIZACION DE RESPUESTAS
-        //        respuestasJson = (prefs.valueForKey("resp\(rutEvaluador)\(rutEvaluador)") as? Respuestas)!
         if  prefs.valueForKey("resp\(rutEvaluador)\(rutEvaluado)") == nil{
             respuestasJson = Respuestas(rutEvaluador: rutEvaluador, rutEvaluado: rutEvaluado, respuestas: [])
             prefs.setObject(Mapper().toJSONString(respuestasJson, prettyPrint: false)!, forKey: "resp\(rutEvaluador)\(rutEvaluado)")
@@ -60,14 +56,12 @@ class MantenedorPregAbiertasViewController: UIViewController, UIPageViewControll
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func volverAtras() {
         let alertController = UIAlertController(title: "Confirmación", message: "Al presionar Si guardará los cambios para continuar más tarde, ¿Desea continuar?", preferredStyle: .Alert)
         alertController.addAction(UIAlertAction(title: "Si", style: .Default, handler: {(alert: UIAlertAction) in
             self.performSegueWithIdentifier("unwindToMisEncuestas", sender: self)
-            //          self.navigationController?.popViewControllerAnimated(true)
         }))
         alertController.addAction(UIAlertAction(title: "No", style: .Default, handler: nil))
         self.presentViewController((alertController), animated: true, completion: nil)
@@ -129,16 +123,9 @@ class MantenedorPregAbiertasViewController: UIViewController, UIPageViewControll
             
         }else
         {
-//            let alertController =  UIAlertController(title: "Fin de la encuesta", message: "Ha finalizado la encuesta", preferredStyle: .Alert)
-//            alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler:{(alert: UIAlertAction) in
+            //IR AL FINAL DE LA ENCUESTA
+            self.performSegueWithIdentifier("irAFinDeEncuesta", sender: nil)
             
-                //IR AL FINAL DE LA ENCUESTA
-                self.performSegueWithIdentifier("irAFinDeEncuesta", sender: nil)
-                //self.performSegueWithIdentifier("unwindToMisEncuestas", sender: self)
-                //self.navigationController?.popViewControllerAnimated(true)
-//            }))
-//            
-//            self.presentViewController(alertController, animated: true, completion: nil)
         }
         
     }

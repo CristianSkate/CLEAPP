@@ -39,14 +39,12 @@ class FinEncuestaViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func volverAtras() {
         let alertController = UIAlertController(title: "Confirmación", message: "Al presionar Si guardará los cambios para continuar más tarde, ¿Desea continuar?", preferredStyle: .Alert)
         alertController.addAction(UIAlertAction(title: "Si", style: .Default, handler: {(alert: UIAlertAction) in
             self.performSegueWithIdentifier("unwindToMisEncuestas", sender: self)
-            //          self.navigationController?.popViewControllerAnimated(true)
         }))
         alertController.addAction(UIAlertAction(title: "No", style: .Default, handler: nil))
         self.presentViewController((alertController), animated: true, completion: nil)
@@ -66,23 +64,18 @@ class FinEncuestaViewController: UIViewController {
             self.presentViewController(alertController, animated: true, completion: nil)
             
         }
-        
-        
     }
     
     func enviarResultados(jsonFinal:String) -> Bool {
         
-        
         print(jsonFinal)
-        
         return guardarSeleccionados(jsonFinal)
     }
     
 
     func guardarSeleccionados(jsonFinal:String) -> Bool{
-        //Variable prefs para obtener preferencias guardadas
+
         var guardo:Bool = false
-        
         let post:NSString = "sJson=\(jsonFinal)"
         
         
@@ -140,10 +133,7 @@ class FinEncuestaViewController: UIViewController {
                     self.presentViewController(alertController, animated: true, completion: nil)
                 }
                 
-                
                 NSLog("Trae Datos");
-                // guardamos en la caché
-                //let registros:NSArray = jsonData.valueForKey("") as! NSArray
                 
                 self.dismissViewControllerAnimated(true, completion: nil)
             } else {
@@ -166,11 +156,7 @@ class FinEncuestaViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "unwindToMisEncuestas" {
             let vc = segue.destinationViewController as! MisEncuestasViewController
-            //vc.preguntasJson = preguntasJson
             vc.cargarMisEncuestas()
-            //vc.rutEvaluado = self.rutSeleccionado
-            //            vc.codRelacionSel = self.codRelacionSel
-            //            print(codRelacionSel)
         }
     }
 }

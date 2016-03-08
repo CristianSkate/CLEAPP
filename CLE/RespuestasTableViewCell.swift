@@ -18,7 +18,6 @@ class RespuestasTableViewCell: UITableViewCell {
         super.awakeFromNib()
         imgSelected.image = UIImage(named: "radUnChecked")
 
-        // Initialization code
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

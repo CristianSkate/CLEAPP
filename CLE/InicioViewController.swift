@@ -51,7 +51,6 @@ class InicioViewController: UIViewController, UITableViewDataSource, UITableView
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 
@@ -73,20 +72,16 @@ class InicioViewController: UIViewController, UITableViewDataSource, UITableView
         let mycell:CeldaNoticiasTableViewCell = tableView.dequeueReusableCellWithIdentifier("CeldaNoticias", forIndexPath: indexPath) as! CeldaNoticiasTableViewCell
         
         mycell.txtTitulo.text = noticias[indexPath.row].txtTitulo
-        //mycell.imgImagen.image = noticias[indexPath.row].imagen
         mycell.txtResumen.text = noticias[indexPath.row].txtNoticia
         mycell.txtResumen.textAlignment = .Justified
         let url = NSURL(string: "http://cle.ejercito.cl/upload/_\(noticias[indexPath.row].urlImagen)")
-        //let data = NSData(contentsOfURL : url!)
         
         if let image = url?.cachedImage{
-        //UIImage(data : data!)
             mycell.imgImagen.image = image
             mycell.imgImagen.alpha = 1
         }else {
             mycell.imgImagen.alpha = 0
             url!.fetchImage { image in
-                // Check the cell hasn't recycled while loading.
             mycell.imgImagen.image = image
             UIView.animateWithDuration(0.3) {
             mycell.imgImagen.alpha = 1
@@ -129,9 +124,6 @@ class InicioViewController: UIViewController, UITableViewDataSource, UITableView
     
     func cargarNoticias(){
         
-        //Variable prefs para obtener preferencias guardadas
-        
-        // se mete el user y pass dentro de un string
         let post:NSString = ""
         
         // mandamos al log para ir registrando lo que va pasando
@@ -176,8 +168,6 @@ class InicioViewController: UIViewController, UITableViewDataSource, UITableView
                 
                 NSLog("Response ==> %@", responseData);
                 
-                //var error: NSError?
-                
                 respNoticias = (try! NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers )) as! NSArray
                 noticias.removeAll()
                 prefs.setValue(respNoticias, forKeyPath: "NOTICIAS")
@@ -188,8 +178,7 @@ class InicioViewController: UIViewController, UITableViewDataSource, UITableView
                 self.tblNoticias.reloadData()
                 
                 NSLog("Trae Datos");
-                // guardamos en la caché
-                //let registros:NSArray = jsonData.valueForKey("") as! NSArray
+                
                 print(respNoticias)
                 
                 

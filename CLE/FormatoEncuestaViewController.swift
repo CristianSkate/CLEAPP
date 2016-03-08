@@ -10,7 +10,7 @@ import UIKit
 
 class FormatoEncuestaViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    //@IBOutlet weak var txtTituloSeccion: UILabel!
+
     @IBOutlet weak var txtPregunta: UITextView!
     @IBOutlet weak var tblRespuestas: UITableView!
     var respuestas:[String]!
@@ -27,7 +27,7 @@ class FormatoEncuestaViewController: UIViewController, UITableViewDelegate, UITa
         self.navigationController?.navigationBar.translucent =  false
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         self.navigationController?.navigationBar.barStyle = .Black
-        //txtTituloSeccion.text = tituloSeccion
+
         txtPregunta.text = pregunta
         tblRespuestas.dataSource =  self
         tblRespuestas.delegate = self
@@ -41,8 +41,6 @@ class FormatoEncuestaViewController: UIViewController, UITableViewDelegate, UITa
     @IBAction func irSiguiente(sender: AnyObject) {
         // funcion para cargar y mostrar la siguiente pregunta
         if seleccion{
-            //Se guarda la respuesta de la pregunta
-            
             
             //Se referencia el vc padre para utilizar la funcion del boton siguiente
             let master : MantenedorEncuestaViewController = self.parentViewController?.parentViewController as! MantenedorEncuestaViewController

@@ -28,9 +28,8 @@ class BuscarEvaluadoresViewController: UIViewController, UITableViewDataSource, 
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         self.navigationController?.navigationBar.barStyle = .Black
         
-        //var image = UIImage(named: "Menu")
         searchEvaluadores.delegate = self
-        //image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Volver", style: .Plain, target: self, action: "volverAtras")
         
         tblBusqueda.delegate = self
@@ -38,15 +37,10 @@ class BuscarEvaluadoresViewController: UIViewController, UITableViewDataSource, 
         self.tblBusqueda.rowHeight = UITableViewAutomaticDimension;
         self.tblBusqueda.estimatedRowHeight = 44.0;
         
-        //evaluadores.append(Evaluador(rut: "11111111-1", nombre: "Felipe Valenzuela", relacion: "0"))
-
-        
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func volverAtras() {
@@ -66,8 +60,6 @@ class BuscarEvaluadoresViewController: UIViewController, UITableViewDataSource, 
         
         mycell.textLabel?.text = ("\(evaluadores[indexPath.row].nombre)\n\(evaluadores[indexPath.row].rut)")
         mycell.textLabel?.numberOfLines = 0
-        //mycell.imgImagen.image = noticias[indexPath.row].imagen
-        //mycell.txtResumen.text = noticias[indexPath.row].txtNoticia
         
         return mycell
         
@@ -295,12 +287,9 @@ class BuscarEvaluadoresViewController: UIViewController, UITableViewDataSource, 
                 
                 
                 NSLog("Trae Datos");
-                // guardamos en la caché
-                //let registros:NSArray = jsonData.valueForKey("") as! NSArray
+                
                 print(respEvaluadores)
                 
-                
-                //self.dismissViewControllerAnimated(true, completion: nil)
             } else {
                 let alertController = UIAlertController(title: "¡Ups!", message: "Hubo un problema conectando al servidor", preferredStyle: .Alert)
                 alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler: nil))

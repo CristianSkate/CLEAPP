@@ -31,13 +31,11 @@ class DetalleNoticiaViewController: UIViewController , UITextViewDelegate{
         let url = NSURL(string: "http://cle.ejercito.cl/upload/\(noticia.urlImagen)")
         //Carga de cache
         if let image = url?.cachedImage{
-            //UIImage(data : data!)
             imgNoticia.image = image
             imgNoticia.alpha = 1
         }else {
             imgNoticia.alpha = 0
             url!.fetchImage { image in
-                // Check the cell hasn't recycled while loading.
                 self.imgNoticia.image = image
                 UIView.animateWithDuration(0.3) {
                     self.imgNoticia.alpha = 1
@@ -45,9 +43,7 @@ class DetalleNoticiaViewController: UIViewController , UITextViewDelegate{
                 }
             }
         }
-//        let data = NSData(contentsOfURL : url!)
-//        let image = UIImage(data : data!)
-//        imgNoticia.image = image
+
         txtTitulo.text = noticia.txtTitulo
         txtNoticia.text = noticia.txtNoticia
         txtTitulo.textAlignment = .Center
@@ -59,7 +55,6 @@ class DetalleNoticiaViewController: UIViewController , UITextViewDelegate{
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func configureScrollView(){

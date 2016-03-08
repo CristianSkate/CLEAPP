@@ -34,9 +34,7 @@ class DoctrinaViewController: UIViewController, UITableViewDataSource, UITableVi
         self.tblDoctrinas.delegate = self
         
         cargarDocumentos()
-        //documentos.append(Documento(nombre: "Guía de herramientas para el fortalecimiento del liderazgo", paginas: paginas))
-        
-        // Do any additional setup after loading the view.
+
     }
 
     func cargarDocumentos(){
@@ -67,7 +65,7 @@ class DoctrinaViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
     }
     
 
@@ -93,17 +91,14 @@ class DoctrinaViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //index = indexPath.row
-        //self.performSegueWithIdentifier("mostrarDocumento", sender: nil)
+
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "mostrarDocumento" {
-            // Get reference to the destination view controller
+
             let vc:MantenedorDoctrinaViewController = segue.destinationViewController as! MantenedorDoctrinaViewController;
-            
-            // Pass any objects to the view controller here, like...
             vc.titulo = documentos[tblDoctrinas.indexPathForSelectedRow!.row].nombre
             vc.paginas = documentos[tblDoctrinas.indexPathForSelectedRow!.row].paginas
         }
