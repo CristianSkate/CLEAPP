@@ -30,6 +30,7 @@ class OrganicaViewController: UIViewController, UIScrollViewDelegate {
         scrollView.delegate = self
         scrollView.minimumZoomScale = 1.0
         scrollView.maximumZoomScale = 10.0
+        setupGestureRecognizer()
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,4 +48,18 @@ class OrganicaViewController: UIViewController, UIScrollViewDelegate {
         appDelegate.centerContainer!.toggleDrawerSide(.Left, animated: true, completion: nil)
     }
 
+    func setupGestureRecognizer() {
+        let doubleTap = UITapGestureRecognizer(target: self, action: "handleDoubleTap:")
+        doubleTap.numberOfTapsRequired = 2
+        scrollView.addGestureRecognizer(doubleTap)
+    }
+    
+    func handleDoubleTap(recognizer: UITapGestureRecognizer) {
+        
+        if (scrollView.zoomScale > scrollView.minimumZoomScale) {
+            scrollView.setZoomScale(scrollView.minimumZoomScale, animated: true)
+        } else {
+            scrollView.setZoomScale(scrollView.maximumZoomScale/3, animated: true)
+        }
+    }
 }

@@ -458,10 +458,6 @@
                                     <constraint firstAttribute="width" constant="128" id="EWO-9z-g4e"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oi8-dS-dfA">
-                                <rect key="frame" x="224" y="350" width="152" height="30"/>
-                                <state key="normal" title="Recuperar contraseña"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -471,8 +467,6 @@
                             <constraint firstItem="b0l-aL-DK6" firstAttribute="centerX" secondItem="u8h-uo-UAa" secondAttribute="centerX" id="C4n-ZY-abA"/>
                             <constraint firstItem="QCR-lu-1D6" firstAttribute="centerX" secondItem="u8h-uo-UAa" secondAttribute="centerX" id="GXc-PY-v09"/>
                             <constraint firstItem="5fa-b8-OeW" firstAttribute="leading" secondItem="Ai9-wD-1kK" secondAttribute="leading" constant="56" id="GsG-LC-SU7"/>
-                            <constraint firstItem="Oi8-dS-dfA" firstAttribute="top" secondItem="b0l-aL-DK6" secondAttribute="bottom" constant="8" symbolic="YES" id="QOs-4y-dTz"/>
-                            <constraint firstItem="Oi8-dS-dfA" firstAttribute="centerX" secondItem="b0l-aL-DK6" secondAttribute="centerX" id="X9N-eD-LJ5"/>
                             <constraint firstItem="Ai9-wD-1kK" firstAttribute="leading" secondItem="9lM-oM-yKI" secondAttribute="leading" id="e35-Xv-MSG"/>
                             <constraint firstItem="CII-ja-PYk" firstAttribute="baseline" secondItem="9lM-oM-yKI" secondAttribute="baseline" id="eCh-dw-sy6"/>
                             <constraint firstItem="b0l-aL-DK6" firstAttribute="top" secondItem="CII-ja-PYk" secondAttribute="bottom" constant="19" id="hiC-30-wTJ"/>
