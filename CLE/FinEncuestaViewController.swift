@@ -33,7 +33,7 @@ class FinEncuestaViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Salir", style: .Plain, target: self, action: "volverAtras")
         
         rutEvaluador = prefs.valueForKey("RUN") as! String
-        
+        print(rutEvaluado)
         
     }
 
@@ -52,8 +52,10 @@ class FinEncuestaViewController: UIViewController {
     }
     
     @IBAction func btnEnviarEncuesta(sender: AnyObject) {
+        //
+        let jsonFinal:String = prefs.valueForKey("resp\(rutEvaluador)\(rutEvaluado)") as! String
+        print(jsonFinal)
         
-        let jsonFinal:String = prefs.valueForKey("resp\(rutEvaluador)\(rutEvaluador)") as! String
         if enviarResultados(jsonFinal){
             let alertController = UIAlertController(title: "Mensaje", message: "Se guardaron los datos con éxito", preferredStyle: .Alert)
             alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler:{(alert: UIAlertAction) in

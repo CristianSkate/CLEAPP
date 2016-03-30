@@ -371,7 +371,7 @@
 				TargetAttributes = {
 					40ABB61C1BBC74970060063F = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 37F5PB3WE6;
+						DevelopmentTeam = 7X92LN88KD;
 					};
 					40ABB6301BBC74970060063F = {
 						CreatedOnToolsVersion = 7.0;
@@ -671,12 +671,13 @@
 				INFOPLIST_FILE = "$(SRCROOT)/CLE/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "cl.cmt.Centro-de-Liderazgo-Ejercito-de-Chile";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = cl.cmt.CLEChile;
 				PRODUCT_NAME = "CLE Chile";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CLE Chile-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -695,11 +696,12 @@
 				INFOPLIST_FILE = "$(SRCROOT)/CLE/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "cl.cmt.Centro-de-Liderazgo-Ejercito-de-Chile";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = cl.cmt.CLEChile;
 				PRODUCT_NAME = "CLE Chile";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CLE Chile-Bridging-Header.h";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

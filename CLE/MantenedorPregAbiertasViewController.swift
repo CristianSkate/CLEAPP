@@ -27,6 +27,7 @@ class MantenedorPregAbiertasViewController: UIViewController, UIPageViewControll
         self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
         
         rutEvaluador = prefs.valueForKey("RUN") as! String
+        print(rutEvaluado)
         
         //INICIALIZACION DE RESPUESTAS
         if  prefs.valueForKey("resp\(rutEvaluador)\(rutEvaluado)") == nil{
@@ -112,6 +113,7 @@ class MantenedorPregAbiertasViewController: UIViewController, UIPageViewControll
         respuestasJson.respuestas?.append(Respuestas.respuestasFin(codPregunta: "comentario", codRespuesta: resp3))
 
         prefs.setObject(Mapper().toJSONString(respuestasJson, prettyPrint: false)!, forKey: "resp\(rutEvaluador)\(rutEvaluado)")
+        print(Mapper().toJSONString(respuestasJson, prettyPrint: false)!)
         
         
         var index = index
@@ -128,6 +130,13 @@ class MantenedorPregAbiertasViewController: UIViewController, UIPageViewControll
             
         }
         
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "irAFinDeEncuesta"{
+            let vc = segue.destinationViewController as! FinEncuestaViewController
+            vc.rutEvaluado = rutEvaluado
+        }
     }
 
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {

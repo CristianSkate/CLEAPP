@@ -28,7 +28,7 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
         self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
         
         rutEvaluador = prefs.valueForKey("RUN") as! String
-        
+        print (rutEvaluado)
         //INICIALIZACION DE RESPUESTAS
 //        respuestasJson = (prefs.valueForKey("resp\(rutEvaluador)\(rutEvaluador)") as? Respuestas)!
         if  prefs.valueForKey("resp\(rutEvaluador)\(rutEvaluado)") == nil{
