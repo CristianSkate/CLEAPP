@@ -25,7 +25,7 @@ class MantenedorInstructivoViewController: UIViewController, UIPageViewControlle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Salir", style: .Plain, target: self, action: "volverAtras")
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Salir", style: .Plain, target: self, action: #selector(MantenedorInstructivoViewController.volverAtras))
         
         self.title = "Instructivos"
         preCargarDatos()
@@ -195,7 +195,7 @@ class MantenedorInstructivoViewController: UIViewController, UIPageViewControlle
     func btnSiguiente(index: Int){
         
         var index = index
-        index++
+        index += 1
         if(!(index == NSNotFound) && !(index == instructivos.count)){
             
             let viewControllers = NSArray(object: instructivoAtIndex(index))

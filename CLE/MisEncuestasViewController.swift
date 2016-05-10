@@ -25,7 +25,7 @@ class MisEncuestasViewController: UIViewController, UITableViewDataSource, UITab
         self.navigationController?.navigationBar.translucent =  false
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         self.navigationController?.navigationBar.barStyle = .Black
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Acualizar", style: .Plain, target: self, action: "cargarMisEncuestas")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Acualizar", style: .Plain, target: self, action: #selector(MisEncuestasViewController.cargarMisEncuestas))
         
         tblEncuestasPendientes.dataSource = self
         tblEncuestasPendientes.delegate = self
@@ -36,7 +36,7 @@ class MisEncuestasViewController: UIViewController, UITableViewDataSource, UITab
         
         image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.Plain, target: self, action: "btnMenu:")
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(MisEncuestasViewController.btnMenu(_:)))
 
         preCargarEncuestas()
     }
@@ -160,7 +160,7 @@ class MisEncuestasViewController: UIViewController, UITableViewDataSource, UITab
         }else{
             mycell.btnResponder.setTitle("Evaluar", forState: .Normal)
             mycell.btnResponder.tag = indexPath.row
-            mycell.btnResponder.addTarget(self, action: "irAEncuesta:", forControlEvents: .TouchUpInside)
+            mycell.btnResponder.addTarget(self, action: #selector(MisEncuestasViewController.irAEncuesta(_:)), forControlEvents: .TouchUpInside)
             mycell.btnResponder.enabled = true
         }
         

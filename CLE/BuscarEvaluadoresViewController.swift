@@ -30,7 +30,7 @@ class BuscarEvaluadoresViewController: UIViewController, UITableViewDataSource, 
         
         searchEvaluadores.delegate = self
 
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Volver", style: .Plain, target: self, action: "volverAtras")
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Volver", style: .Plain, target: self, action: #selector(BuscarEvaluadoresViewController.volverAtras))
         
         tblBusqueda.delegate = self
         tblBusqueda.dataSource = self

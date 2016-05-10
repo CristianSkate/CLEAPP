@@ -25,7 +25,7 @@ class MisionViewController: UIViewController {
         
         image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.Plain, target: self, action: "btnMenu:")
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(MisionViewController.btnMenu(_:)))
         
         configureScrollView()
     }

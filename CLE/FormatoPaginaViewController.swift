@@ -38,7 +38,7 @@ class FormatoPaginaViewController: UIViewController, UIScrollViewDelegate{
     }
     
     func setupGestureRecognizer() {
-        let doubleTap = UITapGestureRecognizer(target: self, action: "handleDoubleTap:")
+        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(FormatoPaginaViewController.handleDoubleTap(_:)))
         doubleTap.numberOfTapsRequired = 2
         scrollView.addGestureRecognizer(doubleTap)
     }

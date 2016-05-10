@@ -22,7 +22,7 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Salir", style: .Plain, target: self, action: "volverAtras")
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Salir", style: .Plain, target: self, action: #selector(MantenedorEncuestaViewController.volverAtras))
         self.title = "Encuesta"
         preCargarDatos()
         self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
@@ -122,7 +122,7 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
         
         
         var index = index
-        index++
+        index += 1
         if(!(index == NSNotFound) && !(index == preguntas.count)){
             
             let viewControllers = NSArray(object: preguntaAtIndex(index))

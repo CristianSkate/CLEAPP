@@ -41,8 +41,8 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
         
         image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.Plain, target: self, action: "btnMenu:")
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "btnBuscar:")
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(MisEvaluadoresViewController.btnMenu(_:)))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(MisEvaluadoresViewController.btnBuscar(_:)))
         self.tblSeleccion.rowHeight = UITableViewAutomaticDimension;
         self.tblSeleccion.estimatedRowHeight = 44.0;
         

@@ -19,14 +19,14 @@ class DetalleNoticiaViewController: UIViewController , UITextViewDelegate{
     @IBOutlet weak var scrollView: UIScrollView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.title = "Noticias CLE"
         self.navigationController?.navigationBar.barTintColor =  UIColor(red: 87.0/255.0, green: 90.0/255.0, blue: 63.0/255.0, alpha: 1.0)
         self.navigationController?.navigationBar.translucent =  false
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         self.navigationController?.navigationBar.barStyle = .Black
         //Boton volver
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Volver", style: .Plain, target: self, action: "volverAtras")
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Volver", style: .Plain, target: self, action: #selector(DetalleNoticiaViewController.volverAtras))
         
         let url = NSURL(string: "http://cle.ejercito.cl/upload/\(noticia.urlImagen)")
         //Carga de cache

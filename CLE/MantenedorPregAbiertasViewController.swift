@@ -21,7 +21,7 @@ class MantenedorPregAbiertasViewController: UIViewController, UIPageViewControll
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Salir", style: .Plain, target: self, action: "volverAtras")
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Salir", style: .Plain, target: self, action: #selector(MantenedorPregAbiertasViewController.volverAtras))
         self.title = "Encuesta"
 
         self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
@@ -117,7 +117,7 @@ class MantenedorPregAbiertasViewController: UIViewController, UIPageViewControll
         
         
         var index = index
-        index++
+        index += 1
         if(!(index == NSNotFound) && !(index == 1)){
             
             let viewControllers = NSArray(object: preguntaAtIndex(index))

@@ -29,7 +29,7 @@ class DoctrinaViewController: UIViewController, UITableViewDataSource, UITableVi
         
         image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.Plain, target: self, action: "btnMenu:")
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(DoctrinaViewController.btnMenu(_:)))
         self.tblDoctrinas.dataSource = self
         self.tblDoctrinas.delegate = self
         
@@ -38,7 +38,7 @@ class DoctrinaViewController: UIViewController, UITableViewDataSource, UITableVi
     }
 
     func cargarDocumentos(){
-        for var i:Int = 0; i<53 ; i++ {
+        for i:Int in 0 ..< 53  {
             if (i < 9){
                 paginas.append(UIImage(named: ("herramientas_0\(i+1)"))!)
             }else{
@@ -47,7 +47,7 @@ class DoctrinaViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         documentos.append(Documento(nombre: "Guía de herramientas para el fortalecimiento del liderazgo", paginas: paginas))
         paginas = []
-        for var i:Int = 0; i<23 ; i++ {
+        for i:Int in 0 ..< 23  {
             if (i < 9){
                 paginas.append(UIImage(named: ("plegable_0\(i+1)"))!)
             }else{
@@ -56,7 +56,7 @@ class DoctrinaViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         documentos.append(Documento(nombre: "Competencias", paginas: paginas))
         paginas = []
-        for var i:Int = 0; i<8 ; i++ {
+        for i:Int in 0 ..< 8  {
                 paginas.append(UIImage(named: ("cuadriptico_\(i+1)"))!)
         }
         documentos.append(Documento(nombre: "Los atributos del Líder", paginas: paginas))

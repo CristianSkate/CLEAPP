@@ -23,7 +23,7 @@ class MantenedorDoctrinaViewController: UIViewController, UIPageViewControllerDa
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         self.navigationController?.navigationBar.barStyle = .Black
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Volver", style: .Plain, target: self, action: "volverAtras")
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Volver", style: .Plain, target: self, action: #selector(MantenedorDoctrinaViewController.volverAtras))
         
         self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
         
@@ -79,7 +79,7 @@ class MantenedorDoctrinaViewController: UIViewController, UIPageViewControllerDa
             return nil
         }
         
-        index--
+        index -= 1
         
         return self.paginaAtIndex(index)
     }
@@ -94,7 +94,7 @@ class MantenedorDoctrinaViewController: UIViewController, UIPageViewControllerDa
             return nil
         }
         
-        index++
+        index += 1
         
         if(index == paginas.count)
         {

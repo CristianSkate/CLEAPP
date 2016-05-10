@@ -25,7 +25,7 @@ class OrganicaViewController: UIViewController, UIScrollViewDelegate {
         
         image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.Plain, target: self, action: "btnMenu:")
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(OrganicaViewController.btnMenu(_:)))
 
         scrollView.delegate = self
         scrollView.minimumZoomScale = 1.0
@@ -49,7 +49,7 @@ class OrganicaViewController: UIViewController, UIScrollViewDelegate {
     }
 
     func setupGestureRecognizer() {
-        let doubleTap = UITapGestureRecognizer(target: self, action: "handleDoubleTap:")
+        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(OrganicaViewController.handleDoubleTap(_:)))
         doubleTap.numberOfTapsRequired = 2
         scrollView.addGestureRecognizer(doubleTap)
     }
