@@ -29,7 +29,7 @@ class InicioViewController: UIViewController, UITableViewDataSource, UITableView
         self.navigationController?.navigationBar.translucent =  false
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         self.navigationController?.navigationBar.barStyle = .Black
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Acualizar", style: .Plain, target: self, action: #selector(InicioViewController.cargarNoticias))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Actualizar", style: .Plain, target: self, action: #selector(InicioViewController.cargarNoticias))
 
         var image = UIImage(named: "Menu")
         

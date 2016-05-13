@@ -20,9 +20,17 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
     var rutEvaluado:String!
     var rutEvaluador:String!
     
+    var codResp:String!
+    var respSel:String!
+    var seleccion:Bool = false
+    var indexPage:Int = 1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Salir", style: .Plain, target: self, action: #selector(MantenedorEncuestaViewController.volverAtras))
+       
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Siguiente", style: .Plain, target: self, action: #selector(MantenedorInstructivoViewController.btnSiguiente))
+        
         self.title = "Encuesta"
         preCargarDatos()
         self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
@@ -55,6 +63,7 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
         self.addChildViewController(self.pageViewController)
         self.view.addSubview(self.pageViewController.view)
         self.pageViewController.didMoveToParentViewController(self)
+     
         
     }
 
@@ -114,25 +123,32 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
         return 0
     }
     
-    func btnSiguiente(index: Int, codResp:String, respSel:String){
-        
-        //GUARDADO DE ERESPUESTAS
-        respuestasJson.respuestas?.append(Respuestas.respuestasFin(codPregunta: codResp, codRespuesta: respSel))
-        prefs.setObject(Mapper().toJSONString(respuestasJson, prettyPrint: false)!, forKey: "resp\(rutEvaluador)\(rutEvaluado)")
+    func btnSiguiente(){ //(index: Int, codResp:String, respSel:String){
         
         
-        var index = index
-        index += 1
-        if(!(index == NSNotFound) && !(index == preguntas.count)){
+        if seleccion {
+            //GUARDADO DE ERESPUESTAS
+            respuestasJson.respuestas?.append(Respuestas.respuestasFin(codPregunta: codResp, codRespuesta: respSel))
+            prefs.setObject(Mapper().toJSONString(respuestasJson, prettyPrint: false)!, forKey: "resp\(rutEvaluador)\(rutEvaluado)")
+        
+        
+            var index = indexPage
+            index += 1
+            if(!(index == NSNotFound) && !(index == preguntas.count)){
             
-            let viewControllers = NSArray(object: preguntaAtIndex(index))
-            self.pageViewController.setViewControllers(viewControllers as [AnyObject] as? [UIViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
+                let viewControllers = NSArray(object: preguntaAtIndex(index))
+                self.pageViewController.setViewControllers(viewControllers as [AnyObject] as? [UIViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
             
-        }else
-        {
-            //IR A PREGUNTAS ABIERTAS
-            self.performSegueWithIdentifier("empezarPreguntasAbiertas", sender: nil)
+            }else
+            {
+                //IR A PREGUNTAS ABIERTAS
+                self.performSegueWithIdentifier("empezarPreguntasAbiertas", sender: nil)
             
+            }
+        }else{
+            let AlertController = UIAlertController(title: "Mensaje", message: "Debes seleccionar una respuesta para avanzar", preferredStyle: .Alert)
+            AlertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler: nil))
+            self.presentViewController(AlertController, animated: true, completion: nil)
         }
         
     }

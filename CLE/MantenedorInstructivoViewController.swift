@@ -22,10 +22,13 @@ class MantenedorInstructivoViewController: UIViewController, UIPageViewControlle
     //Codigo de relacion para buscar la encuesta con los instructivos
     var codRelacionSel:String!
     var rutEvaluado:String!
+    var indexPage:Int = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Salir", style: .Plain, target: self, action: #selector(MantenedorInstructivoViewController.volverAtras))
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Siguiente", style: .Plain, target: self, action: #selector(MantenedorInstructivoViewController.btnSiguiente))
         
         self.title = "Instructivos"
         preCargarDatos()
@@ -167,7 +170,7 @@ class MantenedorInstructivoViewController: UIViewController, UIPageViewControlle
         pageContentViewController.titulo =  instructivos[index].titulo
         pageContentViewController.cuerpo = instructivos[index].cuerpo
         pageContentViewController.pageIndex = index
-        
+        indexPage = index
         return pageContentViewController
         
     }
@@ -192,9 +195,9 @@ class MantenedorInstructivoViewController: UIViewController, UIPageViewControlle
         return 0
     }
     
-    func btnSiguiente(index: Int){
+    func btnSiguiente(){
         
-        var index = index
+        var index = indexPage
         index += 1
         if(!(index == NSNotFound) && !(index == instructivos.count)){
             

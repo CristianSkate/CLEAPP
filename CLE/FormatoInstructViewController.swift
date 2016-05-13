@@ -27,6 +27,7 @@ class FormatoInstructViewController: UIViewController {
         self.navigationController?.navigationBar.translucent =  false
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         self.navigationController?.navigationBar.barStyle = .Black
+       
         
         txtTitulo.text = titulo
         txtCuerpo.text = cuerpo
@@ -41,13 +42,13 @@ class FormatoInstructViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    @IBAction func irSiguiente(sender: AnyObject) {
+    //@IBAction func irSiguiente(sender: AnyObject) {
         // funcion para cargar y mostrar la siguiente parte del instructivo
         
-            let master : MantenedorInstructivoViewController = self.parentViewController?.parentViewController as! MantenedorInstructivoViewController
-            master.btnSiguiente(self.pageIndex)
+            //let master : MantenedorInstructivoViewController = self.parentViewController?.parentViewController as! MantenedorInstructivoViewController
+            //master.btnSiguiente(self.pageIndex)
         
-    }
+    //}
     
     func configureScrollView(){
         
