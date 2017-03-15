@@ -15,22 +15,22 @@ class BuscarEvaluadoresViewController: UIViewController, UITableViewDataSource, 
     
     var evaluadores:[Evaluador] = []
     var seleccionados:[Evaluador] = []
-    let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+    let prefs:UserDefaults = UserDefaults.standard
     var reponseError: NSError?
-    var response: NSURLResponse?
+    var response: URLResponse?
     var respEvaluadores:NSArray! = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Buscar Evaluadores"
         self.navigationController?.navigationBar.barTintColor =  UIColor(red: 87.0/255.0, green: 90.0/255.0, blue: 63.0/255.0, alpha: 1.0)
-        self.navigationController?.navigationBar.translucent =  false
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
-        self.navigationController?.navigationBar.barStyle = .Black
+        self.navigationController?.navigationBar.isTranslucent =  false
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        self.navigationController?.navigationBar.barStyle = .black
         
         searchEvaluadores.delegate = self
 
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Volver", style: .Plain, target: self, action: #selector(BuscarEvaluadoresViewController.volverAtras))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Volver", style: .plain, target: self, action: #selector(BuscarEvaluadoresViewController.volverAtras))
         
         tblBusqueda.delegate = self
         tblBusqueda.dataSource = self
@@ -45,37 +45,37 @@ class BuscarEvaluadoresViewController: UIViewController, UITableViewDataSource, 
     
     func volverAtras() {
         
-            self.navigationController?.popViewControllerAnimated(true)
+            self.navigationController?.popViewController(animated: true)
         
     }
     
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return evaluadores.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let mycell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("celdaBusqueda", forIndexPath: indexPath)
+        let mycell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "celdaBusqueda", for: indexPath)
         
-        mycell.textLabel?.text = ("\(evaluadores[indexPath.row].nombre)\n\(evaluadores[indexPath.row].rut)")
+        mycell.textLabel?.text = ("\(evaluadores[(indexPath as NSIndexPath).row].nombre)\n\(evaluadores[(indexPath as NSIndexPath).row].rut)")
         mycell.textLabel?.numberOfLines = 0
         
         return mycell
         
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        
-        let alertController = UIAlertController(title: "Confirmación", message: "\(evaluadores[indexPath.row].nombre) es:", preferredStyle: .ActionSheet)
-        alertController.addAction(UIAlertAction(title: "Superior", style: .Default, handler: {(alert: UIAlertAction) in
+        let alertController = UIAlertController(title: "Confirmación", message: "\(evaluadores[(indexPath as NSIndexPath).row].nombre) es:", preferredStyle: .actionSheet)
+        alertController.addAction(UIAlertAction(title: "Superior", style: .default, handler: {(alert: UIAlertAction) in
             //Agregar al susodicho al listado de los seleccionados
         
             //Cargar lista anterior
-            let encuestadores = self.prefs.objectForKey("seleccionados") as? NSData
+            let encuestadores = self.prefs.object(forKey: "seleccionados") as? Data
             
             if let encuestadores = encuestadores {
-                self.seleccionados = (NSKeyedUnarchiver.unarchiveObjectWithData(encuestadores) as? [Evaluador])!
+                self.seleccionados = (NSKeyedUnarchiver.unarchiveObject(with: encuestadores) as? [Evaluador])!
                 
             }
             //Modificar nuevo Array
@@ -88,38 +88,38 @@ class BuscarEvaluadoresViewController: UIViewController, UITableViewDataSource, 
             if sup < 1 {
                 var repetido:Bool = true
                 for eval in self.seleccionados {
-                    if eval.rut == self.evaluadores[indexPath.row].rut {
+                    if eval.rut == self.evaluadores[(indexPath as NSIndexPath).row].rut {
                         repetido = false
                     }
                 }
                 if repetido{
-                    self.seleccionados.append(Evaluador(rut: self.evaluadores[indexPath.row].rut, nombre: self.evaluadores[indexPath.row].nombre, relacion: "1"))
+                    self.seleccionados.append(Evaluador(rut: self.evaluadores[(indexPath as NSIndexPath).row].rut, nombre: self.evaluadores[(indexPath as NSIndexPath).row].nombre, relacion: "1"))
                     //Guardar en preferencias
-                    let guardar = NSKeyedArchiver.archivedDataWithRootObject(self.seleccionados)
-                    self.prefs.setObject(guardar, forKey: "seleccionados")
+                    let guardar = NSKeyedArchiver.archivedData(withRootObject: self.seleccionados)
+                    self.prefs.set(guardar, forKey: "seleccionados")
                     //postpopover
-                    self.parentViewController?.viewDidAppear(true)
+                    self.parent?.viewDidAppear(true)
                 
-                    self.navigationController?.popViewControllerAnimated(true)
+                    self.navigationController?.popViewController(animated: true)
                 }else{
-                    let alertController = UIAlertController(title: "Mensaje", message: "Esta persona ya está seleccionada", preferredStyle: .Alert)
-                    alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler: nil))
-                    self.presentViewController(alertController, animated: true, completion: nil)
+                    let alertController = UIAlertController(title: "Mensaje", message: "Esta persona ya está seleccionada", preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
+                    self.present(alertController, animated: true, completion: nil)
                 }
             }else{
-                let alertController = UIAlertController(title: "Mensaje", message: "Ya has ingresado todos los Superiores", preferredStyle: .Alert)
-                alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler: nil))
-                self.presentViewController(alertController, animated: true, completion: nil)
+                let alertController = UIAlertController(title: "Mensaje", message: "Ya has ingresado todos los Superiores", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
+                self.present(alertController, animated: true, completion: nil)
             }
         }))
-        alertController.addAction(UIAlertAction(title: "Par", style: .Default, handler: {(alert: UIAlertAction) in
+        alertController.addAction(UIAlertAction(title: "Par", style: .default, handler: {(alert: UIAlertAction) in
             //Agregar al susodicho al listado de los seleccionados
             
             //Cargar lista anterior
-            let encuestadores = self.prefs.objectForKey("seleccionados") as? NSData
+            let encuestadores = self.prefs.object(forKey: "seleccionados") as? Data
             
             if let encuestadores = encuestadores {
-                self.seleccionados = (NSKeyedUnarchiver.unarchiveObjectWithData(encuestadores) as? [Evaluador])!
+                self.seleccionados = (NSKeyedUnarchiver.unarchiveObject(with: encuestadores) as? [Evaluador])!
                 
             }
             //Modificar nuevo Array
@@ -132,39 +132,39 @@ class BuscarEvaluadoresViewController: UIViewController, UITableViewDataSource, 
             if par < 5 {
                 var repetido:Bool = true
                 for eval in self.seleccionados {
-                    if eval.rut == self.evaluadores[indexPath.row].rut {
+                    if eval.rut == self.evaluadores[(indexPath as NSIndexPath).row].rut {
                         repetido = false
                     }
                 }
                 if repetido{
-                    self.seleccionados.append(Evaluador(rut: self.evaluadores[indexPath.row].rut, nombre: self.evaluadores[indexPath.row].nombre, relacion: "2"))
+                    self.seleccionados.append(Evaluador(rut: self.evaluadores[(indexPath as NSIndexPath).row].rut, nombre: self.evaluadores[(indexPath as NSIndexPath).row].nombre, relacion: "2"))
                     //Guardar en preferencias
-                    let guardar = NSKeyedArchiver.archivedDataWithRootObject(self.seleccionados)
-                    self.prefs.setObject(guardar, forKey: "seleccionados")
+                    let guardar = NSKeyedArchiver.archivedData(withRootObject: self.seleccionados)
+                    self.prefs.set(guardar, forKey: "seleccionados")
                     //postpopover
-                    self.parentViewController?.viewDidAppear(true)
+                    self.parent?.viewDidAppear(true)
                 
-                    self.navigationController?.popViewControllerAnimated(true)
+                    self.navigationController?.popViewController(animated: true)
                 }else{
-                    let alertController = UIAlertController(title: "Mensaje", message: "Esta persona ya está seleccionada", preferredStyle: .Alert)
-                    alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler: nil))
-                    self.presentViewController(alertController, animated: true, completion: nil)
+                    let alertController = UIAlertController(title: "Mensaje", message: "Esta persona ya está seleccionada", preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
+                    self.present(alertController, animated: true, completion: nil)
                 }
             }else{
-            let alertController = UIAlertController(title: "Mensaje", message: "Ya has ingresado todos los Pares", preferredStyle: .Alert)
-            alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler: nil))
-            self.presentViewController(alertController, animated: true, completion: nil)
+            let alertController = UIAlertController(title: "Mensaje", message: "Ya has ingresado todos los Pares", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
             }
             
         }))
-        alertController.addAction(UIAlertAction(title: "Subalterno", style: .Default, handler: {(alert: UIAlertAction) in
+        alertController.addAction(UIAlertAction(title: "Subalterno", style: .default, handler: {(alert: UIAlertAction) in
             //Agregar al susodicho al listado de los seleccionados
             
             //Cargar lista anterior
-            let encuestadores = self.prefs.objectForKey("seleccionados") as? NSData
+            let encuestadores = self.prefs.object(forKey: "seleccionados") as? Data
             
             if let encuestadores = encuestadores {
-                self.seleccionados = (NSKeyedUnarchiver.unarchiveObjectWithData(encuestadores) as? [Evaluador])!
+                self.seleccionados = (NSKeyedUnarchiver.unarchiveObject(with: encuestadores) as? [Evaluador])!
                 
             }
             //Modificar nuevo Array
@@ -177,45 +177,45 @@ class BuscarEvaluadoresViewController: UIViewController, UITableViewDataSource, 
             if sub < 7 {
                 var repetido:Bool = true
                 for eval in self.seleccionados {
-                    if eval.rut == self.evaluadores[indexPath.row].rut {
+                    if eval.rut == self.evaluadores[(indexPath as NSIndexPath).row].rut {
                         repetido = false
                     }
                 }
                 if repetido{
-                    self.seleccionados.append(Evaluador(rut: self.evaluadores[indexPath.row].rut, nombre: self.evaluadores[indexPath.row].nombre, relacion: "3"))
+                    self.seleccionados.append(Evaluador(rut: self.evaluadores[(indexPath as NSIndexPath).row].rut, nombre: self.evaluadores[(indexPath as NSIndexPath).row].nombre, relacion: "3"))
                     //Guardar en preferencias
-                    let guardar = NSKeyedArchiver.archivedDataWithRootObject(self.seleccionados)
-                    self.prefs.setObject(guardar, forKey: "seleccionados")
+                    let guardar = NSKeyedArchiver.archivedData(withRootObject: self.seleccionados)
+                    self.prefs.set(guardar, forKey: "seleccionados")
                     //postpopover
-                    self.parentViewController?.viewDidAppear(true)
+                    self.parent?.viewDidAppear(true)
                 
-                    self.navigationController?.popViewControllerAnimated(true)
+                    self.navigationController?.popViewController(animated: true)
                 }else{
-                    let alertController = UIAlertController(title: "Mensaje", message: "Esta persona ya está seleccionada", preferredStyle: .Alert)
-                    alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler: nil))
-                    self.presentViewController(alertController, animated: true, completion: nil)
+                    let alertController = UIAlertController(title: "Mensaje", message: "Esta persona ya está seleccionada", preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
+                    self.present(alertController, animated: true, completion: nil)
                 }
             }else{
-                let alertController = UIAlertController(title: "Mensaje", message: "Ya has ingresado todos los Subordinados", preferredStyle: .Alert)
-                alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler: nil))
-                self.presentViewController(alertController, animated: true, completion: nil)
+                let alertController = UIAlertController(title: "Mensaje", message: "Ya has ingresado todos los Subordinados", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
+                self.present(alertController, animated: true, completion: nil)
             }
         }))
-        alertController.addAction(UIAlertAction(title: "Cancelar", style: .Cancel, handler: nil))
-        self.presentViewController((alertController), animated: true, completion: nil)
+        alertController.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
+        self.present((alertController), animated: true, completion: nil)
         
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
    
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         btnBuscar()
         searchEvaluadores.endEditing(true)
     }
     
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.searchEvaluadores.endEditing(true)
     }
     
@@ -225,33 +225,33 @@ class BuscarEvaluadoresViewController: UIViewController, UITableViewDataSource, 
         
         
         // se mete el user y pass dentro de un string
-        let post:NSString = "q=\(textoBuscar)"
+        let post:NSString = "q=\(textoBuscar)" as NSString
         
         // mandamos al log para ir registrando lo que va pasando
         NSLog("PostData: %@",post);
         
         // llamamos a la URl donde está el json que se conectará con la BD
-        let url:NSURL = NSURL(string: "http://cle.ejercito.cl/ServiciosCle.asmx/ObtenerNombres?AspxAutoDetectCookieSupport=1")!
+        let url:URL = URL(string: "http://cle.ejercito.cl/ServiciosCle.asmx/ObtenerNombres?AspxAutoDetectCookieSupport=1")!
         
         // codificamos lo que se envía
-        let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+        let postData:Data = post.data(using: String.Encoding.ascii.rawValue)!
         
         // se determina el largo del string
-        let postLength:NSString = String( postData.length )
+        let postLength:NSString = String( postData.count ) as NSString
         
         // componemos la URL con una var request y un NSMutableURLRequest y le pasamos como parámetros las vars
-        let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
-        request.HTTPMethod = "POST"
-        request.HTTPBody = postData
+        let request:NSMutableURLRequest = NSMutableURLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = postData
         request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         
         
         // hacemos la conexion
-        var urlData: NSData?
+        var urlData: Data?
         do {
-            urlData = try NSURLConnection.sendSynchronousRequest(request, returningResponse:&response)
+            urlData = try NSURLConnection.sendSynchronousRequest(request as URLRequest, returning:&response)
         } catch let error as NSError {
             reponseError = error
             urlData = nil
@@ -259,28 +259,28 @@ class BuscarEvaluadoresViewController: UIViewController, UITableViewDataSource, 
         
         // se valida
         if ( urlData != nil ) {
-            let res = response as! NSHTTPURLResponse!;
+            let res = response as! HTTPURLResponse!;
             
-            NSLog("Response code: %ld", res.statusCode);
+            //NSLog("Response code: %ld", res?.statusCode);
             
-            if (res.statusCode >= 200 && res.statusCode < 300)
+            if ((res?.statusCode)! >= 200 && (res?.statusCode)! < 300)
             {
-                let responseData:NSString  = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
+                let responseData:NSString  = NSString(data:urlData!, encoding:String.Encoding.utf8.rawValue)!
                 
                 NSLog("Response ==> %@", responseData);
                 
                 //var error: NSError?
                 evaluadores.removeAll()
-                respEvaluadores = (try! NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers )) as! NSArray
+                respEvaluadores = (try! JSONSerialization.jsonObject(with: urlData!, options:JSONSerialization.ReadingOptions.mutableContainers )) as! NSArray
                     for evaluador in respEvaluadores{
                     
-                        evaluadores.append(Evaluador(rut: (evaluador.valueForKey("id")) as! String, nombre:     (evaluador.valueForKey("text")) as! String, relacion: "1"))
+                        evaluadores.append(Evaluador(rut: ((evaluador as AnyObject).value(forKey: "id")) as! String, nombre:     ((evaluador as AnyObject).value(forKey: "text")) as! String, relacion: "1"))
                     }
                 
                 if evaluadores.count < 1 {
-                    let alertController = UIAlertController(title: "¡Ups!", message: "No se encontraron personas con este nombre", preferredStyle: .Alert)
-                    alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler: nil))
-                    presentViewController(alertController, animated: true, completion: nil)
+                    let alertController = UIAlertController(title: "¡Ups!", message: "No se encontraron personas con este nombre", preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
+                    present(alertController, animated: true, completion: nil)
                 }
                 
                 self.tblBusqueda.reloadData()
@@ -291,9 +291,9 @@ class BuscarEvaluadoresViewController: UIViewController, UITableViewDataSource, 
                 print(respEvaluadores)
                 
             } else {
-                let alertController = UIAlertController(title: "¡Ups!", message: "Hubo un problema conectando al servidor", preferredStyle: .Alert)
-                alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler: nil))
-                self.presentViewController(alertController, animated: true, completion: nil)
+                let alertController = UIAlertController(title: "¡Ups!", message: "Hubo un problema conectando al servidor", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
+                self.present(alertController, animated: true, completion: nil)
             }
             
         } else {
@@ -301,7 +301,7 @@ class BuscarEvaluadoresViewController: UIViewController, UITableViewDataSource, 
             alertView.title = "Mensaje"
             alertView.message = "No se pudo conectar con el servidor, asegurese de que tiene conexión a internet"
             alertView.delegate = self
-            alertView.addButtonWithTitle("OK")
+            alertView.addButton(withTitle: "OK")
             alertView.show()
         }
         

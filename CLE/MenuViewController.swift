@@ -20,9 +20,9 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
         self.navigationController?.navigationBar.barTintColor =  UIColor(red: 87.0/255.0, green: 90.0/255.0, blue: 63.0/255.0, alpha: 1.0)
         self.view.backgroundColor = UIColor(red: 87.0/255.0, green: 90.0/255.0, blue: 63.0/255.0, alpha: 1.0)
-        self.navigationController?.navigationBar.translucent =  false
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
-        self.navigationController?.navigationBar.barStyle = .Black
+        self.navigationController?.navigationBar.isTranslucent =  false
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        self.navigationController?.navigationBar.barStyle = .black
         imgLogo.image = UIImage(named: "Logo")
         tblMenu.delegate = self
         tblMenu.dataSource =  self
@@ -32,69 +32,69 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.didReceiveMemoryWarning()
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menuOps.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let mycell = tableView.dequeueReusableCellWithIdentifier("celdaMenu", forIndexPath: indexPath) as! CeldaMenuTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let mycell = tableView.dequeueReusableCell(withIdentifier: "celdaMenu", for: indexPath) as! CeldaMenuTableViewCell
         
-        mycell.txtTituloOp.text = menuOps[indexPath.row]
-        mycell.imgMenu.image =  imgMenu[indexPath.row]
+        mycell.txtTituloOp.text = menuOps[(indexPath as NSIndexPath).row]
+        mycell.imgMenu.image =  imgMenu[(indexPath as NSIndexPath).row]
         
         return mycell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        switch(indexPath.row){
+        switch((indexPath as NSIndexPath).row){
         case 0:
             //Home
-            let centerViewController = self.storyboard?.instantiateViewControllerWithIdentifier("InicioViewController") as! InicioViewController
+            let centerViewController = self.storyboard?.instantiateViewController(withIdentifier: "InicioViewController") as! InicioViewController
             let centerNavController = UINavigationController(rootViewController: centerViewController)
-            let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
             
             appDelegate.centerContainer!.centerViewController =  centerNavController
-            appDelegate.centerContainer!.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
+            appDelegate.centerContainer!.toggle(MMDrawerSide.left, animated: true, completion: nil)
             
             break
             
         case 1:
             //Mis Encuestas
-            let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+            let prefs:UserDefaults = UserDefaults.standard
             // generamos una constante de tipo int leyendo de NSUserDefaults ISLOGGEDIN
-            let isLoggedIn:Int = prefs.integerForKey("ISLOGGEDIN") as Int
+            let isLoggedIn:Int = prefs.integer(forKey: "ISLOGGEDIN") as Int
             
             // si no está logeado, envía a la vista de login, sino muestra el nombre de usuario, leido de la caché
             if (isLoggedIn != 1) {
                 
-                self.performSegueWithIdentifier("irALogin", sender: self)
+                self.performSegue(withIdentifier: "irALogin", sender: self)
             } else {
-                let centerViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MisEncuestasViewController") as! MisEncuestasViewController
+                let centerViewController = self.storyboard?.instantiateViewController(withIdentifier: "MisEncuestasViewController") as! MisEncuestasViewController
                 let centerNavController = UINavigationController(rootViewController: centerViewController)
-                let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
                 
                 appDelegate.centerContainer!.centerViewController =  centerNavController
-                appDelegate.centerContainer!.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
+                appDelegate.centerContainer!.toggle(MMDrawerSide.left, animated: true, completion: nil)
             }
             
             break
         case 2:
             //MisEvaluadores
-            let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+            let prefs:UserDefaults = UserDefaults.standard
             // generamos una constante de tipo int leyendo de NSUserDefaults ISLOGGEDIN
-            let isLoggedIn:Int = prefs.integerForKey("ISLOGGEDIN") as Int
+            let isLoggedIn:Int = prefs.integer(forKey: "ISLOGGEDIN") as Int
             
             // si no está logeado, envía a la vista de login, sino muestra el nombre de usuario, leido de la caché
             if (isLoggedIn != 1) {
                 
-                self.performSegueWithIdentifier("irALogin", sender: self)
+                self.performSegue(withIdentifier: "irALogin", sender: self)
             } else {
-                let centerViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MisEvaluadoresViewController") as! MisEvaluadoresViewController
+                let centerViewController = self.storyboard?.instantiateViewController(withIdentifier: "MisEvaluadoresViewController") as! MisEvaluadoresViewController
                 let centerNavController = UINavigationController(rootViewController: centerViewController)
-                let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
                 appDelegate.centerContainer!.centerViewController =  centerNavController
-                appDelegate.centerContainer!.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
+                appDelegate.centerContainer!.toggle(MMDrawerSide.left, animated: true, completion: nil)
             }
             break
             
@@ -102,68 +102,68 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         case 3:
             
             //Misión
-            let centerViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MisionViewController") as! MisionViewController
+            let centerViewController = self.storyboard?.instantiateViewController(withIdentifier: "MisionViewController") as! MisionViewController
             let centerNavController = UINavigationController(rootViewController: centerViewController)
-            let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
             
             appDelegate.centerContainer!.centerViewController =  centerNavController
-            appDelegate.centerContainer!.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
+            appDelegate.centerContainer!.toggle(MMDrawerSide.left, animated: true, completion: nil)
             break
         case 4:
             //Orgánica
-            let centerViewController = self.storyboard?.instantiateViewControllerWithIdentifier("OrganicaViewController") as! OrganicaViewController
+            let centerViewController = self.storyboard?.instantiateViewController(withIdentifier: "OrganicaViewController") as! OrganicaViewController
             let centerNavController = UINavigationController(rootViewController: centerViewController)
-            let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
             
             appDelegate.centerContainer!.centerViewController =  centerNavController
-            appDelegate.centerContainer!.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
+            appDelegate.centerContainer!.toggle(MMDrawerSide.left, animated: true, completion: nil)
             break
         case 5:
             //Doctrina
-            let centerViewController = self.storyboard?.instantiateViewControllerWithIdentifier("DoctrinaViewController") as! DoctrinaViewController
+            let centerViewController = self.storyboard?.instantiateViewController(withIdentifier: "DoctrinaViewController") as! DoctrinaViewController
             let centerNavController = UINavigationController(rootViewController: centerViewController)
-            let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
             
             appDelegate.centerContainer!.centerViewController =  centerNavController
-            appDelegate.centerContainer!.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
+            appDelegate.centerContainer!.toggle(MMDrawerSide.left, animated: true, completion: nil)
             break
         case 6:
             //Herramientas
-            let centerViewController = self.storyboard?.instantiateViewControllerWithIdentifier("HerramientasViewController") as! HerramientasViewController
+            let centerViewController = self.storyboard?.instantiateViewController(withIdentifier: "HerramientasViewController") as! HerramientasViewController
             let centerNavController = UINavigationController(rootViewController: centerViewController)
-            let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
             
             appDelegate.centerContainer!.centerViewController =  centerNavController
-            appDelegate.centerContainer!.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
+            appDelegate.centerContainer!.toggle(MMDrawerSide.left, animated: true, completion: nil)
             break
         case 7:
             //Acerca de
             
-            let alertController = UIAlertController(title: "Acerca de ...", message: "Esta aplicacion fue desarrollada a medida para el Ejército de Chile por CMT y Mprz\ncmartinezt.91@gmail.com\nVersión 1.0", preferredStyle: .Alert)
-            alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler: nil))
-            self.presentViewController(alertController, animated: true, completion: nil)
+            let alertController = UIAlertController(title: "Acerca de ...", message: "Esta aplicacion fue desarrollada a medida para el Ejército de Chile por CMT y Mprz\ncmartinezt.91@gmail.com\nVersión 1.0", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
             break
         case 8:
             //Cerrar Sesion
             //Elimina Variable de sesion
             
-                let alertController = UIAlertController(title: "Confirmación", message: "Al cerrar sesión eliminará todo el progreso en las encuestas que no haya enviado a nuestra base de datos", preferredStyle: .Alert)
-                alertController.addAction(UIAlertAction(title: "Si", style: .Default, handler: {(alert: UIAlertAction) in
+                let alertController = UIAlertController(title: "Confirmación", message: "Al cerrar sesión eliminará todo el progreso en las encuestas que no haya enviado a nuestra base de datos", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "Si", style: .default, handler: {(alert: UIAlertAction) in
                     //Accion del boton si
-                    let appDomain = NSBundle.mainBundle().bundleIdentifier
-                    NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain!)
+                    let appDomain = Bundle.main.bundleIdentifier
+                    UserDefaults.standard.removePersistentDomain(forName: appDomain!)
                     //Hacer el cambio de pantalla
                     //creamos un objeto de tipo NSUserDefaults prefs (caché) que guardará si el usuario está logueado o no
-                    let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+                    let prefs:UserDefaults = UserDefaults.standard
                     // generamos una constante de tipo int leyendo de NSUserDefaults ISLOGGEDIN
-                    let isLoggedIn:Int = prefs.integerForKey("ISLOGGEDIN") as Int
+                    let isLoggedIn:Int = prefs.integer(forKey: "ISLOGGEDIN") as Int
                     // si no está logeado, envía a la vista de login, sino muestra el nombre de usuario, leido de la caché
                     if (isLoggedIn != 1) {
-                        self.performSegueWithIdentifier("irALogin", sender: self)
+                        self.performSegue(withIdentifier: "irALogin", sender: self)
                     }
                 }))
-                alertController.addAction(UIAlertAction(title: "No", style: .Default, handler: nil))
-                self.presentViewController((alertController), animated: true, completion: nil)
+                alertController.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
+                self.present((alertController), animated: true, completion: nil)
                 
             
             
@@ -171,19 +171,19 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             break
             
         default:
-            let centerViewController = self.storyboard?.instantiateViewControllerWithIdentifier("InicioViewController") as! InicioViewController
+            let centerViewController = self.storyboard?.instantiateViewController(withIdentifier: "InicioViewController") as! InicioViewController
             let centerNavController = UINavigationController(rootViewController: centerViewController)
-            let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
             
             appDelegate.centerContainer!.centerViewController =  centerNavController
-            appDelegate.centerContainer!.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
+            appDelegate.centerContainer!.toggle(MMDrawerSide.left, animated: true, completion: nil)
             
             break
             
         }
         
         
-        tblMenu.deselectRowAtIndexPath(indexPath, animated: true)
+        tblMenu.deselectRow(at: indexPath, animated: true)
         
     }
 

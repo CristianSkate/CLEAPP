@@ -17,15 +17,15 @@ class OrganicaViewController: UIViewController, UIScrollViewDelegate {
 
         self.title = "Orgánica"
         self.navigationController?.navigationBar.barTintColor =  UIColor(red: 87.0/255.0, green: 90.0/255.0, blue: 63.0/255.0, alpha: 1.0)
-        self.navigationController?.navigationBar.translucent =  false
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
-        self.navigationController?.navigationBar.barStyle = .Black
+        self.navigationController?.navigationBar.isTranslucent =  false
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        self.navigationController?.navigationBar.barStyle = .black
         
         var image = UIImage(named: "Menu")
         
-        image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        image = image?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(OrganicaViewController.btnMenu(_:)))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.plain, target: self, action: #selector(OrganicaViewController.btnMenu(_:)))
 
         scrollView.delegate = self
         scrollView.minimumZoomScale = 1.0
@@ -38,14 +38,14 @@ class OrganicaViewController: UIViewController, UIScrollViewDelegate {
 
     }
     
-    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return self.imgOrganica
     }
     
 
-    @IBAction func btnMenu(sender: AnyObject) {
-        let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.centerContainer!.toggleDrawerSide(.Left, animated: true, completion: nil)
+    @IBAction func btnMenu(_ sender: AnyObject) {
+        let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.centerContainer!.toggle(.left, animated: true, completion: nil)
     }
 
     func setupGestureRecognizer() {
@@ -54,7 +54,7 @@ class OrganicaViewController: UIViewController, UIScrollViewDelegate {
         scrollView.addGestureRecognizer(doubleTap)
     }
     
-    func handleDoubleTap(recognizer: UITapGestureRecognizer) {
+    func handleDoubleTap(_ recognizer: UITapGestureRecognizer) {
         
         if (scrollView.zoomScale > scrollView.minimumZoomScale) {
             scrollView.setZoomScale(scrollView.minimumZoomScale, animated: true)

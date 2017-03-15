@@ -19,13 +19,13 @@ class MantenedorDoctrinaViewController: UIViewController, UIPageViewControllerDa
 
         self.title = titulo //"Doctrina"
         self.navigationController?.navigationBar.barTintColor =  UIColor(red: 87.0/255.0, green: 90.0/255.0, blue: 63.0/255.0, alpha: 1.0)
-        self.navigationController?.navigationBar.translucent =  false
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
-        self.navigationController?.navigationBar.barStyle = .Black
+        self.navigationController?.navigationBar.isTranslucent =  false
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        self.navigationController?.navigationBar.barStyle = .black
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Volver", style: .Plain, target: self, action: #selector(MantenedorDoctrinaViewController.volverAtras))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Volver", style: .plain, target: self, action: #selector(MantenedorDoctrinaViewController.volverAtras))
         
-        self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
+        self.pageViewController = self.storyboard?.instantiateViewController(withIdentifier: "PageViewController") as! UIPageViewController
         
         self.pageViewController.dataSource = self
         
@@ -34,13 +34,13 @@ class MantenedorDoctrinaViewController: UIViewController, UIPageViewControllerDa
         let viewControllers = NSArray(object: initialContenViewController)
         
         
-        self.pageViewController.setViewControllers(viewControllers as [AnyObject] as? [UIViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
+        self.pageViewController.setViewControllers(viewControllers as [AnyObject] as? [UIViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
         
-        self.pageViewController.view.frame = CGRectMake(0, 10, self.view.frame.size.width, self.view.frame.size.height-10)
+        self.pageViewController.view.frame = CGRect(x: 0, y: 10, width: self.view.frame.size.width, height: self.view.frame.size.height-10)
         
         self.addChildViewController(self.pageViewController)
         self.view.addSubview(self.pageViewController.view)
-        self.pageViewController.didMoveToParentViewController(self)
+        self.pageViewController.didMove(toParentViewController: self)
         
     }
 
@@ -49,18 +49,18 @@ class MantenedorDoctrinaViewController: UIViewController, UIPageViewControllerDa
     }
     
     func volverAtras(){
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
 
-    @IBAction func btnMenu(sender: AnyObject) {
-        let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.centerContainer!.toggleDrawerSide(.Left, animated: true, completion: nil)
+    @IBAction func btnMenu(_ sender: AnyObject) {
+        let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.centerContainer!.toggle(.left, animated: true, completion: nil)
     }
     
-    func paginaAtIndex(index: Int) ->FormatoPaginaViewController
+    func paginaAtIndex(_ index: Int) ->FormatoPaginaViewController
     {
         
-        let pageContentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("FormatoPaginaViewController") as! FormatoPaginaViewController
+        let pageContentViewController = self.storyboard?.instantiateViewController(withIdentifier: "FormatoPaginaViewController") as! FormatoPaginaViewController
         
         pageContentViewController.pagina =  paginas[index]
         pageContentViewController.pageIndex = index
@@ -69,7 +69,7 @@ class MantenedorDoctrinaViewController: UIViewController, UIPageViewControllerDa
         
     }
     
-    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController?
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController?
     {
         let viewController = viewController as! FormatoPaginaViewController
         var index = viewController.pageIndex as Int
@@ -84,7 +84,7 @@ class MantenedorDoctrinaViewController: UIViewController, UIPageViewControllerDa
         return self.paginaAtIndex(index)
     }
     
-    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController?
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController?
     {
         let viewController = viewController as! FormatoPaginaViewController
         var index = viewController.pageIndex as Int
@@ -106,13 +106,13 @@ class MantenedorDoctrinaViewController: UIViewController, UIPageViewControllerDa
     
     
     
-    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int
+    func presentationCount(for pageViewController: UIPageViewController) -> Int
     {
         return paginas.count
     }
     
     
-    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int
+    func presentationIndex(for pageViewController: UIPageViewController) -> Int
     {
         return 0
     }

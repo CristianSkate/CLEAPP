@@ -8,15 +8,15 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, NSXMLParserDelegate {
+class LoginViewController: UIViewController, XMLParserDelegate {
 
     
     @IBOutlet weak var txtUsuario: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var imgLogo: UIImageView!
     
-    var urlData:NSData!
-    var parser = NSXMLParser()
+    var urlData:Data!
+    var parser = XMLParser()
     var posts = NSMutableArray()
     var elements = NSMutableDictionary()
     var element = NSString()
@@ -27,20 +27,20 @@ class LoginViewController: UIViewController, NSXMLParserDelegate {
     var resp:NSString = ""
     var responseError:NSError?
     var intento = 1
-    var response: NSURLResponse?
+    var response: URLResponse?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let statusBarView = UIView(frame: CGRectMake(0, 0, 500, 22))
+        let statusBarView = UIView(frame: CGRect(x: 0, y: 0, width: 500, height: 22))
         statusBarView.backgroundColor = UIColor(red: 87.0/255.0, green: 90.0/255.0, blue: 63.0/255.0, alpha: 1.0)
         self.view.addSubview(statusBarView)
-        self.preferredStatusBarStyle()
+        self.preferredStatusBarStyle
         imgLogo.image =  UIImage(named: "Logo")
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,44 +49,44 @@ class LoginViewController: UIViewController, NSXMLParserDelegate {
     }
 
 
-    @IBAction func btnIniciarSesion(sender: AnyObject) {
+    @IBAction func btnIniciarSesion(_ sender: AnyObject) {
         iniciarSesion()
     }
     
     
-    @IBAction func cancelar(sender: AnyObject) {
+    @IBAction func cancelar(_ sender: AnyObject) {
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     func iniciarSesion() {
         
-        let user:NSString = txtUsuario.text!
-        let pass: NSString = txtPassword.text!
+        let user:NSString = txtUsuario.text! as NSString
+        let pass: NSString = txtPassword.text! as NSString
         
         if(user == "") || (pass == "") {
             
-            let alertController = UIAlertController(title: "¡Ups!", message: "Debe ingresar run sin puntos y contraseña", preferredStyle: .Alert)
-            alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler: nil))
-            self.presentViewController(alertController, animated: true, completion: nil)
+            let alertController = UIAlertController(title: "¡Ups!", message: "Debe ingresar run sin puntos y contraseña", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
             
         }else{
             
-            let url:NSURL = NSURL(string: "http://cle.ejercito.cl/ServiciosCle.asmx/Login?AspxAutoDetectCookieSupport=1")! // llamamos a la URl donde está el ws que se conectará con la BD
-            let request:NSMutableURLRequest = NSMutableURLRequest(URL: url) // componemos la URL con una var request y un NSMutableURLRequest y le pasamos como parámetros las vars
-            request.HTTPMethod = "POST"
-            let post:NSString = "run=\(user)&pass=\(pass)" // se mete el user y pass dentro de un string
+            let url:URL = URL(string: "http://cle.ejercito.cl/ServiciosCle.asmx/Login?AspxAutoDetectCookieSupport=1")! // llamamos a la URl donde está el ws que se conectará con la BD
+            let request:NSMutableURLRequest = NSMutableURLRequest(url: url) // componemos la URL con una var request y un NSMutableURLRequest y le pasamos como parámetros las vars
+            request.httpMethod = "POST"
+            let post:NSString = "run=\(user)&pass=\(pass)" as NSString // se mete el user y pass dentro de un string
             NSLog("PostData: %@",post) // mandamos al log para ir registrando lo que va pasando
-            let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)! // codificamos lo que se envía
-            let postLength:NSString = String( postData.length ) // se determina el largo del string
-            request.HTTPBody = postData
+            let postData:Data = post.data(using: String.Encoding.ascii.rawValue)! // codificamos lo que se envía
+            let postLength:NSString = String( postData.count ) as NSString // se determina el largo del string
+            request.httpBody = postData
             request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
             request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
             request.setValue("cle.ejercito.cl", forHTTPHeaderField: "Host")
             
             // hacemos la conexion
             do {
-                urlData = try NSURLConnection.sendSynchronousRequest(request, returningResponse:&response)
+                urlData = try NSURLConnection.sendSynchronousRequest(request as URLRequest, returning:&response)
             } catch let error as NSError {
                 self.responseError = error
                 urlData = nil
@@ -94,19 +94,19 @@ class LoginViewController: UIViewController, NSXMLParserDelegate {
             
             // se valida
             if ( urlData != nil ) {
-                let res = response as! NSHTTPURLResponse!;
+                let res = response as! HTTPURLResponse!;
           
-                NSLog("Response code: %ld", res.statusCode)
-                if res.statusCode == 500 && intento == 1 {
+                //NSLog("Response code: %ld", res?.statusCode)
+                if res?.statusCode == 500 && intento == 1 {
                     intento += 1
                     iniciarSesion()
                     return
                     
                 }
                 
-                if (res.statusCode >= 200 && res.statusCode < 300)
+                if ((res?.statusCode)! >= 200 && (res?.statusCode)! < 300)
                 {
-                    let responseData:NSString  = NSString(data:urlData!, encoding: NSUTF8StringEncoding)!
+                    let responseData:NSString  = NSString(data:urlData!, encoding: String.Encoding.utf8.rawValue)!
                    
                     NSLog("Response ==> %@", responseData);
                     
@@ -115,7 +115,7 @@ class LoginViewController: UIViewController, NSXMLParserDelegate {
                     var success:NSInteger = 0
                     
                     parsearXML()
-                    if (resp.isEqualToString("Error")){
+                    if (resp.isEqual(to: "Error")){
                        success = 0
                     }else{
                        success = 1
@@ -125,49 +125,49 @@ class LoginViewController: UIViewController, NSXMLParserDelegate {
                     {
                         NSLog("Login Correcto");
                         // guardamos en la caché
-                        let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+                        let prefs:UserDefaults = UserDefaults.standard
                         // tomamos el nombre de usuario y lo guardamos
-                        prefs.setObject(user, forKey: "RUN")
+                        prefs.set(user, forKey: "RUN")
                         // también si está logeado
-                        prefs.setInteger(1, forKey: "ISLOGGEDIN")
+                        prefs.set(1, forKey: "ISLOGGEDIN")
                         // se sincroniza
                         prefs.setValue(apellidoMaterno, forKey: "APELLIDOMATERNO")
                         prefs.setValue(apellidoPaterno, forKey: "APELLIDOPATERNO")
                         prefs.setValue(nombre, forKey: "NOMBRE")
                         prefs.synchronize()
                         
-                        self.dismissViewControllerAnimated(true, completion: nil)
+                        self.dismiss(animated: true, completion: nil)
                     } else {
                         let error_msg:NSString = "Run o Password incorrectos"
                         
-                        let alertController = UIAlertController(title: "¡Ups!", message: error_msg as String, preferredStyle: .Alert)
-                        alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler: nil))
-                        self.presentViewController(alertController, animated: true, completion: nil)
+                        let alertController = UIAlertController(title: "¡Ups!", message: error_msg as String, preferredStyle: .alert)
+                        alertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
+                        self.present(alertController, animated: true, completion: nil)
                     }
                     
                 } else {
-                    let alertController = UIAlertController(title: "¡Ups!", message: "Conexión fallida", preferredStyle: .Alert)
-                    alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler: nil))
-                    self.presentViewController(alertController, animated: true, completion: nil)
+                    let alertController = UIAlertController(title: "¡Ups!", message: "Conexión fallida", preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
+                    self.present(alertController, animated: true, completion: nil)
                 }
             } else {
-                let alertController = UIAlertController(title: "¡Ups!", message: "Conexión fallida", preferredStyle: .Alert)
-                alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler: nil))
+                let alertController = UIAlertController(title: "¡Ups!", message: "Conexión fallida", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
                 
                 if let _ = responseError {
                     alertController.message = "No se pudo conectar con el servidor, asegurese de que tiene conexión a internet"//(error.localizedDescription)
                 }
-                self.presentViewController(alertController, animated: true, completion: nil)
+                self.present(alertController, animated: true, completion: nil)
             }
         }
     }
     
     // funcion que la que limpiamos los campos de texto
     
-    @IBAction func limpiar(sender: UIButton) {
+    @IBAction func limpiar(_ sender: UIButton) {
         
-        let user:NSString = txtUsuario.text!
-        let pass: NSString = txtPassword.text!
+        let user:NSString = txtUsuario.text! as NSString
+        let pass: NSString = txtPassword.text! as NSString
         
         if((user != "") || (pass != "")){
             
@@ -179,20 +179,20 @@ class LoginViewController: UIViewController, NSXMLParserDelegate {
     //funciones para parsear la respuesta XML
     func parsearXML() {
         posts = []
-        parser =  NSXMLParser(data: urlData!)
+        parser =  XMLParser(data: urlData!)
         parser.delegate =  self
         parser.parse()
     }
     
-    func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
-        element =  elementName
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
+        element =  elementName as NSString
         if(elementName=="paterno" || elementName=="materno" || elementName=="nombres" || elementName == "resp")
         {
             passData=true;
         }
     }
     
-    func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         element="";
         if(elementName=="paterno" || elementName=="materno" || elementName=="nombres" || elementName == "resp")
         {
@@ -200,26 +200,26 @@ class LoginViewController: UIViewController, NSXMLParserDelegate {
         }
     }
     
-    func parser(parser: NSXMLParser, foundCharacters string: String) {
+    func parser(_ parser: XMLParser, foundCharacters string: String) {
         if (passData) {
             
-            if element.isEqualToString("paterno"){
-                apellidoPaterno = string
+            if element.isEqual(to: "paterno"){
+                apellidoPaterno = string as NSString
                 NSLog("Apellido paterno ==> %@", string)
-            }else if element.isEqualToString("materno") {
-                apellidoMaterno = string
+            }else if element.isEqual(to: "materno") {
+                apellidoMaterno = string as NSString
                 NSLog("Apellido materno ==> %@", string)
-            }else if element.isEqualToString("nombres"){
-                nombre = string
+            }else if element.isEqual(to: "nombres"){
+                nombre = string as NSString
                 NSLog("Nombres ==> %@", string)
-            }else if element.isEqualToString("resp"){
-                resp = string
+            }else if element.isEqual(to: "resp"){
+                resp = string as NSString
                 NSLog("Error ==> %@", string)
             }
         }
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
 }

@@ -17,15 +17,15 @@ class MisionViewController: UIViewController {
         
         self.title = "Misión"
         self.navigationController?.navigationBar.barTintColor =  UIColor(red: 87.0/255.0, green: 90.0/255.0, blue: 63.0/255.0, alpha: 1.0)
-        self.navigationController?.navigationBar.translucent =  false
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
-        self.navigationController?.navigationBar.barStyle = .Black
+        self.navigationController?.navigationBar.isTranslucent =  false
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        self.navigationController?.navigationBar.barStyle = .black
         
         var image = UIImage(named: "Menu")
         
-        image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        image = image?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(MisionViewController.btnMenu(_:)))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.plain, target: self, action: #selector(MisionViewController.btnMenu(_:)))
         
         configureScrollView()
     }
@@ -44,20 +44,20 @@ class MisionViewController: UIViewController {
     }
     
     
-    func textViewDidChange(textView: UITextView) {
+    func textViewDidChange(_ textView: UITextView) {
         
         let contentSize = textView.sizeThatFits(textView.bounds.size)
         var frame = textView.frame
         frame.size.height = contentSize.height
         textView.frame = frame
         
-        let aspectRatioViewConstraint = NSLayoutConstraint(item: textView, attribute: .Height, relatedBy: .Equal, toItem: textView, attribute: .Width, multiplier: textView.bounds.height/textView.bounds.width, constant: 1)
+        let aspectRatioViewConstraint = NSLayoutConstraint(item: textView, attribute: .height, relatedBy: .equal, toItem: textView, attribute: .width, multiplier: textView.bounds.height/textView.bounds.width, constant: 1)
         textView.addConstraint(aspectRatioViewConstraint)
     }
 
-    @IBAction func btnMenu(sender: AnyObject) {
-        let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.centerContainer!.toggleDrawerSide(.Left, animated: true, completion: nil)
+    @IBAction func btnMenu(_ sender: AnyObject) {
+        let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.centerContainer!.toggle(.left, animated: true, completion: nil)
     }
 
 }

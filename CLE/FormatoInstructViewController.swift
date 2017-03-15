@@ -24,15 +24,15 @@ class FormatoInstructViewController: UIViewController {
         self.title = "Instructivos"
         
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 87.0/255.0, green: 90.0/255.0, blue: 63.0/255.0, alpha: 1.0)
-        self.navigationController?.navigationBar.translucent =  false
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
-        self.navigationController?.navigationBar.barStyle = .Black
+        self.navigationController?.navigationBar.isTranslucent =  false
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        self.navigationController?.navigationBar.barStyle = .black
        
         
         txtTitulo.text = titulo
         txtCuerpo.text = cuerpo
-        txtTitulo.textAlignment = .Center
-        txtCuerpo.textAlignment = .Justified
+        txtTitulo.textAlignment = .center
+        txtCuerpo.textAlignment = .justified
         
         configureScrollView()
             
@@ -59,14 +59,14 @@ class FormatoInstructViewController: UIViewController {
         
     }
     
-    func textViewDidChange(textView: UITextView) {
+    func textViewDidChange(_ textView: UITextView) {
         
         let contentSize = textView.sizeThatFits(textView.bounds.size)
         var frame = textView.frame
         frame.size.height = contentSize.height
         textView.frame = frame
         
-        let aspectRatioViewConstraint = NSLayoutConstraint(item: textView, attribute: .Height, relatedBy: .Equal, toItem: textView, attribute: .Width, multiplier: textView.bounds.height/textView.bounds.width, constant: 1)
+        let aspectRatioViewConstraint = NSLayoutConstraint(item: textView, attribute: .height, relatedBy: .equal, toItem: textView, attribute: .width, multiplier: textView.bounds.height/textView.bounds.width, constant: 1)
         textView.addConstraint(aspectRatioViewConstraint)
     }
 

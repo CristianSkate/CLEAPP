@@ -21,14 +21,14 @@ class Evaluador: NSObject, NSCoding {
     }
     
     required init(coder aDecoder: NSCoder) {
-        rut = aDecoder.decodeObjectForKey("rut") as! String
-        nombre = aDecoder.decodeObjectForKey("nombre") as! String
-        relacion = aDecoder.decodeObjectForKey("relacion") as! String
+        rut = aDecoder.decodeObject(forKey: "rut") as! String
+        nombre = aDecoder.decodeObject(forKey: "nombre") as! String
+        relacion = aDecoder.decodeObject(forKey: "relacion") as! String
     }
     
-    func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(rut, forKey: "rut")
-        aCoder.encodeObject(nombre, forKey: "nombre")
-        aCoder.encodeObject(relacion, forKey:  "relacion")
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(rut, forKey: "rut")
+        aCoder.encode(nombre, forKey: "nombre")
+        aCoder.encode(relacion, forKey:  "relacion")
     }
 }

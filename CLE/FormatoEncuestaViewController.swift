@@ -24,9 +24,9 @@ class FormatoEncuestaViewController: UIViewController, UITableViewDelegate, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 87.0/255.0, green: 90.0/255.0, blue: 63.0/255.0, alpha: 1.0)
-        self.navigationController?.navigationBar.translucent =  false
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
-        self.navigationController?.navigationBar.barStyle = .Black
+        self.navigationController?.navigationBar.isTranslucent =  false
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        self.navigationController?.navigationBar.barStyle = .black
 
         txtPregunta.text = pregunta
         tblRespuestas.dataSource =  self
@@ -38,20 +38,20 @@ class FormatoEncuestaViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return  respuestas.count
     }
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let mycell = tableView.dequeueReusableCellWithIdentifier("CeldaRespuestas", forIndexPath: indexPath) as! RespuestasTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let mycell = tableView.dequeueReusableCell(withIdentifier: "CeldaRespuestas", for: indexPath) as! RespuestasTableViewCell
         
-        mycell.txtTexto.text = respuestas[indexPath.row]
+        mycell.txtTexto.text = respuestas[(indexPath as NSIndexPath).row]
         
         return mycell
     }
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         seleccion = true
-        respSel = String(indexPath.row + 1)
-        let master : MantenedorEncuestaViewController = self.parentViewController?.parentViewController as! MantenedorEncuestaViewController
+        respSel = String((indexPath as NSIndexPath).row + 1)
+        let master : MantenedorEncuestaViewController = self.parent?.parent as! MantenedorEncuestaViewController
         master.codResp = codPregunta
         master.respSel = respSel
         master.seleccion = seleccion

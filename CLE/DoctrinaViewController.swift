@@ -21,15 +21,15 @@ class DoctrinaViewController: UIViewController, UITableViewDataSource, UITableVi
 
         self.title = "Doctrina"
         self.navigationController?.navigationBar.barTintColor =  UIColor(red: 87.0/255.0, green: 90.0/255.0, blue: 63.0/255.0, alpha: 1.0)
-        self.navigationController?.navigationBar.translucent =  false
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
-        self.navigationController?.navigationBar.barStyle = .Black
+        self.navigationController?.navigationBar.isTranslucent =  false
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        self.navigationController?.navigationBar.barStyle = .black
         
         var image = UIImage(named: "Menu")
         
-        image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        image = image?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(DoctrinaViewController.btnMenu(_:)))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.plain, target: self, action: #selector(DoctrinaViewController.btnMenu(_:)))
         self.tblDoctrinas.dataSource = self
         self.tblDoctrinas.delegate = self
         
@@ -69,38 +69,38 @@ class DoctrinaViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
 
-    @IBAction func btnMenu(sender: AnyObject) {
-        let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.centerContainer!.toggleDrawerSide(.Left, animated: true, completion: nil)
+    @IBAction func btnMenu(_ sender: AnyObject) {
+        let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.centerContainer!.toggle(.left, animated: true, completion: nil)
     }
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return documentos.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let mycell:CeldaDoctrinasTableViewCell = tableView.dequeueReusableCellWithIdentifier("CeldaDoctrina", forIndexPath: indexPath) as! CeldaDoctrinasTableViewCell
+        let mycell:CeldaDoctrinasTableViewCell = tableView.dequeueReusableCell(withIdentifier: "CeldaDoctrina", for: indexPath) as! CeldaDoctrinasTableViewCell
         
-        mycell.imgCaratula.image = documentos[indexPath.row].paginas[0]
-        mycell.txtTituloDocumento.textAlignment = .Center
-        mycell.txtTituloDocumento.text = documentos[indexPath.row].nombre
+        mycell.imgCaratula.image = documentos[(indexPath as NSIndexPath).row].paginas[0]
+        mycell.txtTituloDocumento.textAlignment = .center
+        mycell.txtTituloDocumento.text = documentos[(indexPath as NSIndexPath).row].nombre
         
         return mycell
         
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "mostrarDocumento" {
 
-            let vc:MantenedorDoctrinaViewController = segue.destinationViewController as! MantenedorDoctrinaViewController;
-            vc.titulo = documentos[tblDoctrinas.indexPathForSelectedRow!.row].nombre
-            vc.paginas = documentos[tblDoctrinas.indexPathForSelectedRow!.row].paginas
+            let vc:MantenedorDoctrinaViewController = segue.destination as! MantenedorDoctrinaViewController;
+            vc.titulo = documentos[(tblDoctrinas.indexPathForSelectedRow! as NSIndexPath).row].nombre
+            vc.paginas = documentos[(tblDoctrinas.indexPathForSelectedRow! as NSIndexPath).row].paginas
         }
     }
     

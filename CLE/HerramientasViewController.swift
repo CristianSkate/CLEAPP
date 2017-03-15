@@ -17,15 +17,15 @@ class HerramientasViewController: UIViewController {
 
         self.title = "Herramientas"
         self.navigationController?.navigationBar.barTintColor =  UIColor(red: 87.0/255.0, green: 90.0/255.0, blue: 63.0/255.0, alpha: 1.0)
-        self.navigationController?.navigationBar.translucent =  false
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
-        self.navigationController?.navigationBar.barStyle = .Black
+        self.navigationController?.navigationBar.isTranslucent =  false
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        self.navigationController?.navigationBar.barStyle = .black
         
         var image = UIImage(named: "Menu")
         
-        image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        image = image?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(HerramientasViewController.btnMenu(_:)))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.plain, target: self, action: #selector(HerramientasViewController.btnMenu(_:)))
         configureScrollView()
     }
 
@@ -33,13 +33,13 @@ class HerramientasViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    @IBAction func btnComunicacion(sender: AnyObject) {
-        UIApplication.sharedApplication().openURL(NSURL(string: "http://cle.ejercito.cl/cursos/Comunicacion.aspx")!)
+    @IBAction func btnComunicacion(_ sender: AnyObject) {
+        UIApplication.shared.openURL(URL(string: "http://cle.ejercito.cl/cursos/Comunicacion.aspx")!)
     }
 
-    @IBAction func btnMenu(sender: AnyObject) {
-        let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.centerContainer!.toggleDrawerSide(.Left, animated: true, completion: nil)
+    @IBAction func btnMenu(_ sender: AnyObject) {
+        let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.centerContainer!.toggle(.left, animated: true, completion: nil)
     }
     
     func configureScrollView(){

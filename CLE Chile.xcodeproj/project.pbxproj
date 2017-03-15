@@ -43,15 +43,16 @@
 		502152FC1C8734490086EB9F /* FormatoPregAbiertaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502152FB1C8734490086EB9F /* FormatoPregAbiertaViewController.swift */; };
 		502463291C84A00400E606EB /* MyImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502463281C84A00400E606EB /* MyImageCache.swift */; };
 		5024632B1C84E0E600E606EB /* MantenedorPregAbiertasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5024632A1C84E0E600E606EB /* MantenedorPregAbiertasViewController.swift */; };
+		5039F5731E73D47400F78798 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5039F5721E73D47400F78798 /* GoogleService-Info.plist */; };
 		505D35521C74128F00C9E0C9 /* MantenedorInstructivoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505D35511C74128F00C9E0C9 /* MantenedorInstructivoViewController.swift */; };
 		50A0E48A1C3225E300B3051B /* MisEvaluadoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A0E4891C3225E300B3051B /* MisEvaluadoresViewController.swift */; };
 		50AE2E761C7C005100886274 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50AE2E751C7C005100886274 /* ObjectMapper.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		50AE2E781C7C005600886274 /* Pods_CLE_Chile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50AE2E771C7C005600886274 /* Pods_CLE_Chile.framework */; };
 		50AF11331C38AEFC009638AD /* BuscarEvaluadoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AF11321C38AEFC009638AD /* BuscarEvaluadoresViewController.swift */; };
 		50AF11351C38BB35009638AD /* Evaluador.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AF11341C38BB35009638AD /* Evaluador.swift */; };
 		50D720661C722C1A004C83D1 /* FormatoInstructViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D720651C722C1A004C83D1 /* FormatoInstructViewController.swift */; };
 		50FA628F1C42093600112421 /* DetalleNoticiaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FA628E1C42093600112421 /* DetalleNoticiaViewController.swift */; };
 		6113E87F1BDA6BDF0028E247 /* MisionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6113E87E1BDA6BDF0028E247 /* MisionViewController.swift */; };
+		DE0282740F31136152A5B6F5 /* Pods_CLE_Chile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66155C45A12B80F4910A37F9 /* Pods_CLE_Chile.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,7 +73,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		26F1E398F2E65E605A1379AD /* Pods_CLE_Chile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CLE_Chile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		400173301BC4167500E08A6D /* CLE Chile-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CLE Chile-Bridging-Header.h"; sourceTree = "<group>"; };
 		400173311BC4167500E08A6D /* MMDrawerBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerBarButtonItem.h; sourceTree = SOURCE_ROOT; };
 		400173321BC4167500E08A6D /* MMDrawerBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerBarButtonItem.m; sourceTree = SOURCE_ROOT; };
@@ -119,18 +119,20 @@
 		502152FB1C8734490086EB9F /* FormatoPregAbiertaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FormatoPregAbiertaViewController.swift; path = CLE/FormatoPregAbiertaViewController.swift; sourceTree = SOURCE_ROOT; };
 		502463281C84A00400E606EB /* MyImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyImageCache.swift; path = CLE/MyImageCache.swift; sourceTree = SOURCE_ROOT; };
 		5024632A1C84E0E600E606EB /* MantenedorPregAbiertasViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MantenedorPregAbiertasViewController.swift; path = CLE/MantenedorPregAbiertasViewController.swift; sourceTree = SOURCE_ROOT; };
+		5039F5711E73D3E800F78798 /* CLE Chile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CLE Chile.entitlements"; sourceTree = "<group>"; };
+		5039F5721E73D47400F78798 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		505D35511C74128F00C9E0C9 /* MantenedorInstructivoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MantenedorInstructivoViewController.swift; path = CLE/MantenedorInstructivoViewController.swift; sourceTree = SOURCE_ROOT; };
 		5083403C1C7BFF1500C66CB6 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = "Pods/../build/Debug-iphoneos/ObjectMapper.framework"; sourceTree = "<group>"; };
 		50A0E4891C3225E300B3051B /* MisEvaluadoresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MisEvaluadoresViewController.swift; path = CLE/MisEvaluadoresViewController.swift; sourceTree = SOURCE_ROOT; };
 		50AE2E751C7C005100886274 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = "Pods/../build/Debug-iphoneos/ObjectMapper.framework"; sourceTree = "<group>"; };
-		50AE2E771C7C005600886274 /* Pods_CLE_Chile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_CLE_Chile.framework; path = "Pods/../build/Debug-iphoneos/Pods_CLE_Chile.framework"; sourceTree = "<group>"; };
 		50AF11321C38AEFC009638AD /* BuscarEvaluadoresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BuscarEvaluadoresViewController.swift; path = CLE/BuscarEvaluadoresViewController.swift; sourceTree = SOURCE_ROOT; };
 		50AF11341C38BB35009638AD /* Evaluador.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Evaluador.swift; path = CLE/Evaluador.swift; sourceTree = SOURCE_ROOT; };
 		50D720651C722C1A004C83D1 /* FormatoInstructViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FormatoInstructViewController.swift; path = CLE/FormatoInstructViewController.swift; sourceTree = SOURCE_ROOT; };
 		50FA628E1C42093600112421 /* DetalleNoticiaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetalleNoticiaViewController.swift; path = CLE/DetalleNoticiaViewController.swift; sourceTree = SOURCE_ROOT; };
-		594F5CB99F870314D19150DF /* Pods-CLE Chile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CLE Chile.release.xcconfig"; path = "Pods/Target Support Files/Pods-CLE Chile/Pods-CLE Chile.release.xcconfig"; sourceTree = "<group>"; };
 		6113E87E1BDA6BDF0028E247 /* MisionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MisionViewController.swift; path = CLE/MisionViewController.swift; sourceTree = SOURCE_ROOT; };
-		F56C27D21622F30B281D677F /* Pods-CLE Chile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CLE Chile.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CLE Chile/Pods-CLE Chile.debug.xcconfig"; sourceTree = "<group>"; };
+		66155C45A12B80F4910A37F9 /* Pods_CLE_Chile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CLE_Chile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7381D16CB618FA0CDD3EB703 /* Pods-CLE Chile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CLE Chile.release.xcconfig"; path = "Pods/Target Support Files/Pods-CLE Chile/Pods-CLE Chile.release.xcconfig"; sourceTree = "<group>"; };
+		E9CF44993E5900776B0FE40B /* Pods-CLE Chile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CLE Chile.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CLE Chile/Pods-CLE Chile.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,8 +140,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50AE2E781C7C005600886274 /* Pods_CLE_Chile.framework in Frameworks */,
 				50AE2E761C7C005100886274 /* ObjectMapper.framework in Frameworks */,
+				DE0282740F31136152A5B6F5 /* Pods_CLE_Chile.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,10 +165,9 @@
 		097F7C28117D9C67A01D02A7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				50AE2E771C7C005600886274 /* Pods_CLE_Chile.framework */,
 				50AE2E751C7C005100886274 /* ObjectMapper.framework */,
 				5083403C1C7BFF1500C66CB6 /* ObjectMapper.framework */,
-				26F1E398F2E65E605A1379AD /* Pods_CLE_Chile.framework */,
+				66155C45A12B80F4910A37F9 /* Pods_CLE_Chile.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -238,12 +239,13 @@
 		40ABB6141BBC74970060063F = {
 			isa = PBXGroup;
 			children = (
+				5039F5711E73D3E800F78798 /* CLE Chile.entitlements */,
 				40ABB61F1BBC74970060063F /* CLE */,
 				40ABB6341BBC74970060063F /* CLE Tests */,
 				40ABB63F1BBC74970060063F /* CLE UITests */,
 				40ABB61E1BBC74970060063F /* Products */,
-				EBC91BAF3A40363ED9A04B20 /* Pods */,
 				097F7C28117D9C67A01D02A7 /* Frameworks */,
+				9F2ACC3644E4122643D859B2 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -260,6 +262,7 @@
 		40ABB61F1BBC74970060063F /* CLE */ = {
 			isa = PBXGroup;
 			children = (
+				5039F5721E73D47400F78798 /* GoogleService-Info.plist */,
 				40074D971BDA6D4000C92588 /* Models */,
 				400173421BC4249D00E08A6D /* ViewControllers */,
 				4001732F1BC4163A00E08A6D /* DrawerFramework */,
@@ -291,11 +294,11 @@
 			path = "Centro de Liderazgo Ejercito de ChileUITests";
 			sourceTree = "<group>";
 		};
-		EBC91BAF3A40363ED9A04B20 /* Pods */ = {
+		9F2ACC3644E4122643D859B2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F56C27D21622F30B281D677F /* Pods-CLE Chile.debug.xcconfig */,
-				594F5CB99F870314D19150DF /* Pods-CLE Chile.release.xcconfig */,
+				E9CF44993E5900776B0FE40B /* Pods-CLE Chile.debug.xcconfig */,
+				7381D16CB618FA0CDD3EB703 /* Pods-CLE Chile.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -307,12 +310,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 40ABB6451BBC74970060063F /* Build configuration list for PBXNativeTarget "CLE Chile" */;
 			buildPhases = (
-				9544B40D0942446ECABF1DA8 /* Check Pods Manifest.lock */,
+				A4DBE353992E0B1244FEAB45 /* [CP] Check Pods Manifest.lock */,
 				40ABB6191BBC74970060063F /* Sources */,
 				40ABB61A1BBC74970060063F /* Frameworks */,
 				40ABB61B1BBC74970060063F /* Resources */,
-				DB041144040481F6BB105E3B /* Embed Pods Frameworks */,
-				4858F23FC77EA87E1EE76035 /* Copy Pods Resources */,
+				C23E80770505E2CD9D383BA8 /* [CP] Embed Pods Frameworks */,
+				1DDDA092466D13587E99A70E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -366,12 +369,21 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Cristian Martinez Toledo";
 				TargetAttributes = {
 					40ABB61C1BBC74970060063F = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = 7X92LN88KD;
+						LastSwiftMigration = 0800;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					40ABB6301BBC74970060063F = {
 						CreatedOnToolsVersion = 7.0;
@@ -413,6 +425,7 @@
 				40ABB6671BBDF0CC0060063F /* Assets.xcassets in Resources */,
 				40ABB6751BBDF1420060063F /* Info.plist in Resources */,
 				40ABB6711BBDF12C0060063F /* Main.storyboard in Resources */,
+				5039F5731E73D47400F78798 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,14 +446,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4858F23FC77EA87E1EE76035 /* Copy Pods Resources */ = {
+		1DDDA092466D13587E99A70E /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -448,29 +461,29 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CLE Chile/Pods-CLE Chile-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9544B40D0942446ECABF1DA8 /* Check Pods Manifest.lock */ = {
+		A4DBE353992E0B1244FEAB45 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		DB041144040481F6BB105E3B /* Embed Pods Frameworks */ = {
+		C23E80770505E2CD9D383BA8 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -588,8 +601,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -632,8 +647,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -652,16 +669,18 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		40ABB6461BBC74970060063F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F56C27D21622F30B281D677F /* Pods-CLE Chile.debug.xcconfig */;
+			baseConfigurationReference = E9CF44993E5900776B0FE40B /* Pods-CLE Chile.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "CLE Chile.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -677,16 +696,18 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CLE Chile-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		40ABB6471BBC74970060063F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 594F5CB99F870314D19150DF /* Pods-CLE Chile.release.xcconfig */;
+			baseConfigurationReference = 7381D16CB618FA0CDD3EB703 /* Pods-CLE Chile.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "CLE Chile.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -701,6 +722,7 @@
 				PRODUCT_NAME = "CLE Chile";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CLE Chile-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

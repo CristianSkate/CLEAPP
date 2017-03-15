@@ -29,9 +29,9 @@ class FormatoPregAbiertaViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
 
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 87.0/255.0, green: 90.0/255.0, blue: 63.0/255.0, alpha: 1.0)
-        self.navigationController?.navigationBar.translucent =  false
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
-        self.navigationController?.navigationBar.barStyle = .Black
+        self.navigationController?.navigationBar.isTranslucent =  false
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        self.navigationController?.navigationBar.barStyle = .black
         
         txtPreg1.text = "Indique 3 características que usted identifica como FORTALEZAS en la persona que está evaluando"
         txtPreg2.text = "Indique 3 características que usted identifica como ÁREAS DE MEJORA en la persona que está evaluando"
@@ -56,17 +56,17 @@ class FormatoPregAbiertaViewController: UIViewController, UITextViewDelegate {
     }
     
 
-    @IBAction func irSiguiente(sender: AnyObject) {
+    @IBAction func irSiguiente(_ sender: AnyObject) {
         // funcion para cargar y mostrar la siguiente pregunta
         if validar(){
             
             //Se referencia el vc padre para utilizar la funcion del boton siguiente
-            let master : MantenedorPregAbiertasViewController = self.parentViewController?.parentViewController as! MantenedorPregAbiertasViewController
+            let master : MantenedorPregAbiertasViewController = self.parent?.parent as! MantenedorPregAbiertasViewController
             master.btnSiguiente(self.pageIndex, resp1a: txtResp1a.text, resp1b: txtResp1b.text, resp1c: txtResp1c.text, resp2a: txtResp2a.text, resp2b: txtResp2b.text, resp2c: txtResp2c.text, resp3: txtResp3.text)
         }else{
-            let AlertController = UIAlertController(title: "Mensaje", message: "Debes completar las respuestas para avanzar", preferredStyle: .Alert)
-            AlertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler: nil))
-            self.presentViewController(AlertController, animated: true, completion: nil)
+            let AlertController = UIAlertController(title: "Mensaje", message: "Debes completar las respuestas para avanzar", preferredStyle: .alert)
+            AlertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
+            self.present(AlertController, animated: true, completion: nil)
         }
     }
     
@@ -88,7 +88,7 @@ class FormatoPregAbiertaViewController: UIViewController, UITextViewDelegate {
         
     }
     
-    func textViewDidChange(textView: UITextView) {
+    func textViewDidChange(_ textView: UITextView) {
         
         if textView == txtPreg1 || textView == txtPreg2 || textView == txtPreg3{
             let contentSize = textView.sizeThatFits(textView.bounds.size)
@@ -96,7 +96,7 @@ class FormatoPregAbiertaViewController: UIViewController, UITextViewDelegate {
             frame.size.height = contentSize.height
             textView.frame = frame
         
-            let aspectRatioViewConstraint = NSLayoutConstraint(item: textView, attribute: .Height, relatedBy: .Equal, toItem: textView, attribute: .Width, multiplier: textView.bounds.height/textView.bounds.width, constant: 1)
+            let aspectRatioViewConstraint = NSLayoutConstraint(item: textView, attribute: .height, relatedBy: .equal, toItem: textView, attribute: .width, multiplier: textView.bounds.height/textView.bounds.width, constant: 1)
             textView.addConstraint(aspectRatioViewConstraint)
             
         }
@@ -104,58 +104,58 @@ class FormatoPregAbiertaViewController: UIViewController, UITextViewDelegate {
     
     func configureResponses(){
         
-        txtPreg1.textAlignment = .Natural
+        txtPreg1.textAlignment = .natural
         txtPreg1.font = UIFont(name: "System" , size: 17)
     
         txtResp1a.layer.borderWidth = 1
         txtResp1a.layer.cornerRadius = 8.0
         txtResp1a.layer.masksToBounds = true
-        txtResp1a.layer.borderColor = UIColor.grayColor().CGColor
+        txtResp1a.layer.borderColor = UIColor.gray.cgColor
         txtResp1a.delegate = self
         
         txtResp1b.layer.borderWidth = 1
         txtResp1b.layer.cornerRadius = 8.0
         txtResp1b.layer.masksToBounds = true
-        txtResp1b.layer.borderColor = UIColor.grayColor().CGColor
+        txtResp1b.layer.borderColor = UIColor.gray.cgColor
         txtResp1b.delegate = self
 
         txtResp1c.layer.borderWidth = 1
         txtResp1c.layer.cornerRadius = 8.0
         txtResp1c.layer.masksToBounds = true
-        txtResp1c.layer.borderColor = UIColor.grayColor().CGColor
+        txtResp1c.layer.borderColor = UIColor.gray.cgColor
         txtResp1c.delegate = self
         
         txtResp2a.layer.borderWidth = 1
         txtResp2a.layer.cornerRadius = 8.0
         txtResp2a.layer.masksToBounds = true
-        txtResp2a.layer.borderColor = UIColor.grayColor().CGColor
+        txtResp2a.layer.borderColor = UIColor.gray.cgColor
         txtResp2a.delegate = self
 
         txtResp2b.layer.borderWidth = 1
         txtResp2b.layer.cornerRadius = 8.0
         txtResp2b.layer.masksToBounds = true
-        txtResp2b.layer.borderColor = UIColor.grayColor().CGColor
+        txtResp2b.layer.borderColor = UIColor.gray.cgColor
         txtResp2b.delegate = self
 
         txtResp2c.layer.borderWidth = 1
         txtResp2c.layer.cornerRadius = 8.0
         txtResp2c.layer.masksToBounds = true
-        txtResp2c.layer.borderColor = UIColor.grayColor().CGColor
+        txtResp2c.layer.borderColor = UIColor.gray.cgColor
         txtResp2c.delegate = self
 
         txtResp3.layer.borderWidth = 1
         txtResp3.layer.cornerRadius = 8.0
         txtResp3.layer.masksToBounds = true
-        txtResp3.layer.borderColor = UIColor.grayColor().CGColor
+        txtResp3.layer.borderColor = UIColor.gray.cgColor
         txtResp3.delegate = self
 
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
     
-    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if(text == "\n") {
             textView.resignFirstResponder()
             return false
@@ -169,39 +169,39 @@ class FormatoPregAbiertaViewController: UIViewController, UITextViewDelegate {
     func registerForKeyboardNotifications()
     {
         //agregando escuchas de notificaciones del teclado
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FormatoPregAbiertaViewController.keyboardWasShown(_:)), name: UIKeyboardDidShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FormatoPregAbiertaViewController.keyboardWillBeHidden(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(FormatoPregAbiertaViewController.keyboardWasShown(_:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(FormatoPregAbiertaViewController.keyboardWillBeHidden(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     
     func deregisterFromKeyboardNotifications()
     {
         //eliminar escuchas del teclado
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardDidShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
-    func textViewDidBeginEditing(textView: UITextView)
+    func textViewDidBeginEditing(_ textView: UITextView)
     {
      
         self.activeField = textView
     }
     
-    func textViewDidEndEditing(textView: UITextView)
+    func textViewDidEndEditing(_ textView: UITextView)
     {
         
         self.activeField = nil
     }
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
        deregisterFromKeyboardNotifications()
     }
     
-    func keyboardWasShown(notification: NSNotification)
+    func keyboardWasShown(_ notification: Notification)
     {
         //calcular tamaño del teclado
-        self.scrollView.scrollEnabled = true
-        let info : NSDictionary = notification.userInfo!
-        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue().size
+        self.scrollView.isScrollEnabled = true
+        let info : NSDictionary = (notification as NSNotification).userInfo! as NSDictionary
+        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
         let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize!.height, 0.0)
         
         self.scrollView.contentInset = contentInsets
@@ -211,7 +211,7 @@ class FormatoPregAbiertaViewController: UIViewController, UITextViewDelegate {
         aRect.size.height -= keyboardSize!.height
         if let _ = self.activeField
         {
-            if (!CGRectContainsPoint(aRect, activeField!.frame.origin))
+            if (!aRect.contains(activeField!.frame.origin))
             {
                 self.scrollView.scrollRectToVisible(activeField!.frame, animated: true)
             
@@ -220,9 +220,9 @@ class FormatoPregAbiertaViewController: UIViewController, UITextViewDelegate {
     }
     
     
-    func keyboardWillBeHidden(notification: NSNotification)
+    func keyboardWillBeHidden(_ notification: Notification)
     {
-        self.scrollView.contentInset = UIEdgeInsetsZero
+        self.scrollView.contentInset = UIEdgeInsets.zero
     }
     
 

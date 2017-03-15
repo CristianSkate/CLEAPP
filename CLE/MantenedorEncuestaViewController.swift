@@ -14,7 +14,7 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
     var pageViewController:UIPageViewController!
     var respuestas:NSArray!
     var preguntas:NSArray!
-    let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+    let prefs:UserDefaults = UserDefaults.standard
     var preguntasJson:NSDictionary! = nil
     var respuestasJson:Respuestas = Respuestas(rutEvaluador: "", rutEvaluado: "", respuestas: [])
     var rutEvaluado:String!
@@ -27,23 +27,23 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Salir", style: .Plain, target: self, action: #selector(MantenedorEncuestaViewController.volverAtras))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Salir", style: .plain, target: self, action: #selector(MantenedorEncuestaViewController.volverAtras))
        
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Siguiente", style: .Plain, target: self, action: #selector(MantenedorInstructivoViewController.btnSiguiente))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Siguiente", style: .plain, target: self, action: #selector(MantenedorInstructivoViewController.btnSiguiente))
         
         self.title = "Encuesta"
         preCargarDatos()
-        self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
+        self.pageViewController = self.storyboard?.instantiateViewController(withIdentifier: "PageViewController") as! UIPageViewController
         
-        rutEvaluador = prefs.valueForKey("RUN") as! String
+        rutEvaluador = prefs.value(forKey: "RUN") as! String
         print (rutEvaluado)
         //INICIALIZACION DE RESPUESTAS
 //        respuestasJson = (prefs.valueForKey("resp\(rutEvaluador)\(rutEvaluador)") as? Respuestas)!
-        if  prefs.valueForKey("resp\(rutEvaluador)\(rutEvaluado)") == nil{
+        if  prefs.value(forKey: "resp\(rutEvaluador)\(rutEvaluado)") == nil{
             respuestasJson = Respuestas(rutEvaluador: rutEvaluador, rutEvaluado: rutEvaluado, respuestas: [])
-            prefs.setObject(Mapper().toJSONString(respuestasJson, prettyPrint: false)!, forKey: "resp\(rutEvaluador)\(rutEvaluado)")
+            prefs.set(Mapper().toJSONString(respuestasJson, prettyPrint: false)!, forKey: "resp\(rutEvaluador)\(rutEvaluado)")
         }else{
-            respuestasJson = Mapper<Respuestas>().map(prefs.valueForKey("resp\(rutEvaluador)\(rutEvaluado)") as! String)!
+            respuestasJson = Mapper<Respuestas>().map(prefs.value(forKey: "resp\(rutEvaluador)\(rutEvaluado)") as! String)!
         }
         
         self.pageViewController.dataSource = self
@@ -51,18 +51,18 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
             let initialContenViewController = self.preguntaAtIndex(respuestasJson.respuestas!.count) as FormatoEncuestaViewController
         
             let viewControllers = NSArray(object: initialContenViewController)
-            self.pageViewController.setViewControllers(viewControllers as [AnyObject] as? [UIViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
+            self.pageViewController.setViewControllers(viewControllers as [AnyObject] as? [UIViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
         }else{
-            self.performSegueWithIdentifier("empezarPreguntasAbiertas", sender: nil)
+            self.performSegue(withIdentifier: "empezarPreguntasAbiertas", sender: nil)
         }
         
         
         
-        self.pageViewController.view.frame = CGRectMake(0, 10, self.view.frame.size.width, self.view.frame.size.height-10)
+        self.pageViewController.view.frame = CGRect(x: 0, y: 10, width: self.view.frame.size.width, height: self.view.frame.size.height-10)
         
         self.addChildViewController(self.pageViewController)
         self.view.addSubview(self.pageViewController.view)
-        self.pageViewController.didMoveToParentViewController(self)
+        self.pageViewController.didMove(toParentViewController: self)
      
         
     }
@@ -72,30 +72,30 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
         // Dispose of any resources that can be recreated.
     }
     func volverAtras() {
-        let alertController = UIAlertController(title: "Confirmación", message: "Al presionar Si guardará los cambios para continuar más tarde, ¿Desea continuar?", preferredStyle: .Alert)
-        alertController.addAction(UIAlertAction(title: "Si", style: .Default, handler: {(alert: UIAlertAction) in
-            self.performSegueWithIdentifier("unwindToMisEncuestas", sender: self)
+        let alertController = UIAlertController(title: "Confirmación", message: "Al presionar Si guardará los cambios para continuar más tarde, ¿Desea continuar?", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Si", style: .default, handler: {(alert: UIAlertAction) in
+            self.performSegue(withIdentifier: "unwindToMisEncuestas", sender: self)
         }))
-        alertController.addAction(UIAlertAction(title: "No", style: .Default, handler: nil))
-        self.presentViewController((alertController), animated: true, completion: nil)
+        alertController.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
+        self.present((alertController), animated: true, completion: nil)
         
     }
     func preCargarDatos(){
         
-        preguntas =  preguntasJson.valueForKey("preguntas") as!  NSArray
-        respuestas = preguntas.valueForKey("respuestas") as! NSArray
+        preguntas =  preguntasJson.value(forKey: "preguntas") as!  NSArray
+        respuestas = preguntas.value(forKey: "respuestas") as! NSArray
 
     }
     
     
-    func preguntaAtIndex(index: Int) ->FormatoEncuestaViewController
+    func preguntaAtIndex(_ index: Int) ->FormatoEncuestaViewController
     {
         
-        let pageContentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("FormatoEncuestaViewController") as! FormatoEncuestaViewController
+        let pageContentViewController = self.storyboard?.instantiateViewController(withIdentifier: "FormatoEncuestaViewController") as! FormatoEncuestaViewController
         
-        pageContentViewController.respuestas =  respuestas[index].valueForKey("respuesta") as! [String]
-        pageContentViewController.pregunta = preguntas[index].valueForKey("pregunta") as! String
-        pageContentViewController.codPregunta = preguntas[index].valueForKey("id") as! String
+        pageContentViewController.respuestas =  (respuestas[index] as AnyObject).value(forKey: "respuesta") as! [String]
+        pageContentViewController.pregunta = (preguntas[index] as AnyObject).value(forKey: "pregunta") as! String
+        pageContentViewController.codPregunta = (preguntas[index] as AnyObject).value(forKey: "id") as! String
         pageContentViewController.pageIndex = index
         
         
@@ -103,22 +103,22 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
         
     }
     
-    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController?
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController?
     {
         return nil
     }
     
-    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController?
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController?
     {
         return nil
     }
     
-    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int
+    func presentationCount(for pageViewController: UIPageViewController) -> Int
     {
         return preguntas.count
     }
     
-    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int
+    func presentationIndex(for pageViewController: UIPageViewController) -> Int
     {
         return 0
     }
@@ -129,7 +129,7 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
         if seleccion {
             //GUARDADO DE ERESPUESTAS
             respuestasJson.respuestas?.append(Respuestas.respuestasFin(codPregunta: codResp, codRespuesta: respSel))
-            prefs.setObject(Mapper().toJSONString(respuestasJson, prettyPrint: false)!, forKey: "resp\(rutEvaluador)\(rutEvaluado)")
+            prefs.set(Mapper().toJSONString(respuestasJson, prettyPrint: false)!, forKey: "resp\(rutEvaluador)\(rutEvaluado)")
         
         
             var index = indexPage
@@ -137,25 +137,25 @@ class MantenedorEncuestaViewController: UIViewController, UIPageViewControllerDa
             if(!(index == NSNotFound) && !(index == preguntas.count)){
             
                 let viewControllers = NSArray(object: preguntaAtIndex(index))
-                self.pageViewController.setViewControllers(viewControllers as [AnyObject] as? [UIViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
+                self.pageViewController.setViewControllers(viewControllers as [AnyObject] as? [UIViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
             
             }else
             {
                 //IR A PREGUNTAS ABIERTAS
-                self.performSegueWithIdentifier("empezarPreguntasAbiertas", sender: nil)
+                self.performSegue(withIdentifier: "empezarPreguntasAbiertas", sender: nil)
             
             }
         }else{
-            let AlertController = UIAlertController(title: "Mensaje", message: "Debes seleccionar una respuesta para avanzar", preferredStyle: .Alert)
-            AlertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler: nil))
-            self.presentViewController(AlertController, animated: true, completion: nil)
+            let AlertController = UIAlertController(title: "Mensaje", message: "Debes seleccionar una respuesta para avanzar", preferredStyle: .alert)
+            AlertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
+            self.present(AlertController, animated: true, completion: nil)
         }
         
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "empezarPreguntasAbiertas" {
-            let vc = segue.destinationViewController as! MantenedorPregAbiertasViewController
+            let vc = segue.destination as! MantenedorPregAbiertasViewController
             vc.rutEvaluado = self.rutEvaluado
         }
     }

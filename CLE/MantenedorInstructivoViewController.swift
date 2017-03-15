@@ -16,8 +16,8 @@ class MantenedorInstructivoViewController: UIViewController, UIPageViewControlle
     var instructivos:[Instructivo] = []
     //Variables para el json
     var reponseError: NSError?
-    var response: NSURLResponse?
-    let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+    var response: URLResponse?
+    let prefs:UserDefaults = UserDefaults.standard
     var preguntasJson:NSDictionary! = nil
     //Codigo de relacion para buscar la encuesta con los instructivos
     var codRelacionSel:String!
@@ -26,14 +26,14 @@ class MantenedorInstructivoViewController: UIViewController, UIPageViewControlle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Salir", style: .Plain, target: self, action: #selector(MantenedorInstructivoViewController.volverAtras))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Salir", style: .plain, target: self, action: #selector(MantenedorInstructivoViewController.volverAtras))
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Siguiente", style: .Plain, target: self, action: #selector(MantenedorInstructivoViewController.btnSiguiente))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Siguiente", style: .plain, target: self, action: #selector(MantenedorInstructivoViewController.btnSiguiente))
         
         self.title = "Instructivos"
         preCargarDatos()
         
-        self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
+        self.pageViewController = self.storyboard?.instantiateViewController(withIdentifier: "PageViewController") as! UIPageViewController
         
         self.pageViewController.dataSource = self
         
@@ -42,13 +42,13 @@ class MantenedorInstructivoViewController: UIViewController, UIPageViewControlle
         let viewControllers = NSArray(object: initialContenViewController)
         
         
-        self.pageViewController.setViewControllers(viewControllers as [AnyObject] as? [UIViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
+        self.pageViewController.setViewControllers(viewControllers as [AnyObject] as? [UIViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
         
-        self.pageViewController.view.frame = CGRectMake(0, 10, self.view.frame.size.width, self.view.frame.size.height-10)
+        self.pageViewController.view.frame = CGRect(x: 0, y: 10, width: self.view.frame.size.width, height: self.view.frame.size.height-10)
         
         self.addChildViewController(self.pageViewController)
         self.view.addSubview(self.pageViewController.view)
-        self.pageViewController.didMoveToParentViewController(self)
+        self.pageViewController.didMove(toParentViewController: self)
         
     }
 
@@ -57,58 +57,58 @@ class MantenedorInstructivoViewController: UIViewController, UIPageViewControlle
     }
 
     func volverAtras() {
-        let alertController = UIAlertController(title: "Confirmación", message: "Al presionar si volverá al listado de encuestas pendientes, ¿Desea continuar?", preferredStyle: .Alert)
-        alertController.addAction(UIAlertAction(title: "Si", style: .Default, handler: {(alert: UIAlertAction) in
-            self.navigationController?.popViewControllerAnimated(true)
+        let alertController = UIAlertController(title: "Confirmación", message: "Al presionar si volverá al listado de encuestas pendientes, ¿Desea continuar?", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Si", style: .default, handler: {(alert: UIAlertAction) in
+            self.navigationController?.popViewController(animated: true)
         }))
-        alertController.addAction(UIAlertAction(title: "No", style: .Default, handler: nil))
-        self.presentViewController((alertController), animated: true, completion: nil)
+        alertController.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
+        self.present((alertController), animated: true, completion: nil)
         
     }
     
     func preCargarDatos(){
         
-        if (prefs.objectForKey("PREGUNTAS\(codRelacionSel)") == nil) {
+        if (prefs.object(forKey: "PREGUNTAS\(codRelacionSel)") == nil) {
             cargarDatos()
         }else{
-            preguntasJson = prefs.objectForKey("PREGUNTAS\(codRelacionSel)") as? NSDictionary
-            preguntas =  preguntasJson.valueForKey("preguntas") as!  NSArray
-            respuestas = preguntas.valueForKey("respuestas") as! NSArray
-            instructivos.append(Instructivo(titulo: preguntasJson.valueForKey("titulo_introduccion") as! String, cuerpo: preguntasJson.valueForKey("introduccion") as! String))
-            instructivos.append(Instructivo(titulo: preguntasJson.valueForKey("titulo_competencias") as! String, cuerpo: preguntasJson.valueForKey("competencias") as! String))
-            instructivos.append(Instructivo(titulo: preguntasJson.valueForKey("titulo_atributos") as! String, cuerpo: preguntasJson.valueForKey("atributos") as! String))
+            preguntasJson = prefs.object(forKey: "PREGUNTAS\(codRelacionSel)") as? NSDictionary
+            preguntas =  preguntasJson.value(forKey: "preguntas") as!  NSArray
+            respuestas = preguntas.value(forKey: "respuestas") as! NSArray
+            instructivos.append(Instructivo(titulo: preguntasJson.value(forKey: "titulo_introduccion") as! String, cuerpo: preguntasJson.value(forKey: "introduccion") as! String))
+            instructivos.append(Instructivo(titulo: preguntasJson.value(forKey: "titulo_competencias") as! String, cuerpo: preguntasJson.value(forKey: "competencias") as! String))
+            instructivos.append(Instructivo(titulo: preguntasJson.value(forKey: "titulo_atributos") as! String, cuerpo: preguntasJson.value(forKey: "atributos") as! String))
         }
     }
     
     func cargarDatos(){
         
-        let post:NSString = "relacion=\(codRelacionSel)"
+        let post:NSString = "relacion=\(codRelacionSel)" as NSString
         
         // mandamos al log para ir registrando lo que va pasando
         NSLog("PostData: %@",post);
         
         // llamamos a la URl donde está el json que se conectará con la BD
-        let url:NSURL = NSURL(string: "http://cle.ejercito.cl/ServiciosCle.asmx/ObtenerEncuestaRelacion?AspxAutoDetectCookieSupport=1")!
+        let url:URL = URL(string: "http://cle.ejercito.cl/ServiciosCle.asmx/ObtenerEncuestaRelacion?AspxAutoDetectCookieSupport=1")!
         
         // codificamos lo que se envía
-        let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+        let postData:Data = post.data(using: String.Encoding.ascii.rawValue)!
         
         // se determina el largo del string
-        let postLength:NSString = String( postData.length )
+        let postLength:NSString = String( postData.count ) as NSString
         
         // componemos la URL con una var request y un NSMutableURLRequest y le pasamos como parámetros las vars
-        let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
-        request.HTTPMethod = "POST"
-        request.HTTPBody = postData
+        let request:NSMutableURLRequest = NSMutableURLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = postData
         request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         
         
         // hacemos la conexion
-        var urlData: NSData?
+        var urlData: Data?
         do {
-            urlData = try NSURLConnection.sendSynchronousRequest(request, returningResponse:&response)
+            urlData = try NSURLConnection.sendSynchronousRequest(request as URLRequest, returning:&response)
         } catch let error as NSError {
             reponseError = error
             urlData = nil
@@ -116,27 +116,27 @@ class MantenedorInstructivoViewController: UIViewController, UIPageViewControlle
         
         // se valida
         if ( urlData != nil ) {
-            let res = response as! NSHTTPURLResponse!;
+            let res = response as! HTTPURLResponse!;
             
-            NSLog("Response code: %ld", res.statusCode);
+            //NSLog("Response code: %ld", res?.statusCode);
             
-            if (res.statusCode >= 200 && res.statusCode < 300)
+            if ((res?.statusCode)! >= 200 && (res?.statusCode)! < 300)
             {
-                let responseData:NSString  = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
+                let responseData:NSString  = NSString(data:urlData!, encoding:String.Encoding.utf8.rawValue)!
                 
                 NSLog("Response ==> %@", responseData);
                 
                 //var error: NSError?
                 
-                preguntasJson = (try! NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers )) as! NSDictionary
+                preguntasJson = (try! JSONSerialization.jsonObject(with: urlData!, options:JSONSerialization.ReadingOptions.mutableContainers )) as! NSDictionary
                 
-                prefs.setObject(preguntasJson, forKey: "PREGUNTAS\(codRelacionSel)")
+                prefs.set(preguntasJson, forKey: "PREGUNTAS\(codRelacionSel)")
                 prefs.synchronize()
-                preguntas =  preguntasJson.valueForKey("preguntas") as!  NSArray //Agregar identificador
-                respuestas = preguntas.valueForKey("respuestas") as! NSArray // agregar identificador unico
-                instructivos.append(Instructivo(titulo: preguntasJson.valueForKey("titulo_introduccion") as! String, cuerpo: preguntasJson.valueForKey("introduccion") as! String))
-                instructivos.append(Instructivo(titulo: preguntasJson.valueForKey("titulo_competencias") as! String, cuerpo: preguntasJson.valueForKey("competencias") as! String))
-                instructivos.append(Instructivo(titulo: preguntasJson.valueForKey("titulo_atributos") as! String, cuerpo: preguntasJson.valueForKey("atributos") as! String))
+                preguntas =  preguntasJson.value(forKey: "preguntas") as!  NSArray //Agregar identificador
+                respuestas = preguntas.value(forKey: "respuestas") as! NSArray // agregar identificador unico
+                instructivos.append(Instructivo(titulo: preguntasJson.value(forKey: "titulo_introduccion") as! String, cuerpo: preguntasJson.value(forKey: "introduccion") as! String))
+                instructivos.append(Instructivo(titulo: preguntasJson.value(forKey: "titulo_competencias") as! String, cuerpo: preguntasJson.value(forKey: "competencias") as! String))
+                instructivos.append(Instructivo(titulo: preguntasJson.value(forKey: "titulo_atributos") as! String, cuerpo: preguntasJson.value(forKey: "atributos") as! String))
                 
                 
                 
@@ -144,11 +144,11 @@ class MantenedorInstructivoViewController: UIViewController, UIPageViewControlle
                 print(preguntas)
                 
                 
-                self.dismissViewControllerAnimated(true, completion: nil)
+                self.dismiss(animated: true, completion: nil)
             } else {
-                let alertController = UIAlertController(title: "¡Ups!", message: "Hubo un problema conectando al servidor", preferredStyle: .Alert)
-                alertController.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler: nil))
-                self.presentViewController(alertController, animated: true, completion: nil)
+                let alertController = UIAlertController(title: "¡Ups!", message: "Hubo un problema conectando al servidor", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
+                self.present(alertController, animated: true, completion: nil)
             }
             
         } else {
@@ -156,16 +156,16 @@ class MantenedorInstructivoViewController: UIViewController, UIPageViewControlle
             alertView.title = "Acceso incorrecto"
             alertView.message = "Conneción Fallida"
             alertView.delegate = self
-            alertView.addButtonWithTitle("OK")
+            alertView.addButton(withTitle: "OK")
             alertView.show()
         }
         
     }
     
-    func instructivoAtIndex(index: Int) ->FormatoInstructViewController
+    func instructivoAtIndex(_ index: Int) ->FormatoInstructViewController
     {
         
-        let pageContentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("FormatoInstructViewController") as! FormatoInstructViewController
+        let pageContentViewController = self.storyboard?.instantiateViewController(withIdentifier: "FormatoInstructViewController") as! FormatoInstructViewController
         
         pageContentViewController.titulo =  instructivos[index].titulo
         pageContentViewController.cuerpo = instructivos[index].cuerpo
@@ -175,22 +175,22 @@ class MantenedorInstructivoViewController: UIViewController, UIPageViewControlle
         
     }
     
-    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController?
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController?
     {
         return nil
     }
     
-    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController?
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController?
     {
         return nil
     }
     
-    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int
+    func presentationCount(for pageViewController: UIPageViewController) -> Int
     {
         return instructivos.count
     }
     
-    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int
+    func presentationIndex(for pageViewController: UIPageViewController) -> Int
     {
         return 0
     }
@@ -202,19 +202,19 @@ class MantenedorInstructivoViewController: UIViewController, UIPageViewControlle
         if(!(index == NSNotFound) && !(index == instructivos.count)){
             
             let viewControllers = NSArray(object: instructivoAtIndex(index))
-            self.pageViewController.setViewControllers(viewControllers as [AnyObject] as? [UIViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
+            self.pageViewController.setViewControllers(viewControllers as [AnyObject] as? [UIViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
             
         }else
         {
-            self.performSegueWithIdentifier("empezarEncuesta", sender: nil)
+            self.performSegue(withIdentifier: "empezarEncuesta", sender: nil)
 
         }
         
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "empezarEncuesta" {
-            let vc = segue.destinationViewController as! MantenedorEncuestaViewController
+            let vc = segue.destination as! MantenedorEncuestaViewController
             vc.preguntasJson = preguntasJson
             vc.rutEvaluado = self.rutEvaluado
 

@@ -33,7 +33,7 @@ class FormatoPaginaViewController: UIViewController, UIScrollViewDelegate{
 
     }
     
-    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return self.imgPagina
     }
     
@@ -43,7 +43,7 @@ class FormatoPaginaViewController: UIViewController, UIScrollViewDelegate{
         scrollView.addGestureRecognizer(doubleTap)
     }
     
-    func handleDoubleTap(recognizer: UITapGestureRecognizer) {
+    func handleDoubleTap(_ recognizer: UITapGestureRecognizer) {
         
         if (scrollView.zoomScale > scrollView.minimumZoomScale) {
             scrollView.setZoomScale(scrollView.minimumZoomScale, animated: true)

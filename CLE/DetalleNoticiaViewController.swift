@@ -22,13 +22,13 @@ class DetalleNoticiaViewController: UIViewController , UITextViewDelegate{
         
         self.title = "Noticias CLE"
         self.navigationController?.navigationBar.barTintColor =  UIColor(red: 87.0/255.0, green: 90.0/255.0, blue: 63.0/255.0, alpha: 1.0)
-        self.navigationController?.navigationBar.translucent =  false
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
-        self.navigationController?.navigationBar.barStyle = .Black
+        self.navigationController?.navigationBar.isTranslucent =  false
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        self.navigationController?.navigationBar.barStyle = .black
         //Boton volver
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Volver", style: .Plain, target: self, action: #selector(DetalleNoticiaViewController.volverAtras))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Volver", style: .plain, target: self, action: #selector(DetalleNoticiaViewController.volverAtras))
         
-        let url = NSURL(string: "http://cle.ejercito.cl/upload/\(noticia.urlImagen)")
+        let url = URL(string: "http://cle.ejercito.cl/upload/\(noticia.urlImagen)")
         //Carga de cache
         if let image = url?.cachedImage{
             imgNoticia.image = image
@@ -37,17 +37,17 @@ class DetalleNoticiaViewController: UIViewController , UITextViewDelegate{
             imgNoticia.alpha = 0
             url!.fetchImage { image in
                 self.imgNoticia.image = image
-                UIView.animateWithDuration(0.3) {
+                UIView.animate(withDuration: 0.3, animations: {
                     self.imgNoticia.alpha = 1
                     
-                }
+                }) 
             }
         }
 
         txtTitulo.text = noticia.txtTitulo
         txtNoticia.text = noticia.txtNoticia
-        txtTitulo.textAlignment = .Center
-        txtNoticia.textAlignment = .Justified
+        txtTitulo.textAlignment = .center
+        txtNoticia.textAlignment = .justified
         
         configureScrollView()
         
@@ -66,20 +66,20 @@ class DetalleNoticiaViewController: UIViewController , UITextViewDelegate{
         
     }
     
-    func textViewDidChange(textView: UITextView) {
+    func textViewDidChange(_ textView: UITextView) {
         
         let contentSize = textView.sizeThatFits(textView.bounds.size)
         var frame = textView.frame
         frame.size.height = contentSize.height
         textView.frame = frame
         
-        let aspectRatioViewConstraint = NSLayoutConstraint(item: textView, attribute: .Height, relatedBy: .Equal, toItem: textView, attribute: .Width, multiplier: textView.bounds.height/textView.bounds.width, constant: 1)
+        let aspectRatioViewConstraint = NSLayoutConstraint(item: textView, attribute: .height, relatedBy: .equal, toItem: textView, attribute: .width, multiplier: textView.bounds.height/textView.bounds.width, constant: 1)
         textView.addConstraint(aspectRatioViewConstraint)
     }
     
     
     func volverAtras(){
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
 

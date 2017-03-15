@@ -24,7 +24,7 @@ class Respuestas: NSObject, Mappable {
     required init?(_ map: Map){
     }
     
-    func mapping(map: Map){
+    func mapping(_ map: Map){
         rutEvaluado <- map["run_evaluado"]
         rutEvaluador <- map["run_evaluador"]
         respuestas <- map["respuestas"]
@@ -43,7 +43,7 @@ class Respuestas: NSObject, Mappable {
         init?(_ map: Map){
         }
         
-        mutating func mapping(map: Map) {
+        mutating func mapping(_ map: Map) {
             codPregunta <- map["cod_pregunta"]
             codRespuesta <- map["cod_respuesta"]
             
