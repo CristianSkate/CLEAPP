@@ -85,7 +85,7 @@ class BuscarEvaluadoresViewController: UIViewController, UITableViewDataSource, 
                     sup = sup + 1
                 }
             }
-            if sup < 1 {
+            if sup < 1 { //Validacion de limite para ingreso de evaluadores superiores
                 var repetido:Bool = true
                 for eval in self.seleccionados {
                     if eval.rut == self.evaluadores[(indexPath as NSIndexPath).row].rut {
@@ -106,7 +106,7 @@ class BuscarEvaluadoresViewController: UIViewController, UITableViewDataSource, 
                     alertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
                     self.present(alertController, animated: true, completion: nil)
                 }
-            }else{
+            }else{ //Mensaje de que ya llegaron al limite
                 let alertController = UIAlertController(title: "Mensaje", message: "Ya has ingresado todos los Superiores", preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
                 self.present(alertController, animated: true, completion: nil)
@@ -129,7 +129,7 @@ class BuscarEvaluadoresViewController: UIViewController, UITableViewDataSource, 
                     par = par + 1
                 }
             }
-            if par < 5 {
+            if par < 3 {//Validacion de limite para ingreso de evaluadores pares
                 var repetido:Bool = true
                 for eval in self.seleccionados {
                     if eval.rut == self.evaluadores[(indexPath as NSIndexPath).row].rut {
@@ -174,7 +174,7 @@ class BuscarEvaluadoresViewController: UIViewController, UITableViewDataSource, 
                     sub = sub + 1
                 }
             }
-            if sub < 7 {
+            if sub < 3 { //Validacion de limite para ingreso de evaluadores subalternos
                 var repetido:Bool = true
                 for eval in self.seleccionados {
                     if eval.rut == self.evaluadores[(indexPath as NSIndexPath).row].rut {

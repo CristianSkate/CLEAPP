@@ -71,7 +71,7 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
         print(par)
         print(sub)
         
-        if (sup >= 1) && (par >= 3 && par <= 5) && (sub >= 5 && sub <= 7){
+        if (sup >= 1) && (par >= 2 && par <= 3) && (sub >= 2 && sub <= 3){
             btnFinal.isEnabled = true
         }
         
@@ -160,30 +160,32 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
         let superior = sup.rut
         let par1 = par[0].rut
         let par2 = par[1].rut
-        let par3 = par[2].rut
+        //let par3 = par[2].rut
         let sub1 = sub[0].rut
         let sub2 = sub[1].rut
-        let sub3 = sub[2].rut
-        let sub4 = sub[3].rut
-        let sub5 = sub[4].rut
-        var par4 = ""
-        var par5 = ""
-        var sub6 = ""
-        var sub7 = ""
-        if par.count > 3 {
-            par4 = par[3].rut
-            if par.count > 4 {
-                par5 = par[4].rut
-            }
+        //let sub3 = sub[2].rut
+        //let sub4 = sub[3].rut
+        //let sub5 = sub[4].rut
+        //var par4 = ""
+        var par3 = ""
+        var sub3 = ""
+        //var par5 = ""
+        //var sub6 = ""
+        //var sub7 = ""
+        if par.count > 2 {
+            par3 = par[2].rut
+            //if par.count > 4 {
+            //    par5 = par[4].rut
+            //}
         }
-        if sub.count > 5 {
-            sub6 = sub[5].rut
-            if sub.count > 6{
-                sub7 = sub[6].rut
-            }
+        if sub.count > 2 {
+            sub3 = sub[2].rut
+            //if sub.count > 6{
+            //    sub7 = sub[6].rut
+            //}
         }
         
-        let post:NSString = "run_evaluado=\(rut)&sup=\(superior)&par1=\(par1)&par2=\(par2)&par3=\(par3)&par4=\(par4)&par5=\(par5)&sub1=\(sub1)&sub2=\(sub2)&sub3=\(sub3)&sub4=\(sub4)&sub5=\(sub5)&sub6=\(sub6)&sub7=\(sub7)" as NSString
+        let post:NSString = "run_evaluado=\(rut)&sup=\(superior)&par1=\(par1)&par2=\(par2)&par3=\(par3)&sub1=\(sub1)&sub2=\(sub2)&sub3=\(sub3)" as NSString
         
         
         // mandamos al log para ir registrando lo que va pasando
