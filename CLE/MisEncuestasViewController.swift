@@ -25,7 +25,7 @@ class MisEncuestasViewController: UIViewController, UITableViewDataSource, UITab
         self.navigationController?.navigationBar.isTranslucent =  false
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         self.navigationController?.navigationBar.barStyle = .black
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Acualizar", style: .plain, target: self, action: #selector(MisEncuestasViewController.cargarMisEncuestas))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Actualizar", style: .plain, target: self, action: #selector(MisEncuestasViewController.cargarMisEncuestas))
         
         tblEncuestasPendientes.dataSource = self
         tblEncuestasPendientes.delegate = self
