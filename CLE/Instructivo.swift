@@ -10,8 +10,8 @@ import Foundation
 
 class Instructivo: NSObject{
     
-    var titulo:String
-    var cuerpo:String
+    var titulo:String=""
+    var cuerpo:String=""
     
     init(titulo:String,cuerpo:String){
         self.titulo = titulo

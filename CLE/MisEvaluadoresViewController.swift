@@ -222,7 +222,7 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
         if ( urlData != nil ) {
             let res = response as! HTTPURLResponse!;
             
-            //NSLog("Response code: %ld", res?.statusCode);
+            //NSLog("Response code: %@", res?.statusCode ?? "");
             
             if ((res?.statusCode)! >= 200 && (res?.statusCode)! < 300)
             {

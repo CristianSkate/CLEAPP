@@ -20,7 +20,7 @@ class MantenedorInstructivoViewController: UIViewController, UIPageViewControlle
     let prefs:UserDefaults = UserDefaults.standard
     var preguntasJson:NSDictionary! = nil
     //Codigo de relacion para buscar la encuesta con los instructivos
-    var codRelacionSel:String!
+    var codRelacionSel:String = ""
     var rutEvaluado:String!
     var indexPage:Int = 1
     
