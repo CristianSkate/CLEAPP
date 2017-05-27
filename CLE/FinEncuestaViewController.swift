@@ -25,7 +25,8 @@ class FinEncuestaViewController: UIViewController {
 
         self.title = "Fin de la encuesta"
         
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 87.0/255.0, green: 90.0/255.0, blue: 63.0/255.0, alpha: 1.0)
+        //self.navigationController?.navigationBar.barTintColor = UIColor(red: 87.0/255.0, green: 90.0/255.0, blue: 63.0/255.0, alpha: 1.0)
+        self.navigationController?.navigationBar.barTintColor =  UIColor(red: 80.0/255.0, green: 50.0/255.0, blue: 04.0/255.0, alpha: 1.0)
         self.navigationController?.navigationBar.isTranslucent =  false
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         self.navigationController?.navigationBar.barStyle = .black
