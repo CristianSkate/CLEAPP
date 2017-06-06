@@ -20,8 +20,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
         //self.navigationController?.navigationBar.barTintColor =  UIColor(red: 87.0/255.0, green: 90.0/255.0, blue: 63.0/255.0, alpha: 1.0)
         //self.view.backgroundColor = UIColor(red: 87.0/255.0, green: 90.0/255.0, blue: 63.0/255.0, alpha: 1.0)
-        self.navigationController?.navigationBar.barTintColor =  UIColor(red: 80.0/255.0, green: 50.0/255.0, blue: 04.0/255.0, alpha: 1.0)
-        self.view.backgroundColor = UIColor(red: 80.0/255.0, green: 50.0/255.0, blue: 04.0/255.0, alpha: 1.0)
+        self.navigationController?.navigationBar.barTintColor =  UIColor(red: 128.0/255.0, green: 80.0/255.0, blue: 04.0/255.0, alpha: 1.0)
+        self.view.backgroundColor = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0)
         self.navigationController?.navigationBar.isTranslucent =  false
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         self.navigationController?.navigationBar.barStyle = .black

@@ -42,10 +42,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Configuracion de notificaciones
         FIRApp.configure()
         
+        if let token = FIRInstanceID.instanceID().token() {
+            var refreshedToken=""
+            refreshedToken = token
+            print("Este es el token : \(refreshedToken)")
+            
+        }
+        
+        
         let notificationTypes : UIUserNotificationType = [UIUserNotificationType.alert, UIUserNotificationType.badge, UIUserNotificationType.sound]
         let notificationSettings = UIUserNotificationSettings(types: notificationTypes, categories: nil)
         application.registerForRemoteNotifications()
         application.registerUserNotificationSettings(notificationSettings)
+        
         
         return true
     }
