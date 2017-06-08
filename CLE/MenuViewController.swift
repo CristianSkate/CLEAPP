@@ -12,8 +12,45 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     @IBOutlet weak var tblMenu: UITableView!
     @IBOutlet weak var imgLogo: UIImageView!
-    let menuOps:[String] = ["Inicio","Mis Encuestas","Mis Evaluadores","Misión","Orgánica","Doctrina","Herramientas","Acerca de", "Cerrar Sesión"]
-    let imgMenu:[UIImage] = [UIImage(named: "ic_home")!,UIImage(named: "ic_supervisor_account_black_48dp")!,UIImage(named: "ic_supervisor_account_black_48dp")!,UIImage(named: "ic_thumb_up_black_48dp")!,UIImage(named: "ic_domain_black_48dp")!,UIImage(named: "ic_school_black_48dp")!,UIImage(named: "ic_settings_black_48dp")!,UIImage(named: "ic_action_about")!,UIImage(named: "ic_lock_power_off")!]
+    let menuOps:[String] = ["Inicio"
+        ,"MML"
+        ,"Mis Evaluados"
+        ,"Mis Evaluaciones"
+        ,"CLE"
+        ,"Misión"
+        ,"Orgánica"
+        ,"Doctrina"
+        ,"Artículos"
+        ,"Noticias"
+        ,"Fortalécete"
+        ,"Fortalece tu Unidad"
+        ,"Ayuda"
+        ,"Preguntas Frecuentes"
+        ,"Videos Tutoriales"
+        ,"Instructivo"
+        ,"Configuracion"
+        ,"Acerca de"
+        ,"Cerrar Sesión"]
+    
+    let imgMenu:[UIImage] = [UIImage(named: "ic_home")! //Inicio
+        ,UIImage() // MML
+        ,UIImage(named: "ic_supervisor_account_black_48dp")! // Mis Evaluados
+        ,UIImage(named: "ic_supervisor_account_black_48dp")! // Mis Evaluaciones
+        ,UIImage() // CLE
+        ,UIImage(named: "ic_thumb_up_black_48dp")! //Mision
+        ,UIImage(named: "ic_domain_black_48dp")! // Organica
+        ,UIImage(named: "ic_school_black_48dp")! // Doctrina
+        ,UIImage(named: "ic_school_black_48dp")! // Articulos
+        ,UIImage(named: "ic_school_black_48dp")! // Noticias
+        ,UIImage(named: "ic_school_black_48dp")! // Fortalecete
+        ,UIImage(named: "ic_supervisor_account_black_48dp")! // Fortalece tu unidad
+        ,UIImage() // Ayuda
+        ,UIImage(named: "ic_supervisor_account_black_48dp")! // Preguntas Frecuentes
+        ,UIImage(named: "ic_lock_power_off")! // Videos Tutoriales
+        ,UIImage(named: "ic_lock_power_off")! // Instructivo
+        ,UIImage() // Configuracion
+        ,UIImage(named: "ic_action_about")! // Acerca de
+        ,UIImage(named: "ic_lock_power_off")!] // Cerrar Sesion
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,15 +76,35 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let mycell = tableView.dequeueReusableCell(withIdentifier: "celdaMenu", for: indexPath) as! CeldaMenuTableViewCell
         
-        mycell.txtTituloOp.text = menuOps[(indexPath as NSIndexPath).row]
-        mycell.imgMenu.image =  imgMenu[(indexPath as NSIndexPath).row]
+        
+            mycell.txtTituloOp.text = menuOps[(indexPath as NSIndexPath).row]
+            mycell.imgMenu.image =  imgMenu[(indexPath as NSIndexPath).row]
+        
+    if (indexPath as NSIndexPath).row == 1 || (indexPath as NSIndexPath).row == 4 || (indexPath as NSIndexPath).row == 12 || (indexPath as NSIndexPath).row == 16 {
+    
+            let border = CALayer()
+            let width = CGFloat(2.0)
+            border.borderColor = UIColor.lightGray.cgColor
+            border.frame = CGRect(x: 0, y: width - mycell.frame.size.height, width: mycell.frame.size.width, height: mycell.frame.size.height)
+            
+            border.borderWidth = width
+            mycell.layer.addSublayer(border)
+            mycell.layer.masksToBounds = true
+        
+            mycell.imgMenu.removeFromSuperview()
+        
+            mycell.txtTituloOp.text = "  " + menuOps[(indexPath as NSIndexPath).row]
+        
+    }
         
         return mycell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         
         switch((indexPath as NSIndexPath).row){
         case 0:
@@ -183,6 +240,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             break
             
         }
+        
         
         
         tblMenu.deselectRow(at: indexPath, animated: true)
