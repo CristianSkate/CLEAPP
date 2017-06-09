@@ -40,17 +40,19 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         ,UIImage(named: "ic_thumb_up_black_48dp")! //Mision
         ,UIImage(named: "ic_domain_black_48dp")! // Organica
         ,UIImage(named: "ic_school_black_48dp")! // Doctrina
-        ,UIImage(named: "ic_school_black_48dp")! // Articulos
-        ,UIImage(named: "ic_school_black_48dp")! // Noticias
-        ,UIImage(named: "ic_school_black_48dp")! // Fortalecete
+        ,UIImage(named: "ic_note_48pt")! // Articulos
+        ,UIImage(named: "ic_chrome_reader_mode_48pt")! // Noticias
+        ,UIImage(named: "ic_accessibility_48pt")! // Fortalecete
         ,UIImage(named: "ic_supervisor_account_black_48dp")! // Fortalece tu unidad
         ,UIImage() // Ayuda
-        ,UIImage(named: "ic_supervisor_account_black_48dp")! // Preguntas Frecuentes
-        ,UIImage(named: "ic_lock_power_off")! // Videos Tutoriales
-        ,UIImage(named: "ic_lock_power_off")! // Instructivo
+        ,UIImage(named: "ic_question_answer_48pt")! // Preguntas Frecuentes
+        ,UIImage(named: "ic_video_library_48pt")! // Videos Tutoriales
+        ,UIImage(named: "ic_insert_drive_file_48pt")! // Instructivo
         ,UIImage() // Configuracion
-        ,UIImage(named: "ic_action_about")! // Acerca de
+        ,UIImage(named: "ic_person_pin_black_48dp")! // Acerca de
         ,UIImage(named: "ic_lock_power_off")!] // Cerrar Sesion
+    
+    var vez = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,25 +82,24 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let mycell = tableView.dequeueReusableCell(withIdentifier: "celdaMenu", for: indexPath) as! CeldaMenuTableViewCell
         
         
-            mycell.txtTituloOp.text = menuOps[(indexPath as NSIndexPath).row]
-            mycell.imgMenu.image =  imgMenu[(indexPath as NSIndexPath).row]
-        
-    if (indexPath as NSIndexPath).row == 1 || (indexPath as NSIndexPath).row == 4 || (indexPath as NSIndexPath).row == 12 || (indexPath as NSIndexPath).row == 16 {
-    
-            let border = CALayer()
-            let width = CGFloat(2.0)
-            border.borderColor = UIColor.lightGray.cgColor
-            border.frame = CGRect(x: 0, y: width - mycell.frame.size.height, width: mycell.frame.size.width, height: mycell.frame.size.height)
-            
-            border.borderWidth = width
-            mycell.layer.addSublayer(border)
-            mycell.layer.masksToBounds = true
-        
-            mycell.imgMenu.removeFromSuperview()
-        
-            mycell.txtTituloOp.text = "  " + menuOps[(indexPath as NSIndexPath).row]
-        
-    }
+            mycell.txtTituloOp.text = menuOps[indexPath.row]
+            mycell.imgMenu.image =  imgMenu[indexPath.row]
+       
+//    if menuOps[indexPath.row] == "MML" || menuOps[indexPath.row] == "CLE" || menuOps[indexPath.row] == "Ayuda" || menuOps[indexPath.row] == "Configuración" {
+//    
+//            let border = CALayer()
+//            let width = CGFloat(2.0)
+//            border.borderColor = UIColor.lightGray.cgColor
+//            border.frame = CGRect(x: 0, y: width - mycell.frame.size.height, width: mycell.frame.size.width, height: mycell.frame.size.height)
+//            
+//            border.borderWidth = width
+//            mycell.layer.addSublayer(border)
+//            mycell.layer.masksToBounds = true
+//        
+//            //mycell.imgMenu.removeFromSuperview()
+//            mycell.txtTituloOp.text = "  " + menuOps[(indexPath as NSIndexPath).row]
+//      
+//    }
         
         return mycell
     }
@@ -118,7 +119,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
             break
             
-        case 1:
+        case 2:
             //Mis Encuestas
             let prefs:UserDefaults = UserDefaults.standard
             // generamos una constante de tipo int leyendo de NSUserDefaults ISLOGGEDIN
@@ -138,7 +139,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
             
             break
-        case 2:
+        case 3:
             //MisEvaluadores
             let prefs:UserDefaults = UserDefaults.standard
             // generamos una constante de tipo int leyendo de NSUserDefaults ISLOGGEDIN
@@ -158,7 +159,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             break
             
             //break
-        case 3:
+        case 5:
             
             //Misión
             let centerViewController = self.storyboard?.instantiateViewController(withIdentifier: "MisionViewController") as! MisionViewController
@@ -168,7 +169,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             appDelegate.centerContainer!.centerViewController =  centerNavController
             appDelegate.centerContainer!.toggle(MMDrawerSide.left, animated: true, completion: nil)
             break
-        case 4:
+        case 6:
             //Orgánica
             let centerViewController = self.storyboard?.instantiateViewController(withIdentifier: "OrganicaViewController") as! OrganicaViewController
             let centerNavController = UINavigationController(rootViewController: centerViewController)
@@ -177,7 +178,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             appDelegate.centerContainer!.centerViewController =  centerNavController
             appDelegate.centerContainer!.toggle(MMDrawerSide.left, animated: true, completion: nil)
             break
-        case 5:
+        case 7:
             //Doctrina
             let centerViewController = self.storyboard?.instantiateViewController(withIdentifier: "DoctrinaViewController") as! DoctrinaViewController
             let centerNavController = UINavigationController(rootViewController: centerViewController)
@@ -195,14 +196,14 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             appDelegate.centerContainer!.centerViewController =  centerNavController
             appDelegate.centerContainer!.toggle(MMDrawerSide.left, animated: true, completion: nil)
             break
-        case 7:
+        case 17:
             //Acerca de
             
             let alertController = UIAlertController(title: "Acerca de ...", message: "Esta aplicacion fue desarrollada a medida para el Ejército de Chile por CMT y Mprz\ncmartinezt.91@gmail.com\nVersión 1.0", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
             self.present(alertController, animated: true, completion: nil)
             break
-        case 8:
+        case 18:
             //Cerrar Sesion
             //Elimina Variable de sesion
             

@@ -141,8 +141,8 @@
                                             <constraints>
                                                 <constraint firstItem="kpc-EX-e3c" firstAttribute="centerY" secondItem="nxj-Rk-w3K" secondAttribute="centerY" id="1Dy-Bg-X6p"/>
                                                 <constraint firstItem="nxj-Rk-w3K" firstAttribute="top" secondItem="fjX-jU-ea7" secondAttribute="top" id="A6m-Pt-Wgn"/>
+                                                <constraint firstItem="kpc-EX-e3c" firstAttribute="leading" secondItem="nxj-Rk-w3K" secondAttribute="trailing" constant="10" id="T70-MT-mBc"/>
                                                 <constraint firstItem="nxj-Rk-w3K" firstAttribute="bottom" secondItem="fjX-jU-ea7" secondAttribute="bottomMargin" id="afi-hv-GZ5"/>
-                                                <constraint firstItem="kpc-EX-e3c" firstAttribute="leading" secondItem="nxj-Rk-w3K" secondAttribute="trailing" constant="39" id="lcn-eX-5GK"/>
                                                 <constraint firstItem="nxj-Rk-w3K" firstAttribute="leading" secondItem="fjX-jU-ea7" secondAttribute="leadingMargin" id="tfZ-EA-7kY"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -173,7 +173,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jO1-Ov-IKA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1377" y="1150"/>
+            <point key="canvasLocation" x="1376.8" y="1149.1754122938532"/>
         </scene>
         <!--Mantenedor Preg Abiertas View Controller-->
         <scene sceneID="Dzk-Mk-j6A">

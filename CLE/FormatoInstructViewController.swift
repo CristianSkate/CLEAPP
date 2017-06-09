@@ -13,8 +13,8 @@ class FormatoInstructViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var txtTitulo: UITextView!
     @IBOutlet weak var txtCuerpo: UITextView!
-    var titulo:String!
-    var cuerpo:String!
+    var titulo:String = ""
+    var cuerpo:String = ""
     var pageIndex:Int!
     
 
