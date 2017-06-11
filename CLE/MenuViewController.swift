@@ -10,7 +10,8 @@ import UIKit
 
 class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    @IBOutlet weak var tblMenu: UITableView!
+    //@IBOutlet weak var tblMenu: UITableView!
+    @IBOutlet var tblMenu: UITableView!
     @IBOutlet weak var imgLogo: UIImageView!
     let menuOps:[String] = ["Inicio"
         ,"MML"
@@ -118,9 +119,13 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             appDelegate.centerContainer!.toggle(MMDrawerSide.left, animated: true, completion: nil)
             
             break
+        case 1:
+            //MML
             
+            
+            break
         case 2:
-            //Mis Encuestas
+            //Mis Evaluados
             let prefs:UserDefaults = UserDefaults.standard
             // generamos una constante de tipo int leyendo de NSUserDefaults ISLOGGEDIN
             let isLoggedIn:Int = prefs.integer(forKey: "ISLOGGEDIN") as Int
@@ -140,7 +145,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
             break
         case 3:
-            //MisEvaluadores
+            //Mis Evaluaciones
             let prefs:UserDefaults = UserDefaults.standard
             // generamos una constante de tipo int leyendo de NSUserDefaults ISLOGGEDIN
             let isLoggedIn:Int = prefs.integer(forKey: "ISLOGGEDIN") as Int
@@ -159,8 +164,11 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             break
             
             //break
-        case 5:
+        case 4:
+            //CLE
             
+            break
+        case 5:
             //Misión
             let centerViewController = self.storyboard?.instantiateViewController(withIdentifier: "MisionViewController") as! MisionViewController
             let centerNavController = UINavigationController(rootViewController: centerViewController)
@@ -187,14 +195,50 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             appDelegate.centerContainer!.centerViewController =  centerNavController
             appDelegate.centerContainer!.toggle(MMDrawerSide.left, animated: true, completion: nil)
             break
-        case 6:
-            //Herramientas
-            let centerViewController = self.storyboard?.instantiateViewController(withIdentifier: "HerramientasViewController") as! HerramientasViewController
-            let centerNavController = UINavigationController(rootViewController: centerViewController)
-            let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
+//        case 6:
+//            //Herramientas
+//            let centerViewController = self.storyboard?.instantiateViewController(withIdentifier: "HerramientasViewController") as! HerramientasViewController
+//            let centerNavController = UINavigationController(rootViewController: centerViewController)
+//            let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
+//            
+//            appDelegate.centerContainer!.centerViewController =  centerNavController
+//            appDelegate.centerContainer!.toggle(MMDrawerSide.left, animated: true, completion: nil)
+//            break
             
-            appDelegate.centerContainer!.centerViewController =  centerNavController
-            appDelegate.centerContainer!.toggle(MMDrawerSide.left, animated: true, completion: nil)
+        case 8:
+            //Articulos
+            break
+        case 9:
+            //Noticias
+
+            break
+        case 10:
+            //Fortalecete
+            
+            break
+        case 11:
+            //Fortalece tu unidad
+            
+            break
+        case 12:
+            //Ayuda
+            
+            break
+        case 13:
+            //Preguntas Frecuentes
+            
+            break
+        case 14:
+            //Videos Tutoriales
+            
+            break
+        case 15:
+            //Instructivo
+            
+            break
+        case 16:
+            //Configuracion
+            
             break
         case 17:
             //Acerca de

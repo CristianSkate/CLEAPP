@@ -167,7 +167,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="imgLogo" destination="M5Q-ht-iJH" id="4hW-iX-S3A"/>
-                        <outlet property="tblMenu" destination="2kE-Ir-FTS" id="JnD-xa-wFh"/>
+                        <outlet property="tblMenu" destination="2kE-Ir-FTS" id="aAb-DB-6C4"/>
                         <segue destination="eLQ-e4-uCR" kind="presentation" identifier="irALogin" id="qaB-zs-mAo"/>
                     </connections>
                 </viewController>
@@ -929,7 +929,7 @@
                                         <rect key="frame" x="0.0" y="92" width="600" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0bi-Qc-hL0" id="Zj6-fI-45d">
-                                            <frame key="frameInset" width="600" height="149"/>
+                                            <frame key="frameInset" width="600" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="o4O-vE-5qI">
