@@ -71,12 +71,14 @@ class MantenedorInstructivoViewController: UIViewController, UIPageViewControlle
         if (prefs.object(forKey: "PREGUNTAS\(codRelacionSel)") == nil) {
             cargarDatos()
         }else{
-            preguntasJson = prefs.object(forKey: "PREGUNTAS\(codRelacionSel)") as? NSDictionary
+            let urlData = prefs.object(forKey: "PREGUNTAS\(codRelacionSel)") as? Data
+            preguntasJson = (try! JSONSerialization.jsonObject(with: urlData!, options:JSONSerialization.ReadingOptions.mutableContainers )) as! NSDictionary
             preguntas =  preguntasJson.value(forKey: "preguntas") as!  NSArray
             respuestas = preguntas.value(forKey: "respuestas") as! NSArray
             instructivos.append(Instructivo(titulo: preguntasJson.value(forKey: "titulo_introduccion") as! String, cuerpo: preguntasJson.value(forKey: "introduccion") as! String))
             instructivos.append(Instructivo(titulo: preguntasJson.value(forKey: "titulo_competencias") as! String, cuerpo: preguntasJson.value(forKey: "competencias") as! String))
-            instructivos.append(Instructivo(titulo: preguntasJson.value(forKey: "titulo_atributos") as! String, cuerpo: preguntasJson.value(forKey: "atributos") as! String))
+            //instructivos.append(Instructivo(titulo: preguntasJson.value(forKey: "titulo_atributos") as! String, cuerpo: preguntasJson.value(forKey: "atributos") as! String))
+            instructivos.append(Instructivo(titulo: "titulo_atributos", cuerpo: "atributos"))
         }
     }
     
@@ -127,17 +129,18 @@ class MantenedorInstructivoViewController: UIViewController, UIPageViewControlle
                 NSLog("Response ==> %@", responseData);
                 
                 //var error: NSError?
+               
                 
                 preguntasJson = (try! JSONSerialization.jsonObject(with: urlData!, options:JSONSerialization.ReadingOptions.mutableContainers )) as! NSDictionary
                 
-                prefs.set(preguntasJson, forKey: "PREGUNTAS\(codRelacionSel)")
+                prefs.set(urlData, forKey: "PREGUNTAS\(codRelacionSel)")
                 prefs.synchronize()
                 preguntas =  preguntasJson.value(forKey: "preguntas") as!  NSArray //Agregar identificador
                 respuestas = preguntas.value(forKey: "respuestas") as! NSArray // agregar identificador unico
                 instructivos.append(Instructivo(titulo: preguntasJson.value(forKey: "titulo_introduccion") as! String, cuerpo: preguntasJson.value(forKey: "introduccion") as! String))
                 instructivos.append(Instructivo(titulo: preguntasJson.value(forKey: "titulo_competencias") as! String, cuerpo: preguntasJson.value(forKey: "competencias") as! String))
-                instructivos.append(Instructivo(titulo: preguntasJson.value(forKey: "titulo_atributos") as! String, cuerpo: preguntasJson.value(forKey: "atributos") as! String))
-                
+                //instructivos.append(Instructivo(titulo: preguntasJson.value(forKey: "titulo_atributos") as! String, cuerpo: preguntasJson.value(forKey: "atributos") as! String))
+                instructivos.append(Instructivo(titulo: "titulo_atributos", cuerpo: "atributos"))
                 
                 
                 
