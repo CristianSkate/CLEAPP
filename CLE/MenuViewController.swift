@@ -210,7 +210,12 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             break
         case 9:
             //Noticias
-
+            let centerViewController = self.storyboard?.instantiateViewController(withIdentifier: "InicioViewController") as! InicioViewController
+            let centerNavController = UINavigationController(rootViewController: centerViewController)
+            let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
+            
+            appDelegate.centerContainer!.centerViewController =  centerNavController
+            appDelegate.centerContainer!.toggle(MMDrawerSide.left, animated: true, completion: nil)
             break
         case 10:
             //Fortalecete

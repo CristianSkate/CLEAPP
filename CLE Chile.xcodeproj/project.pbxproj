@@ -44,6 +44,8 @@
 		502463291C84A00400E606EB /* MyImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502463281C84A00400E606EB /* MyImageCache.swift */; };
 		5024632B1C84E0E600E606EB /* MantenedorPregAbiertasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5024632A1C84E0E600E606EB /* MantenedorPregAbiertasViewController.swift */; };
 		5039F5731E73D47400F78798 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5039F5721E73D47400F78798 /* GoogleService-Info.plist */; };
+		505867D41EEE49E300F8C3A4 /* RegistrarseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505867D31EEE49E200F8C3A4 /* RegistrarseViewController.swift */; };
+		505867D61EEE565500F8C3A4 /* Paso2RegistrarseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505867D51EEE565500F8C3A4 /* Paso2RegistrarseViewController.swift */; };
 		505D35521C74128F00C9E0C9 /* MantenedorInstructivoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505D35511C74128F00C9E0C9 /* MantenedorInstructivoViewController.swift */; };
 		50A0E48A1C3225E300B3051B /* MisEvaluadoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A0E4891C3225E300B3051B /* MisEvaluadoresViewController.swift */; };
 		50AE2E761C7C005100886274 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50AE2E751C7C005100886274 /* ObjectMapper.framework */; settings = {ATTRIBUTES = (Required, ); }; };
@@ -121,6 +123,8 @@
 		5024632A1C84E0E600E606EB /* MantenedorPregAbiertasViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MantenedorPregAbiertasViewController.swift; path = CLE/MantenedorPregAbiertasViewController.swift; sourceTree = SOURCE_ROOT; };
 		5039F5711E73D3E800F78798 /* CLE Chile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CLE Chile.entitlements"; sourceTree = "<group>"; };
 		5039F5721E73D47400F78798 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		505867D31EEE49E200F8C3A4 /* RegistrarseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegistrarseViewController.swift; path = CLE/RegistrarseViewController.swift; sourceTree = SOURCE_ROOT; };
+		505867D51EEE565500F8C3A4 /* Paso2RegistrarseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Paso2RegistrarseViewController.swift; path = CLE/Paso2RegistrarseViewController.swift; sourceTree = SOURCE_ROOT; };
 		505D35511C74128F00C9E0C9 /* MantenedorInstructivoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MantenedorInstructivoViewController.swift; path = CLE/MantenedorInstructivoViewController.swift; sourceTree = SOURCE_ROOT; };
 		5083403C1C7BFF1500C66CB6 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = "Pods/../build/Debug-iphoneos/ObjectMapper.framework"; sourceTree = "<group>"; };
 		50A0E4891C3225E300B3051B /* MisEvaluadoresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MisEvaluadoresViewController.swift; path = CLE/MisEvaluadoresViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -208,6 +212,8 @@
 				404870ED1C17D2EE0053BE68 /* MantenedorDoctrinaViewController.swift */,
 				5024632A1C84E0E600E606EB /* MantenedorPregAbiertasViewController.swift */,
 				501F81CA1C77552B00927892 /* FinEncuestaViewController.swift */,
+				505867D31EEE49E200F8C3A4 /* RegistrarseViewController.swift */,
+				505867D51EEE565500F8C3A4 /* Paso2RegistrarseViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -507,6 +513,7 @@
 				501F81C71C76A51500927892 /* Instructivo.swift in Sources */,
 				400173441BC4268100E08A6D /* CeldaMenuTableViewCell.swift in Sources */,
 				505D35521C74128F00C9E0C9 /* MantenedorInstructivoViewController.swift in Sources */,
+				505867D41EEE49E300F8C3A4 /* RegistrarseViewController.swift in Sources */,
 				40ABB66B1BBDF0CC0060063F /* LoginViewController.swift in Sources */,
 				501F81CB1C77552B00927892 /* FinEncuestaViewController.swift in Sources */,
 				404870E81C1797BA0053BE68 /* Noticia.swift in Sources */,
@@ -535,6 +542,7 @@
 				4095902B1BE6102600695A38 /* FormatoEncuestaViewController.swift in Sources */,
 				404870F01C17D6B00053BE68 /* CeldaDoctrinasTableViewCell.swift in Sources */,
 				40BECDB01BFD49760056724D /* Encuesta.swift in Sources */,
+				505867D61EEE565500F8C3A4 /* Paso2RegistrarseViewController.swift in Sources */,
 				400173411BC41CBA00E08A6D /* MenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -177,6 +177,14 @@ class LoginViewController: UIViewController, XMLParserDelegate {
         }
     }
     
+    
+    @IBAction func btnRegistrarse(_ sender: AnyObject) {
+        
+        self.performSegue(withIdentifier: "irARegistrarse", sender: nil)
+        
+    }
+    
+    
     //funciones para parsear la respuesta XML
     func parsearXML() {
         posts = []
@@ -222,6 +230,7 @@ class LoginViewController: UIViewController, XMLParserDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+        
     }
 }
 

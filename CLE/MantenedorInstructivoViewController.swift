@@ -78,7 +78,7 @@ class MantenedorInstructivoViewController: UIViewController, UIPageViewControlle
             instructivos.append(Instructivo(titulo: preguntasJson.value(forKey: "titulo_introduccion") as! String, cuerpo: preguntasJson.value(forKey: "introduccion") as! String))
             instructivos.append(Instructivo(titulo: preguntasJson.value(forKey: "titulo_competencias") as! String, cuerpo: preguntasJson.value(forKey: "competencias") as! String))
             //instructivos.append(Instructivo(titulo: preguntasJson.value(forKey: "titulo_atributos") as! String, cuerpo: preguntasJson.value(forKey: "atributos") as! String))
-            instructivos.append(Instructivo(titulo: "titulo_atributos", cuerpo: "atributos"))
+            instructivos.append(Instructivo(titulo: "", cuerpo: "Presione el boton Siguiente para empezar la encuesta"))
         }
     }
     
@@ -140,7 +140,7 @@ class MantenedorInstructivoViewController: UIViewController, UIPageViewControlle
                 instructivos.append(Instructivo(titulo: preguntasJson.value(forKey: "titulo_introduccion") as! String, cuerpo: preguntasJson.value(forKey: "introduccion") as! String))
                 instructivos.append(Instructivo(titulo: preguntasJson.value(forKey: "titulo_competencias") as! String, cuerpo: preguntasJson.value(forKey: "competencias") as! String))
                 //instructivos.append(Instructivo(titulo: preguntasJson.value(forKey: "titulo_atributos") as! String, cuerpo: preguntasJson.value(forKey: "atributos") as! String))
-                instructivos.append(Instructivo(titulo: "titulo_atributos", cuerpo: "atributos"))
+                instructivos.append(Instructivo(titulo: "", cuerpo: "Presione el boton Siguiente para empezar la encuesta"))
                 
                 
                 
