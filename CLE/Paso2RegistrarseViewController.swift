@@ -50,7 +50,7 @@ class Paso2RegistrarseViewController: UIViewController {
         self.preferredStatusBarStyle
 
         
-        txtTituloPaso2.text = "Revise y confirme sus datos para completar el registro"
+        txtTituloPaso2.text = "Confirme su correo y escriba una contraseña"
         configureScrollView()
         
         scrollView.keyboardDismissMode = .onDrag

@@ -168,6 +168,8 @@ class RegistrarseViewController: UIViewController {
             }
         }
     }
+    
+   
 
 
 }
