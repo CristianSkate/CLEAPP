@@ -75,8 +75,8 @@ class MantenedorInstructivoViewController: UIViewController, UIPageViewControlle
             preguntasJson = (try! JSONSerialization.jsonObject(with: urlData!, options:JSONSerialization.ReadingOptions.mutableContainers )) as! NSDictionary
             preguntas =  preguntasJson.value(forKey: "preguntas") as!  NSArray
             respuestas = preguntas.value(forKey: "respuestas") as! NSArray
-            instructivos.append(Instructivo(titulo: preguntasJson.value(forKey: "titulo_introduccion") as! String, cuerpo: preguntasJson.value(forKey: "introduccion") as! String))
-            instructivos.append(Instructivo(titulo: preguntasJson.value(forKey: "titulo_competencias") as! String, cuerpo: preguntasJson.value(forKey: "competencias") as! String))
+            //instructivos.append(Instructivo(titulo: preguntasJson.value(forKey: "titulo_introduccion") as! String, cuerpo: preguntasJson.value(forKey: "introduccion") as! String))
+            //instructivos.append(Instructivo(titulo: preguntasJson.value(forKey: "titulo_competencias") as! String, cuerpo: preguntasJson.value(forKey: "competencias") as! String))
             //instructivos.append(Instructivo(titulo: preguntasJson.value(forKey: "titulo_atributos") as! String, cuerpo: preguntasJson.value(forKey: "atributos") as! String))
             instructivos.append(Instructivo(titulo: "", cuerpo: "Presione el boton Siguiente para empezar la encuesta"))
         }
@@ -137,8 +137,8 @@ class MantenedorInstructivoViewController: UIViewController, UIPageViewControlle
                 prefs.synchronize()
                 preguntas =  preguntasJson.value(forKey: "preguntas") as!  NSArray //Agregar identificador
                 respuestas = preguntas.value(forKey: "respuestas") as! NSArray // agregar identificador unico
-                instructivos.append(Instructivo(titulo: preguntasJson.value(forKey: "titulo_introduccion") as! String, cuerpo: preguntasJson.value(forKey: "introduccion") as! String))
-                instructivos.append(Instructivo(titulo: preguntasJson.value(forKey: "titulo_competencias") as! String, cuerpo: preguntasJson.value(forKey: "competencias") as! String))
+                //instructivos.append(Instructivo(titulo: preguntasJson.value(forKey: "titulo_introduccion") as! String, cuerpo: preguntasJson.value(forKey: "introduccion") as! String))
+                //instructivos.append(Instructivo(titulo: preguntasJson.value(forKey: "titulo_competencias") as! String, cuerpo: preguntasJson.value(forKey: "competencias") as! String))
                 //instructivos.append(Instructivo(titulo: preguntasJson.value(forKey: "titulo_atributos") as! String, cuerpo: preguntasJson.value(forKey: "atributos") as! String))
                 instructivos.append(Instructivo(titulo: "", cuerpo: "Presione el boton Siguiente para empezar la encuesta"))
                 
