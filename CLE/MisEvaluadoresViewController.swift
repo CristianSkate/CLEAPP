@@ -364,7 +364,7 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
                     prefs.synchronize()
                     seleccion.removeAll()
                     for seleccionado in misEvaluadores{
-                        seleccion.append(Evaluador(rut: ((seleccionado as AnyObject).value(forKey: "run_evaluador") as! String), nombre: ((seleccionado as AnyObject).value(forKey: "nombre_evaluador") as! String), relacion: (seleccionado as AnyObject).value(forKey: "relacion") as! String))
+                        seleccion.append(Evaluador(rut: ((seleccionado as AnyObject).value(forKey: "run_evaluador") as! String), nombre: ((seleccionado as AnyObject).value(forKey: "nombre_evaluador") as! String), relacion: (seleccionado as AnyObject).value(forKey: "relacion") as! String, cantidad: ""))
                     }
                 }
                 self.tblSeleccion.reloadData()

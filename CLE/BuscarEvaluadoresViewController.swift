@@ -45,7 +45,6 @@ class BuscarEvaluadoresViewController: UIViewController, UITableViewDataSource, 
     }
     
     func volverAtras() {
-        
             self.navigationController?.popViewController(animated: true)
         
     }
@@ -68,7 +67,11 @@ class BuscarEvaluadoresViewController: UIViewController, UITableViewDataSource, 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        
-        let alertController = UIAlertController(title: "Confirmación", message: "\(evaluadores[(indexPath as NSIndexPath).row].nombre) es:", preferredStyle: .actionSheet)
+        let cantidad = Int(self.evaluadores[indexPath.row].cantidad)
+        
+        if cantidad! < 10{
+        
+        let alertController = UIAlertController(title: "Confirmación", message: "\(self.evaluadores[(indexPath as NSIndexPath).row].nombre) es:", preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: "Superior", style: .default, handler: {(alert: UIAlertAction) in
             //Agregar al susodicho al listado de los seleccionados
         
@@ -79,132 +82,142 @@ class BuscarEvaluadoresViewController: UIViewController, UITableViewDataSource, 
                 self.seleccionados = (NSKeyedUnarchiver.unarchiveObject(with: encuestadores) as? [Evaluador])!
                 
             }
-            //Modificar nuevo Array
-            var sup:Int = 0
-            for seleccionado in self.seleccionados{
-                if seleccionado.relacion == "1"{
-                    sup = sup + 1
-                }
-            }
-            if sup < 1 { //Validacion de limite para ingreso de evaluadores superiores
-                var repetido:Bool = true
-                for eval in self.seleccionados {
-                    if eval.rut == self.evaluadores[(indexPath as NSIndexPath).row].rut {
-                        repetido = false
+            //Validacion de limite de invitaciones por usuario
+                
+            
+                //Modificar nuevo Array
+                var sup:Int = 0
+                for seleccionado in self.seleccionados{
+                    if seleccionado.relacion == "1"{
+                        sup = sup + 1
                     }
                 }
-                if repetido{
-                    self.seleccionados.append(Evaluador(rut: self.evaluadores[(indexPath as NSIndexPath).row].rut, nombre: self.evaluadores[(indexPath as NSIndexPath).row].nombre, relacion: "1"))
-                    //Guardar en preferencias
-                    let guardar = NSKeyedArchiver.archivedData(withRootObject: self.seleccionados)
-                    self.prefs.set(guardar, forKey: "seleccionados")
-                    //postpopover
-                    self.parent?.viewDidAppear(true)
-                
-                    self.navigationController?.popViewController(animated: true)
-                }else{
-                    let alertController = UIAlertController(title: "Mensaje", message: "Esta persona ya está seleccionada", preferredStyle: .alert)
+                if sup < 1 { //Validacion de limite para ingreso de evaluadores superiores
+                    var repetido:Bool = true
+                    for eval in self.seleccionados {
+                        if eval.rut == self.evaluadores[(indexPath as NSIndexPath).row].rut {
+                            repetido = false
+                        }
+                    }
+                    if repetido{
+                        self.seleccionados.append(Evaluador(rut: self.evaluadores[(indexPath as NSIndexPath).row].rut, nombre: self.evaluadores[(indexPath as NSIndexPath).row].nombre, relacion: "1", cantidad: ""))
+                        //Guardar en preferencias
+                        let guardar = NSKeyedArchiver.archivedData(withRootObject: self.seleccionados)
+                        self.prefs.set(guardar, forKey: "seleccionados")
+                        //postpopover
+                        self.parent?.viewDidAppear(true)
+                        
+                        self.navigationController?.popViewController(animated: true)
+                    }else{
+                        let alertController = UIAlertController(title: "Mensaje", message: "Esta persona ya está seleccionada", preferredStyle: .alert)
+                        alertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
+                        self.present(alertController, animated: true, completion: nil)
+                    }
+                }else{ //Mensaje de que ya llegaron al limite
+                    let alertController = UIAlertController(title: "Mensaje", message: "Ya has ingresado todos los Superiores", preferredStyle: .alert)
                     alertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
                     self.present(alertController, animated: true, completion: nil)
                 }
-            }else{ //Mensaje de que ya llegaron al limite
-                let alertController = UIAlertController(title: "Mensaje", message: "Ya has ingresado todos los Superiores", preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
-                self.present(alertController, animated: true, completion: nil)
-            }
-        }))
-        alertController.addAction(UIAlertAction(title: "Par", style: .default, handler: {(alert: UIAlertAction) in
+            }))
+            alertController.addAction(UIAlertAction(title: "Par", style: .default, handler: {(alert: UIAlertAction) in
             //Agregar al susodicho al listado de los seleccionados
             
             //Cargar lista anterior
             let encuestadores = self.prefs.object(forKey: "seleccionados") as? Data
             
             if let encuestadores = encuestadores {
-                self.seleccionados = (NSKeyedUnarchiver.unarchiveObject(with: encuestadores) as? [Evaluador])!
-                
+            self.seleccionados = (NSKeyedUnarchiver.unarchiveObject(with: encuestadores) as? [Evaluador])!
+            
             }
             //Modificar nuevo Array
             var par:Int = 0
             for seleccionado in self.seleccionados{
-                if seleccionado.relacion == "2"{
-                    par = par + 1
-                }
+            if seleccionado.relacion == "2"{
+            par = par + 1
+            }
             }
             if par < 3 {//Validacion de limite para ingreso de evaluadores pares
-                var repetido:Bool = true
-                for eval in self.seleccionados {
-                    if eval.rut == self.evaluadores[(indexPath as NSIndexPath).row].rut {
-                        repetido = false
-                    }
-                }
-                if repetido{
-                    self.seleccionados.append(Evaluador(rut: self.evaluadores[(indexPath as NSIndexPath).row].rut, nombre: self.evaluadores[(indexPath as NSIndexPath).row].nombre, relacion: "2"))
-                    //Guardar en preferencias
-                    let guardar = NSKeyedArchiver.archivedData(withRootObject: self.seleccionados)
-                    self.prefs.set(guardar, forKey: "seleccionados")
-                    //postpopover
-                    self.parent?.viewDidAppear(true)
-                
-                    self.navigationController?.popViewController(animated: true)
-                }else{
-                    let alertController = UIAlertController(title: "Mensaje", message: "Esta persona ya está seleccionada", preferredStyle: .alert)
-                    alertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
-                    self.present(alertController, animated: true, completion: nil)
-                }
+            var repetido:Bool = true
+            for eval in self.seleccionados {
+            if eval.rut == self.evaluadores[(indexPath as NSIndexPath).row].rut {
+            repetido = false
+            }
+            }
+            if repetido{
+            self.seleccionados.append(Evaluador(rut: self.evaluadores[(indexPath as NSIndexPath).row].rut, nombre: self.evaluadores[(indexPath as NSIndexPath).row].nombre, relacion: "2", cantidad: ""))
+            //Guardar en preferencias
+            let guardar = NSKeyedArchiver.archivedData(withRootObject: self.seleccionados)
+            self.prefs.set(guardar, forKey: "seleccionados")
+            //postpopover
+            self.parent?.viewDidAppear(true)
+            
+            self.navigationController?.popViewController(animated: true)
+            }else{
+            let alertController = UIAlertController(title: "Mensaje", message: "Esta persona ya está seleccionada", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+            }
             }else{
             let alertController = UIAlertController(title: "Mensaje", message: "Ya has ingresado todos los Pares", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
             self.present(alertController, animated: true, completion: nil)
             }
             
-        }))
-        alertController.addAction(UIAlertAction(title: "Subalterno", style: .default, handler: {(alert: UIAlertAction) in
+            }))
+            alertController.addAction(UIAlertAction(title: "Subalterno", style: .default, handler: {(alert: UIAlertAction) in
             //Agregar al susodicho al listado de los seleccionados
             
             //Cargar lista anterior
             let encuestadores = self.prefs.object(forKey: "seleccionados") as? Data
             
             if let encuestadores = encuestadores {
-                self.seleccionados = (NSKeyedUnarchiver.unarchiveObject(with: encuestadores) as? [Evaluador])!
-                
+            self.seleccionados = (NSKeyedUnarchiver.unarchiveObject(with: encuestadores) as? [Evaluador])!
+            
             }
             //Modificar nuevo Array
             var sub:Int = 0
             for seleccionado in self.seleccionados{
-                if seleccionado.relacion == "3"{
-                    sub = sub + 1
-                }
+            if seleccionado.relacion == "3"{
+            sub = sub + 1
+            }
             }
             if sub < 3 { //Validacion de limite para ingreso de evaluadores subalternos
-                var repetido:Bool = true
-                for eval in self.seleccionados {
-                    if eval.rut == self.evaluadores[(indexPath as NSIndexPath).row].rut {
-                        repetido = false
-                    }
-                }
-                if repetido{
-                    self.seleccionados.append(Evaluador(rut: self.evaluadores[(indexPath as NSIndexPath).row].rut, nombre: self.evaluadores[(indexPath as NSIndexPath).row].nombre, relacion: "3"))
-                    //Guardar en preferencias
-                    let guardar = NSKeyedArchiver.archivedData(withRootObject: self.seleccionados)
-                    self.prefs.set(guardar, forKey: "seleccionados")
-                    //postpopover
-                    self.parent?.viewDidAppear(true)
-                
-                    self.navigationController?.popViewController(animated: true)
-                }else{
-                    let alertController = UIAlertController(title: "Mensaje", message: "Esta persona ya está seleccionada", preferredStyle: .alert)
-                    alertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
-                    self.present(alertController, animated: true, completion: nil)
-                }
-            }else{
-                let alertController = UIAlertController(title: "Mensaje", message: "Ya has ingresado todos los Subordinados", preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
-                self.present(alertController, animated: true, completion: nil)
+            var repetido:Bool = true
+            for eval in self.seleccionados {
+            if eval.rut == self.evaluadores[(indexPath as NSIndexPath).row].rut {
+            repetido = false
             }
-        }))
-        alertController.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
-        self.present((alertController), animated: true, completion: nil)
-        
+            }
+            if repetido{
+            self.seleccionados.append(Evaluador(rut: self.evaluadores[(indexPath as NSIndexPath).row].rut, nombre: self.evaluadores[(indexPath as NSIndexPath).row].nombre, relacion: "3", cantidad: ""))
+            //Guardar en preferencias
+            let guardar = NSKeyedArchiver.archivedData(withRootObject: self.seleccionados)
+            self.prefs.set(guardar, forKey: "seleccionados")
+            //postpopover
+            self.parent?.viewDidAppear(true)
+            
+            self.navigationController?.popViewController(animated: true)
+            }else{
+            let alertController = UIAlertController(title: "Mensaje", message: "Esta persona ya está seleccionada", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+            }
+            }else{
+            let alertController = UIAlertController(title: "Mensaje", message: "Ya has ingresado todos los Subordinados", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+            }
+            }))
+            alertController.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
+            self.present((alertController), animated: true, completion: nil)
+            
+        }
+        else{
+            let alertController = UIAlertController(title: "Mensaje", message: "Esta persona ya no puede tener más invitaciones", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+        }
+    
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -275,7 +288,7 @@ class BuscarEvaluadoresViewController: UIViewController, UITableViewDataSource, 
                 respEvaluadores = (try! JSONSerialization.jsonObject(with: urlData!, options:JSONSerialization.ReadingOptions.mutableContainers )) as! NSArray
                     for evaluador in respEvaluadores{
                     
-                        evaluadores.append(Evaluador(rut: ((evaluador as AnyObject).value(forKey: "id")) as! String, nombre:     ((evaluador as AnyObject).value(forKey: "text")) as! String, relacion: "1"))
+                        evaluadores.append(Evaluador(rut: ((evaluador as AnyObject).value(forKey: "id")) as! String, nombre:     ((evaluador as AnyObject).value(forKey: "text")) as! String, relacion: "1", cantidad: ((evaluador as AnyObject).value(forKey: "cantidad")) as! String))
                     }
                 
                 if evaluadores.count < 1 {
