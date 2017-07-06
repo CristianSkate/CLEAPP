@@ -13,38 +13,38 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     //@IBOutlet weak var tblMenu: UITableView!
     @IBOutlet var tblMenu: UITableView!
     @IBOutlet weak var imgLogo: UIImageView!
-    let menuOps:[String] = ["Inicio"
-        ,"MML"
-        ,"Mis Evaluados"
-        ,"Mis Evaluaciones"
-        ,"CLE"
-        ,"Misión"
-        ,"Orgánica"
-        ,"Doctrina"
-        ,"Artículos"
-        ,"Noticias"
-        ,"Fortalécete"
-        ,"Fortalece tu Unidad"
-        ,"Ayuda"
-        ,"Preguntas Frecuentes"
-        ,"Videos Tutoriales"
-        ,"Instructivo"
-        ,"Configuracion"
-        ,"Acerca de"
-        ,"Cerrar Sesión"]
+    var menuOps:[String] = ["Inicio"        //0
+        ,"MML"                              //1
+        ,"Mis Evaluados"                    //2
+        ,"Mis Evaluaciones"                 //3
+        ,"CLE"                              //4
+//        ,"Misión"                           //5
+//        ,"Orgánica"                         //6
+//        ,"Doctrina"                         //7
+//        ,"Artículos"                        //8
+//        ,"Noticias"                         //9
+//        ,"Fortalécete"                      //10
+//        ,"Fortalece tu Unidad"              //11
+        ,"Ayuda"                            //12
+        ,"Preguntas Frecuentes"             //13
+        ,"Videos Tutoriales"                //14
+        ,"Instructivo"                      //15
+        ,"Configuración"                    //16
+        ,"Acerca de"                        //17
+        ,"Cerrar Sesión"]                   //18
     
-    let imgMenu:[UIImage] = [UIImage(named: "ic_home")! //Inicio
+    var imgMenu:[UIImage] = [UIImage(named: "ic_home")! //Inicio
         ,UIImage() // MML
         ,UIImage(named: "ic_supervisor_account_black_48dp")! // Mis Evaluados
         ,UIImage(named: "ic_supervisor_account_black_48dp")! // Mis Evaluaciones
         ,UIImage() // CLE
-        ,UIImage(named: "ic_thumb_up_black_48dp")! //Mision
-        ,UIImage(named: "ic_domain_black_48dp")! // Organica
-        ,UIImage(named: "ic_school_black_48dp")! // Doctrina
-        ,UIImage(named: "ic_note_48pt")! // Articulos
-        ,UIImage(named: "ic_chrome_reader_mode_48pt")! // Noticias
-        ,UIImage(named: "ic_accessibility_48pt")! // Fortalecete
-        ,UIImage(named: "ic_supervisor_account_black_48dp")! // Fortalece tu unidad
+//        ,UIImage(named: "ic_thumb_up_black_48dp")! //Mision
+//        ,UIImage(named: "ic_domain_black_48dp")! // Organica
+//        ,UIImage(named: "ic_school_black_48dp")! // Doctrina
+//        ,UIImage(named: "ic_note_48pt")! // Articulos
+//        ,UIImage(named: "ic_chrome_reader_mode_48pt")! // Noticias
+//        ,UIImage(named: "ic_accessibility_48pt")! // Fortalecete
+//        ,UIImage(named: "ic_supervisor_account_black_48dp")! // Fortalece tu unidad
         ,UIImage() // Ayuda
         ,UIImage(named: "ic_question_answer_48pt")! // Preguntas Frecuentes
         ,UIImage(named: "ic_video_library_48pt")! // Videos Tutoriales
@@ -54,6 +54,10 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         ,UIImage(named: "ic_lock_power_off")!] // Cerrar Sesion
     
     var vez = 0
+    var mmlExp = 0
+    var cleExp = 0
+    var ayudaExp = 0
+    var confExp = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,8 +112,9 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         
-        switch((indexPath as NSIndexPath).row){
-        case 0:
+        //switch((indexPath as NSIndexPath).row){
+        switch(menuOps[(indexPath as NSIndexPath).row]){
+        case "Inicio":
             //Home
             let centerViewController = self.storyboard?.instantiateViewController(withIdentifier: "InicioViewController") as! InicioViewController
             let centerNavController = UINavigationController(rootViewController: centerViewController)
@@ -119,12 +124,12 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             appDelegate.centerContainer!.toggle(MMDrawerSide.left, animated: true, completion: nil)
             
             break
-        case 1:
+        case "MML":
             //MML
             
             
             break
-        case 2:
+        case "Mis Evaluados":
             //Mis Evaluados
             let prefs:UserDefaults = UserDefaults.standard
             // generamos una constante de tipo int leyendo de NSUserDefaults ISLOGGEDIN
@@ -144,7 +149,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
             
             break
-        case 3:
+        case "Mis Evaluaciones":
             //Mis Evaluaciones
             let prefs:UserDefaults = UserDefaults.standard
             // generamos una constante de tipo int leyendo de NSUserDefaults ISLOGGEDIN
@@ -164,11 +169,107 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             break
             
             //break
-        case 4:
+        case "CLE":
             //CLE
             
+            if cleExp == 0{
+                // menuOps.insert("Prueba", at: indexPath.row + 1)
+                // imgMenu.insert(UIImage(named: "ic_lock_power_off")!, at: indexPath.row + 1)
+                
+                menuOps.insert("Fortalece tu Unidad", at: indexPath.row + 1)
+                imgMenu.insert(UIImage(named: "ic_supervisor_account_black_48dp")!, at: indexPath.row + 1)
+                self.tblMenu.beginUpdates()
+                self.tblMenu.insertRows(at: [IndexPath.init(row: indexPath.row + 1 , section: 0)], with: .automatic)
+                self.tblMenu.endUpdates()
+                
+                menuOps.insert("Fortalécete", at: indexPath.row + 1)
+                imgMenu.insert(UIImage(named: "ic_accessibility_48pt")!, at: indexPath.row + 1)
+                self.tblMenu.beginUpdates()
+                self.tblMenu.insertRows(at: [IndexPath.init(row: indexPath.row + 1 , section: 0)], with: .automatic)
+                self.tblMenu.endUpdates()
+                
+                menuOps.insert("Noticias", at: indexPath.row + 1)
+                imgMenu.insert(UIImage(named: "ic_chrome_reader_mode_48pt")!, at: indexPath.row + 1)
+                self.tblMenu.beginUpdates()
+                self.tblMenu.insertRows(at: [IndexPath.init(row: indexPath.row + 1 , section: 0)], with: .automatic)
+                self.tblMenu.endUpdates()
+                
+                menuOps.insert("Artículos", at: indexPath.row + 1)
+                imgMenu.insert(UIImage(named: "ic_note_48pt")!, at: indexPath.row + 1)
+                self.tblMenu.beginUpdates()
+                self.tblMenu.insertRows(at: [IndexPath.init(row: indexPath.row + 1 , section: 0)], with: .automatic)
+                self.tblMenu.endUpdates()
+                
+                menuOps.insert("Doctrina", at: indexPath.row + 1)
+                imgMenu.insert(UIImage(named: "ic_school_black_48dp")!, at: indexPath.row + 1)
+                self.tblMenu.beginUpdates()
+                self.tblMenu.insertRows(at: [IndexPath.init(row: indexPath.row + 1 , section: 0)], with: .automatic)
+                self.tblMenu.endUpdates()
+                
+                menuOps.insert("Orgánica", at: indexPath.row + 1)
+                imgMenu.insert(UIImage(named: "ic_domain_black_48dp")!, at: indexPath.row + 1)
+                self.tblMenu.beginUpdates()
+                self.tblMenu.insertRows(at: [IndexPath.init(row: indexPath.row + 1 , section: 0)], with: .automatic)
+                self.tblMenu.endUpdates()
+                
+                menuOps.insert("Misión", at: indexPath.row + 1)
+                imgMenu.insert(UIImage(named: "ic_thumb_up_black_48dp")!, at: indexPath.row + 1)
+                self.tblMenu.beginUpdates()
+                self.tblMenu.insertRows(at: [IndexPath.init(row: indexPath.row + 1 , section: 0)], with: .automatic)
+                self.tblMenu.endUpdates()
+                
+                
+                
+                
+                //self.tblMenu.reloadData()
+                cleExp = 1
+            }else{
+                menuOps.remove(at: indexPath.row + 1)
+                imgMenu.remove(at: indexPath.row + 1)
+                self.tblMenu.beginUpdates()
+                self.tblMenu.deleteRows(at: [IndexPath.init(row: indexPath.row + 1, section: 0)] , with: .automatic)
+                self.tblMenu.endUpdates()
+                menuOps.remove(at: indexPath.row + 1)
+                imgMenu.remove(at: indexPath.row + 1)
+                self.tblMenu.beginUpdates()
+                self.tblMenu.deleteRows(at: [IndexPath.init(row: indexPath.row + 1, section: 0)] , with: .automatic)
+                self.tblMenu.endUpdates()
+                menuOps.remove(at: indexPath.row + 1)
+                imgMenu.remove(at: indexPath.row + 1)
+                self.tblMenu.beginUpdates()
+                self.tblMenu.deleteRows(at: [IndexPath.init(row: indexPath.row + 1, section: 0)] , with: .automatic)
+                self.tblMenu.endUpdates()
+                menuOps.remove(at: indexPath.row + 1)
+                imgMenu.remove(at: indexPath.row + 1)
+                self.tblMenu.beginUpdates()
+                self.tblMenu.deleteRows(at: [IndexPath.init(row: indexPath.row + 1, section: 0)] , with: .automatic)
+                self.tblMenu.endUpdates()
+                menuOps.remove(at: indexPath.row + 1)
+                imgMenu.remove(at: indexPath.row + 1)
+                self.tblMenu.beginUpdates()
+                self.tblMenu.deleteRows(at: [IndexPath.init(row: indexPath.row + 1, section: 0)] , with: .automatic)
+                self.tblMenu.endUpdates()
+                menuOps.remove(at: indexPath.row + 1)
+                imgMenu.remove(at: indexPath.row + 1)
+                self.tblMenu.beginUpdates()
+                self.tblMenu.deleteRows(at: [IndexPath.init(row: indexPath.row + 1, section: 0)] , with: .automatic)
+                self.tblMenu.endUpdates()
+                menuOps.remove(at: indexPath.row + 1)
+                imgMenu.remove(at: indexPath.row + 1)
+                self.tblMenu.beginUpdates()
+                self.tblMenu.deleteRows(at: [IndexPath.init(row: indexPath.row + 1, section: 0)] , with: .automatic)
+                self.tblMenu.endUpdates()
+                
+                
+                
+                //self.tblMenu.reloadData()
+                
+                cleExp = 0
+            }
+           // self.tblMenu.endUpdates()
+            tblMenu.reloadData()
             break
-        case 5:
+        case "Misión":
             //Misión
             let centerViewController = self.storyboard?.instantiateViewController(withIdentifier: "MisionViewController") as! MisionViewController
             let centerNavController = UINavigationController(rootViewController: centerViewController)
@@ -177,7 +278,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             appDelegate.centerContainer!.centerViewController =  centerNavController
             appDelegate.centerContainer!.toggle(MMDrawerSide.left, animated: true, completion: nil)
             break
-        case 6:
+        case "Orgánica":
             //Orgánica
             let centerViewController = self.storyboard?.instantiateViewController(withIdentifier: "OrganicaViewController") as! OrganicaViewController
             let centerNavController = UINavigationController(rootViewController: centerViewController)
@@ -186,7 +287,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             appDelegate.centerContainer!.centerViewController =  centerNavController
             appDelegate.centerContainer!.toggle(MMDrawerSide.left, animated: true, completion: nil)
             break
-        case 7:
+        case "Doctrina":
             //Doctrina
             let centerViewController = self.storyboard?.instantiateViewController(withIdentifier: "DoctrinaViewController") as! DoctrinaViewController
             let centerNavController = UINavigationController(rootViewController: centerViewController)
@@ -205,10 +306,10 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //            appDelegate.centerContainer!.toggle(MMDrawerSide.left, animated: true, completion: nil)
 //            break
             
-        case 8:
+        case "Articulos":
             //Articulos
             break
-        case 9:
+        case "Noticias":
             //Noticias
             let centerViewController = self.storyboard?.instantiateViewController(withIdentifier: "InicioViewController") as! InicioViewController
             let centerNavController = UINavigationController(rootViewController: centerViewController)
@@ -217,42 +318,46 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             appDelegate.centerContainer!.centerViewController =  centerNavController
             appDelegate.centerContainer!.toggle(MMDrawerSide.left, animated: true, completion: nil)
             break
-        case 10:
+        case "Fortalécete":
             //Fortalecete
             
-            break
-        case 11:
-            //Fortalece tu unidad
+            UIApplication.shared.openURL(URL(string: "http://cle.ejercito.cl/web/fortalecete.aspx")!)
             
             break
-        case 12:
+        case "Fortalece tu Unidad":
+            //Fortalece tu unidad
+            
+            UIApplication.shared.openURL(URL(string: "https://cle.ejercito.cl/Cursos.aspx")!)
+            
+            break
+        case "Ayuda":
             //Ayuda
             
             break
-        case 13:
+        case "Preguntas Frecuentes":
             //Preguntas Frecuentes
             
             break
-        case 14:
+        case "Videos Tutoriales":
             //Videos Tutoriales
             
             break
-        case 15:
+        case "Instructivo":
             //Instructivo
             
             break
-        case 16:
-            //Configuracion
+        case "Configuración":
+            //Configuración
             
             break
-        case 17:
+        case "Acerca de":
             //Acerca de
             
             let alertController = UIAlertController(title: "Acerca de ...", message: "Esta aplicacion fue desarrollada a medida para el Ejército de Chile por CMT y Mprz\ncmartinezt.91@gmail.com\nVersión 1.0", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
             self.present(alertController, animated: true, completion: nil)
             break
-        case 18:
+        case "Cerrar Sesión":
             //Cerrar Sesion
             //Elimina Variable de sesion
             
@@ -275,7 +380,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 self.present((alertController), animated: true, completion: nil)
                 
             
-            
+
             
             break
             
@@ -290,13 +395,11 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             break
             
         }
-        
-        
-        
+    
         tblMenu.deselectRow(at: indexPath, animated: true)
         
     }
 
-    
+
 
 }
