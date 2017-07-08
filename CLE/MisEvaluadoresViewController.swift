@@ -310,6 +310,9 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func buscarEnBD() {
+        
+        let isLoggedIn:Int = prefs.integer(forKey: "ISLOGGEDIN") as Int
+        if (isLoggedIn == 1) {
             
         //Variable prefs para obtener preferencias guardadas
         let rut:String = prefs.value(forKey: "RUN") as! String
@@ -392,7 +395,7 @@ class MisEvaluadoresViewController: UIViewController, UITableViewDataSource, UIT
             alertView.addButton(withTitle: "OK")
             alertView.show()
         }
-        
+        }
     }
 
 }

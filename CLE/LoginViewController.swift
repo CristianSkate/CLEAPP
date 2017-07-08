@@ -137,6 +137,8 @@ class LoginViewController: UIViewController, XMLParserDelegate {
                         prefs.setValue(nombre, forKey: "NOMBRE")
                         prefs.synchronize()
                         
+                        
+                        
                         self.dismiss(animated: true, completion: nil)
                     } else {
                         let error_msg:NSString = "Run o Password incorrectos"

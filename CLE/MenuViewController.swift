@@ -31,7 +31,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //        ,"Instructivo"                      //15
         ,"Configuración"                    //16
 //        ,"Acerca de"                        //17
-        ,"Cerrar Sesión"]                   //18
+    //    ,"Cerrar Sesión"
+    ]                   //18
     
     var imgMenu:[UIImage] = [UIImage(named: "ic_home")! //Inicio
         ,UIImage(named: "ic_supervisor_account_black_48dp")! // MML
@@ -51,7 +52,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //        ,UIImage(named: "ic_insert_drive_file_48pt")! // Instructivo
         ,UIImage(named: "ic_settings_black_48dp")! // Configuracion
 //        ,UIImage(named: "ic_person_pin_black_48dp")! // Acerca de
-        ,UIImage(named: "ic_lock_power_off")!] // Cerrar Sesion
+        //,UIImage(named: "ic_lock_power_off")!
+    ] // Cerrar Sesion
     
     var vez = 0
     var mmlExp = 0
@@ -70,6 +72,67 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         imgLogo.image = UIImage(named: "Logo")
         tblMenu.delegate = self
         tblMenu.dataSource =  self
+        
+//        let prefs:UserDefaults = UserDefaults.standard
+//        // generamos una constante de tipo int leyendo de NSUserDefaults ISLOGGEDIN
+//        let isLoggedIn:Int = prefs.integer(forKey: "ISLOGGEDIN") as Int
+//        
+//        // si está logueado agrega cerrar sesion al final, si no se asegura que no esté
+//        if (isLoggedIn != 1) {
+//            if menuOps[menuOps.count - 1] == "Cerrar Sesión"{
+//                
+//                menuOps.removeLast()
+//                imgMenu.removeLast()
+//                self.tblMenu.beginUpdates()
+//                self.tblMenu.deleteRows(at: [IndexPath.init(row: menuOps.count, section: 0)] , with: .automatic)
+//                self.tblMenu.endUpdates()
+//            }
+//            
+//        } else {
+//            
+//            menuOps.append("Cerrar Sesión")
+//            //imgMenu.insert(UIImage(named: "ic_supervisor_account_black_48dp")!, at: indexPath.row + 1)
+//            imgMenu.append(UIImage(named: "ic_lock_power_off")!)
+//            self.tblMenu.beginUpdates()
+//            self.tblMenu.insertRows(at: [IndexPath.init(row: menuOps.count - 1 , section: 0)], with: .automatic)
+//            self.tblMenu.endUpdates()
+//            
+//        }
+
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("paso")
+        
+        let prefs:UserDefaults = UserDefaults.standard
+        // generamos una constante de tipo int leyendo de NSUserDefaults ISLOGGEDIN
+        let isLoggedIn:Int = prefs.integer(forKey: "ISLOGGEDIN") as Int
+        if (isLoggedIn != 1) {
+            if menuOps[menuOps.count - 1] == "Cerrar Sesión"{
+                
+                menuOps.removeLast()
+                imgMenu.removeLast()
+                self.tblMenu.beginUpdates()
+                self.tblMenu.deleteRows(at: [IndexPath.init(row: menuOps.count, section: 0)] , with: .automatic)
+                self.tblMenu.endUpdates()
+            }
+            
+        } else {
+            
+            if menuOps[menuOps.count - 1] == "Cerrar Sesión" {
+                
+            } else {
+            
+            menuOps.append("Cerrar Sesión")
+            //imgMenu.insert(UIImage(named: "ic_supervisor_account_black_48dp")!, at: indexPath.row + 1)
+            imgMenu.append(UIImage(named: "ic_lock_power_off")!)
+            self.tblMenu.beginUpdates()
+            self.tblMenu.insertRows(at: [IndexPath.init(row: menuOps.count - 1 , section: 0)], with: .automatic)
+            self.tblMenu.endUpdates()
+            }
+        }
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -462,7 +525,16 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     // generamos una constante de tipo int leyendo de NSUserDefaults ISLOGGEDIN
                     let isLoggedIn:Int = prefs.integer(forKey: "ISLOGGEDIN") as Int
                     // si no está logeado, envía a la vista de login, sino muestra el nombre de usuario, leido de la caché
+                    
                     if (isLoggedIn != 1) {
+                        if self.menuOps[self.menuOps.count - 1] == "Cerrar Sesión"{
+                            
+                            self.menuOps.removeLast()
+                            self.imgMenu.removeLast()
+                            self.tblMenu.beginUpdates()
+                            self.tblMenu.deleteRows(at: [IndexPath.init(row: self.menuOps.count, section: 0)] , with: .automatic)
+                            self.tblMenu.endUpdates()
+                        }
                         self.performSegue(withIdentifier: "irALogin", sender: self)
                     }
                 }))
