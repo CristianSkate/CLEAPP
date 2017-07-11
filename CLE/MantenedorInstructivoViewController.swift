@@ -171,8 +171,8 @@ class MantenedorInstructivoViewController: UIViewController, UIPageViewControlle
         
         let pageContentViewController = self.storyboard?.instantiateViewController(withIdentifier: "FormatoInstructViewController") as! FormatoInstructViewController
         
-        pageContentViewController.titulo =  instructivos[index].titulo
-        pageContentViewController.cuerpo = instructivos[index].cuerpo
+        //pageContentViewController.titulo =  instructivos[index].titulo
+        //pageContentViewController.cuerpo = instructivos[index].cuerpo
         pageContentViewController.pageIndex = index
         indexPage = index
         return pageContentViewController

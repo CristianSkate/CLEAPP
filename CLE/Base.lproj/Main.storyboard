@@ -210,54 +210,121 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8lt-uL-MgL">
-                                <frame key="frameInset" width="600" height="600"/>
-                                <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut " textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Cr-aN-amK">
-                                        <rect key="frame" x="20" y="0.0" width="560" height="50"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tYE-4E-cB7">
-                                        <rect key="frame" x="20" y="58" width="560" height="133"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="tYE-4E-cB7" secondAttribute="bottom" constant="10" id="1gV-W6-fY6"/>
-                                    <constraint firstItem="tYE-4E-cB7" firstAttribute="leading" secondItem="8lt-uL-MgL" secondAttribute="leading" constant="20" id="25g-nF-SMg"/>
-                                    <constraint firstItem="4Cr-aN-amK" firstAttribute="leading" secondItem="8lt-uL-MgL" secondAttribute="leading" constant="20" id="5cr-hU-IMS"/>
-                                    <constraint firstAttribute="trailing" secondItem="4Cr-aN-amK" secondAttribute="trailing" constant="20" id="F7Y-gw-UWA"/>
-                                    <constraint firstItem="4Cr-aN-amK" firstAttribute="top" secondItem="8lt-uL-MgL" secondAttribute="top" id="Ik6-Jc-9Ay"/>
-                                    <constraint firstItem="tYE-4E-cB7" firstAttribute="centerX" secondItem="8lt-uL-MgL" secondAttribute="centerX" id="S4l-f3-DD3"/>
-                                    <constraint firstAttribute="trailing" secondItem="tYE-4E-cB7" secondAttribute="trailing" constant="20" id="afJ-ra-Fyw"/>
-                                    <constraint firstItem="tYE-4E-cB7" firstAttribute="top" secondItem="4Cr-aN-amK" secondAttribute="bottom" constant="8" id="jNF-Li-BD9"/>
-                                    <constraint firstItem="4Cr-aN-amK" firstAttribute="centerX" secondItem="8lt-uL-MgL" secondAttribute="centerX" id="pa4-rv-1zM"/>
-                                </constraints>
-                            </scrollView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="150" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3JE-PO-YdM">
+                                <frame key="frameInset" minX="4" minY="4" maxX="5" maxY="8"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="celdaTitulo" rowHeight="96" id="JE0-aQ-1ec" customClass="CeldaTituloTableViewCell" customModule="CLE_Chile" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="366" height="96"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JE0-aQ-1ec" id="Xhq-nz-SyM">
+                                            <frame key="frameInset" width="366" height="96"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instrucciones" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Rr-A8-BN8">
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fwD-5n-63m">
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="1Rr-A8-BN8" firstAttribute="top" secondItem="Xhq-nz-SyM" secondAttribute="topMargin" constant="2" id="0sm-e8-Pg2"/>
+                                                <constraint firstItem="fwD-5n-63m" firstAttribute="trailing" secondItem="Xhq-nz-SyM" secondAttribute="trailingMargin" constant="2" id="3Yv-PF-vdg"/>
+                                                <constraint firstItem="fwD-5n-63m" firstAttribute="bottom" secondItem="Xhq-nz-SyM" secondAttribute="bottomMargin" constant="2" id="D2s-nJ-sH5"/>
+                                                <constraint firstItem="fwD-5n-63m" firstAttribute="top" secondItem="1Rr-A8-BN8" secondAttribute="bottom" constant="5" id="VCo-Ck-0lN"/>
+                                                <constraint firstItem="1Rr-A8-BN8" firstAttribute="leading" secondItem="Xhq-nz-SyM" secondAttribute="leadingMargin" constant="5" id="dHq-eA-Qse"/>
+                                                <constraint firstItem="fwD-5n-63m" firstAttribute="leading" secondItem="Xhq-nz-SyM" secondAttribute="leadingMargin" constant="2" id="yss-b0-uaT"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="txtInstrucciones" destination="1Rr-A8-BN8" id="6eN-Nf-kpR"/>
+                                            <outlet property="txtParrafo" destination="fwD-5n-63m" id="PS0-6G-rff"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="celdaCard" rowHeight="117" id="gLA-pb-9C7" customClass="CeldaCardTableViewCell" customModule="CLE_Chile" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="188" width="366" height="117"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gLA-pb-9C7" id="306-18-NEz">
+                                            <frame key="frameInset" width="366" height="117"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pWd-zL-vtJ">
+                                                    <frame key="frameInset" minX="8" minY="8" maxX="13" maxY="8"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <subviews>
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="T5t-pO-bdy">
+                                                            <frame key="frameInset" height="39"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                        </textView>
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="yIW-im-yxI">
+                                                            <frame key="frameInset" height="60"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                        </textView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cardView" destination="pWd-zL-vtJ" id="zoy-sB-vls"/>
+                                            <outlet property="parrafoAzul" destination="T5t-pO-bdy" id="uHZ-db-np8"/>
+                                            <outlet property="parrafoBlanco" destination="yIW-im-yxI" id="Vgx-QD-T7t"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="celdaFinal" rowHeight="68" id="3zU-lX-Dyz" customClass="CeldaFinalTableViewCell" customModule="CLE_Chile" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="305" width="366" height="68"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3zU-lX-Dyz" id="GUN-Xq-HAy">
+                                            <frame key="frameInset" width="366" height="68"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zcL-Iu-BPm">
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="zcL-Iu-BPm" firstAttribute="leading" secondItem="GUN-Xq-HAy" secondAttribute="leading" id="8GK-ne-Vcb"/>
+                                                <constraint firstItem="zcL-Iu-BPm" firstAttribute="top" secondItem="GUN-Xq-HAy" secondAttribute="top" id="JIh-92-cWt"/>
+                                                <constraint firstAttribute="bottom" secondItem="zcL-Iu-BPm" secondAttribute="bottom" id="tt4-Yl-PFF"/>
+                                                <constraint firstAttribute="trailing" secondItem="zcL-Iu-BPm" secondAttribute="trailing" id="yAw-8Z-K3n"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="parrafoFinal" destination="zcL-Iu-BPm" id="Vki-OD-nfx"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="8lt-uL-MgL" firstAttribute="height" secondItem="dfz-ff-lXh" secondAttribute="height" id="LMU-6I-aE6"/>
-                            <constraint firstItem="8lt-uL-MgL" firstAttribute="centerY" secondItem="dfz-ff-lXh" secondAttribute="centerY" id="Q00-xm-39C"/>
-                            <constraint firstItem="8lt-uL-MgL" firstAttribute="centerX" secondItem="dfz-ff-lXh" secondAttribute="centerX" id="Yad-GS-kR6"/>
-                            <constraint firstItem="8lt-uL-MgL" firstAttribute="width" secondItem="dfz-ff-lXh" secondAttribute="width" id="d5Q-cL-92J"/>
-                        </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="scrollView" destination="8lt-uL-MgL" id="8jq-u4-1hK"/>
-                        <outlet property="txtCuerpo" destination="tYE-4E-cB7" id="lIu-pa-hfp"/>
-                        <outlet property="txtTitulo" destination="4Cr-aN-amK" id="lIp-LC-sNb"/>
+                        <outlet property="tablaInstructivo" destination="3JE-PO-YdM" id="V5o-rW-GoQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XGi-SS-FWU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1571" y="3239"/>
+            <point key="canvasLocation" x="1570.4000000000001" y="3238.8305847076463"/>
         </scene>
         <!--Fin Encuesta View Controller-->
         <scene sceneID="k7g-OB-VNn">
@@ -1690,6 +1757,6 @@
         <image name="organigrama-3" width="780" height="633"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qaB-zs-mAo"/>
+        <segue reference="FOm-XQ-75V"/>
     </inferredMetricsTieBreakers>
 </document>

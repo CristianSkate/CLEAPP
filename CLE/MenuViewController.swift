@@ -419,7 +419,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
             if ayudaExp == 0 {
                 
-                menuOps.insert("reguntas Frecuentes", at: indexPath.row + 1)
+                menuOps.insert("Preguntas Frecuentes", at: indexPath.row + 1)
                 //imgMenu.insert(UIImage(named: "ic_question_answer_48pt")!, at: indexPath.row + 1)
                 imgMenu.insert(UIImage(), at: indexPath.row + 1)
                 self.tblMenu.beginUpdates()

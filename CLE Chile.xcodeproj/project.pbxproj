@@ -43,6 +43,9 @@
 		502152FC1C8734490086EB9F /* FormatoPregAbiertaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502152FB1C8734490086EB9F /* FormatoPregAbiertaViewController.swift */; };
 		502463291C84A00400E606EB /* MyImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502463281C84A00400E606EB /* MyImageCache.swift */; };
 		5024632B1C84E0E600E606EB /* MantenedorPregAbiertasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5024632A1C84E0E600E606EB /* MantenedorPregAbiertasViewController.swift */; };
+		5031DBE81F145D7000A4070F /* CeldaTituloTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5031DBE71F145D7000A4070F /* CeldaTituloTableViewCell.swift */; };
+		5031DBEA1F145D9100A4070F /* CeldaCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5031DBE91F145D9100A4070F /* CeldaCardTableViewCell.swift */; };
+		5031DBEC1F145DA800A4070F /* CeldaFinalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5031DBEB1F145DA800A4070F /* CeldaFinalTableViewCell.swift */; };
 		5039F5731E73D47400F78798 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5039F5721E73D47400F78798 /* GoogleService-Info.plist */; };
 		505867D41EEE49E300F8C3A4 /* RegistrarseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505867D31EEE49E200F8C3A4 /* RegistrarseViewController.swift */; };
 		505867D61EEE565500F8C3A4 /* Paso2RegistrarseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505867D51EEE565500F8C3A4 /* Paso2RegistrarseViewController.swift */; };
@@ -121,6 +124,9 @@
 		502152FB1C8734490086EB9F /* FormatoPregAbiertaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FormatoPregAbiertaViewController.swift; path = CLE/FormatoPregAbiertaViewController.swift; sourceTree = SOURCE_ROOT; };
 		502463281C84A00400E606EB /* MyImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyImageCache.swift; path = CLE/MyImageCache.swift; sourceTree = SOURCE_ROOT; };
 		5024632A1C84E0E600E606EB /* MantenedorPregAbiertasViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MantenedorPregAbiertasViewController.swift; path = CLE/MantenedorPregAbiertasViewController.swift; sourceTree = SOURCE_ROOT; };
+		5031DBE71F145D7000A4070F /* CeldaTituloTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CeldaTituloTableViewCell.swift; path = CLE/CeldaTituloTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		5031DBE91F145D9100A4070F /* CeldaCardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CeldaCardTableViewCell.swift; path = CLE/CeldaCardTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		5031DBEB1F145DA800A4070F /* CeldaFinalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CeldaFinalTableViewCell.swift; path = CLE/CeldaFinalTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		5039F5711E73D3E800F78798 /* CLE Chile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CLE Chile.entitlements"; sourceTree = "<group>"; };
 		5039F5721E73D47400F78798 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		505867D31EEE49E200F8C3A4 /* RegistrarseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegistrarseViewController.swift; path = CLE/RegistrarseViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -238,6 +244,9 @@
 				404870E91C179ABF0053BE68 /* CeldaNoticiasTableViewCell.swift */,
 				404870EF1C17D6B00053BE68 /* CeldaDoctrinasTableViewCell.swift */,
 				502463281C84A00400E606EB /* MyImageCache.swift */,
+				5031DBE71F145D7000A4070F /* CeldaTituloTableViewCell.swift */,
+				5031DBE91F145D9100A4070F /* CeldaCardTableViewCell.swift */,
+				5031DBEB1F145DA800A4070F /* CeldaFinalTableViewCell.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -527,6 +536,7 @@
 				50A0E48A1C3225E300B3051B /* MisEvaluadoresViewController.swift in Sources */,
 				408BA7881BC46BCC009B0E96 /* MisEncuestasViewController.swift in Sources */,
 				4001733B1BC4167500E08A6D /* MMDrawerController.m in Sources */,
+				5031DBE81F145D7000A4070F /* CeldaTituloTableViewCell.swift in Sources */,
 				502152FC1C8734490086EB9F /* FormatoPregAbiertaViewController.swift in Sources */,
 				5024632B1C84E0E600E606EB /* MantenedorPregAbiertasViewController.swift in Sources */,
 				404870E61C1794F30053BE68 /* HerramientasViewController.swift in Sources */,
@@ -534,11 +544,13 @@
 				4001733A1BC4167500E08A6D /* MMDrawerBarButtonItem.m in Sources */,
 				50FA628F1C42093600112421 /* DetalleNoticiaViewController.swift in Sources */,
 				40ABB6661BBDF0CC0060063F /* AppDelegate.swift in Sources */,
+				5031DBEA1F145D9100A4070F /* CeldaCardTableViewCell.swift in Sources */,
 				40ABB66A1BBDF0CC0060063F /* InicioViewController.swift in Sources */,
 				404870EE1C17D2EE0053BE68 /* MantenedorDoctrinaViewController.swift in Sources */,
 				50D720661C722C1A004C83D1 /* FormatoInstructViewController.swift in Sources */,
 				403ACECA1BDA717900E12A60 /* DoctrinaViewController.swift in Sources */,
 				404870EA1C179ABF0053BE68 /* CeldaNoticiasTableViewCell.swift in Sources */,
+				5031DBEC1F145DA800A4070F /* CeldaFinalTableViewCell.swift in Sources */,
 				4095902B1BE6102600695A38 /* FormatoEncuestaViewController.swift in Sources */,
 				404870F01C17D6B00053BE68 /* CeldaDoctrinasTableViewCell.swift in Sources */,
 				40BECDB01BFD49760056724D /* Encuesta.swift in Sources */,
