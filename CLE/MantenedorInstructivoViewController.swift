@@ -30,7 +30,7 @@ class MantenedorInstructivoViewController: UIViewController, UIPageViewControlle
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Siguiente", style: .plain, target: self, action: #selector(MantenedorInstructivoViewController.btnSiguiente))
         
-        self.title = "Instructivos"
+        self.title = "Encuesta"
         preCargarDatos()
         
         self.pageViewController = self.storyboard?.instantiateViewController(withIdentifier: "PageViewController") as! UIPageViewController

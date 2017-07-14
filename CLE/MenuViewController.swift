@@ -189,6 +189,12 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
             if mmlExp == 0{
                 
+                menuOps.insert("Mis Evaluaciones", at: indexPath.row + 1)
+                //                imgMenu.insert(UIImage(named: "ic_supervisor_account_black_48dp")!, at: indexPath.row + 1)
+                imgMenu.insert(UIImage(), at: indexPath.row + 1)
+                self.tblMenu.beginUpdates()
+                self.tblMenu.insertRows(at: [IndexPath.init(row: indexPath.row + 1 , section: 0)], with: .automatic)
+                self.tblMenu.endUpdates()
                 
                 menuOps.insert("Mis Evaluados", at: indexPath.row + 1)
                 //imgMenu.insert(UIImage(named: "ic_supervisor_account_black_48dp")!, at: indexPath.row + 1)
@@ -197,12 +203,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 self.tblMenu.insertRows(at: [IndexPath.init(row: indexPath.row + 1 , section: 0)], with: .automatic)
                 self.tblMenu.endUpdates()
                 
-                menuOps.insert("Mis Evaluaciones", at: indexPath.row + 1)
-//                imgMenu.insert(UIImage(named: "ic_supervisor_account_black_48dp")!, at: indexPath.row + 1)
-                imgMenu.insert(UIImage(), at: indexPath.row + 1)
-                self.tblMenu.beginUpdates()
-                self.tblMenu.insertRows(at: [IndexPath.init(row: indexPath.row + 1 , section: 0)], with: .automatic)
-                self.tblMenu.endUpdates()
+                
                 mmlExp = 1
                 
             }

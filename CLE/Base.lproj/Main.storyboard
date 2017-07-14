@@ -28,7 +28,7 @@
                                         <rect key="frame" x="0.0" y="92" width="600" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="u8P-lr-d7q" id="rZY-9p-b7X">
-                                            <frame key="frameInset" width="600" height="150"/>
+                                            <frame key="frameInset" width="600" height="149"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K8N-NO-nWJ">
@@ -216,11 +216,11 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="celdaTitulo" rowHeight="96" id="JE0-aQ-1ec" customClass="CeldaTituloTableViewCell" customModule="CLE_Chile" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="366" height="96"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="celdaTitulo" rowHeight="446" id="JE0-aQ-1ec" customClass="CeldaTituloTableViewCell" customModule="CLE_Chile" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="366" height="446"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JE0-aQ-1ec" id="Xhq-nz-SyM">
-                                            <frame key="frameInset" width="366" height="96"/>
+                                            <frame key="frameInset" width="366" height="446"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instrucciones" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Rr-A8-BN8">
@@ -249,37 +249,48 @@
                                             <outlet property="txtParrafo" destination="fwD-5n-63m" id="PS0-6G-rff"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="celdaCard" rowHeight="117" id="gLA-pb-9C7" customClass="CeldaCardTableViewCell" customModule="CLE_Chile" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="188" width="366" height="117"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="celdaCard" rowHeight="180" id="gLA-pb-9C7" customClass="CeldaCardTableViewCell" customModule="CLE_Chile" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="538" width="366" height="180"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gLA-pb-9C7" id="306-18-NEz">
-                                            <frame key="frameInset" width="366" height="117"/>
+                                            <frame key="frameInset" width="366" height="180"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pWd-zL-vtJ">
-                                                    <frame key="frameInset" minX="8" minY="8" maxX="13" maxY="8"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pWd-zL-vtJ">
                                                     <subviews>
-                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="T5t-pO-bdy">
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="T5t-pO-bdy">
                                                             <frame key="frameInset" height="39"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                                             <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                         </textView>
-                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="yIW-im-yxI">
-                                                            <frame key="frameInset" height="60"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="yIW-im-yxI">
+                                                            <frame key="frameInset" height="125"/>
                                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                         </textView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="yIW-im-yxI" firstAttribute="leading" secondItem="pWd-zL-vtJ" secondAttribute="leading" id="0DG-lZ-kj1"/>
+                                                        <constraint firstItem="T5t-pO-bdy" firstAttribute="leading" secondItem="pWd-zL-vtJ" secondAttribute="leading" id="26C-4E-BYI"/>
+                                                        <constraint firstItem="yIW-im-yxI" firstAttribute="top" secondItem="T5t-pO-bdy" secondAttribute="bottom" id="JFa-iz-Hs5"/>
+                                                        <constraint firstAttribute="trailing" secondItem="T5t-pO-bdy" secondAttribute="trailing" id="hCA-aD-xnm"/>
+                                                        <constraint firstAttribute="bottom" secondItem="yIW-im-yxI" secondAttribute="bottom" id="nBr-eQ-C9q"/>
+                                                        <constraint firstItem="T5t-pO-bdy" firstAttribute="top" secondItem="pWd-zL-vtJ" secondAttribute="top" id="psA-Ef-OhA"/>
+                                                        <constraint firstAttribute="trailing" secondItem="yIW-im-yxI" secondAttribute="trailing" id="rdf-sF-CeM"/>
+                                                    </constraints>
                                                 </view>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="pWd-zL-vtJ" firstAttribute="leading" secondItem="306-18-NEz" secondAttribute="leadingMargin" id="AsY-Oq-CXD"/>
+                                                <constraint firstItem="pWd-zL-vtJ" firstAttribute="bottom" secondItem="306-18-NEz" secondAttribute="bottomMargin" id="NCl-g9-jmx"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="pWd-zL-vtJ" secondAttribute="trailing" constant="5" id="l1z-hK-5Wb"/>
+                                                <constraint firstItem="pWd-zL-vtJ" firstAttribute="top" secondItem="306-18-NEz" secondAttribute="topMargin" id="nqX-p1-6jN"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="cardView" destination="pWd-zL-vtJ" id="zoy-sB-vls"/>
@@ -288,7 +299,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="celdaFinal" rowHeight="68" id="3zU-lX-Dyz" customClass="CeldaFinalTableViewCell" customModule="CLE_Chile" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="305" width="366" height="68"/>
+                                        <rect key="frame" x="0.0" y="718" width="366" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3zU-lX-Dyz" id="GUN-Xq-HAy">
                                             <frame key="frameInset" width="366" height="68"/>
@@ -1054,7 +1065,7 @@
                                         <rect key="frame" x="0.0" y="28" width="560" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aR7-5a-Zxu" id="7pk-kL-syh">
-                                            <frame key="frameInset" width="560" height="44"/>
+                                            <frame key="frameInset" width="560" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1102,7 +1113,7 @@
                                         <rect key="frame" x="0.0" y="92" width="560" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eHg-tt-4Hs" id="GEU-eQ-IgA">
-                                            <frame key="frameInset" width="560" height="70"/>
+                                            <frame key="frameInset" width="560" height="69"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1320,7 +1331,7 @@
                                         <rect key="frame" x="0.0" y="92" width="600" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0bi-Qc-hL0" id="Zj6-fI-45d">
-                                            <frame key="frameInset" width="600" height="150"/>
+                                            <frame key="frameInset" width="600" height="149"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="o4O-vE-5qI">
