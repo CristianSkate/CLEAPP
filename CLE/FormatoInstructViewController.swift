@@ -75,6 +75,8 @@ class FormatoInstructViewController: UIViewController, UITableViewDataSource, UI
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        let normalFont = UIFont.systemFont(ofSize: 14, weight: UIFontWeightRegular) //UIFont(name: "System", size: 14)
+        let boldSearchFont = UIFont.systemFont(ofSize: 14, weight: UIFontWeightBold)
         
         switch indexPath.row {
         
@@ -92,10 +94,16 @@ class FormatoInstructViewController: UIViewController, UITableViewDataSource, UI
             
             let mycell:CeldaCardTableViewCell = tableView.dequeueReusableCell(withIdentifier: "celdaCard", for: indexPath) as! CeldaCardTableViewCell
             
-            mycell.parrafoAzul.text = "*INSUFICIENTE:* La conducta o habilidad no está presente o está poco desarrollada por lo que se manifiesta *nunca o casi nunca*"
+            
+            //            mycell.txtParrafo.attributedText = addBoldText(fullString: "En esta sección, usted encontrará una serie de frases o afirmaciones referentes a diversos aspectos relacionados con las conductas y habilidades que forman parte del MILE (Modelo Integral de Liderazgo del Ejército), las cuales le solicitamos leer cuidadosamente.\n \nPara que su opinión aporte formativamente a la persona evaluada, es necesario responder a conciencia, señalando los aspectos destacados como aquellos que la persona deba perfeccionar, para ser un mejor líder dentro del Ejército.\n \nFrente a cada frase, usted debe seleccionar el nivel que represente su opinión de la forma más completa de acuerdo a 4 niveles. Para marcar un nivel debe estar seguro que la persona cumple completamente la descripción del nivel, si no es así, considere el nivel inferior siguiente:\n \nSus respuestas son guardadas instantáneamente por lo que podrá detenerse y volver a iniciar la encuesta en el mismo número de respuesta donde quedó.\n \nUna vez recibido el reporte y comprendido sus resultados usted podrá acceder a través de la página web del CLE a una serie de herramientas que permitirán fortalecer su desempeño como líder.", boldPartsOfString: ["aspectos", "persona", "Para", "instantáneamente"], font: normalFont, boldFont: boldSearchFont)
+
+            
+            
+            mycell.parrafoAzul.attributedText = addBoldText(fullString: "INSUFICIENTE: La conducta o habilidad no está presente o está poco desarrollada por lo que se manifiesta nunca o casi nunca", boldPartsOfString: ["INSUFICIENTE:", "nunca o casi nunca"], font: normalFont, boldFont: boldSearchFont)
             mycell.parrafoBlanco.text = "Debe marcar este nivel cuando la persona no presenta la conducta o habilidad o está poco desarrollada y/o presenta conductas o habilidades opuestas a lo descrito"
             
             mycell.parrafoAzul.textAlignment = .justified
+            mycell.parrafoAzul.textColor = UIColor.white
             mycell.parrafoBlanco.textAlignment = .justified
             
             configureTextView(textView: mycell.parrafoAzul)
@@ -109,10 +117,12 @@ class FormatoInstructViewController: UIViewController, UITableViewDataSource, UI
             
             let mycell:CeldaCardTableViewCell = tableView.dequeueReusableCell(withIdentifier: "celdaCard", for: indexPath) as! CeldaCardTableViewCell
             
-            mycell.parrafoAzul.text = "*BASICO:* La conducta o habilidad está parcialmente desarrollada, por lo que se manifiesta *a veces*"
+            //mycell.parrafoAzul.text = "*BASICO:* La conducta o habilidad está parcialmente desarrollada, por lo que se manifiesta *a veces*"
+            mycell.parrafoAzul.attributedText = addBoldText(fullString: "BASICO: La conducta o habilidad está parcialmente desarrollada, por lo que se manifiesta a veces", boldPartsOfString: ["BASICO:", "a veces"], font: normalFont, boldFont: boldSearchFont)
             mycell.parrafoBlanco.text = "Debe marcar este nivel cuando la persona presenta la conducta o habilidad, sin embargo esto ocurre a veces o se da solo en algunos contextos, situaciones o grupos"
             
             mycell.parrafoAzul.textAlignment = .justified
+            mycell.parrafoAzul.textColor = UIColor.white
             mycell.parrafoBlanco.textAlignment = .justified
             configureTextView(textView: mycell.parrafoAzul)
             configureTextView(textView: mycell.parrafoBlanco)
@@ -126,10 +136,12 @@ class FormatoInstructViewController: UIViewController, UITableViewDataSource, UI
             
             let mycell:CeldaCardTableViewCell = tableView.dequeueReusableCell(withIdentifier: "celdaCard", for: indexPath) as! CeldaCardTableViewCell
             
-            mycell.parrafoAzul.text = "*ADECUADO:* La conducta o habilidad está satisfactoriamente desarrollada por lo que se manifiesta *siempre o casi siempre*"
+            //mycell.parrafoAzul.text = "*ADECUADO:* La conducta o habilidad está satisfactoriamente desarrollada por lo que se manifiesta *siempre o casi siempre*"
+            mycell.parrafoAzul.attributedText = addBoldText(fullString: "ADECUADO: La conducta o habilidad está satisfactoriamente desarrollada por lo que se manifiesta siempre o casi siempre", boldPartsOfString: ["ADECUADO:","siempre o casi siempre"], font: normalFont, boldFont: boldSearchFont)
             mycell.parrafoBlanco.text = "Debe marcar este nivel cuando la persona es alguien que siempre o casi siempre se comporta según las conductas o habilidades que se describen, es decir éstas se observan establemente. La conducta o habilidad es fácil de identificar en la persona, en diferentes situaciones, con distintos grupos y contextos. Varias personas estarían de acuerdo con este nivel de desarrollo en la conducta o habilidad consultada"
             
             mycell.parrafoAzul.textAlignment = .justified
+            mycell.parrafoAzul.textColor = UIColor.white
             mycell.parrafoBlanco.textAlignment = .justified
             configureTextView(textView: mycell.parrafoAzul)
             configureTextView(textView: mycell.parrafoBlanco)
@@ -141,11 +153,13 @@ class FormatoInstructViewController: UIViewController, UITableViewDataSource, UI
         case 4:
             
             let mycell:CeldaCardTableViewCell = tableView.dequeueReusableCell(withIdentifier: "celdaCard", for: indexPath) as! CeldaCardTableViewCell
-            
-            mycell.parrafoAzul.text = "*INFLUYENTE:* Además de manifestar la conducta o habilidad *siempre o casi siempre*, la presenta como *un modelo a seguir*"
+
+            //mycell.parrafoAzul.text = "*INFLUYENTE:* Además de manifestar la conducta o habilidad *siempre o casi siempre*, la presenta como *un modelo a seguir*"
+            mycell.parrafoAzul.attributedText = addBoldText(fullString: "INFLUYENTE: Además de manifestar la conducta o habilidad siempre o casi siempre, la presenta como un modelo a seguir", boldPartsOfString: ["INFLUYENTE:","siempre o casi siempre","un modelo a seguir"], font: normalFont, boldFont: boldSearchFont)
             mycell.parrafoBlanco.text = "Debe marcar este nivel cuando la persona es alguien que además del nivel anterior, es efectivamente un modelo a seguir para los demás respecto a las conductas o habilidades descritas. Tanto usted como otros lo reconocen como un modelo en la conducta o habilidad descrita"
             
             mycell.parrafoAzul.textAlignment = .justified
+            mycell.parrafoAzul.textColor = UIColor.white
             mycell.parrafoBlanco.textAlignment = .justified
             configureTextView(textView: mycell.parrafoAzul)
             configureTextView(textView: mycell.parrafoBlanco)
@@ -158,7 +172,8 @@ class FormatoInstructViewController: UIViewController, UITableViewDataSource, UI
             
             let mycell:CeldaFinalTableViewCell = tableView.dequeueReusableCell(withIdentifier: "celdaFinal", for: indexPath) as! CeldaFinalTableViewCell
             
-            mycell.parrafoFinal.text = "Le recordamos que el resultado:\n \nEs *CONFIDENCIAL*, solo usted podrá acceder a su reporte personal.\nTiene una finalidad *FORMATIVA*, no es una evaluación o calificación de su liderazgo, sino una información que orienta su autodesarrollo."
+            //mycell.parrafoFinal.text = "Le recordamos que el resultado:\n \nEs *CONFIDENCIAL*, solo usted podrá acceder a su reporte personal.\nTiene una finalidad *FORMATIVA*, no es una evaluación o calificación de su liderazgo, sino una información que orienta su autodesarrollo."
+            mycell.parrafoFinal.attributedText = addBoldText(fullString: "Le recordamos que el resultado:\n \nEs CONFIDENCIAL, solo usted podrá acceder a su reporte personal.\nTiene una finalidad FORMATIVA, no es una evaluación o calificación de su liderazgo, sino una información que orienta su autodesarrollo.", boldPartsOfString: ["CONFIDENCIAL","FORMATIVA"], font: normalFont, boldFont: boldSearchFont)
             mycell.parrafoFinal.textAlignment = .justified
             configureTextView(textView: mycell.parrafoFinal)
 
@@ -220,5 +235,17 @@ class FormatoInstructViewController: UIViewController, UITableViewDataSource, UI
     private func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
+    
+    func addBoldText(fullString: NSString, boldPartsOfString: Array<NSString>, font: UIFont!, boldFont: UIFont!) -> NSAttributedString {
+        let nonBoldFontAttribute = [NSFontAttributeName:font!]
+        let boldFontAttribute = [NSFontAttributeName:boldFont!]
+        let boldString = NSMutableAttributedString(string: fullString as String, attributes:nonBoldFontAttribute)
+        for i in 0 ..< boldPartsOfString.count {
+            boldString.addAttributes(boldFontAttribute, range: fullString.range(of: boldPartsOfString[i] as String))
+        }
+        return boldString
+    }
+    
+    
 
 }
