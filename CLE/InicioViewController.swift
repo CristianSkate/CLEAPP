@@ -90,6 +90,8 @@ class InicioViewController: UIViewController, UITableViewDataSource, UITableView
             }
         }
         
+        configureCardView(cardView: mycell.cardView)
+        
         return mycell
         
     }
@@ -198,6 +200,20 @@ class InicioViewController: UIViewController, UITableViewDataSource, UITableView
             alertView.addButton(withTitle: "OK")
             alertView.show()
         }
+        
+    }
+    
+    func configureCardView(cardView:UIView){
+        
+        let contentSize = cardView.sizeThatFits(cardView.bounds.size)
+        var frame = cardView.frame
+        frame.size.height = contentSize.height
+        cardView.frame = frame
+        cardView.layer.cornerRadius = 3.0
+        cardView.layer.masksToBounds = false
+        cardView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        cardView.layer.shadowOpacity = 0.8
+        cardView.layer.shadowColor = UIColor.black.withAlphaComponent(0.2).cgColor
         
     }
 

@@ -13,6 +13,7 @@ class CeldaNoticiasTableViewCell: UITableViewCell {
     @IBOutlet weak var imgImagen: UIImageView!
     @IBOutlet weak var txtTitulo: UILabel!
     @IBOutlet weak var txtResumen: UITextView!
+    @IBOutlet var cardView: UIView!
     
     
     override func awakeFromNib() {

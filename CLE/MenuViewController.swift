@@ -391,7 +391,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             break
 
             
-        case "Articulos":
+        case "Artículos":
             //Articulos
             break
         case "Noticias":
@@ -420,8 +420,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
             if ayudaExp == 0 {
                 
-                menuOps.insert("Preguntas Frecuentes", at: indexPath.row + 1)
-                //imgMenu.insert(UIImage(named: "ic_question_answer_48pt")!, at: indexPath.row + 1)
+                menuOps.insert("Instructivo", at: indexPath.row + 1)
+                //imgMenu.insert(UIImage(named: "ic_insert_drive_file_48pt")!, at: indexPath.row + 1)
                 imgMenu.insert(UIImage(), at: indexPath.row + 1)
                 self.tblMenu.beginUpdates()
                 self.tblMenu.insertRows(at: [IndexPath.init(row: indexPath.row + 1 , section: 0)], with: .automatic)
@@ -434,8 +434,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 self.tblMenu.insertRows(at: [IndexPath.init(row: indexPath.row + 1 , section: 0)], with: .automatic)
                 self.tblMenu.endUpdates()
 
-                menuOps.insert("Instructivo", at: indexPath.row + 1)
-                //imgMenu.insert(UIImage(named: "ic_insert_drive_file_48pt")!, at: indexPath.row + 1)
+                menuOps.insert("Preguntas Frecuentes", at: indexPath.row + 1)
+                //imgMenu.insert(UIImage(named: "ic_question_answer_48pt")!, at: indexPath.row + 1)
                 imgMenu.insert(UIImage(), at: indexPath.row + 1)
                 self.tblMenu.beginUpdates()
                 self.tblMenu.insertRows(at: [IndexPath.init(row: indexPath.row + 1 , section: 0)], with: .automatic)
