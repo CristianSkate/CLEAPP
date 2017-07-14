@@ -86,7 +86,9 @@ class FormatoInstructViewController: UIViewController, UITableViewDataSource, UI
             
             mycell.txtInstrucciones.text = "Instrucciones"
             mycell.txtParrafo.text = "En esta sección, usted encontrará una serie de frases o afirmaciones referentes a diversos aspectos relacionados con las conductas y habilidades que forman parte del MILE (Modelo Integral de Liderazgo del Ejército), las cuales le solicitamos leer cuidadosamente.\n \nPara que su opinión aporte formativamente a la persona evaluada, es necesario responder a conciencia, señalando los aspectos destacados como aquellos que la persona deba perfeccionar, para ser un mejor líder dentro del Ejército.\n \nFrente a cada frase, usted debe seleccionar el nivel que represente su opinión de la forma más completa de acuerdo a 4 niveles. Para marcar un nivel debe estar seguro que la persona cumple completamente la descripción del nivel, si no es así, considere el nivel inferior siguiente:\n \nSus respuestas son guardadas instantáneamente por lo que podrá detenerse y volver a iniciar la encuesta en el mismo número de respuesta donde quedó.\n \nUna vez recibido el reporte y comprendido sus resultados usted podrá acceder a través de la página web del CLE a una serie de herramientas que permitirán fortalecer su desempeño como líder."
+            mycell.txtParrafo.textAlignment = .justified
             configureTextView(textView: mycell.txtParrafo)
+            
             
             return mycell
             
