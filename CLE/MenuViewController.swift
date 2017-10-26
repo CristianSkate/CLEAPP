@@ -393,6 +393,9 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
         case "Artículos":
             //Articulos
+            
+            UIApplication.shared.openURL(URL(string: "https://cle.ejercito.cl/web/articulos.aspx")!)
+            
             break
         case "Noticias":
             //Noticias
@@ -412,7 +415,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         case "Fortalece tu Unidad":
             //Fortalece tu unidad
             
-            UIApplication.shared.openURL(URL(string: "https://cle.ejercito.cl/Cursos.aspx")!)
+            UIApplication.shared.openURL(URL(string: "https://cle.ejercito.cl/web/fortalecete.aspx")!)
             
             break
         case "Ayuda":
@@ -469,13 +472,19 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         case "Preguntas Frecuentes":
             //Preguntas Frecuentes
             
+            UIApplication.shared.openURL(URL(string: "https://cle.ejercito.cl/web/faq.aspx")!)
+            
             break
         case "Videos Tutoriales":
             //Videos Tutoriales
             
+            UIApplication.shared.openURL(URL(string: "https://cle.ejercito.cl/web/videos.aspx")!)
+            
             break
         case "Instructivo":
             //Instructivo
+            
+            UIApplication.shared.openURL(URL(string: "https://cle.ejercito.cl/web/faq.aspx")!)
             
             break
         case "Configuración":

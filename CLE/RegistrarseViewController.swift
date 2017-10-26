@@ -70,6 +70,7 @@ class RegistrarseViewController: UIViewController {
             vc.apellidoMaterno = apellidoMaterno
             vc.nombres = nombres
             vc.run = txtRUN.text!
+        
         }
     }
     
